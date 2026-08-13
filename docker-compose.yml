@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: megafantasy
+      POSTGRES_PASSWORD: megafantasy
+      POSTGRES_DB: megafantasy
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U megafantasy"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      target: backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg://megafantasy:megafantasy@postgres:5432/megafantasy
+      JWT_SECRET: dev-secret-change-me
+      APP_BASE_URL: http://localhost:5173
+      API_BASE_URL: http://localhost:8000
+      ALLOWED_EMAILS: ${ALLOWED_EMAILS:-}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+    volumes:
+      - ./backend:/app
+
+volumes:
+  pgdata:

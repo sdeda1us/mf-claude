@@ -14,8 +14,8 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+/lib/
+/lib64/
 parts/
 sdist/
 var/
@@ -151,6 +151,12 @@ activemq-data/
 .env
 .envrc
 .venv
+
+# Node
+node_modules/
+
+# SQLite dev db
+*.db
 env/
 venv/
 ENV/

@@ -1,0 +1,220 @@
+import { useEffect, useMemo, useState } from "react";
+import { api, type CribSheetEntry, type LeagueRules, type Team } from "../lib/api";
+
+export default function CribSheet() {
+  const [teams, setTeams] = useState<Team[]>([]);
+  const [entries, setEntries] = useState<CribSheetEntry[]>([]);
+  const [rules, setRules] = useState<LeagueRules | null>(null);
+  const [nameFilter, setNameFilter] = useState("");
+  const [addSearch, setAddSearch] = useState("");
+  const [addedTeamIds, setAddedTeamIds] = useState<Set<number>>(new Set());
+  const [drafts, setDrafts] = useState<Record<number, string>>({});
+  const [expandedLeagues, setExpandedLeagues] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    api.get<Team[]>("/teams").then(setTeams);
+    api.get<CribSheetEntry[]>("/crib-sheet").then(setEntries);
+    api.get<LeagueRules>("/leagues/rules").then(setRules);
+  }, []);
+
+  const valueByTeamId = useMemo(
+    () => new Map(entries.map((e) => [e.team_id, e.value])),
+    [entries]
+  );
+
+  const minorConferenceNames = useMemo(() => {
+    const map = new Map<string, Set<string>>();
+    if (rules) {
+      for (const [league, names] of Object.entries(rules.minor_conference_teams)) {
+        map.set(league, new Set(names));
+      }
+    }
+    return map;
+  }, [rules]);
+
+  const isHiddenByDefault = (team: Team) => minorConferenceNames.get(team.league)?.has(team.name) ?? false;
+  const isVisible = (team: Team) =>
+    !isHiddenByDefault(team) || valueByTeamId.has(team.id) || addedTeamIds.has(team.id);
+
+  const draftFor = (teamId: number) => {
+    if (teamId in drafts) return drafts[teamId];
+    const value = valueByTeamId.get(teamId);
+    return value != null ? String(value) : "";
+  };
+
+  const save = async (teamId: number, raw: string) => {
+    const trimmed = raw.trim();
+    const current = valueByTeamId.get(teamId);
+    if (trimmed === "") {
+      if (current == null) return;
+      await api.del(`/crib-sheet/${teamId}`);
+      setEntries((prev) => prev.filter((e) => e.team_id !== teamId));
+      return;
+    }
+    const value = Number(trimmed);
+    if (!Number.isFinite(value) || value === current) return;
+    const entry = await api.put<CribSheetEntry>(`/crib-sheet/${teamId}`, { value });
+    setEntries((prev) => [...prev.filter((e) => e.team_id !== teamId), entry]);
+  };
+
+  const addTeam = (teamId: number) => {
+    setAddedTeamIds((prev) => new Set(prev).add(teamId));
+    setAddSearch("");
+  };
+
+  const toggleLeague = (league: string) => {
+    setExpandedLeagues((prev) => {
+      const next = new Set(prev);
+      if (next.has(league)) next.delete(league);
+      else next.add(league);
+      return next;
+    });
+  };
+
+  const bySession = useMemo(() => {
+    const groups: Record<"fall" | "spring" | "other", Team[]> = { fall: [], spring: [], other: [] };
+    const filtered = teams.filter((t) => t.name.toLowerCase().includes(nameFilter.toLowerCase()));
+    for (const t of filtered) {
+      if (!isVisible(t)) continue;
+      const session = rules?.league_session[t.league];
+      groups[session === "fall" || session === "spring" ? session : "other"].push(t);
+    }
+    for (const list of Object.values(groups)) {
+      list.sort((a, b) => a.league.localeCompare(b.league) || a.name.localeCompare(b.name));
+    }
+    return groups;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [teams, nameFilter, rules, valueByTeamId, addedTeamIds]);
+
+  const byLeagueWithinSession = (rows: Team[]) => {
+    const grouped: Record<string, Team[]> = {};
+    for (const t of rows) {
+      (grouped[t.league] ??= []).push(t);
+    }
+    return grouped;
+  };
+
+  const hiddenSearchResults = useMemo(() => {
+    if (addSearch.trim().length < 2) return [];
+    const query = addSearch.toLowerCase();
+    return teams
+      .filter((t) => isHiddenByDefault(t) && !isVisible(t) && t.name.toLowerCase().includes(query))
+      .slice(0, 8);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [addSearch, teams, minorConferenceNames, valueByTeamId, addedTeamIds]);
+
+  const renderSession = (title: string, rows: Team[]) => {
+    const byLeague = byLeagueWithinSession(rows);
+    const leagues = Object.keys(byLeague).sort();
+    return (
+      <div key={title} className="crib-session">
+        <h2>{title}</h2>
+        {leagues.length === 0 ? (
+          <p className="queue-empty">No teams match here.</p>
+        ) : (
+          leagues.map((league) => {
+            const leagueTeams = byLeague[league];
+            const expanded = expandedLeagues.has(league);
+            return (
+              <div key={league} className="league-block">
+                <button
+                  type="button"
+                  className="league-caret"
+                  onClick={() => toggleLeague(league)}
+                  aria-expanded={expanded}
+                  title={expanded ? "Collapse" : "Expand"}
+                >
+                  <span className={expanded ? "caret-icon open" : "caret-icon"}>▸</span>
+                  <span className="league-name">{league}</span>
+                  <span className="crib-league-count">({leagueTeams.length})</span>
+                </button>
+                {expanded && (
+                  <table className="sortable-table crib-sheet-table">
+                    <thead>
+                      <tr>
+                        <th>Team</th>
+                        <th>Sport</th>
+                        <th>Your Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {leagueTeams.map((team) => (
+                        <tr key={team.id}>
+                          <td>{team.name}</td>
+                          <td>{team.sport}</td>
+                          <td className="crib-value-cell">
+                            <input
+                              type="number"
+                              className="crib-value-input"
+                              placeholder="—"
+                              value={draftFor(team.id)}
+                              onChange={(e) =>
+                                setDrafts((prev) => ({ ...prev, [team.id]: e.target.value }))
+                              }
+                              onBlur={(e) => save(team.id, e.target.value)}
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            );
+          })
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="page page-wide">
+      <h1>Crib Sheet</h1>
+      <p>
+        Your own valuation for each team, split by which auction session drafts it — a private
+        reference sheet only you can see, for you to check against during a live auction. Minor-
+        conference college football/basketball teams are hidden by default; search below to add
+        one. Click a league to expand it.
+      </p>
+
+      <div className="team-board-controls">
+        <input
+          type="text"
+          placeholder="Filter by team name…"
+          value={nameFilter}
+          onChange={(e) => setNameFilter(e.target.value)}
+        />
+      </div>
+
+      <div className="crib-add-panel">
+        <label>
+          Add a minor-conference college team
+          <input
+            type="text"
+            placeholder="Search NCAAF / NCAAMB / NCAAWB teams not shown above…"
+            value={addSearch}
+            onChange={(e) => setAddSearch(e.target.value)}
+          />
+        </label>
+        {hiddenSearchResults.length > 0 && (
+          <ul className="crib-add-results">
+            {hiddenSearchResults.map((team) => (
+              <li key={team.id}>
+                <span>
+                  {team.name} <span className="pill">{team.league}</span>
+                </span>
+                <button type="button" onClick={() => addTeam(team.id)}>
+                  Add
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {renderSession("Fall Session", bySession.fall)}
+      {renderSession("Spring Session", bySession.spring)}
+      {bySession.other.length > 0 && renderSession("Other", bySession.other)}
+    </div>
+  );
+}
