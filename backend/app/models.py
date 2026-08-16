@@ -172,6 +172,25 @@ class Bid(Base):
     user: Mapped["User"] = relationship(back_populates="bids")
 
 
+class ReserveBid(Base):
+    """A player's private standing "auto-top by $1" ceiling for one auction
+    item — while active, resolve_reserve_bids() (auction_service.py) bids
+    current_high + 1 on this user's behalf any time they're outbid, up to
+    max_amount. Scoped to a single item; doesn't carry over to future
+    nominations. One row per (item, user) — locking again just updates it."""
+
+    __tablename__ = "reserve_bids"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    auction_item_id: Mapped[int] = mapped_column(ForeignKey("auction_items.id"))
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    max_amount: Mapped[float] = mapped_column(Numeric(10, 2))
+    active: Mapped[bool] = mapped_column(default=True)
+    created_at: Mapped[datetime] = mapped_column(default=utcnow)
+
+    __table_args__ = (UniqueConstraint("auction_item_id", "user_id", name="uq_reserve_item_user"),)
+
+
 class RosterEntry(Base):
     __tablename__ = "roster_entries"
 

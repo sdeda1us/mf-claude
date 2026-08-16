@@ -591,50 +591,30 @@ def lpga_stats(name: str) -> dict:
 # "Audi" to match the current Team.name post-rebrand, same idea as NHL's
 # Utah Mammoth keying for a renamed/relocated franchise).
 #
-# wins/podiums/poles/fastest_laps are EXACT, cross-checked against the race-
-# by-race winner list, pole-position list, and per-driver podium/fastest-lap
-# tallies (Formula1.com official results, gpracingstats.com, 4mula1stats.com)
-# — each column's per-team sum reconciles against the known season totals
-# (24 wins, 72 podiums, 24 poles, 24 fastest laps across 24 races).
-# points_finishes/non_points_finishes and the sprint breakdown are REASONED
-# ESTIMATES (a team's known podium count plus an estimated share of the
-# remaining P4-P10/sprint-top-8 finishes, proportional to its competitive
-# tier that season) rather than a full race-by-race classification pull for
-# all 480 car-race entries — the same kind of documented scope trade-off as
-# NCAAF's bowl-loss coverage or NHL's OT-win split elsewhere in this file.
+# Points are each constructor's exact, official final Constructors'
+# Championship points total for the season (Formula1.com official results,
+# cross-checked against thefieldf1.com) — final standings: 1. McLaren 833,
+# 2. Mercedes 469, 3. Red Bull Racing 451, 4. Ferrari 398, 5. Williams 137,
+# 6. Racing Bulls 92, 7. Aston Martin 89, 8. Haas 79, 9. Kick Sauber (Audi)
+# 70, 10. Alpine 22.
 F1_CONSTRUCTOR_STATS = {
-    # (points_finishes, non_points_finishes, podiums, wins, poles, fastest_laps,
-    #  sprint_points_finishes, sprint_podiums, sprint_wins, championship_place)
-    "McLaren": (44, 4, 34, 14, 13, 12, 11, 8, 3, 1),
-    "Mercedes": (38, 10, 12, 2, 2, 6, 9, 3, 0, 2),
-    "Red Bull Racing": (33, 15, 15, 8, 8, 3, 8, 4, 2, 3),
-    "Ferrari": (34, 14, 7, 0, 1, 2, 9, 2, 1, None),
-    "Williams": (24, 24, 2, 0, 0, 1, 6, 1, 0, None),
-    "Aston Martin": (17, 31, 0, 0, 0, 0, 4, 0, 0, None),
-    "Racing Bulls": (16, 32, 1, 0, 0, 0, 4, 0, 0, None),
-    "Haas": (15, 33, 0, 0, 0, 0, 4, 0, 0, None),
-    "Audi": (14, 34, 1, 0, 0, 0, 3, 0, 0, None),
-    "Alpine": (5, 43, 0, 0, 0, 0, 1, 0, 0, None),
+    # (points, championship_place)
+    "McLaren": (833, 1),
+    "Mercedes": (469, 2),
+    "Red Bull Racing": (451, 3),
+    "Ferrari": (398, 4),
+    "Williams": (137, 5),
+    "Racing Bulls": (92, 6),
+    "Aston Martin": (89, 7),
+    "Haas": (79, 8),
+    "Audi": (70, 9),
+    "Alpine": (22, 10),
 }
 
 
 def f1_stats(name: str) -> dict:
-    (
-        points_finishes, non_points_finishes, podiums, wins, poles, fastest_laps,
-        sprint_points_finishes, sprint_podiums, sprint_wins, championship_place,
-    ) = F1_CONSTRUCTOR_STATS[name]
-    return {
-        "points_finishes": points_finishes,
-        "non_points_finishes": non_points_finishes,
-        "podiums": podiums,
-        "wins": wins,
-        "poles": poles,
-        "fastest_laps": fastest_laps,
-        "sprint_points_finishes": sprint_points_finishes,
-        "sprint_podiums": sprint_podiums,
-        "sprint_wins": sprint_wins,
-        "championship_place": championship_place,
-    }
+    points, championship_place = F1_CONSTRUCTOR_STATS[name]
+    return {"points": points, "championship_place": championship_place}
 
 
 # ---------------------------------------------------------------------------

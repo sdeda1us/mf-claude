@@ -71,12 +71,12 @@ def get_auction_for_season(
 
 @router.get("/{auction_id}/state", response_model=AuctionStateOut)
 def get_state(
-    auction_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+    auction_id: int, db: Session = Depends(get_db), user: User = Depends(get_current_user)
 ):
     auction = db.get(Auction, auction_id)
     if auction is None:
         raise HTTPException(status_code=404, detail="Auction not found")
-    return build_state(db, auction)
+    return build_state(db, auction, viewer_user_id=user.id)
 
 
 @router.post("/{auction_id}/nominate", response_model=AuctionStateOut)
@@ -117,17 +117,16 @@ async def nominate(
     db.commit()
     db.refresh(auction)
     db.refresh(item)
-    state = build_state(db, auction)
-    await manager.broadcast_state(auction_id, state)
+    await manager.broadcast_state(auction_id, db, auction)
     manager.spawn(schedule_bid_timer(item.id))
-    return state
+    return build_state(db, auction, viewer_user_id=user.id)
 
 
 @router.post("/{auction_id}/cancel-nomination", response_model=AuctionStateOut)
 async def cancel_nomination(
     auction_id: int,
     db: Session = Depends(get_db),
-    _: User = Depends(get_current_commissioner),
+    user: User = Depends(get_current_commissioner),
 ):
     """Undo the current nomination: removes the active item and every bid on
     it, returning the team to the pool. Nothing needs to be done to restore
@@ -147,17 +146,16 @@ async def cancel_nomination(
     auction.turn_started_at = utcnow()
     db.commit()
     db.refresh(auction)
-    state = build_state(db, auction)
-    await manager.broadcast_state(auction_id, state)
+    await manager.broadcast_state(auction_id, db, auction)
     manager.spawn(schedule_turn_timer(auction_id))
-    return state
+    return build_state(db, auction, viewer_user_id=user.id)
 
 
 @router.post("/{auction_id}/close", response_model=AuctionStateOut)
 async def close_item(
     auction_id: int,
     db: Session = Depends(get_db),
-    _: User = Depends(get_current_commissioner),
+    user: User = Depends(get_current_commissioner),
 ):
     auction = db.get(Auction, auction_id)
     if auction is None:
@@ -169,17 +167,16 @@ async def close_item(
     finalize_active_item(db, auction, item)
     db.commit()
     db.refresh(auction)
-    state = build_state(db, auction)
-    await manager.broadcast_state(auction_id, state)
+    await manager.broadcast_state(auction_id, db, auction)
     manager.spawn(schedule_turn_timer(auction_id))
-    return state
+    return build_state(db, auction, viewer_user_id=user.id)
 
 
 @router.post("/{auction_id}/pause", response_model=AuctionStateOut)
 async def pause_auction(
     auction_id: int,
     db: Session = Depends(get_db),
-    _: User = Depends(get_current_commissioner),
+    user: User = Depends(get_current_commissioner),
 ):
     auction = db.get(Auction, auction_id)
     if auction is None:
@@ -189,16 +186,15 @@ async def pause_auction(
         auction.paused_at = utcnow()
         db.commit()
         db.refresh(auction)
-    state = build_state(db, auction)
-    await manager.broadcast_state(auction_id, state)
-    return state
+    await manager.broadcast_state(auction_id, db, auction)
+    return build_state(db, auction, viewer_user_id=user.id)
 
 
 @router.post("/{auction_id}/resume", response_model=AuctionStateOut)
 async def resume_auction(
     auction_id: int,
     db: Session = Depends(get_db),
-    _: User = Depends(get_current_commissioner),
+    user: User = Depends(get_current_commissioner),
 ):
     """Unpause: shifts whichever deadline was running (the nomination clock,
     or the active item's bidding clock) forward by exactly how long the
@@ -225,6 +221,5 @@ async def resume_auction(
         elif current_turn_user_id(db, auction) is not None:
             manager.spawn(schedule_turn_timer(auction_id))
 
-    state = build_state(db, auction)
-    await manager.broadcast_state(auction_id, state)
-    return state
+    await manager.broadcast_state(auction_id, db, auction)
+    return build_state(db, auction, viewer_user_id=user.id)

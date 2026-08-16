@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.auction_service import build_state
 from app.database import get_db
 from app.deps import get_current_commissioner, get_current_user
 from app.models import Auction, RosterEntry, RosterSource, Season, Team, User
@@ -92,5 +91,4 @@ async def rollback_roster_entry(
         .first()
     )
     if auction is not None:
-        state = build_state(db, auction)
-        await manager.broadcast_state(auction.id, state)
+        await manager.broadcast_state(auction.id, db, auction)

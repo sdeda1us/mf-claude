@@ -79,6 +79,11 @@ export interface Bid {
   created_at: string;
 }
 
+export interface ReserveBid {
+  amount: number;
+  active: boolean;
+}
+
 export interface AuctionItem {
   id: number;
   auction_id: number;
@@ -90,6 +95,8 @@ export interface AuctionItem {
   bids: Bid[];
   bid_deadline: string | null;
   passed_user_ids: number[];
+  // Private — only ever the viewer's own reserve, never another user's.
+  my_reserve: ReserveBid | null;
 }
 
 export interface Auction {

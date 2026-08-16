@@ -168,45 +168,34 @@ TENNIS_SCORING_RULES: list[dict] = [
 # field whose last name starts with that letter. Placement bonuses are NOT
 # cumulative with each other (a player finishes in exactly one place); the
 # "makes the cut" bonus is separate and stacks additively on top.
+# Halved across the board from the original scale (was 10/5/7/9/10/11/12/
+# 14/16/18/20/25/35/50) — same relative shape, lower absolute weight.
 GOLF_SCORING_RULES: list[dict] = [
-    {"label": "Makes the cut", "points": 10},
-    {"label": "Finishes 21st-30th", "points": 5},
-    {"label": "Finishes 16th-20th", "points": 7},
-    {"label": "Finishes 11th-15th", "points": 9},
-    {"label": "Finishes 10th", "points": 10},
-    {"label": "Finishes 9th", "points": 11},
-    {"label": "Finishes 8th", "points": 12},
-    {"label": "Finishes 7th", "points": 14},
-    {"label": "Finishes 6th", "points": 16},
-    {"label": "Finishes 5th", "points": 18},
-    {"label": "Finishes 4th", "points": 20},
-    {"label": "Finishes 3rd", "points": 25},
-    {"label": "Finishes 2nd", "points": 35},
-    {"label": "Wins", "points": 50},
+    {"label": "Makes the cut", "points": 5},
+    {"label": "Finishes 21st-30th", "points": 2.5},
+    {"label": "Finishes 16th-20th", "points": 3.5},
+    {"label": "Finishes 11th-15th", "points": 4.5},
+    {"label": "Finishes 10th", "points": 5},
+    {"label": "Finishes 9th", "points": 5.5},
+    {"label": "Finishes 8th", "points": 6},
+    {"label": "Finishes 7th", "points": 7},
+    {"label": "Finishes 6th", "points": 8},
+    {"label": "Finishes 5th", "points": 9},
+    {"label": "Finishes 4th", "points": 10},
+    {"label": "Finishes 3rd", "points": 12.5},
+    {"label": "Finishes 2nd", "points": 17.5},
+    {"label": "Wins", "points": 25},
 ]
 
-# The "team" is a constructor (a works team fielding two cars) — stats
-# combine both cars' results across the season. Calibrated against this
-# app's other single-entity leagues (MLB/NFL/NBA/NHL/EPL/NCAAF), not the
-# letter/country-aggregator leagues (PGA/LPGA/ATP/WTA), whose totals sum
-# many real players and run far higher. A race win banks the points-finish,
-# podium, and win bonuses simultaneously (cumulative, same convention as
-# every other league here); sprint results are a separate counter set from
-# main-race results, never double-counted; the championship bonus is a
-# single flat bonus, exclusive across places.
+# The "team" is a constructor (a works team fielding two cars). Tracks the
+# constructor's actual real-world Constructors' Championship points total
+# directly (an exact, official number) rather than reconstructing it from
+# per-race finish counts, plus a flat bonus for 1st/2nd in the final
+# standings (exclusive across places — nothing for 3rd or lower).
 F1_SCORING_RULES: list[dict] = [
-    {"label": "Points finish (P1-P10, per car per race)", "points": 1},
-    {"label": "Non-points finish or DNF (per car per race)", "points": -1},
-    {"label": "— additional bonus if a podium (P1-P3)", "points": 3},
-    {"label": "— additional bonus if a race win", "points": 5},
-    {"label": "Pole position", "points": 2},
-    {"label": "Fastest lap", "points": 1},
-    {"label": "Sprint points finish (top 8, per car per sprint)", "points": 1},
-    {"label": "— additional bonus if a sprint podium", "points": 1},
-    {"label": "— additional bonus if a sprint win", "points": 2},
-    {"label": "Constructors' Championship — 1st", "points": 30},
-    {"label": "Constructors' Championship — 2nd", "points": 18},
-    {"label": "Constructors' Championship — 3rd", "points": 10},
+    {"label": "Per Constructors' Championship point", "points": 0.1},
+    {"label": "Constructors' Championship — 1st", "points": 10},
+    {"label": "Constructors' Championship — 2nd", "points": 5},
 ]
 
 # EPL-style base (points + GD), like MLS/URC — NWSL, like WNBA, has used a
@@ -459,35 +448,29 @@ def compute_score(league: str, stats: dict) -> float:
         # with each other (a player finishes in exactly one place); the
         # made-cut count stacks additively on top of whichever band applies.
         return (
-            10 * stats.get("made_cut_count", 0)
-            + 5 * stats.get("place_21_30_count", 0)
-            + 7 * stats.get("place_16_20_count", 0)
-            + 9 * stats.get("place_11_15_count", 0)
-            + 10 * stats.get("place_10_count", 0)
-            + 11 * stats.get("place_9_count", 0)
-            + 12 * stats.get("place_8_count", 0)
-            + 14 * stats.get("place_7_count", 0)
-            + 16 * stats.get("place_6_count", 0)
-            + 18 * stats.get("place_5_count", 0)
-            + 20 * stats.get("place_4_count", 0)
-            + 25 * stats.get("place_3_count", 0)
-            + 35 * stats.get("place_2_count", 0)
-            + 50 * stats.get("place_1_count", 0)
+            5 * stats.get("made_cut_count", 0)
+            + 2.5 * stats.get("place_21_30_count", 0)
+            + 3.5 * stats.get("place_16_20_count", 0)
+            + 4.5 * stats.get("place_11_15_count", 0)
+            + 5 * stats.get("place_10_count", 0)
+            + 5.5 * stats.get("place_9_count", 0)
+            + 6 * stats.get("place_8_count", 0)
+            + 7 * stats.get("place_7_count", 0)
+            + 8 * stats.get("place_6_count", 0)
+            + 9 * stats.get("place_5_count", 0)
+            + 10 * stats.get("place_4_count", 0)
+            + 12.5 * stats.get("place_3_count", 0)
+            + 17.5 * stats.get("place_2_count", 0)
+            + 25 * stats.get("place_1_count", 0)
         )
     if league == "F1":
-        return (
-            1 * stats.get("points_finishes", 0)
-            - 1 * stats.get("non_points_finishes", 0)
-            + 3 * stats.get("podiums", 0)
-            + 5 * stats.get("wins", 0)
-            + 2 * stats.get("poles", 0)
-            + 1 * stats.get("fastest_laps", 0)
-            + 1 * stats.get("sprint_points_finishes", 0)
-            + 1 * stats.get("sprint_podiums", 0)
-            + 2 * stats.get("sprint_wins", 0)
-            + (30 if stats.get("championship_place") == 1 else 0)
-            + (18 if stats.get("championship_place") == 2 else 0)
-            + (10 if stats.get("championship_place") == 3 else 0)
+        # round(..., 1): 0.1 isn't exactly representable in binary floats,
+        # so raw multiplication leaves noise like 93.30000000000001.
+        return round(
+            0.1 * stats.get("points", 0)
+            + (10 if stats.get("championship_place") == 1 else 0)
+            + (5 if stats.get("championship_place") == 2 else 0),
+            1,
         )
     if league == "WNBA":
         return (

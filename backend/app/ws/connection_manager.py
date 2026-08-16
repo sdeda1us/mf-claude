@@ -4,8 +4,10 @@ from collections.abc import Coroutine
 from typing import Any
 
 from fastapi import WebSocket
+from sqlalchemy.orm import Session
 
-from app.schemas import AuctionStateOut
+from app.auction_service import build_state
+from app.models import Auction
 
 
 class ConnectionManager:
@@ -16,7 +18,10 @@ class ConnectionManager:
     """
 
     def __init__(self) -> None:
-        self._rooms: dict[int, set[WebSocket]] = defaultdict(set)
+        # websocket -> the user_id it authenticated as, so broadcasts can be
+        # built per-viewer (e.g. reserve bids are private — each socket
+        # should only ever see its own, never another user's).
+        self._rooms: dict[int, dict[WebSocket, int]] = defaultdict(dict)
         # asyncio only holds a weak reference to a task once nothing else
         # points at it, so a fire-and-forget task (e.g. the auto-nominate
         # countdown) can otherwise get garbage-collected mid-sleep — keeping
@@ -28,21 +33,21 @@ class ConnectionManager:
         self._background_tasks.add(task)
         task.add_done_callback(self._background_tasks.discard)
 
-    async def connect(self, auction_id: int, websocket: WebSocket) -> None:
+    async def connect(self, auction_id: int, websocket: WebSocket, user_id: int) -> None:
         await websocket.accept()
-        self._rooms[auction_id].add(websocket)
+        self._rooms[auction_id][websocket] = user_id
 
     def disconnect(self, auction_id: int, websocket: WebSocket) -> None:
-        self._rooms[auction_id].discard(websocket)
+        self._rooms[auction_id].pop(websocket, None)
         if not self._rooms[auction_id]:
             del self._rooms[auction_id]
 
-    async def broadcast_state(self, auction_id: int, state: AuctionStateOut) -> None:
-        message = {"type": "state", "data": state.model_dump(mode="json")}
+    async def broadcast_state(self, auction_id: int, db: Session, auction: Auction) -> None:
         dead: list[WebSocket] = []
-        for ws in self._rooms.get(auction_id, set()):
+        for ws, user_id in list(self._rooms.get(auction_id, {}).items()):
             try:
-                await ws.send_json(message)
+                state = build_state(db, auction, viewer_user_id=user_id)
+                await ws.send_json({"type": "state", "data": state.model_dump(mode="json")})
             except Exception:
                 dead.append(ws)
         for ws in dead:

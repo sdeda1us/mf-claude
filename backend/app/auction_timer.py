@@ -6,7 +6,6 @@ from sqlalchemy.orm import Session
 from app.auction_service import (
     all_non_high_bidders_passed,
     auto_pass_capped_users,
-    build_state,
     current_turn_user_id,
     finalize_active_item,
     get_active_item,
@@ -116,11 +115,10 @@ async def schedule_turn_timer(auction_id: int) -> None:
         db.commit()
         db.refresh(auction)
         db.refresh(item)
-        state = build_state(db, auction)
+        await manager.broadcast_state(auction.id, db, auction)
     finally:
         db.close()
 
-    await manager.broadcast_state(auction.id, state)
     if sold_immediately:
         manager.spawn(schedule_turn_timer(auction.id))
     else:
@@ -165,11 +163,10 @@ async def schedule_bid_timer(item_id: int) -> None:
             finalize_active_item(db, auction, item)
             db.commit()
             db.refresh(auction)
-            state = build_state(db, auction)
+            await manager.broadcast_state(auction.id, db, auction)
         finally:
             db.close()
 
-        await manager.broadcast_state(auction.id, state)
         manager.spawn(schedule_turn_timer(auction.id))
         return
 

@@ -1,7 +1,9 @@
-import { Navigate, Route, Routes, Link, NavLink, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate, Route, Routes, Link, NavLink, useLocation, useParams } from "react-router-dom";
 import Avatar from "./components/Avatar";
 import { useAuth } from "./auth/AuthContext";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 import Seasons from "./pages/Seasons";
 import Roster from "./pages/Roster";
 import AuctionRoom from "./pages/Auction";
@@ -29,16 +31,36 @@ function AuctionFallRedirect() {
 
 export default function App() {
   const { user, logout } = useAuth();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [location.pathname]);
 
   return (
     <>
       {user && (
         <header className="titlebar">
           <span className="pennant" aria-hidden="true" />
-          <Link to="/seasons" className="wordmark">
+          <Link to="/" className="wordmark">
             <span className="mega">Mega</span>Fantasy
           </Link>
-          <nav className="titlebar-nav">
+          <button
+            type="button"
+            className="mobile-nav-toggle"
+            aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileNavOpen}
+            onClick={() => setMobileNavOpen((v) => !v)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+          <nav className={mobileNavOpen ? "titlebar-nav mobile-open" : "titlebar-nav"}>
+            <NavLink to="/" end className={({ isActive }) => (isActive ? "current" : undefined)}>
+              Home
+            </NavLink>
             <NavLink to="/seasons" className={({ isActive }) => (isActive ? "current" : undefined)}>
               Seasons
             </NavLink>
@@ -73,6 +95,14 @@ export default function App() {
       )}
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/seasons"
           element={
@@ -161,7 +191,7 @@ export default function App() {
             </RequireAuth>
           }
         />
-        <Route path="*" element={<Navigate to="/seasons" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   );

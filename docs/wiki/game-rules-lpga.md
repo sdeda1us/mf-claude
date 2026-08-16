@@ -14,20 +14,20 @@ Per-player scoring at a counted major:
 
 | Result                    | Points |
 |--------------------------------|--------|
-| Makes the cut                    | +10    |
-| Finishes 21st–30th                | +5     |
-| Finishes 16th–20th                 | +7     |
-| Finishes 11th–15th                  | +9     |
-| Finishes 10th                        | +10    |
-| Finishes 9th                          | +11    |
-| Finishes 8th                           | +12    |
-| Finishes 7th                            | +14    |
-| Finishes 6th                             | +16    |
-| Finishes 5th                              | +18    |
-| Finishes 4th                               | +20    |
-| Finishes 3rd                                | +25    |
-| Finishes 2nd                                 | +35    |
-| Wins                                          | +50    |
+| Makes the cut                    | +5     |
+| Finishes 21st–30th                | +2.5   |
+| Finishes 16th–20th                 | +3.5   |
+| Finishes 11th–15th                  | +4.5   |
+| Finishes 10th                        | +5     |
+| Finishes 9th                          | +5.5   |
+| Finishes 8th                           | +6     |
+| Finishes 7th                            | +7     |
+| Finishes 6th                             | +8     |
+| Finishes 5th                              | +9     |
+| Finishes 4th                               | +10    |
+| Finishes 3rd                                | +12.5  |
+| Finishes 2nd                                 | +17.5  |
+| Wins                                          | +25    |
 
 Same non-cumulative placement logic as PGA — a player occupies exactly one
 finishing position, and the "makes the cut" bonus stacks additively on top

@@ -79,26 +79,49 @@ export default function Roster() {
                 ))}
               </p>
             )}
-            <ul>
-              {rosterEntries.map((e) => (
-                <li key={e.id}>
-                  {e.team.league} — {e.team.name} (${e.price_paid})
-                  {e.source === "commissioner_correction" && (
-                    <span className="pill">corrected</span>
-                  )}
-                  {user?.is_commissioner && (
-                    <button
-                      type="button"
-                      className="rollback-btn"
-                      onClick={() => rollback(e)}
-                      title="Undo this pick and return the team to the pool"
-                    >
-                      Roll back
-                    </button>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <table className="sortable-table">
+              <thead>
+                <tr>
+                  <th>League</th>
+                  <th>Team</th>
+                  <th>Price</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {rosterEntries
+                  .slice()
+                  .sort(
+                    (a, b) =>
+                      a.team.league.localeCompare(b.team.league) ||
+                      a.team.name.localeCompare(b.team.name)
+                  )
+                  .map((e) => (
+                    <tr key={e.id}>
+                      <td>{e.team.league}</td>
+                      <td>{e.team.name}</td>
+                      <td className="stat">${e.price_paid}</td>
+                      <td className="team-row-actions">
+                        {e.source === "commissioner_correction" && (
+                          <span className="pill" style={{ marginLeft: 0 }}>
+                            corrected
+                          </span>
+                        )}
+                        {user?.is_commissioner && (
+                          <button
+                            type="button"
+                            className="rollback-btn"
+                            onClick={() => rollback(e)}
+                            title="Undo this pick and return the team to the pool"
+                          >
+                            Roll back
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
           </div>
         );
       })}

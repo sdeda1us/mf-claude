@@ -18,33 +18,56 @@ export default function Login() {
     }
   };
 
+  const gallery = (
+    <div className="login-gallery">
+      <div className="login-gallery-item">
+        <img src="/images/nfl.webp" alt="NFL running back breaking a tackle" />
+      </div>
+      <div className="login-gallery-item">
+        <img src="/images/wnba.webp" alt="WNBA guard driving past a defender" />
+      </div>
+      <div className="login-gallery-item">
+        <img src="/images/tennis.webp" alt="Tennis player stretching for a backhand" />
+      </div>
+      <div className="login-gallery-item">
+        <img src="/images/rugby.webp" alt="Rugby scrum" />
+      </div>
+    </div>
+  );
+
   if (sent) {
     return (
-      <div className="centered-card">
-        <h1>Check your email</h1>
-        <p>If {email} is a league member, a login link is on its way.</p>
+      <div className="login-page">
+        <div className="centered-card">
+          <h1>Check your email</h1>
+          <p>If {email} is a league member, a login link is on its way.</p>
+        </div>
+        {gallery}
       </div>
     );
   }
 
   return (
-    <div className="centered-card">
-      <h1 className="wordmark login-wordmark">
-        <span className="mega">Mega</span>Fantasy
-      </h1>
-      <form onSubmit={submit}>
-        <input
-          type="email"
-          required
-          placeholder="you@example.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit" className="btn-primary">
-          Send login link
-        </button>
-      </form>
-      {error && <p className="error">{error}</p>}
+    <div className="login-page">
+      <div className="centered-card">
+        <h1 className="wordmark login-wordmark">
+          <span className="mega">Mega</span>Fantasy
+        </h1>
+        <form onSubmit={submit}>
+          <input
+            type="email"
+            required
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button type="submit" className="btn-primary">
+            Send login link
+          </button>
+        </form>
+        {error && <p className="error">{error}</p>}
+      </div>
+      {gallery}
     </div>
   );
 }

@@ -69,6 +69,11 @@ class BidOut(BaseModel):
     model_config = {"from_attributes": True}
 
 
+class ReserveBidOut(BaseModel):
+    amount: float
+    active: bool
+
+
 class AuctionItemOut(BaseModel):
     id: int
     auction_id: int
@@ -80,6 +85,10 @@ class AuctionItemOut(BaseModel):
     bids: list[BidOut] = []
     bid_deadline: datetime | None
     passed_user_ids: list[int] = []
+    # Private to the viewer — only ever populated with the requesting
+    # user's own reserve, never anyone else's (see build_state). None if
+    # they don't have one set on this item.
+    my_reserve: ReserveBidOut | None = None
 
     model_config = {"from_attributes": True}
 

@@ -38,53 +38,59 @@ export default function Admin() {
     <div className="page">
       <h1>Commissioner Tools</h1>
       <h2>Manual roster correction</h2>
-      <form onSubmit={submit} className="stacked-form">
-        <label>
-          Season
-          <select value={seasonId} onChange={(e) => setSeasonId(e.target.value)} required>
-            <option value="">Select…</option>
-            {seasons.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          User
-          <select value={userId} onChange={(e) => setUserId(e.target.value)} required>
-            <option value="">Select…</option>
-            {users.map((u) => (
-              <option key={u.id} value={u.id}>
-                {u.display_name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Team
-          <select value={teamId} onChange={(e) => setTeamId(e.target.value)} required>
-            <option value="">Select…</option>
-            {teams.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.league} — {t.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Price paid
-          <input
-            type="number"
-            min="0"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Save correction</button>
-      </form>
-      {message && <p>{message}</p>}
+      <div className="crib-add-panel">
+        <form onSubmit={submit} className="stacked-form">
+          <label>
+            Season
+            <select value={seasonId} onChange={(e) => setSeasonId(e.target.value)} required>
+              <option value="">Select…</option>
+              {seasons.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            User
+            <select value={userId} onChange={(e) => setUserId(e.target.value)} required>
+              <option value="">Select…</option>
+              {users.map((u) => (
+                <option key={u.id} value={u.id}>
+                  {u.display_name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Team
+            <select value={teamId} onChange={(e) => setTeamId(e.target.value)} required>
+              <option value="">Select…</option>
+              {teams.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.league} — {t.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Price paid
+            <input
+              type="number"
+              min="0"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required
+            />
+          </label>
+          <button type="submit" className="btn-primary">
+            Save correction
+          </button>
+        </form>
+        {message && (
+          <p className={message === "Roster entry added." ? "saved-message" : "error"}>{message}</p>
+        )}
+      </div>
     </div>
   );
 }

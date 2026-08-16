@@ -1,12 +1,16 @@
+from datetime import datetime, timedelta, timezone
+
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from app.league_rules import LEAGUE_SESSION, ROSTER_LIMITS, is_minor_conference_team
+from app.league_rules import LEAGUE_SESSION, MINOR_CONFERENCE_CAPS, ROSTER_LIMITS, is_minor_conference_team
 from app.models import (
     Auction,
     AuctionItem,
     AuctionItemStatus,
+    Bid,
     QueueEntry,
+    ReserveBid,
     RosterEntry,
     RosterSource,
     Season,
@@ -14,7 +18,7 @@ from app.models import (
     User,
     utcnow,
 )
-from app.schemas import AuctionItemOut, AuctionOut, AuctionStateOut, RosterStatusOut
+from app.schemas import AuctionItemOut, AuctionOut, AuctionStateOut, ReserveBidOut, RosterStatusOut
 
 TOTAL_ROSTER_SLOTS = sum(ROSTER_LIMITS.values())
 
@@ -97,11 +101,27 @@ def current_turn_user_id(db: Session, auction: Auction) -> int | None:
     return auction.nomination_order[len(auction.items) % len(auction.nomination_order)]
 
 
-def build_state(db: Session, auction: Auction) -> AuctionStateOut:
+def build_state(db: Session, auction: Auction, viewer_user_id: int) -> AuctionStateOut:
     active_item = get_active_item(db, auction.id)
+    active_item_out = AuctionItemOut.model_validate(active_item) if active_item else None
+    if active_item_out is not None:
+        # Reserves are private — only ever include the viewer's own, never
+        # another user's, regardless of who else has one active.
+        reserve = (
+            db.query(ReserveBid)
+            .filter(
+                ReserveBid.auction_item_id == active_item.id,
+                ReserveBid.user_id == viewer_user_id,
+            )
+            .first()
+        )
+        if reserve is not None:
+            active_item_out.my_reserve = ReserveBidOut(
+                amount=float(reserve.max_amount), active=reserve.active
+            )
     return AuctionStateOut(
         auction=AuctionOut.model_validate(auction),
-        active_item=AuctionItemOut.model_validate(active_item) if active_item else None,
+        active_item=active_item_out,
         remaining_budget_by_user=remaining_budget_by_user(db, auction.season),
         current_turn_user_id=current_turn_user_id(db, auction),
         roster_status_by_user=roster_status_by_user(db, auction.season, auction.session),
@@ -129,6 +149,79 @@ def all_non_high_bidders_passed(db: Session, item: AuctionItem) -> bool:
     all_user_ids = {u.id for u in db.query(User).all()}
     required = all_user_ids - {winner_id}
     return required.issubset(set(item.passed_user_ids))
+
+
+def _naive_utc(dt: datetime) -> datetime:
+    # Mirrors auction_timer.naive_utc — duplicated rather than imported to
+    # avoid a circular import (auction_timer already imports from this
+    # module). SQLite/plain-TIMESTAMP columns drop tzinfo on round-trip, so
+    # values coming back from the DB are naive even though written as UTC.
+    if dt.tzinfo is not None:
+        return dt.astimezone(timezone.utc).replace(tzinfo=None)
+    return dt
+
+
+def resolve_reserve_bids(
+    db: Session,
+    auction: Auction,
+    item: AuctionItem,
+    *,
+    bid_extension_threshold_seconds: int,
+    bid_extension_seconds: int,
+) -> None:
+    """After any bid changes the high bidder, auto-place bids on behalf of
+    anyone with an active reserve (ReserveBid) on this item, topping the
+    new high bid by $1 — repeating (a reserve's own auto-bid can trigger a
+    rival reserve to respond) until no active reserve can afford to go
+    higher. Each auto-bid is a real Bid row and gets the same soft-close
+    deadline extension a manual bid would, so it's indistinguishable from
+    one in the bid log. Call this after auto_pass_capped_users so already-
+    capped users are correctly excluded."""
+    league = item.team.league
+    limit = ROSTER_LIMITS.get(league)
+    minor_cap = MINOR_CONFERENCE_CAPS.get(league)
+    is_minor = minor_cap is not None and is_minor_conference_team(league, item.team.name)
+
+    while True:
+        current_high = current_high_bid(item)
+        winner_id = high_bidder_user_id(item)
+        next_amount = current_high + 1
+
+        reserves = (
+            db.query(ReserveBid)
+            .filter(ReserveBid.auction_item_id == item.id, ReserveBid.active.is_(True))
+            .order_by(ReserveBid.max_amount.desc(), ReserveBid.created_at.asc())
+            .all()
+        )
+        budgets = remaining_budget_by_user(db, auction.season)
+
+        candidate = None
+        for r in reserves:
+            if r.user_id == winner_id or r.user_id in item.passed_user_ids:
+                continue
+            if r.max_amount < next_amount:
+                continue
+            if next_amount > budgets.get(r.user_id, 0):
+                continue
+            if limit is not None and count_user_league_teams(db, auction.season_id, r.user_id, league) >= limit:
+                continue
+            if is_minor and count_user_minor_conference_teams(db, auction.season_id, r.user_id, league) >= minor_cap:
+                continue
+            candidate = r
+            break
+
+        if candidate is None:
+            return
+
+        new_bid = Bid(auction_item_id=item.id, user_id=candidate.user_id, amount=next_amount)
+        item.bids.append(new_bid)
+        db.add(new_bid)
+
+        if item.bid_deadline is not None:
+            now = datetime.utcnow()
+            remaining_seconds = (_naive_utc(item.bid_deadline) - now).total_seconds()
+            if remaining_seconds < bid_extension_threshold_seconds:
+                item.bid_deadline = now + timedelta(seconds=bid_extension_seconds)
 
 
 def auto_pass_capped_users(db: Session, auction: Auction, item: AuctionItem) -> None:

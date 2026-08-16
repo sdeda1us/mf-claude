@@ -51,8 +51,10 @@ export default function AuctionRoom() {
   const [users, setUsers] = useState<User[]>([]);
   const [rules, setRules] = useState<LeagueRules | null>(null);
   const [bidAmount, setBidAmount] = useState("");
+  const [reserveAmount, setReserveAmount] = useState("");
   const [nameFilter, setNameFilter] = useState("");
   const [sportFilter, setSportFilter] = useState("");
+  const [showTeamBoard, setShowTeamBoard] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name");
   const [sortDir, setSortDir] = useState<SortDir>("asc");
   const [expandedLeagues, setExpandedLeagues] = useState<Set<string>>(new Set());
@@ -75,7 +77,9 @@ export default function AuctionRoom() {
     api.get<CribSheetEntry[]>("/crib-sheet").then(setCribSheet);
   }, [seasonId, session]);
 
-  const { state, error, connected, sendBid, sendPass } = useAuctionSocket(auction?.id ?? null);
+  const { state, error, connected, sendBid, sendPass, sendReserve } = useAuctionSocket(
+    auction?.id ?? null
+  );
 
   // Refetch the roster whenever the active item changes (a new nomination,
   // or a sale closing) — that's the authoritative source of which teams are
@@ -160,6 +164,15 @@ export default function AuctionRoom() {
     if (amount > 0) sendBid(amount);
     setBidAmount("");
   };
+
+  const lockReserve = (e: React.FormEvent) => {
+    e.preventDefault();
+    const amount = Number(reserveAmount);
+    if (amount > 0) sendReserve(true, amount);
+    setReserveAmount("");
+  };
+
+  const unlockReserve = () => sendReserve(false);
 
   const addToQueue = async (team: Team) => {
     if (!seasonId) return;
@@ -373,7 +386,10 @@ export default function AuctionRoom() {
           </button>
         )}
       </div>
-      <p className="connection-status">{connected ? "🟢 live" : "🟠 reconnecting…"}</p>
+      <p className="connection-status">
+        <span className={connected ? "status-dot" : "status-dot warn"} aria-hidden="true" />
+        {connected ? "live" : "reconnecting…"}
+      </p>
       {isPaused && (
         <p className="paused-banner">⏸ Auction paused by the commissioner — nominating and bidding are on hold.</p>
       )}
@@ -494,6 +510,39 @@ export default function AuctionRoom() {
                 </button>
               )}
             </form>
+
+            {!hasPassed && (
+              <div className="reserve-panel">
+                <p
+                  className="reserve-label"
+                  title="Lock a max amount and we'll automatically bid $1 over anyone who outbids you, up to that amount, until you win it or the reserve is reached. Only you can see it."
+                >
+                  Reserve bid
+                </p>
+                {item.my_reserve?.active ? (
+                  <p className="inline-form">
+                    Locked at <strong>${item.my_reserve.amount}</strong>
+                    <button type="button" onClick={unlockReserve} disabled={isPaused}>
+                      Unlock
+                    </button>
+                  </p>
+                ) : (
+                  <form onSubmit={lockReserve} className="inline-form">
+                    <input
+                      type="number"
+                      min={highBid + 1}
+                      placeholder={`> $${highBid}`}
+                      value={reserveAmount}
+                      onChange={(e) => setReserveAmount(e.target.value)}
+                      disabled={isPaused}
+                    />
+                    <button type="submit" className="btn-success" disabled={isPaused}>
+                      Lock
+                    </button>
+                  </form>
+                )}
+              </div>
+            )}
             {error && <p className="error">{error}</p>}
             {user?.is_commissioner && (
               <div className="commissioner-controls">
@@ -603,75 +652,83 @@ export default function AuctionRoom() {
           )}
         </div>
 
-        <div className="team-board-controls">
-          <input
-            type="text"
-            placeholder="Filter by team name…"
-            value={nameFilter}
-            onChange={(e) => setNameFilter(e.target.value)}
-          />
-          <select value={sportFilter} onChange={(e) => setSportFilter(e.target.value)}>
-            <option value="">All sports</option>
-            {sports.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </div>
+        <button type="button" onClick={() => setShowTeamBoard((v) => !v)}>
+          {showTeamBoard ? "Hide" : "Browse"} all teams
+        </button>
 
-        <table className="sortable-table team-board">
-          <thead>
-            <tr>
-              <th onClick={() => toggleSort("name")}>Team{arrow("name")}</th>
-              <th onClick={() => toggleSort("league")}>League / Sport{arrow("league")}</th>
-              <th onClick={() => toggleSort("points")}>Prior season points{arrow("points")}</th>
-              <th>Your Value</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {board.map(({ team, points, cribValue }) => {
-              const queued = queuedTeamIds.has(team.id);
-              return (
-                <tr key={team.id} className={canNominate ? "team-row" : "team-row disabled"}>
-                  <td>{team.name}</td>
-                  <td>
-                    <span className="pill">{team.league}</span> {team.sport}
-                  </td>
-                  <td className="points-cell">{points ?? "—"}</td>
-                  <td className="points-cell">{cribValue ?? ""}</td>
-                  <td className="team-row-actions">
-                    <button
-                      type="button"
-                      className="btn-success team-action-btn"
-                      disabled={!canNominate}
-                      title={
-                        canNominate
-                          ? "Nominate this team and place your opening bid"
-                          : item
-                            ? "An item is already up for bid"
-                            : "Not your turn to nominate"
-                      }
-                      onClick={() => openBidModal(team)}
-                    >
-                      Bid
-                    </button>
-                    <button
-                      type="button"
-                      className="team-action-btn"
-                      disabled={queued}
-                      title={queued ? "Already in your queue" : "Add to your queue"}
-                      onClick={() => addToQueue(team)}
-                    >
-                      {queued ? "Queued" : "Queue"}
-                    </button>
-                  </td>
+        {showTeamBoard && (
+          <>
+            <div className="team-board-controls">
+              <input
+                type="text"
+                placeholder="Filter by team name…"
+                value={nameFilter}
+                onChange={(e) => setNameFilter(e.target.value)}
+              />
+              <select value={sportFilter} onChange={(e) => setSportFilter(e.target.value)}>
+                <option value="">All sports</option>
+                {sports.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <table className="sortable-table team-board">
+              <thead>
+                <tr>
+                  <th onClick={() => toggleSort("name")}>Team{arrow("name")}</th>
+                  <th onClick={() => toggleSort("league")}>League / Sport{arrow("league")}</th>
+                  <th onClick={() => toggleSort("points")}>Prior season points{arrow("points")}</th>
+                  <th>Your Value</th>
+                  <th>Actions</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+                {board.map(({ team, points, cribValue }) => {
+                  const queued = queuedTeamIds.has(team.id);
+                  return (
+                    <tr key={team.id} className={canNominate ? "team-row" : "team-row disabled"}>
+                      <td>{team.name}</td>
+                      <td>
+                        <span className="pill">{team.league}</span> {team.sport}
+                      </td>
+                      <td className="points-cell">{points ?? "—"}</td>
+                      <td className="points-cell">{cribValue ?? ""}</td>
+                      <td className="team-row-actions">
+                        <button
+                          type="button"
+                          className="btn-success team-action-btn"
+                          disabled={!canNominate}
+                          title={
+                            canNominate
+                              ? "Nominate this team and place your opening bid"
+                              : item
+                                ? "An item is already up for bid"
+                                : "Not your turn to nominate"
+                          }
+                          onClick={() => openBidModal(team)}
+                        >
+                          Bid
+                        </button>
+                        <button
+                          type="button"
+                          className="team-action-btn"
+                          disabled={queued}
+                          title={queued ? "Already in your queue" : "Add to your queue"}
+                          onClick={() => addToQueue(team)}
+                        >
+                          {queued ? "Queued" : "Queue"}
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </>
+        )}
       </div>
 
       <aside className="league-sidebar">
@@ -829,7 +886,7 @@ export default function AuctionRoom() {
               <button type="button" className="btn-success" onClick={confirmNominateAndBid}>
                 Bid
               </button>
-              <button type="button" className="btn-primary" onClick={() => setPendingTeam(null)}>
+              <button type="button" onClick={() => setPendingTeam(null)}>
                 Cancel
               </button>
             </div>
