@@ -149,6 +149,7 @@ class ExampleScoreOut(BaseModel):
     league: str
     season_label: str
     points: float
+    breakdown: list[ScoringRuleLine]
 
 
 class QueueEntryOut(BaseModel):

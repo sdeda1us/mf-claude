@@ -538,3 +538,174 @@ def compute_score(league: str, stats: dict) -> float:
         )
 
     raise ValueError(f"Unknown league: {league}")
+
+
+def _nonzero(items: list[dict]) -> list[dict]:
+    return [i for i in items if i["points"] != 0]
+
+
+def compute_score_breakdown(league: str, stats: dict) -> list[dict]:
+    """Itemizes compute_score's total into its named contributing pieces —
+    same per-league math, just not summed. Purely additive/independent of
+    compute_score (not derived from it, and vice versa) so a bug here can
+    never change an actual score, only its displayed breakdown; zero-value
+    pieces are dropped so a team's breakdown only lists what actually
+    contributed. Used by the /leagues/example-scores breakdown + CSV export."""
+    if league == "MLB":
+        return _nonzero([
+            {"label": f"Wins ({stats['wins']})", "points": 2 * stats["wins"]},
+            {"label": f"Losses ({stats['losses']})", "points": -1 * stats["losses"]},
+            {"label": "Won division", "points": 5 if stats.get("won_division") else 0},
+            {"label": "Won Division Series", "points": 15 if stats.get("won_ds") else 0},
+            {"label": "Won pennant (LCS)", "points": 30 if stats.get("won_pennant") else 0},
+            {"label": "Won World Series", "points": 30 if stats.get("won_ws") else 0},
+        ])
+    if league == "NFL":
+        return _nonzero([
+            {"label": f"Wins ({stats['wins']})", "points": 10 * stats["wins"]},
+            {"label": f"Ties ({stats.get('ties', 0)})", "points": 5 * stats.get("ties", 0)},
+            {"label": "Won Wild Card round (or bye)", "points": 10 if stats.get("won_round1_or_bye") else 0},
+            {"label": "Won Divisional round", "points": 20 if stats.get("won_round2") else 0},
+            {"label": "Won Conference Championship", "points": 30 if stats.get("won_conf_champ") else 0},
+            {"label": "Won Super Bowl", "points": 40 if stats.get("won_sb") else 0},
+        ])
+    if league == "NBA":
+        return _nonzero([
+            {"label": f"Wins ({stats['wins']})", "points": 3 * stats["wins"]},
+            {"label": f"Losses ({stats['losses']})", "points": -1 * stats["losses"]},
+            {"label": "Qualified for playoffs", "points": 10 if stats.get("made_playoffs") else 0},
+            {"label": "Won Round 1", "points": 10 if stats.get("won_round1") else 0},
+            {"label": "Won Round 2 (Conf. Semis)", "points": 15 if stats.get("won_round2") else 0},
+            {"label": "Won Conference Championship", "points": 25 if stats.get("won_conf_champ") else 0},
+            {"label": "Won NBA Championship", "points": 30 if stats.get("won_nba_champ") else 0},
+        ])
+    if league == "NHL":
+        return _nonzero([
+            {"label": f"Wins ({stats['wins']})", "points": 3 * stats["wins"]},
+            {"label": f"Regulation losses ({stats['reg_losses']})", "points": -1 * stats["reg_losses"]},
+            {"label": f"OT/shootout losses ({stats['ot_losses']})", "points": 2 * stats["ot_losses"]},
+            {"label": "Qualified for playoffs", "points": 10 if stats.get("made_playoffs") else 0},
+            {"label": "Won Round 1", "points": 10 if stats.get("won_round1") else 0},
+            {"label": "Won Round 2 (Conf. Semis)", "points": 15 if stats.get("won_round2") else 0},
+            {"label": "Won Conference Championship", "points": 25 if stats.get("won_conf_champ") else 0},
+            {"label": "Won Stanley Cup", "points": 40 if stats.get("won_cup") else 0},
+        ])
+    if league == "EPL":
+        return _nonzero([
+            {"label": f"Standings points ({stats['standings_points']})", "points": 2 * stats["standings_points"]},
+            {"label": f"Goal differential ({stats['goal_differential']:+d})", "points": 1 * stats["goal_differential"]},
+        ])
+    if league == "NCAAF":
+        return _nonzero([
+            {"label": f"Wins ({stats['wins']})", "points": 12 * stats["wins"]},
+            {"label": f"Regular-season losses ({stats['reg_season_losses']})", "points": -6 * stats["reg_season_losses"]},
+            {"label": "CFP bid", "points": 10 if stats.get("playoff_bid") else 0},
+            {"label": f"Playoff wins ({stats.get('playoff_wins', 0)})", "points": 10 * stats.get("playoff_wins", 0)},
+            {"label": "CFP Championship Game bid", "points": 20 if stats.get("championship_bid") else 0},
+            {"label": "CFP Championship Game winner", "points": 30 if stats.get("championship_win") else 0},
+        ])
+    if league in ("NCAAMB", "NCAAWB"):
+        return _nonzero([
+            {"label": f"Wins ({stats['wins']})", "points": 3 * stats["wins"]},
+            {"label": f"Losses ({stats['losses']})", "points": -1 * stats["losses"]},
+            {"label": "Regular-season conference champion", "points": 5 if stats.get("reg_season_conf_champ") else 0},
+            {"label": "Conference tournament champion", "points": 10 if stats.get("conf_tourney_champ") else 0},
+            {"label": "NCAA tournament qualifier", "points": 15 if stats.get("ncaa_qualifier") else 0},
+            {"label": "No. 1 seed", "points": 10 if stats.get("seed_1") else 0},
+            {"label": "No. 2 seed", "points": 5 if stats.get("seed_2") else 0},
+            {"label": "Won Round of 64", "points": 5 if stats.get("won_round_of_64") else 0},
+            {"label": "Won Round of 32", "points": 5 if stats.get("won_round_of_32") else 0},
+            {"label": "Won Sweet 16", "points": 5 if stats.get("won_sweet_16") else 0},
+            {"label": "Won Elite 8", "points": 10 if stats.get("won_elite_8") else 0},
+            {"label": "Won Final 4", "points": 10 if stats.get("won_final_4") else 0},
+            {"label": "Won Championship", "points": 25 if stats.get("won_championship") else 0},
+        ])
+    if league in ("ATP", "WTA"):
+        return _nonzero([
+            {"label": f"Round 1 wins ({stats.get('round_1_wins', 0)})", "points": 2 * stats.get("round_1_wins", 0)},
+            {"label": f"Round 2 wins ({stats.get('round_2_wins', 0)})", "points": 3 * stats.get("round_2_wins", 0)},
+            {"label": f"Round 3 wins ({stats.get('round_3_wins', 0)})", "points": 5 * stats.get("round_3_wins", 0)},
+            {"label": f"Round 4 wins ({stats.get('round_4_wins', 0)})", "points": 5 * stats.get("round_4_wins", 0)},
+            {"label": f"Quarterfinal wins ({stats.get('quarterfinal_wins', 0)})", "points": 7 * stats.get("quarterfinal_wins", 0)},
+            {"label": f"Semifinal wins ({stats.get('semifinal_wins', 0)})", "points": 8 * stats.get("semifinal_wins", 0)},
+            {"label": f"Final wins ({stats.get('final_wins', 0)})", "points": 10 * stats.get("final_wins", 0)},
+        ])
+    if league in ("PGA", "LPGA"):
+        return _nonzero([
+            {"label": f"Made the cut ({stats.get('made_cut_count', 0)})", "points": 5 * stats.get("made_cut_count", 0)},
+            {"label": f"Finished 21st-30th ({stats.get('place_21_30_count', 0)})", "points": 2.5 * stats.get("place_21_30_count", 0)},
+            {"label": f"Finished 16th-20th ({stats.get('place_16_20_count', 0)})", "points": 3.5 * stats.get("place_16_20_count", 0)},
+            {"label": f"Finished 11th-15th ({stats.get('place_11_15_count', 0)})", "points": 4.5 * stats.get("place_11_15_count", 0)},
+            {"label": f"Finished 10th ({stats.get('place_10_count', 0)})", "points": 5 * stats.get("place_10_count", 0)},
+            {"label": f"Finished 9th ({stats.get('place_9_count', 0)})", "points": 5.5 * stats.get("place_9_count", 0)},
+            {"label": f"Finished 8th ({stats.get('place_8_count', 0)})", "points": 6 * stats.get("place_8_count", 0)},
+            {"label": f"Finished 7th ({stats.get('place_7_count', 0)})", "points": 7 * stats.get("place_7_count", 0)},
+            {"label": f"Finished 6th ({stats.get('place_6_count', 0)})", "points": 8 * stats.get("place_6_count", 0)},
+            {"label": f"Finished 5th ({stats.get('place_5_count', 0)})", "points": 9 * stats.get("place_5_count", 0)},
+            {"label": f"Finished 4th ({stats.get('place_4_count', 0)})", "points": 10 * stats.get("place_4_count", 0)},
+            {"label": f"Finished 3rd ({stats.get('place_3_count', 0)})", "points": 12.5 * stats.get("place_3_count", 0)},
+            {"label": f"Finished 2nd ({stats.get('place_2_count', 0)})", "points": 17.5 * stats.get("place_2_count", 0)},
+            {"label": f"Wins ({stats.get('place_1_count', 0)})", "points": 25 * stats.get("place_1_count", 0)},
+        ])
+    if league == "F1":
+        place = stats.get("championship_place")
+        return _nonzero([
+            {"label": f"Championship points ({stats.get('points', 0)})", "points": round(0.1 * stats.get("points", 0), 1)},
+            {"label": "Constructors' Championship — 1st", "points": 10 if place == 1 else 0},
+            {"label": "Constructors' Championship — 2nd", "points": 5 if place == 2 else 0},
+        ])
+    if league == "WNBA":
+        return _nonzero([
+            {"label": f"Wins ({stats['wins']})", "points": 6 * stats["wins"]},
+            {"label": f"Losses ({stats['losses']})", "points": -2 * stats["losses"]},
+            {"label": "Qualified for playoffs", "points": 10 if stats.get("made_playoffs") else 0},
+            {"label": "Won Round 1", "points": 15 if stats.get("won_round1") else 0},
+            {"label": "Won Semifinals", "points": 25 if stats.get("won_semis") else 0},
+            {"label": "Won WNBA Championship", "points": 35 if stats.get("won_wnba_champ") else 0},
+        ])
+    if league == "MLS":
+        return _nonzero([
+            {"label": f"Standings points ({stats['standings_points']})", "points": 2 * stats["standings_points"]},
+            {"label": f"Goal differential ({stats['goal_differential']:+d})", "points": 1 * stats["goal_differential"]},
+            {"label": "Won Supporters' Shield", "points": 15 if stats.get("won_shield") else 0},
+            {"label": "Qualified for playoffs", "points": 10 if stats.get("made_playoffs") else 0},
+            {"label": "Won Round One", "points": 10 if stats.get("won_round1") else 0},
+            {"label": "Won Conference Semifinal", "points": 15 if stats.get("won_conf_semi") else 0},
+            {"label": "Won Conference Final", "points": 25 if stats.get("won_conf_final") else 0},
+            {"label": "Won MLS Cup", "points": 30 if stats.get("won_mls_cup") else 0},
+        ])
+    if league == "NWSL":
+        return _nonzero([
+            {"label": f"Standings points ({stats['standings_points']})", "points": 2 * stats["standings_points"]},
+            {"label": f"Goal differential ({stats['goal_differential']:+d})", "points": stats["goal_differential"]},
+            {"label": "Won NWSL Shield", "points": 15 if stats.get("won_shield") else 0},
+            {"label": "Qualified for playoffs", "points": 10 if stats.get("made_playoffs") else 0},
+            {"label": "Won Quarterfinal", "points": 15 if stats.get("won_quarterfinal") else 0},
+            {"label": "Won Semifinal", "points": 25 if stats.get("won_semifinal") else 0},
+            {"label": "Won NWSL Championship", "points": 35 if stats.get("won_championship") else 0},
+        ])
+    if league == "TDF":
+        # A single placement-tiered lookup, not a sum of independent parts —
+        # one line item covering the whole score.
+        return [{"label": f"Team Classification finish (place {stats['place']})", "points": compute_score(league, stats)}]
+    if league == "URC":
+        return _nonzero([
+            {"label": f"Table points ({stats['table_points']})", "points": 2 * stats["table_points"]},
+            {"label": f"Points difference ({stats['points_difference']:+d})", "points": round(0.1 * stats["points_difference"], 1)},
+            {"label": "Qualified for playoffs", "points": 10 if stats.get("made_playoffs") else 0},
+            {"label": "Won Quarterfinal", "points": 15 if stats.get("won_quarterfinal") else 0},
+            {"label": "Won Semifinal", "points": 25 if stats.get("won_semifinal") else 0},
+            {"label": "Won the Grand Final", "points": 35 if stats.get("won_final") else 0},
+        ])
+    if league == "IPL":
+        return _nonzero([
+            {"label": f"Wins ({stats['wins']})", "points": 10 * stats["wins"]},
+            {"label": f"Ties ({stats.get('ties', 0)})", "points": 5 * stats.get("ties", 0)},
+            {"label": f"Net Run Rate ({stats.get('net_run_rate', 0):+.2f})", "points": round(20 * stats.get("net_run_rate", 0), 1)},
+            {"label": "Qualified for playoffs", "points": 10 if stats.get("made_playoffs") else 0},
+            {"label": f"Knockout-stage wins ({stats.get('knockout_wins', 0)})", "points": 15 * stats.get("knockout_wins", 0)},
+            {"label": "Reached the Final", "points": 25 if stats.get("reached_final") else 0},
+            {"label": "Won the Final", "points": 40 if stats.get("won_final") else 0},
+        ])
+
+    raise ValueError(f"Unknown league: {league}")

@@ -252,7 +252,7 @@ ATP_TEAMS = [
     "Great Britain", "Czech Republic", "Russia", "Germany", "Serbia",
     "Belgium", "Kazakhstan", "Portugal", "Hungary", "Netherlands", "Canada",
     "Chile", "Brazil", "Croatia", "Japan", "China", "Poland", "Switzerland",
-    "Austria", "Georgia Bulldogs", "Hong Kong", "Bulgaria", "Peru", "Bolivia",
+    "Austria", "Georgia", "Hong Kong", "Bulgaria", "Peru", "Bolivia",
     "Denmark", "Luxembourg", "Greece", "Bosnia and Herzegovina", "Finland",
     "Norway", "Monaco", "Paraguay", "Lithuania", "Slovakia", "Colombia",
     "South Africa", "Ukraine", "Moldova", "Tunisia", "Egypt",

@@ -343,20 +343,25 @@ def ncaaf_stats(name: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# NCAAMB 2025-26 — Michigan national champions. SCOPE: only the 16 teams that
-# reached the Sweet 16 or better in the 2026 NCAA tournament are populated
-# (not the ~360-team pool). For those 16: seed, final win-loss record
-# (regular season + tournament games), and round-by-round tournament
-# progress. `reg_season_conf_champ` and `conf_tourney_champ` are explicitly
-# SKIPPED (left False for everyone) — identifying every conference's
-# regular-season and tournament champion across ~31 conferences was out of
-# scope; only the round-of-64-qualifier-onward bonuses are populated.
+# NCAAMB 2025-26 — Michigan national champions. Populated for the 16 teams
+# that reached the Sweet 16 or better, PLUS 45 more of the ~52 remaining
+# 2026 NCAA tournament participants (Round of 64/32 exits) — independently
+# spot-checked against Wikipedia's own bracket table (every West/East/South
+# region team cross-checked matched exactly: seed + round-64 result) before
+# trusting the batch. 7 teams (a handful of First Four losers plus one team
+# with conflicting sourced accounts) were deliberately left out rather than
+# guess. Teams not in this dict at all (the ~317-team remainder of the
+# pool, non-tournament teams) get no row. `reg_season_conf_champ` and
+# `conf_tourney_champ` are explicitly SKIPPED (left False for everyone) —
+# identifying every conference's regular-season and tournament champion
+# across ~31 conferences was out of scope.
 # ---------------------------------------------------------------------------
 
 # name: (wins, losses, seed, furthest round reached)
-# furthest round reached is one of: "sweet16" (lost Sweet 16), "elite8"
-# (lost Elite Eight), "final4" (lost national semifinal), "runnerup" (lost
-# championship game), "champion".
+# furthest round reached is one of: "round64" (lost Round of 64 — 0
+# tournament wins), "round32" (lost Round of 32 — 1 tournament win),
+# "sweet16" (lost Sweet 16), "elite8" (lost Elite Eight), "final4" (lost
+# national semifinal), "runnerup" (lost championship game), "champion".
 NCAAMB_RESULTS = {
     "Michigan Wolverines": (31, 3, 1, "champion"),
     "UConn Huskies": (29, 7, 2, "runnerup"),
@@ -374,14 +379,66 @@ NCAAMB_RESULTS = {
     "Arkansas Razorbacks": (24, 9, 4, "sweet16"),
     "Nebraska Cornhuskers": (24, 7, 4, "sweet16"),
     "Iowa Hawkeyes": (19, 13, 9, "sweet16"),
+    "Wisconsin Badgers": (24, 11, 5, "round64"),
+    "BYU Cougars": (23, 12, 6, "round64"),
+    "Miami (FL) Hurricanes": (26, 8, 7, "round32"),
+    "Missouri Tigers": (20, 13, 10, "round64"),
+    "Villanova Wildcats": (24, 9, 8, "round64"),
+    "Utah State Aggies": (29, 7, 9, "round32"),
+    "Purdue Boilermakers": (30, 9, 2, "elite8"),
+    "Texas Longhorns": (21, 15, 11, "sweet16"),
+    "Hawaii Rainbow Warriors": (24, 9, 13, "round64"),
+    "Kennesaw State Owls": (21, 14, 14, "round64"),
+    "Queens Royals": (21, 14, 15, "round64"),
+    "LIU Sharks": (24, 11, 16, "round64"),
+    "TCU Horned Frogs": (23, 12, 9, "round32"),
+    "Northern Iowa Panthers": (23, 13, 12, "round64"),
+    "California Baptist Lancers": (25, 9, 13, "round64"),
+    "South Florida Bulls": (25, 9, 11, "round64"),
+    "Michigan State Spartans": (27, 8, 3, "sweet16"),
+    "North Dakota State Bison": (27, 8, 14, "round64"),
+    "UCLA Bruins": (24, 12, 7, "round32"),
+    "UCF Knights": (21, 12, 10, "round64"),
+    "Furman Paladins": (22, 13, 15, "round64"),
+    "Ohio State Buckeyes": (21, 13, 8, "round64"),
+    "Florida Gators": (27, 8, 1, "round32"),
+    "Clemson Tigers": (24, 11, 8, "round64"),
+    "Vanderbilt Commodores": (27, 9, 5, "round32"),
+    "North Carolina Tar Heels": (24, 9, 6, "round64"),
+    "VCU Rams": (28, 8, 11, "round32"),
+    "Saint Mary's Gaels": (25, 7, 7, "round64"),
+    "Texas A&M Aggies": (22, 12, 10, "round32"),
+    "McNeese State Cowboys": (28, 6, 12, "round64"),
+    "Troy Trojans": (22, 12, 13, "round64"),
+    "Penn Quakers": (18, 11, 14, "round64"),
+    "Idaho Vandals": (21, 15, 15, "round64"),
+    "Prairie View A&M Panthers": (20, 18, 16, "round64"),
+    "Georgia Bulldogs": (22, 11, 8, "round64"),
+    "Saint Louis Billikens": (30, 7, 9, "round32"),
+    "Texas Tech Red Raiders": (23, 11, 5, "round32"),
+    "Akron Zips": (29, 6, 12, "round64"),
+    "Alabama Crimson Tide": (25, 10, 4, "sweet16"),
+    "Hofstra Pride": (24, 11, 13, "round64"),
+    "Wright State Raiders": (23, 12, 14, "round64"),
+    "Kentucky Wildcats": (22, 14, 7, "round32"),
+    "Santa Clara Broncos": (26, 9, 10, "round64"),
+    "Howard Bison": (22, 11, 16, "round64"),
+    "Tennessee State Tigers": (23, 9, 15, "round64"),
 }
 
 # ---------------------------------------------------------------------------
-# NCAAWB 2025-26 — UCLA national champions (their first title). Same scope
-# limits as NCAAMB above: Sweet-16-or-better only (16 teams), and
-# `reg_season_conf_champ` / `conf_tourney_champ` left False for everyone.
-# ---------------------------------------------------------------------------
-
+# NCAAWB 2025-26 — UCLA national champions (their first title). Same
+# expanded scope as NCAAMB above: the original 16 (Sweet-16-or-better) plus
+# all 52 remaining 2026 NCAA tournament participants. `reg_season_conf_champ`
+# / `conf_tourney_champ` left False for everyone (out of scope).
+#
+# CORRECTION (caught while researching the 52 remaining teams, verified
+# directly against each team's Wikipedia season infobox before trusting
+# it): the original 16 incorrectly credited Ohio State and West Virginia
+# with reaching the Sweet 16. Both actually lost in the Round of 32 — Ohio
+# State (3-seed, 27-8) to Notre Dame 73-83, West Virginia (4-seed, 28-7) to
+# Kentucky 73-74 — and it was North Carolina and Kentucky who took those
+# two real Sweet 16 spots. Corrected below.
 NCAAWB_RESULTS = {
     "UCLA Bruins": (37, 1, 1, "champion"),
     "South Carolina Gamecocks": (36, 4, 1, "runnerup"),
@@ -392,16 +449,70 @@ NCAAWB_RESULTS = {
     "Michigan Wolverines": (28, 7, 2, "elite8"),
     "TCU Horned Frogs": (32, 6, 3, "elite8"),
     "Louisville Cardinals": (29, 8, 3, "sweet16"),
-    "West Virginia Mountaineers": (29, 7, 4, "sweet16"),
+    "West Virginia Mountaineers": (28, 7, 4, "round32"),  # corrected — see note above
     "Oklahoma Sooners": (26, 8, 4, "sweet16"),
     "Virginia Cavaliers": (21, 12, 10, "sweet16"),
     "Vanderbilt Commodores": (29, 5, 2, "sweet16"),
-    "Ohio State Buckeyes": (28, 8, 3, "sweet16"),
+    "Ohio State Buckeyes": (27, 8, 3, "round32"),  # corrected — see note above
     "Minnesota Golden Gophers": (24, 9, 4, "sweet16"),
     "LSU Tigers": (29, 6, 2, "sweet16"),
+    "North Carolina Tar Heels": (28, 8, 4, "sweet16"),
+    "Maryland Terrapins": (24, 9, 5, "round32"),
+    "Illinois Fighting Illini": (22, 12, 7, "round32"),
+    "Iowa State Cyclones": (22, 10, 8, "round64"),
+    "Syracuse Orange": (24, 9, 9, "round32"),
+    "Colorado Buffaloes": (21, 13, 10, "round64"),
+    "Fairfield Stags": (28, 5, 11, "round64"),
+    "Murray State Racers": (31, 4, 12, "round64"),
+    "Western Illinois Leathernecks": (26, 5, 13, "round64"),
+    "Howard Bison": (26, 8, 14, "round64"),
+    "High Point Panthers": (27, 6, 15, "round64"),
+    "UTSA Roadrunners": (18, 16, 16, "round64"),
+    "Iowa Hawkeyes": (27, 7, 2, "round32"),
+    "Michigan State Spartans": (23, 9, 5, "round32"),
+    "Washington Huskies": (22, 11, 6, "round32"),
+    "Georgia Bulldogs": (22, 10, 7, "round64"),
+    "Clemson Tigers": (21, 12, 8, "round64"),
+    "USC Trojans": (18, 14, 9, "round32"),
+    "South Dakota State Jackrabbits": (27, 7, 11, "round64"),
+    "Colorado State Rams": (27, 7, 12, "round64"),
+    "Idaho Vandals": (29, 6, 13, "round64"),
+    "UC San Diego Tritons": (24, 9, 14, "round64"),
+    "Fairleigh Dickinson Knights": (30, 5, 15, "round64"),
+    "Southern Jaguars": (20, 14, 16, "round64"),
+    "Ole Miss Rebels": (24, 12, 5, "round32"),
+    "Baylor Bears": (25, 9, 6, "round32"),
+    "Texas Tech Red Raiders": (26, 8, 7, "round32"),
+    "Oklahoma State Cowboys": (24, 10, 8, "round32"),
+    "Princeton Tigers": (26, 4, 9, "round64"),
+    "Villanova Wildcats": (25, 8, 10, "round64"),
+    "Nebraska Cornhuskers": (19, 13, 11, "round64"),
+    "Gonzaga Bulldogs": (24, 10, 12, "round64"),
+    "Green Bay Phoenix": (25, 9, 13, "round64"),
+    "Charleston Cougars": (27, 6, 14, "round64"),
+    "Jacksonville Dolphins": (24, 9, 15, "round64"),
+    "California Baptist Lancers": (23, 11, 16, "round64"),
+    "Kentucky Wildcats": (25, 11, 5, "sweet16"),
+    "Alabama Crimson Tide": (24, 11, 6, "round32"),
+    "NC State Wolfpack": (21, 11, 7, "round32"),
+    "Oregon Ducks": (23, 13, 8, "round32"),
+    "Virginia Tech Hokies": (23, 10, 9, "round64"),
+    "Tennessee Volunteers": (16, 14, 10, "round64"),
+    "Rhode Island Rams": (28, 5, 11, "round64"),
+    "James Madison Dukes": (26, 9, 12, "round64"),
+    "Miami (OH) RedHawks": (28, 7, 13, "round64"),
+    "Vermont Catamounts": (27, 8, 14, "round64"),
+    "Holy Cross Crusaders": (23, 10, 15, "round64"),
+    "Missouri State Bears": (23, 12, 16, "round64"),
+    "Stephen F. Austin Lumberjacks": (25, 10, 16, "round64"),
+    "Richmond Spiders": (26, 8, 11, "round64"),
+    "Samford Bulldogs": (16, 19, 16, "round64"),
+    "Arizona State Sun Devils": (24, 11, 10, "round64"),
 }
 
 _CBB_ROUND_LEVELS = {
+    "round64": 0,
+    "round32": 1,
     "sweet16": 2,
     "elite8": 3,
     "final4": 4,
@@ -422,7 +533,12 @@ def _cbb_stats(results: dict, name: str) -> dict:
         "seed_1": seed == 1,
         "seed_2": seed == 2,
         "won_round_of_64": level >= 1,
-        "won_round_of_32": level >= 1,  # reaching Sweet 16 implies both wins
+        # Fixed: was `level >= 1`, which only happened to be harmless while
+        # every entry was Sweet-16-or-better (where level is never 1). Now
+        # that round32-exit teams (level == 1, won their first game only)
+        # exist, this must require level >= 2 — winning the Round of 32
+        # itself, not just reaching it.
+        "won_round_of_32": level >= 2,
         "won_sweet_16": level >= 2,
         "won_elite_8": level >= 3,
         "won_final_4": level >= 4,
@@ -441,52 +557,113 @@ def ncaawb_stats(name: str) -> dict:
 # ---------------------------------------------------------------------------
 # ATP 2025 — men's tennis, 4 majors (Australian Open, French Open, Wimbledon,
 # US Open; 2025 is the most recently completed calendar year with all 4
-# done, since 2026's US Open hadn't happened yet as of this writing). SCOPE:
-# only quarterfinal-round-onward results, aggregated by country, per the
-# task's explicit limitation — `round_1_wins` through `round_4_wins` are
-# left at 0 for every country (not researched). A country's
-# `quarterfinal_wins` counts how many of its players won their QF (became a
-# semifinalist) across all 4 majors combined; `semifinal_wins` similarly
-# counts SF wins (became a finalist); `final_wins` counts final wins
-# (became champion). Only 6 countries had any quarterfinalist across these
-# 4 majors' analyzed rounds (the same handful of players dominated all
-# four) — every other ATP_TEAMS country gets no row.
+# done, since 2026's US Open hadn't happened yet as of this writing).
+# Round-by-round results for every country with at least one match win,
+# aggregated across all 4 majors' full 128-player draws (not just
+# quarterfinal-onward, unlike this data's original scope) — verified by
+# reconciling summed win counts against the expected 256/128/64/32 matches
+# per round across the 4 majors combined. A country's `round_N_wins` counts
+# ROUND-N MATCHES WON (e.g. round_4_wins = won a Round of 16 match, i.e.
+# reached the quarterfinal); `quarterfinal_wins` counts QF wins (became a
+# semifinalist), `semifinal_wins` SF wins (became a finalist), `final_wins`
+# final wins (became champion) — each stacks on the round-level counts.
 # ---------------------------------------------------------------------------
 
-# country: (quarterfinal_wins, semifinal_wins, final_wins) summed across the
-# 2025 Australian Open, French Open, Wimbledon, and US Open.
+# country: (round_1_wins, round_2_wins, round_3_wins, round_4_wins,
+#           quarterfinal_wins, semifinal_wins, final_wins)
 ATP_MAJORS_RESULTS = {
-    "Italy": (5, 4, 2),           # Sinner: won AO, W; runner-up FO, USO
-    "United States": (2, 0, 0),   # Shelton (AO QF->SF), Fritz (Wimbledon QF->SF)
-    "Germany": (1, 1, 0),         # Zverev: AO runner-up
-    "Serbia": (4, 0, 0),          # Djokovic: QF->SF at all 4 majors, no finals
-    "Spain": (3, 3, 2),           # Alcaraz: won FO, USO; runner-up W
-    "Canada": (1, 0, 0),          # Auger-Aliassime (USO QF->SF)
+    "Italy": (20, 16, 9, 8, 5, 4, 2),           # Sinner: won AO, W; runner-up FO, USO
+    "United States": (40, 19, 10, 7, 2, 0, 0),  # Shelton (AO QF->SF), Fritz (Wimbledon QF->SF)
+    "Germany": (8, 7, 4, 2, 1, 1, 0),           # Zverev: AO runner-up
+    "Serbia": (8, 7, 4, 4, 4, 0, 0),            # Djokovic: QF->SF at all 4 majors, no finals
+    "Spain": (17, 10, 6, 4, 3, 3, 2),           # Alcaraz: won FO, USO; runner-up W
+    "Canada": (10, 2, 1, 1, 1, 0, 0),           # Auger-Aliassime (USO QF->SF)
+    "France": (29, 13, 4, 0, 0, 0, 0),
+    "Australia": (19, 6, 5, 2, 0, 0, 0),
+    "Great Britain": (15, 6, 4, 1, 0, 0, 0),
+    "Czech Republic": (12, 7, 3, 1, 0, 0, 0),
+    "Russia": (9, 6, 4, 1, 0, 0, 0),
+    "Portugal": (6, 4, 0, 0, 0, 0, 0),
+    "Hungary": (5, 2, 0, 0, 0, 0, 0),
+    "Chile": (4, 1, 1, 0, 0, 0, 0),
+    "Brazil": (4, 2, 0, 0, 0, 0, 0),
+    "Japan": (4, 0, 0, 0, 0, 0, 0),
+    "Netherlands": (4, 1, 1, 0, 0, 0, 0),
+    "Denmark": (4, 3, 2, 0, 0, 0, 0),
+    "Argentina": (10, 2, 0, 0, 0, 0, 0),
+    "Kazakhstan": (3, 2, 2, 1, 0, 0, 0),
+    "Poland": (3, 2, 1, 0, 0, 0, 0),
+    "Norway": (3, 0, 0, 0, 0, 0, 0),
+    "Austria": (3, 2, 0, 0, 0, 0, 0),
+    "Belgium": (3, 2, 0, 0, 0, 0, 0),
+    "Switzerland": (2, 2, 1, 0, 0, 0, 0),
+    "Greece": (2, 0, 0, 0, 0, 0, 0),
+    "South Africa": (2, 0, 0, 0, 0, 0, 0),
+    "Lebanon": (1, 0, 0, 0, 0, 0, 0),
+    "Colombia": (1, 0, 0, 0, 0, 0, 0),
+    "Bosnia and Herzegovina": (1, 1, 0, 0, 0, 0, 0),
+    "Bulgaria": (1, 1, 1, 0, 0, 0, 0),
+    "Georgia": (1, 0, 0, 0, 0, 0, 0),
+    "Croatia": (1, 1, 1, 0, 0, 0, 0),
+    "Hong Kong": (1, 1, 0, 0, 0, 0, 0),
 }
 
 # ---------------------------------------------------------------------------
-# WTA 2025 — women's tennis, same 4 majors and same QF-onward-only scope as
-# ATP above (round_1_wins..round_4_wins left at 0 for every country).
+# WTA 2025 — women's tennis, same 4 majors and same full-round-by-round
+# scope as ATP above — verified by reconciling summed win counts against
+# expected match totals per round (accounting for a small number of match
+# wins by countries outside this app's WTA_TEAMS pool, e.g. Brazil/Tunisia/
+# Bulgaria/Chinese Taipei, which are real results but not represented as a
+# draftable team here).
 # ---------------------------------------------------------------------------
 
 WTA_MAJORS_RESULTS = {
-    "United States": (4, 4, 2),    # Keys (won AO), Gauff (won FO), Anisimova (W/USO runner-up)
-    "Poland": (4, 1, 1),           # Swiatek: won W, SF/QF at others
-    "Belarus": (4, 3, 1),          # Sabalenka: won USO, runner-up AO/FO
-    "Spain": (1, 0, 0),            # Badosa (AO QF->SF)
-    "France": (1, 0, 0),           # Boisson (FO QF->SF)
-    "Switzerland": (1, 0, 0),      # Bencic (Wimbledon QF->SF)
-    "Czech Republic": (1, 0, 0),   # Muchova (USO QF->SF)
+    "United States": (45, 23, 15, 8, 4, 4, 2),  # Keys (won AO), Gauff (won FO), Anisimova (W/USO runner-up)
+    "Poland": (7, 6, 4, 4, 4, 1, 1),             # Swiatek: won W, SF/QF at others
+    "Belarus": (6, 5, 4, 4, 4, 3, 1),            # Sabalenka: won USO, runner-up AO/FO
+    "Spain": (9, 6, 3, 1, 1, 0, 0),              # Badosa (AO QF->SF)
+    "France": (8, 4, 1, 1, 1, 0, 0),             # Boisson (FO QF->SF)
+    "Switzerland": (6, 2, 2, 1, 1, 0, 0),        # Bencic (Wimbledon QF->SF)
+    "Czech Republic": (16, 8, 4, 3, 1, 0, 0),    # Muchova (USO QF->SF)
+    "Argentina": (1, 1, 1, 0, 0, 0, 0),
+    "Australia": (9, 4, 1, 0, 0, 0, 0),
+    "Belgium": (3, 2, 1, 0, 0, 0, 0),
+    "Canada": (5, 3, 0, 0, 0, 0, 0),
+    "China": (7, 1, 1, 1, 0, 0, 0),
+    "Colombia": (2, 0, 0, 0, 0, 0, 0),
+    "Croatia": (4, 1, 1, 0, 0, 0, 0),
+    "Denmark": (3, 3, 1, 0, 0, 0, 0),
+    "Germany": (9, 4, 2, 1, 0, 0, 0),
+    "Great Britain": (11, 4, 1, 0, 0, 0, 0),
+    "Greece": (2, 1, 0, 0, 0, 0, 0),
+    "Hungary": (3, 1, 0, 0, 0, 0, 0),
+    "Indonesia": (1, 0, 0, 0, 0, 0, 0),
+    "Italy": (8, 4, 1, 0, 0, 0, 0),
+    "Japan": (6, 3, 1, 1, 0, 0, 0),
+    "Kazakhstan": (7, 6, 3, 0, 0, 0, 0),
+    "Latvia": (2, 1, 0, 0, 0, 0, 0),
+    "Mexico": (3, 0, 0, 0, 0, 0, 0),
+    "Montenegro": (1, 0, 0, 0, 0, 0, 0),
+    "Netherlands": (4, 0, 0, 0, 0, 0, 0),
+    "New Zealand": (1, 0, 0, 0, 0, 0, 0),
+    "Philippines": (1, 0, 0, 0, 0, 0, 0),
+    "Romania": (7, 3, 0, 0, 0, 0, 0),
+    "Russia": (34, 17, 12, 5, 0, 0, 0),
+    "Serbia": (3, 2, 1, 0, 0, 0, 0),
+    "Slovakia": (1, 0, 0, 0, 0, 0, 0),
+    "Slovenia": (1, 0, 0, 0, 0, 0, 0),
+    "Turkey": (2, 1, 0, 0, 0, 0, 0),
+    "Ukraine": (11, 9, 3, 2, 0, 0, 0),
 }
 
 
 def _tennis_stats(results: dict, name: str) -> dict:
-    qf, sf, fin = results[name]
+    r1, r2, r3, r4, qf, sf, fin = results[name]
     return {
-        "round_1_wins": 0,  # out of scope — see module docstring
-        "round_2_wins": 0,  # out of scope
-        "round_3_wins": 0,  # out of scope
-        "round_4_wins": 0,  # out of scope
+        "round_1_wins": r1,
+        "round_2_wins": r2,
+        "round_3_wins": r3,
+        "round_4_wins": r4,
         "quarterfinal_wins": qf,
         "semifinal_wins": sf,
         "final_wins": fin,
@@ -510,8 +687,9 @@ def wta_stats(name: str) -> dict:
 # whose last name starts with that letter: `made_cut_count` (1 per
 # appearance in a final leaderboard) plus a placement-band count for
 # whichever band their (possibly tied) finishing position falls into.
-# Letters with no player in any researched leaderboard (O, Q, U, V, X, Z)
-# get no row.
+# Letters with no player in any researched leaderboard (O, Q, X, Z — verified
+# via a full-field scan of all 4 majors' complete made-cut leaderboards, not
+# just the top of each) get no row.
 # ---------------------------------------------------------------------------
 
 PGA_LETTER_STATS = {
@@ -533,6 +711,13 @@ PGA_LETTER_STATS = {
     "R": {"made_cut_count": 9, "place_1_count": 1, "place_2_count": 1, "place_3_count": 1, "place_10_count": 2, "place_11_15_count": 4, "place_16_20_count": 1},
     "S": {"made_cut_count": 18, "place_2_count": 2, "place_4_count": 3, "place_7_count": 3, "place_9_count": 2, "place_11_15_count": 3, "place_16_20_count": 3, "place_21_30_count": 2},
     "T": {"made_cut_count": 3, "place_4_count": 1, "place_11_15_count": 1, "place_16_20_count": 1},
+    # Peter Uihlein made the cut at the U.S. Open (T56) and The Open (T65) —
+    # both outside every placement band (bands only go to 21st-30th).
+    "U": {"made_cut_count": 2},
+    # Jhonattan Vegas (PGA Championship, T44), Sami Valimaki (PGA
+    # Championship, T60), Jackson Van Paris (U.S. Open, T61) — all outside
+    # every placement band.
+    "V": {"made_cut_count": 3},
     "W": {"made_cut_count": 1, "place_7_count": 1},
     "Y": {"made_cut_count": 2, "place_2_count": 1, "place_3_count": 1},
 }
@@ -549,7 +734,8 @@ PGA_LETTER_STATS = {
 # players well outside any placement band (position >30, no placement bonus,
 # made_cut_count only) alongside the shallower events' top-of-leaderboard
 # placement bands. Letters with no player in any researched leaderboard
-# (E, Q, U, V, X) get no row.
+# (Q, X — verified via a full-field scan of all 4 majors' complete made-cut
+# leaderboards) get no row.
 # ---------------------------------------------------------------------------
 
 LPGA_LETTER_STATS = {
@@ -557,6 +743,9 @@ LPGA_LETTER_STATS = {
     "B": {"made_cut_count": 2},
     "C": {"made_cut_count": 8, "place_4_count": 1, "place_5_count": 1, "place_8_count": 1, "place_21_30_count": 3},
     "D": {"made_cut_count": 3, "place_11_15_count": 1, "place_21_30_count": 1},
+    # Esther Henseleit: made the cut at USWO (T49), KPMG (T15), AIG (2nd,
+    # runner-up in a playoff).
+    "E": {"made_cut_count": 3, "place_2_count": 1, "place_11_15_count": 1},
     "F": {"made_cut_count": 3, "place_16_20_count": 1},
     "G": {"made_cut_count": 2, "place_7_count": 1, "place_21_30_count": 1},
     "H": {"made_cut_count": 10, "place_2_count": 2, "place_3_count": 1, "place_6_count": 3, "place_10_count": 1, "place_11_15_count": 2},
@@ -571,6 +760,10 @@ LPGA_LETTER_STATS = {
     "R": {"made_cut_count": 4, "place_1_count": 1, "place_6_count": 2},
     "S": {"made_cut_count": 5, "place_8_count": 1},
     "T": {"made_cut_count": 7, "place_2_count": 1, "place_4_count": 1, "place_6_count": 2, "place_8_count": 1},
+    # Aunchisa Utama: made the cut at AIG (T61).
+    "U": {"made_cut_count": 1},
+    # Albane Valenzuela: made the cut at Chevron (T72).
+    "V": {"made_cut_count": 1},
     "W": {"made_cut_count": 3, "place_3_count": 1, "place_6_count": 1, "place_9_count": 1},
     "Y": {"made_cut_count": 9, "place_2_count": 1, "place_3_count": 1, "place_5_count": 1, "place_8_count": 1, "place_11_15_count": 2, "place_16_20_count": 1},
     "Z": {"made_cut_count": 2},
@@ -767,16 +960,27 @@ def nwsl_stats(name: str) -> dict:
 # ---------------------------------------------------------------------------
 # Tour de France Team Classification, 2026 edition — the most recently
 # completed real Tour as of this writing (2027's isn't run until next July).
-# Only the top 3 are backfilled here (Lidl-Trek won by 36:57 over UAE Team
-# Emirates XRG, with Red Bull-BORA-Hansgrohe 3rd at +1:06:22) — the source
-# used for this only reported the full final classification through 3rd,
-# not all 23 teams, so the rest are deliberately left without a historical
-# row rather than guessing a placement (same principle as any team this app
-# doesn't have a confidently-sourced result for).
+# Places 1-11 are backfilled (Lidl-Trek won by 36:57 over UAE Team Emirates
+# XRG, with Red Bull-BORA-Hansgrohe 3rd at +1:06:22) — sourced from
+# Wikipedia's full team-classification table (ranks 1-10, with times) plus
+# a direct sourced quote for Movistar's 11th. Places 12-23 are deliberately
+# left without a historical row: procyclingstats.com has the full table but
+# blocks automated fetching (403, tried directly and via two proxies), and
+# no other source publishes team-classification places beyond ~10th — same
+# principle as any team this app doesn't have a confidently-sourced result
+# for, rather than guessing.
 TDF_TEAM_PLACE = {
     "Lidl–Trek": 1,
     "UAE Team Emirates XRG": 2,
     "Red Bull–Bora–Hansgrohe": 3,
+    "Decathlon CMA CGM": 4,
+    "Visma–Lease a Bike": 5,
+    "EF Education–EasyPost": 6,
+    "Netcompany INEOS": 7,
+    "Team Bahrain Victorious": 8,
+    "Team TotalEnergies": 9,
+    "Pinarello–Q36.5 Pro Cycling Team": 10,
+    "Movistar Team": 11,
 }
 
 

@@ -144,12 +144,18 @@ export interface LeagueRules {
   minor_conference_teams: Record<string, string[]>;
 }
 
+export interface ScoreBreakdownItem {
+  label: string;
+  points: number;
+}
+
 export interface ExampleScoreRow {
   team_id: number;
   team_name: string;
   league: string;
   season_label: string;
   points: number;
+  breakdown: ScoreBreakdownItem[];
 }
 
 export interface QueueEntry {

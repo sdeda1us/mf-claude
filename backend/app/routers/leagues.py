@@ -9,6 +9,7 @@ from app.league_rules import (
     ROSTER_LIMITS,
     SCORING_RULES,
     compute_score,
+    compute_score_breakdown,
     is_minor_conference_team,
 )
 from app.models import Team, TeamSeasonResult, User
@@ -49,6 +50,7 @@ def get_example_scores(db: Session = Depends(get_db), _: User = Depends(get_curr
             league=r.league,
             season_label=r.season_label,
             points=compute_score(r.league, r.stats),
+            breakdown=compute_score_breakdown(r.league, r.stats),
         )
         for r in results
         if r.league in ROSTER_LIMITS
