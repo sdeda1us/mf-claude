@@ -958,34 +958,71 @@ def nwsl_stats(name: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Tour de France Team Classification, 2026 edition — the most recently
-# completed real Tour as of this writing (2027's isn't run until next July).
-# Places 1-11 are backfilled (Lidl-Trek won by 36:57 over UAE Team Emirates
-# XRG, with Red Bull-BORA-Hansgrohe 3rd at +1:06:22) — sourced from
-# Wikipedia's full team-classification table (ranks 1-10, with times) plus
-# a direct sourced quote for Movistar's 11th. Places 12-23 are deliberately
-# left without a historical row: procyclingstats.com has the full table but
-# blocks automated fetching (403, tried directly and via two proxies), and
-# no other source publishes team-classification places beyond ~10th — same
-# principle as any team this app doesn't have a confidently-sourced result
-# for, rather than guessing.
-TDF_TEAM_PLACE = {
-    "Lidl–Trek": 1,
-    "UAE Team Emirates XRG": 2,
-    "Red Bull–Bora–Hansgrohe": 3,
-    "Decathlon CMA CGM": 4,
-    "Visma–Lease a Bike": 5,
-    "EF Education–EasyPost": 6,
-    "Netcompany INEOS": 7,
-    "Team Bahrain Victorious": 8,
-    "Team TotalEnergies": 9,
-    "Pinarello–Q36.5 Pro Cycling Team": 10,
-    "Movistar Team": 11,
+# Tour de France, 2026 edition — the most recently completed real Tour as
+# of this writing (2027's isn't run until next July). Scoring rewards
+# individual-rider achievements (stage wins, the 4 classification jerseys)
+# rather than the overall Team Classification, so a team's stats are its
+# own riders' combined stage wins and jersey placements. Every one of the
+# 23 teams in the field gets a row — 13 of them are a real, verified zero
+# (raced the full 3 weeks, won no stage and no top-3 GC/jersey), not a
+# missing-data gap, since all 21 stage winners and all 4 classification
+# winners are individually accounted for below (cross-checked against
+# Wikipedia's stage-by-stage results and final classifications; the 21
+# stage-win team attributions sum to exactly 21, confirming no double
+# count or omission).
+#
+# Tadej Pogacar (UAE Team Emirates XRG) won his 5th Tour, winning stages 3,
+# 6, 10, 14, 19; teammate Isaac del Toro won stage 2 and finished 3rd
+# overall (also winning the Young Rider/white jersey) — both bonuses stack
+# onto the same team. Remco Evenepoel (Red Bull-Bora-Hansgrohe) was 2nd
+# overall, winning stages 15-16. Richard Carapaz (EF Education-EasyPost)
+# won the King of the Mountains/polka dot jersey, winning stages 18 & 20.
+# Mads Pedersen (Lidl-Trek) won the Points/green jersey, winning stage 4.
+# Other stage winners: Tim Merlier (Soudal-Quick-Step) won 3 (stages 7, 8,
+# 12); Mathieu van der Poel and Jasper Philipsen (both Alpecin-Premier
+# Tech) won 3 combined (stages 9, 21, and 17); Olav Kooij (Decathlon CMA
+# CGM) won stage 5; Soren Waerenskjold (Uno-X Mobility) won stage 11;
+# Mauro Schmid (Team Jayco-AlUla) won stage 13; stage 1 was a team time
+# trial won outright by Visma-Lease a Bike.
+TDF_ACHIEVEMENTS = {
+    # team: (stage_wins, gc_winner, gc_second, gc_third, kom_winner, points_winner, young_rider_winner)
+    "UAE Team Emirates XRG": (6, True, False, True, False, False, True),
+    "Red Bull–Bora–Hansgrohe": (2, False, True, False, False, False, False),
+    "EF Education–EasyPost": (2, False, False, False, True, False, False),
+    "Lidl–Trek": (1, False, False, False, False, True, False),
+    "Soudal–Quick-Step": (3, False, False, False, False, False, False),
+    "Alpecin–Premier Tech": (3, False, False, False, False, False, False),
+    "Decathlon CMA CGM": (1, False, False, False, False, False, False),
+    "Uno-X Mobility": (1, False, False, False, False, False, False),
+    "Team Jayco–AlUla": (1, False, False, False, False, False, False),
+    "Visma–Lease a Bike": (1, False, False, False, False, False, False),
+    "Groupama–FDJ United": (0, False, False, False, False, False, False),
+    "Lotto–Intermarché": (0, False, False, False, False, False, False),
+    "Movistar Team": (0, False, False, False, False, False, False),
+    "Netcompany INEOS": (0, False, False, False, False, False, False),
+    "NSN Cycling Team": (0, False, False, False, False, False, False),
+    "Team Bahrain Victorious": (0, False, False, False, False, False, False),
+    "Team Picnic–PostNL": (0, False, False, False, False, False, False),
+    "XDS Astana Team": (0, False, False, False, False, False, False),
+    "Caja Rural–Seguros RGA": (0, False, False, False, False, False, False),
+    "Cofidis": (0, False, False, False, False, False, False),
+    "Pinarello–Q36.5 Pro Cycling Team": (0, False, False, False, False, False, False),
+    "Team TotalEnergies": (0, False, False, False, False, False, False),
+    "Tudor Pro Cycling Team": (0, False, False, False, False, False, False),
 }
 
 
 def tdf_stats(name: str) -> dict:
-    return {"place": TDF_TEAM_PLACE[name]}
+    stage_wins, gc_winner, gc_second, gc_third, kom, points, young = TDF_ACHIEVEMENTS[name]
+    return {
+        "stage_wins": stage_wins,
+        "gc_winner": gc_winner,
+        "gc_second": gc_second,
+        "gc_third": gc_third,
+        "kom_winner": kom,
+        "points_winner": points,
+        "young_rider_winner": young,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -1103,7 +1140,7 @@ LEAGUE_SEASONS = [
     ("URC", "2025-26", URC_TABLE, urc_stats),
     ("IPL", "2026", IPL_TABLE, ipl_stats),
     ("NWSL", "2025", NWSL_TABLE, nwsl_stats),
-    ("TDF", "2026", TDF_TEAM_PLACE, tdf_stats),
+    ("TDF", "2026", TDF_ACHIEVEMENTS, tdf_stats),
 ]
 
 

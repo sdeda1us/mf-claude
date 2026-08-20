@@ -1,25 +1,26 @@
-# Tour de France Team Classification Game Rules
+# Tour de France Game Rules
 
-Each player owns **1 team**. The Tour de France Team Classification is a
-single once-a-year ranked outcome, not a season of games: each professional
-cycling team's daily time is the combined time of its best 3 finishers on
-that stage, summed across every stage of the race, and the team with the
-lowest combined time overall wins. Because it's one race with one final
-ranking — structurally much closer to a single golf major than to a league
-table — scoring here is placement-tiered like golf's, not win/loss-based.
+Each player owns **1 team**. Unlike a single-ranking event, scoring here
+rewards individual-rider achievements across the 3-week race: stage wins,
+plus the 4 individual classification jerseys. A team's score sums every
+stage win and jersey won by *any* of its own riders — a team with, say,
+both the yellow-jersey winner and the 3rd-place overall finisher collects
+both of those bonuses.
 
-| Final Team Classification place          | Points |
-|-------------------------------------------|--------|
-| Wins the Team Classification                | +60    |
-| 2nd                                           | +45    |
-| 3rd                                            | +35    |
-| 4th–5th                                          | +25    |
-| 6th–10th                                          | +15    |
-| 11th–15th                                          | +8     |
-| 16th or worse (of ~23 teams)                        | +3     |
+| Achievement                                   | Points |
+|------------------------------------------------|--------|
+| Stage win (per stage)                             | +10    |
+| Overall winner (Yellow Jersey)                       | +50    |
+| 2nd overall                                            | +20    |
+| 3rd overall                                              | +10    |
+| King of the Mountains winner (Polka Dot Jersey)            | +10    |
+| Points winner (Green Jersey)                                 | +10    |
+| Young Rider winner (White Jersey)                              | +10    |
 
-Only one placement tier applies per team — there's no stacking, since a
-team finishes in exactly one final position.
+All of the above stack cumulatively, same convention as every other league
+here — a team can bank stage-win points, a GC placement bonus, and a
+jersey bonus simultaneously if different riders on its roster achieved
+each of them.
 
 **Roster note (important — re-verify before drafting):** the 2027 Tour de
 France's participating teams (UCI WorldTeam rosters and sponsor names for

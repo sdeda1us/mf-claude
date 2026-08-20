@@ -214,21 +214,20 @@ NWSL_SCORING_RULES: list[dict] = [
     {"label": "Win the NWSL Championship", "points": 35},
 ]
 
-# The Tour de France Team Classification is a single once-a-year ranked
-# outcome (lowest combined time of each team's best 3 finishers per stage,
-# summed across the whole race) rather than a season of games — structurally
-# closer to a single golf major than to a league table, so this reuses that
-# same placement-tiered shape (GOLF_SCORING_RULES above) rather than
-# anything win/loss-based. Tiers are compressed relative to golf's ~150-
-# player field to fit a ~23-team classification.
+# Tour de France scoring rewards individual-rider achievements (stage wins,
+# the 4 classification jerseys) rather than the overall Team Classification
+# — a team's score sums every stage win and jersey won by any of its own
+# riders. A team with multiple riders in the GC top 3 (e.g. the yellow-
+# jersey winner AND the 3rd-place finisher on the same team) collects both
+# bonuses — these stack, same convention as every other league here.
 TDF_SCORING_RULES: list[dict] = [
-    {"label": "Finishes 16th or worse (of ~23 teams)", "points": 3},
-    {"label": "Finishes 11th-15th", "points": 8},
-    {"label": "Finishes 6th-10th", "points": 15},
-    {"label": "Finishes 4th-5th", "points": 25},
-    {"label": "Finishes 3rd", "points": 35},
-    {"label": "Finishes 2nd", "points": 45},
-    {"label": "Wins the Team Classification", "points": 60},
+    {"label": "Stage win (per stage)", "points": 10},
+    {"label": "Overall winner (Yellow Jersey)", "points": 50},
+    {"label": "2nd overall", "points": 20},
+    {"label": "3rd overall", "points": 10},
+    {"label": "King of the Mountains winner (Polka Dot Jersey)", "points": 10},
+    {"label": "Points winner (Green Jersey)", "points": 10},
+    {"label": "Young Rider winner (White Jersey)", "points": 10},
 ]
 
 SCORING_RULES: dict[str, list[dict]] = {
@@ -503,20 +502,15 @@ def compute_score(league: str, stats: dict) -> float:
             + (35 if stats.get("won_championship") else 0)
         )
     if league == "TDF":
-        place = stats["place"]
-        if place == 1:
-            return 60
-        if place == 2:
-            return 45
-        if place == 3:
-            return 35
-        if place <= 5:
-            return 25
-        if place <= 10:
-            return 15
-        if place <= 15:
-            return 8
-        return 3
+        return (
+            10 * stats.get("stage_wins", 0)
+            + (50 if stats.get("gc_winner") else 0)
+            + (20 if stats.get("gc_second") else 0)
+            + (10 if stats.get("gc_third") else 0)
+            + (10 if stats.get("kom_winner") else 0)
+            + (10 if stats.get("points_winner") else 0)
+            + (10 if stats.get("young_rider_winner") else 0)
+        )
     if league == "URC":
         return round(
             2 * stats["table_points"]
@@ -685,9 +679,15 @@ def compute_score_breakdown(league: str, stats: dict) -> list[dict]:
             {"label": "Won NWSL Championship", "points": 35 if stats.get("won_championship") else 0},
         ])
     if league == "TDF":
-        # A single placement-tiered lookup, not a sum of independent parts —
-        # one line item covering the whole score.
-        return [{"label": f"Team Classification finish (place {stats['place']})", "points": compute_score(league, stats)}]
+        return _nonzero([
+            {"label": f"Stage wins ({stats.get('stage_wins', 0)})", "points": 10 * stats.get("stage_wins", 0)},
+            {"label": "Overall winner (Yellow Jersey)", "points": 50 if stats.get("gc_winner") else 0},
+            {"label": "2nd overall", "points": 20 if stats.get("gc_second") else 0},
+            {"label": "3rd overall", "points": 10 if stats.get("gc_third") else 0},
+            {"label": "King of the Mountains winner (Polka Dot Jersey)", "points": 10 if stats.get("kom_winner") else 0},
+            {"label": "Points winner (Green Jersey)", "points": 10 if stats.get("points_winner") else 0},
+            {"label": "Young Rider winner (White Jersey)", "points": 10 if stats.get("young_rider_winner") else 0},
+        ])
     if league == "URC":
         return _nonzero([
             {"label": f"Table points ({stats['table_points']})", "points": 2 * stats["table_points"]},
