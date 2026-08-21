@@ -205,7 +205,7 @@ async def auction_room(websocket: WebSocket, auction_id: int):
                 await manager.send_error(websocket, f"Bid must exceed current high bid of {high_bid}")
                 continue
 
-            remaining = remaining_budget_by_user(db, auction.season).get(user.id, 0)
+            remaining = remaining_budget_by_user(db, auction.season, auction.session).get(user.id, 0)
             if amount > remaining:
                 await manager.send_error(websocket, f"Bid exceeds your remaining budget of {remaining}")
                 continue

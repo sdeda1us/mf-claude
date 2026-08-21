@@ -28,7 +28,8 @@ class UserUpdateIn(BaseModel):
 class SeasonOut(BaseModel):
     id: int
     name: str
-    budget_per_user: float
+    fall_budget_per_user: float
+    spring_budget_per_user: float
     status: SeasonStatus
 
     model_config = {"from_attributes": True}
@@ -36,7 +37,8 @@ class SeasonOut(BaseModel):
 
 class SeasonCreateIn(BaseModel):
     name: str
-    budget_per_user: float = 600
+    fall_budget_per_user: float = 400
+    spring_budget_per_user: float = 240
 
 
 class TeamOut(BaseModel):
@@ -44,6 +46,7 @@ class TeamOut(BaseModel):
     league: str
     sport: str
     name: str
+    default_value: float | None = None
 
     model_config = {"from_attributes": True}
 
@@ -95,6 +98,10 @@ class AuctionItemOut(BaseModel):
 
 class NominateIn(BaseModel):
     team_id: int
+
+
+class ForceTurnIn(BaseModel):
+    user_id: int
 
 
 class RosterEntryOut(BaseModel):

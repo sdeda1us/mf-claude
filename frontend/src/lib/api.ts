@@ -61,7 +61,8 @@ export interface User {
 export interface Season {
   id: number;
   name: string;
-  budget_per_user: number;
+  fall_budget_per_user: number;
+  spring_budget_per_user: number;
   status: "setup" | "active" | "complete";
 }
 
@@ -70,6 +71,7 @@ export interface Team {
   league: string;
   sport: string;
   name: string;
+  default_value: number | null;
 }
 
 export interface Bid {

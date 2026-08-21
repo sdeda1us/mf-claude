@@ -158,6 +158,11 @@ export default function AuctionRoom() {
     await api.post(`/auctions/${auction.id}/cancel-nomination`);
   };
 
+  const forceTurn = async (userId: number) => {
+    if (!auction) return;
+    await api.post(`/auctions/${auction.id}/force-turn`, { user_id: userId });
+  };
+
   const bid = (e: React.FormEvent) => {
     e.preventDefault();
     const amount = Number(bidAmount);
@@ -423,6 +428,16 @@ export default function AuctionRoom() {
                   </span>
                   <span>max ${status.max_bid.toFixed(0)}</span>
                 </div>
+              )}
+              {user?.is_commissioner && !item && uid !== currentTurnUserId && (
+                <button
+                  type="button"
+                  className="force-turn-btn"
+                  title={`Force it to be ${u?.display_name ?? `User #${uid}`}'s turn to nominate`}
+                  onClick={() => forceTurn(uid)}
+                >
+                  Make it their turn
+                </button>
               )}
             </li>
           );

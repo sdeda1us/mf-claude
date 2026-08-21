@@ -51,3 +51,11 @@ def clear_crib_sheet_value(
     if entry is not None:
         db.delete(entry)
         db.commit()
+
+
+@router.delete("", status_code=204)
+def clear_all_crib_sheet_values(db: Session = Depends(get_db), user: User = Depends(get_current_user)):
+    """Restores every team on this user's crib sheet to its default value,
+    by dropping all of their overrides at once."""
+    db.query(CribSheetEntry).filter(CribSheetEntry.user_id == user.id).delete()
+    db.commit()

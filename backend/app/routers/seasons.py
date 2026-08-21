@@ -20,7 +20,11 @@ def create_season(
     db: Session = Depends(get_db),
     _: User = Depends(get_current_commissioner),
 ):
-    season = Season(name=payload.name, budget_per_user=payload.budget_per_user)
+    season = Season(
+        name=payload.name,
+        fall_budget_per_user=payload.fall_budget_per_user,
+        spring_budget_per_user=payload.spring_budget_per_user,
+    )
     db.add(season)
     db.commit()
     db.refresh(season)

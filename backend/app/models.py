@@ -57,7 +57,10 @@ class Season(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(100))
-    budget_per_user: Mapped[float] = mapped_column(Numeric(10, 2), default=600)
+    # Fall and spring auctions each draw from their own separate budget —
+    # spending in one session's leagues never eats into the other's.
+    fall_budget_per_user: Mapped[float] = mapped_column(Numeric(10, 2), default=400)
+    spring_budget_per_user: Mapped[float] = mapped_column(Numeric(10, 2), default=240)
     status: Mapped[SeasonStatus] = mapped_column(
         Enum(SeasonStatus), default=SeasonStatus.setup
     )
@@ -74,6 +77,11 @@ class Team(Base):
     league: Mapped[str] = mapped_column(String(50))  # e.g. NFL, NBA, EPL
     sport: Mapped[str] = mapped_column(String(50))  # e.g. Football, Basketball, Soccer
     name: Mapped[str] = mapped_column(String(100))
+    # A pre-computed expected-value dollar price (see app/set_ev_defaults.py),
+    # shown as the crib sheet's starting value until a user overrides it with
+    # their own CribSheetEntry. Null until that script has priced the team
+    # (currently the 10 fall-session leagues only).
+    default_value: Mapped[float | None] = mapped_column(Numeric(10, 2), nullable=True)
 
     __table_args__ = (UniqueConstraint("league", "name", name="uq_team_league_name"),)
 

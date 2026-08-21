@@ -116,7 +116,8 @@ export default function Home() {
             <div key={season.id} className="rules-card">
               <div className="ribbon">{season.name}</div>
               <p className="rules-card-meta">
-                <span className="pill">${season.budget_per_user} budget</span>
+                <span className="pill">${season.fall_budget_per_user} fall budget</span>
+                <span className="pill">${season.spring_budget_per_user} spring budget</span>
               </p>
               <table className="sortable-table">
                 <thead>

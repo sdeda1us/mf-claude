@@ -37,15 +37,22 @@ SESSION_ROSTER_SLOTS: dict[str, int] = {
 }
 
 
-def remaining_budget_by_user(db: Session, season: Season) -> dict[int, float]:
+def remaining_budget_by_user(db: Session, season: Season, session: str) -> dict[int, float]:
+    """Fall and spring each draw from their own separate budget — spending
+    in one session's leagues never eats into the other's, so this is
+    always scoped to one session, never a whole-season total."""
     users = db.query(User).all()
     spent_by_user = dict(
         db.query(RosterEntry.user_id, func.coalesce(func.sum(RosterEntry.price_paid), 0))
-        .filter(RosterEntry.season_id == season.id)
+        .join(Team, RosterEntry.team_id == Team.id)
+        .filter(
+            RosterEntry.season_id == season.id,
+            Team.league.in_(SESSION_LEAGUES.get(session, [])),
+        )
         .group_by(RosterEntry.user_id)
         .all()
     )
-    budget = float(season.budget_per_user)
+    budget = float(season.fall_budget_per_user if session == "fall" else season.spring_budget_per_user)
     return {u.id: budget - float(spent_by_user.get(u.id, 0)) for u in users}
 
 
@@ -55,7 +62,7 @@ def roster_status_by_user(db: Session, season: Season, session: str) -> dict[int
     bid both only count this session's leagues, not the other session's
     still-untouched roster slots."""
     users = db.query(User).all()
-    budgets = remaining_budget_by_user(db, season)
+    budgets = remaining_budget_by_user(db, season, session)
     filled_by_user = dict(
         db.query(RosterEntry.user_id, func.count(RosterEntry.id))
         .join(Team, RosterEntry.team_id == Team.id)
@@ -122,7 +129,7 @@ def build_state(db: Session, auction: Auction, viewer_user_id: int) -> AuctionSt
     return AuctionStateOut(
         auction=AuctionOut.model_validate(auction),
         active_item=active_item_out,
-        remaining_budget_by_user=remaining_budget_by_user(db, auction.season),
+        remaining_budget_by_user=remaining_budget_by_user(db, auction.season, auction.session),
         current_turn_user_id=current_turn_user_id(db, auction),
         roster_status_by_user=roster_status_by_user(db, auction.season, auction.session),
     )
@@ -193,7 +200,7 @@ def resolve_reserve_bids(
             .order_by(ReserveBid.max_amount.desc(), ReserveBid.created_at.asc())
             .all()
         )
-        budgets = remaining_budget_by_user(db, auction.season)
+        budgets = remaining_budget_by_user(db, auction.season, auction.session)
 
         candidate = None
         for r in reserves:

@@ -25,7 +25,7 @@ from app.models import (
     User,
     utcnow,
 )
-from app.schemas import AuctionOut, AuctionStateOut, NominateIn
+from app.schemas import AuctionOut, AuctionStateOut, ForceTurnIn, NominateIn
 from app.ws.connection_manager import manager
 
 router = APIRouter(prefix="/auctions", tags=["auction"])
@@ -119,6 +119,46 @@ async def nominate(
     db.refresh(item)
     await manager.broadcast_state(auction_id, db, auction)
     manager.spawn(schedule_bid_timer(item.id))
+    return build_state(db, auction, viewer_user_id=user.id)
+
+
+@router.post("/{auction_id}/force-turn", response_model=AuctionStateOut)
+async def force_turn(
+    auction_id: int,
+    payload: ForceTurnIn,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_commissioner),
+):
+    """Commissioner override: makes it the given user's turn to nominate
+    right now, by swapping them into the current slot of nomination_order
+    with whoever's sitting there. That keeps nomination_order a permutation
+    of every user (current_turn_user_id just indexes into it), so nobody's
+    future turn is lost — the bumped user simply inherits the forced user's
+    old slot and comes up in their place next cycle. Only valid while
+    there's an open turn to hand off (no active item)."""
+    auction = db.get(Auction, auction_id)
+    if auction is None:
+        raise HTTPException(status_code=404, detail="Auction not found")
+    if get_active_item(db, auction_id) is not None:
+        raise HTTPException(status_code=400, detail="An item is already active")
+    if not auction.nomination_order:
+        raise HTTPException(status_code=400, detail="Auction has no nomination order")
+    if payload.user_id not in auction.nomination_order:
+        raise HTTPException(status_code=404, detail="That user isn't part of this auction")
+
+    order = list(auction.nomination_order)
+    current_index = len(auction.items) % len(order)
+    target_index = order.index(payload.user_id)
+    order[current_index], order[target_index] = order[target_index], order[current_index]
+    auction.nomination_order = order
+    db.commit()
+    db.refresh(auction)
+    await manager.broadcast_state(auction_id, db, auction)
+    # turn_started_at is untouched (same slot, same clock) but the running
+    # schedule_turn_timer captured the old turn's user id before it started
+    # sleeping — it'll now no-op at fire time since current_turn_user_id
+    # moved out from under it, so re-arm a fresh one for the new user.
+    manager.spawn(schedule_turn_timer(auction_id))
     return build_state(db, auction, viewer_user_id=user.id)
 
 

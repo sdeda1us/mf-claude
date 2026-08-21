@@ -738,6 +738,35 @@ button:disabled {
   text-align: right;
 }
 
+.crib-value-input.is-default {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.crib-restore-cell {
+  width: 32px;
+  text-align: center;
+}
+
+.crib-restore-one {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  padding: 4px 6px;
+}
+
+.crib-restore-one:hover:not(:disabled) {
+  color: var(--red);
+}
+
+.crib-restore-one:disabled {
+  color: var(--rule);
+  cursor: default;
+}
+
 .crib-session {
   margin-top: 28px;
 }
@@ -882,6 +911,26 @@ button:disabled {
   gap: 2px;
   font-size: 12px;
   opacity: 0.85;
+}
+
+.force-turn-btn {
+  align-self: flex-start;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  box-shadow: none;
+}
+
+.force-turn-btn:hover {
+  background: var(--ink);
+  color: var(--stock-hi);
 }
 
 .summary-strip {

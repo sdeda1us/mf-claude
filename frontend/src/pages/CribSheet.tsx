@@ -36,10 +36,13 @@ export default function CribSheet() {
   const isVisible = (team: Team) =>
     !isHiddenByDefault(team) || valueByTeamId.has(team.id) || addedTeamIds.has(team.id);
 
-  const draftFor = (teamId: number) => {
-    if (teamId in drafts) return drafts[teamId];
-    const value = valueByTeamId.get(teamId);
-    return value != null ? String(value) : "";
+  const hasOverride = (teamId: number) => valueByTeamId.has(teamId);
+
+  const draftFor = (team: Team) => {
+    if (team.id in drafts) return drafts[team.id];
+    const value = valueByTeamId.get(team.id);
+    if (value != null) return String(value);
+    return team.default_value != null ? String(team.default_value) : "";
   };
 
   const save = async (teamId: number, raw: string) => {
@@ -55,6 +58,31 @@ export default function CribSheet() {
     if (!Number.isFinite(value) || value === current) return;
     const entry = await api.put<CribSheetEntry>(`/crib-sheet/${teamId}`, { value });
     setEntries((prev) => [...prev.filter((e) => e.team_id !== teamId), entry]);
+  };
+
+  const restoreOne = async (teamId: number) => {
+    if (!hasOverride(teamId)) return;
+    await api.del(`/crib-sheet/${teamId}`);
+    setEntries((prev) => prev.filter((e) => e.team_id !== teamId));
+    setDrafts((prev) => {
+      const next = { ...prev };
+      delete next[teamId];
+      return next;
+    });
+  };
+
+  const restoreAll = async () => {
+    if (entries.length === 0) return;
+    if (
+      !window.confirm(
+        `Restore all ${entries.length} of your custom values back to their defaults? This can't be undone.`
+      )
+    ) {
+      return;
+    }
+    await api.del("/crib-sheet");
+    setEntries([]);
+    setDrafts({});
   };
 
   const addTeam = (teamId: number) => {
@@ -135,27 +163,42 @@ export default function CribSheet() {
                         <th>Team</th>
                         <th>Sport</th>
                         <th>Your Value</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {leagueTeams.map((team) => (
-                        <tr key={team.id}>
-                          <td>{team.name}</td>
-                          <td>{team.sport}</td>
-                          <td className="crib-value-cell">
-                            <input
-                              type="number"
-                              className="crib-value-input"
-                              placeholder="—"
-                              value={draftFor(team.id)}
-                              onChange={(e) =>
-                                setDrafts((prev) => ({ ...prev, [team.id]: e.target.value }))
-                              }
-                              onBlur={(e) => save(team.id, e.target.value)}
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                      {leagueTeams.map((team) => {
+                        const overridden = hasOverride(team.id);
+                        return (
+                          <tr key={team.id}>
+                            <td>{team.name}</td>
+                            <td>{team.sport}</td>
+                            <td className="crib-value-cell">
+                              <input
+                                type="number"
+                                className={overridden ? "crib-value-input" : "crib-value-input is-default"}
+                                placeholder="—"
+                                value={draftFor(team)}
+                                onChange={(e) =>
+                                  setDrafts((prev) => ({ ...prev, [team.id]: e.target.value }))
+                                }
+                                onBlur={(e) => save(team.id, e.target.value)}
+                              />
+                            </td>
+                            <td className="crib-restore-cell">
+                              <button
+                                type="button"
+                                className="crib-restore-one"
+                                disabled={!overridden}
+                                title={overridden ? "Restore this team's default value" : "Already at its default value"}
+                                onClick={() => restoreOne(team.id)}
+                              >
+                                ↺
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 )}
@@ -172,9 +215,11 @@ export default function CribSheet() {
       <h1>Crib Sheet</h1>
       <p>
         Your own valuation for each team, split by which auction session drafts it — a private
-        reference sheet only you can see, for you to check against during a live auction. Minor-
-        conference college football/basketball teams are hidden by default; search below to add
-        one. Click a league to expand it.
+        reference sheet only you can see, for you to check against during a live auction. Fall-
+        session teams start pre-filled with a modeled expected-value price (shown in a lighter
+        shade); type over one to make it yours, or use the restore buttons to drop back to that
+        default. Minor-conference college football/basketball teams are hidden by default; search
+        below to add one. Click a league to expand it.
       </p>
 
       <div className="team-board-controls">
@@ -184,6 +229,14 @@ export default function CribSheet() {
           value={nameFilter}
           onChange={(e) => setNameFilter(e.target.value)}
         />
+        <button
+          type="button"
+          className="btn-primary"
+          disabled={entries.length === 0}
+          onClick={restoreAll}
+        >
+          Restore all defaults
+        </button>
       </div>
 
       <div className="crib-add-panel">

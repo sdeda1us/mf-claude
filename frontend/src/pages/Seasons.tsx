@@ -16,7 +16,7 @@ export default function Seasons() {
 
   const createSeason = async (e: React.FormEvent) => {
     e.preventDefault();
-    await api.post("/seasons", { name, budget_per_user: 600 });
+    await api.post("/seasons", { name });
     setName("");
     load();
   };
@@ -29,7 +29,9 @@ export default function Seasons() {
           <li key={s.id}>
             <Link to={`/seasons/${s.id}/roster`}>{s.name}</Link>
             <span className="pill">{s.status}</span>
-            <span>${s.budget_per_user} budget</span>
+            <span>
+              ${s.fall_budget_per_user} fall / ${s.spring_budget_per_user} spring
+            </span>
           </li>
         ))}
       </ul>
