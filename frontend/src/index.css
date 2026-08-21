@@ -1101,6 +1101,11 @@ button:disabled {
   cursor: pointer;
 }
 
+.crib-methodology-btn {
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
 .league-row-stats {
   margin-left: auto;
   display: flex;

@@ -10,6 +10,7 @@ export default function CribSheet() {
   const [addedTeamIds, setAddedTeamIds] = useState<Set<number>>(new Set());
   const [drafts, setDrafts] = useState<Record<number, string>>({});
   const [expandedLeagues, setExpandedLeagues] = useState<Set<string>>(new Set());
+  const [showMethodology, setShowMethodology] = useState(false);
 
   useEffect(() => {
     api.get<Team[]>("/teams").then(setTeams);
@@ -217,7 +218,16 @@ export default function CribSheet() {
         Your own valuation for each team, split by which auction session drafts it — a private
         reference sheet only you can see, for you to check against during a live auction. Fall-
         session teams start pre-filled with a modeled expected-value price (shown in a lighter
-        shade); type over one to make it yours, or use the restore buttons to drop back to that
+        shade)
+        <button
+          type="button"
+          className="league-info-btn crib-methodology-btn"
+          onClick={() => setShowMethodology(true)}
+          title="How these default values are calculated"
+        >
+          ?
+        </button>
+        ; type over one to make it yours, or use the restore buttons to drop back to that
         default. Minor-conference college football/basketball teams are hidden by default; search
         below to add one. Click a league to expand it.
       </p>
@@ -268,6 +278,46 @@ export default function CribSheet() {
       {renderSession("Fall Session", bySession.fall)}
       {renderSession("Spring Session", bySession.spring)}
       {bySession.other.length > 0 && renderSession("Other", bySession.other)}
+
+      {showMethodology && (
+        <div className="modal-backdrop" onClick={() => setShowMethodology(false)}>
+          <div className="modal-card rules-card" onClick={(e) => e.stopPropagation()}>
+            <div className="ribbon">How Default Values Are Calculated</div>
+            <button
+              type="button"
+              className="modal-close"
+              onClick={() => setShowMethodology(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <p>
+              Every fall-session team (NFL, NBA, NHL, EPL, NCAAF, NCAAMB, NCAAWB, ATP, WTA) starts
+              with a modeled expected-value price instead of a blank $0, so there's a sane opening
+              reference before you've formed your own opinion.
+            </p>
+            <p>
+              The values come from real preseason odds and ratings research — Vegas win totals and
+              championship odds for NFL/NBA/NHL/NCAAF, Opta predicted points for EPL, full-field
+              FPI/T-Rank ratings for NCAAF/NCAAMB/NCAAWB, and current ATP/WTA rankings aggregated by
+              country for tennis. Those inputs get run through this app's own scoring formulas (see
+              the Rules page) to produce a projected-points estimate per team, then calibrated
+              per league so the cheapest roster-worthy team costs $1 and the league average price
+              is $10 — and rounded to the nearest whole dollar, since auction bids are whole
+              dollars.
+            </p>
+            <p>
+              It's a proxy model, not a forecast — a reasonable starting point, not a prediction of
+              what a team will actually score. Type over any value to make it yours; your own
+              number always takes precedence and is only ever visible to you.
+            </p>
+            <p>
+              Spring-session leagues (MLB, PGA, LPGA, F1, WNBA, MLS, NWSL, TDF, IPL) aren't priced
+              yet — those stay blank until the same pass is done there.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

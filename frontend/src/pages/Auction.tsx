@@ -718,7 +718,9 @@ export default function AuctionRoom() {
                   <th onClick={() => toggleSort("name")}>Team{arrow("name")}</th>
                   <th onClick={() => toggleSort("league")}>League / Sport{arrow("league")}</th>
                   <th onClick={() => toggleSort("points")}>Prior season points{arrow("points")}</th>
-                  <th>Your Value</th>
+                  <th title="From your crib sheet — a modeled default until you override it there. See the Crib Sheet page for how defaults are calculated.">
+                    Your Value
+                  </th>
                   <th>Actions</th>
                 </tr>
               </thead>
