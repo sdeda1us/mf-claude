@@ -219,6 +219,18 @@ export default function AuctionRoom() {
   }, [teams, cribSheet]);
   const queuedTeamIds = useMemo(() => new Set(queue.map((q) => q.team.id)), [queue]);
 
+  // Pre-fill the reserve input with the viewer's own crib sheet value for
+  // whichever team just came up — same fallback as "Your Value" elsewhere
+  // (default_value, or the user's own override). Re-fires whenever a new
+  // item becomes active so it doesn't clobber whatever the user's typed
+  // once they're mid-edit on the current one.
+  useEffect(() => {
+    const activeItem = state?.active_item;
+    if (!activeItem) return;
+    const crib = cribValueByTeamId.get(activeItem.team.id);
+    setReserveAmount(crib != null ? String(crib) : "");
+  }, [state?.active_item?.id, cribValueByTeamId]);
+
   // How many teams in this league it'll take for every player to fill out
   // their roster there — each player's own cap times the number of
   // players — not the size of the real-world pool (a small-cap league in a
