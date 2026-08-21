@@ -203,10 +203,20 @@ export default function AuctionRoom() {
   const usersById = useMemo(() => new Map(users.map((u) => [u.id, u])), [users]);
   const soldTeamIds = useMemo(() => new Set(roster.map((r) => r.team.id)), [roster]);
   const scoreByTeamId = useMemo(() => new Map(scores.map((s) => [s.team_id, s.points])), [scores]);
-  const cribValueByTeamId = useMemo(
-    () => new Map(cribSheet.map((e) => [e.team_id, e.value])),
-    [cribSheet]
-  );
+  // "Your Value" — each user's own crib sheet, same fallback rule as the
+  // Crib Sheet page itself: a fall-session team starts pre-filled with its
+  // modeled default_value until the user overrides it with their own
+  // CribSheetEntry, at which point that override wins.
+  const cribValueByTeamId = useMemo(() => {
+    const map = new Map<number, number>();
+    for (const t of teams) {
+      if (t.default_value != null) map.set(t.id, t.default_value);
+    }
+    for (const e of cribSheet) {
+      map.set(e.team_id, e.value);
+    }
+    return map;
+  }, [teams, cribSheet]);
   const queuedTeamIds = useMemo(() => new Set(queue.map((q) => q.team.id)), [queue]);
 
   // How many teams in this league it'll take for every player to fill out
