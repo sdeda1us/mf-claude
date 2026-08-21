@@ -292,19 +292,24 @@ export default function CribSheet() {
               ×
             </button>
             <p>
-              Every fall-session team (NFL, NBA, NHL, EPL, NCAAF, NCAAMB, NCAAWB, ATP, WTA) starts
-              with a modeled expected-value price instead of a blank $0, so there's a sane opening
-              reference before you've formed your own opinion.
+              Every fall-session team (NFL, NBA, NHL, EPL, URC, NCAAF, NCAAMB, NCAAWB, ATP, WTA)
+              starts with a modeled expected-value price instead of a blank $0, so there's a sane
+              opening reference before you've formed your own opinion.
             </p>
             <p>
-              The values come from real preseason odds and ratings research — Vegas win totals and
-              championship odds for NFL/NBA/NHL/NCAAF, Opta predicted points for EPL, full-field
-              FPI/T-Rank ratings for NCAAF/NCAAMB/NCAAWB, and current ATP/WTA rankings aggregated by
-              country for tennis. Those inputs get run through this app's own scoring formulas (see
-              the Rules page) to produce a projected-points estimate per team, then calibrated
-              per league so the cheapest roster-worthy team costs $1 and the league average price
-              is $10 — and rounded to the nearest whole dollar, since auction bids are whole
-              dollars.
+              The underlying strength scores come from real preseason odds and ratings research —
+              Vegas win totals and championship odds for NFL/NBA/NHL/NCAAF, Opta predicted points
+              for EPL, full-field FPI/T-Rank ratings for NCAAF/NCAAMB/NCAAWB, and current ATP/WTA
+              rankings aggregated by country for tennis — run through this app's own scoring
+              formulas (see the Rules page).
+            </p>
+            <p>
+              Those scores are turned into dollars per league by anchoring to how many teams that
+              league can actually hold across every roster: the worst team still needed to fill
+              everyone's roster spots is priced at exactly $1, every team ranked above it scales
+              by the same factor (preserving the relative gaps between teams) and rounds to the
+              nearest whole dollar, and anything ranked below that cutoff — not projected to be
+              worth a roster spot to anyone — is priced at $0 rather than some token amount.
             </p>
             <p>
               It's a proxy model, not a forecast — a reasonable starting point, not a prediction of

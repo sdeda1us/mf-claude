@@ -5,14 +5,29 @@ overrides it with their own CribSheetEntry.
 Run with: python -m app.set_ev_defaults
 (or `railway ssh -- python -m app.set_ev_defaults` in production)
 
-Values were derived from real preseason odds/ratings research (Vegas win
+FALL_EV_RAW_SCORES below holds each team's relative-strength score within
+its league, derived from real preseason odds/ratings research (Vegas win
 totals and championship odds for NFL/NBA/NHL/NCAAF, Opta predicted points
 for EPL, full-field FPI/T-Rank ratings for NCAAF/NCAAMB, current ATP/WTA
 rankings aggregated by country) run through this app's real scoring formulas
-(app/league_rules.py), then calibrated per league so the cheapest team a
-roster spot needs costs $1 and the league average is $10, and rounded to the
-nearest whole dollar (auction bids are whole dollars). Proxy model, not a
-forecast -- see the "Opening Bids" reference doc for full per-league methodology.
+(app/league_rules.py). Those are proportional, not final dollar amounts --
+calibrate() below turns them into dollars per league:
+
+  - Rank a league's teams by score, and find the one at position
+    ROSTER_LIMITS[league] * (number of users) -- i.e. the worst team that's
+    still needed to fill every user's roster in that league. That team is
+    priced at exactly $1, and every team ranked above it is scaled by the
+    same factor (so relative spacing between teams is preserved) and
+    rounded to the nearest whole dollar, floored at $1.
+  - Everything ranked below that cutoff isn't needed by anyone at any
+    price under the model, so it's priced at $0 rather than some token
+    floor amount.
+
+This intentionally replaced an earlier version of this script that instead
+calibrated to a $1 floor on the single worst team and a league-wide $10
+average -- that put the floor in the wrong place (the actual last-needed
+team was still worth well over $1) and never zeroed out teams nobody's
+projected to draft. Proxy model, not a forecast.
 
 Spring-session leagues (MLB, PGA, LPGA, F1, WNBA, MLS, NWSL, TDF, IPL) are not
 covered yet -- their Team.default_value stays null (crib sheet shows blank,
@@ -20,12 +35,14 @@ same as before this script existed) until the same pricing pass is done there.
 """
 
 from app.database import SessionLocal
-from app.models import Team
+from app.league_rules import ROSTER_LIMITS
+from app.models import Team, User
 
-# (league, team name) -> default_value ($1 floor / $10 average per league,
-# rounded to the nearest whole dollar). Team names already match seed.py's
-# canonical Team.name spelling (e.g. "Los Angeles Lakers", not "LA Lakers").
-FALL_EV_DEFAULTS: dict[tuple[str, str], int] = {
+# (league, team name) -> relative-strength score within that league (higher
+# is better; NOT a dollar amount -- see calibrate() below). Team names
+# already match seed.py's canonical Team.name spelling (e.g. "Los Angeles
+# Lakers", not "LA Lakers").
+FALL_EV_RAW_SCORES: dict[tuple[str, str], int] = {
     # --- NFL ---
     ('NFL', 'Los Angeles Rams'): 17,
     ('NFL', 'Baltimore Ravens'): 16,
@@ -1149,12 +1166,47 @@ FALL_EV_DEFAULTS: dict[tuple[str, str], int] = {
 }
 
 
+def calibrate(num_users: int) -> dict[tuple[str, str], int]:
+    """Turns FALL_EV_RAW_SCORES into dollar defaults, per the module
+    docstring: the worst team still needed to fill every user's roster in a
+    league prices at $1, everything ranked above it scales the same factor
+    (preserving relative spacing) rounded to whole dollars floored at $1,
+    and everything ranked below that cutoff -- nobody's projected to need
+    it at any price -- prices at $0."""
+    num_users = max(num_users, 1)
+
+    by_league: dict[str, list[tuple[str, int]]] = {}
+    for (league, name), score in FALL_EV_RAW_SCORES.items():
+        by_league.setdefault(league, []).append((name, score))
+
+    result: dict[tuple[str, str], int] = {}
+    for league, teams in by_league.items():
+        # Stable sort: FALL_EV_RAW_SCORES already lists each league's teams
+        # best-to-worst, so ties keep that original relative order.
+        ranked = sorted(teams, key=lambda t: t[1], reverse=True)
+        needed = ROSTER_LIMITS[league] * num_users
+        cutoff_index = min(needed, len(ranked)) - 1
+        anchor_score = ranked[cutoff_index][1]
+        scale = 1.0 / anchor_score if anchor_score > 0 else 1.0
+
+        for idx, (name, score) in enumerate(ranked):
+            if idx < needed:
+                result[(league, name)] = max(1, round(score * scale))
+            else:
+                result[(league, name)] = 0
+
+    return result
+
+
 def set_defaults() -> None:
     db = SessionLocal()
     try:
+        num_users = db.query(User).count()
+        calibrated = calibrate(num_users)
+
         updated = 0
         missing: list[str] = []
-        for (league, name), value in FALL_EV_DEFAULTS.items():
+        for (league, name), value in calibrated.items():
             team = db.query(Team).filter(Team.league == league, Team.name == name).first()
             if team is None:
                 missing.append(f"{league} {name}")
@@ -1162,7 +1214,7 @@ def set_defaults() -> None:
             team.default_value = value
             updated += 1
         db.commit()
-        print(f"Set default_value on {updated} teams.")
+        print(f"Calibrated against {num_users} users. Set default_value on {updated} teams.")
         if missing:
             print(f"Skipped {len(missing)} names not found in the Team table: {', '.join(missing)}")
     finally:
