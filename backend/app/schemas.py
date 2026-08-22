@@ -51,6 +51,19 @@ class TeamOut(BaseModel):
     model_config = {"from_attributes": True}
 
 
+class TeamHistorySeasonOut(BaseModel):
+    season_label: str
+    points: float
+
+
+class TeamHistoryOut(BaseModel):
+    team_id: int
+    league: str
+    name: str
+    bio: str | None = None
+    seasons: list[TeamHistorySeasonOut] = []
+
+
 class AuctionOut(BaseModel):
     id: int
     season_id: int

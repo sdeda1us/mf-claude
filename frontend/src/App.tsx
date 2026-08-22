@@ -14,6 +14,7 @@ import Settings from "./pages/Settings";
 import Player from "./pages/Player";
 import Players from "./pages/Players";
 import CribSheet from "./pages/CribSheet";
+import TeamHistory from "./pages/TeamHistory";
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -78,6 +79,12 @@ export default function App() {
             </NavLink>
             <NavLink to="/crib-sheet" className={({ isActive }) => (isActive ? "current" : undefined)}>
               Crib Sheet
+            </NavLink>
+            <NavLink
+              to="/team-history"
+              className={({ isActive }) => (isActive ? "current" : undefined)}
+            >
+              Team History
             </NavLink>
             {user.is_commissioner && (
               <NavLink to="/admin" className={({ isActive }) => (isActive ? "current" : undefined)}>
@@ -172,6 +179,14 @@ export default function App() {
           element={
             <RequireAuth>
               <CribSheet />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/team-history"
+          element={
+            <RequireAuth>
+              <TeamHistory />
             </RequireAuth>
           }
         />

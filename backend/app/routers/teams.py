@@ -1,14 +1,51 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.deps import get_current_user
-from app.models import Team, User
-from app.schemas import TeamOut
+from app.league_rules import compute_score
+from app.models import Team, TeamSeasonResult, User
+from app.schemas import TeamHistoryOut, TeamHistorySeasonOut, TeamOut
+from app.team_history import TEAM_BIOS, TEAM_HISTORY_STATS
 
 router = APIRouter(prefix="/teams", tags=["teams"])
+
+# How many of a team's most recent played seasons the history page charts.
+HISTORY_SEASON_COUNT = 5
 
 
 @router.get("", response_model=list[TeamOut])
 def list_teams(db: Session = Depends(get_db), _: User = Depends(get_current_user)):
     return db.query(Team).order_by(Team.league, Team.name).all()
+
+
+@router.get("/{team_id}/history", response_model=TeamHistoryOut)
+def get_team_history(
+    team_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """Bio plus up to the last HISTORY_SEASON_COUNT seasons a team actually
+    played, scored the same way the rest of the app scores results. The
+    most recent season comes from TeamSeasonResult (live, same source
+    Example Scores reads); anything older comes from the static
+    TEAM_HISTORY_STATS reference data -- currently EPL only, a test of
+    this page ahead of covering the other leagues."""
+    team = db.get(Team, team_id)
+    if team is None:
+        raise HTTPException(status_code=404, detail="Team not found")
+
+    key = (team.league, team.name)
+    seasons: dict[str, dict] = dict(TEAM_HISTORY_STATS.get(key, {}))
+    for result in db.query(TeamSeasonResult).filter(TeamSeasonResult.team_id == team_id):
+        seasons[result.season_label] = result.stats
+
+    recent_labels = sorted(seasons)[-HISTORY_SEASON_COUNT:]
+    return TeamHistoryOut(
+        team_id=team.id,
+        league=team.league,
+        name=team.name,
+        bio=TEAM_BIOS.get(key),
+        seasons=[
+            TeamHistorySeasonOut(season_label=label, points=compute_score(team.league, seasons[label]))
+            for label in recent_labels
+        ],
+    )

@@ -172,3 +172,16 @@ export interface CribSheetEntry {
   team_id: number;
   value: number;
 }
+
+export interface TeamHistorySeason {
+  season_label: string;
+  points: number;
+}
+
+export interface TeamHistory {
+  team_id: number;
+  league: string;
+  name: string;
+  bio: string | null;
+  seasons: TeamHistorySeason[];
+}
