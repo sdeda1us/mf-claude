@@ -11,6 +11,8 @@ export default function CribSheet() {
   const [drafts, setDrafts] = useState<Record<number, string>>({});
   const [expandedLeagues, setExpandedLeagues] = useState<Set<string>>(new Set());
   const [showMethodology, setShowMethodology] = useState(false);
+  const [sortKey, setSortKey] = useState<"name" | "value">("value");
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
 
   useEffect(() => {
     api.get<Team[]>("/teams").then(setTeams);
@@ -38,6 +40,21 @@ export default function CribSheet() {
     !isHiddenByDefault(team) || valueByTeamId.has(team.id) || addedTeamIds.has(team.id);
 
   const hasOverride = (teamId: number) => valueByTeamId.has(teamId);
+
+  // The value a team is actually showing right now — the user's own
+  // override if they've set one, else its modeled default, else nothing
+  // (spring-session teams, not priced yet).
+  const effectiveValue = (team: Team) => valueByTeamId.get(team.id) ?? team.default_value ?? null;
+
+  const toggleSort = (key: "name" | "value") => {
+    if (key === sortKey) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortDir(key === "value" ? "desc" : "asc");
+    }
+  };
+  const sortArrow = (key: "name" | "value") => (sortKey === key ? (sortDir === "asc" ? " ▲" : " ▼") : "");
 
   const draftFor = (team: Team) => {
     if (team.id in drafts) return drafts[team.id];
@@ -142,7 +159,13 @@ export default function CribSheet() {
           <p className="queue-empty">No teams match here.</p>
         ) : (
           leagues.map((league) => {
-            const leagueTeams = byLeague[league];
+            const leagueTeams = [...byLeague[league]].sort((a, b) => {
+              const cmp =
+                sortKey === "value"
+                  ? (effectiveValue(a) ?? -1) - (effectiveValue(b) ?? -1)
+                  : a.name.localeCompare(b.name);
+              return sortDir === "asc" ? cmp : -cmp;
+            });
             const expanded = expandedLeagues.has(league);
             return (
               <div key={league} className="league-block">
@@ -161,9 +184,9 @@ export default function CribSheet() {
                   <table className="sortable-table crib-sheet-table">
                     <thead>
                       <tr>
-                        <th>Team</th>
+                        <th onClick={() => toggleSort("name")}>Team{sortArrow("name")}</th>
                         <th>Sport</th>
-                        <th>Your Value</th>
+                        <th onClick={() => toggleSort("value")}>Your Value{sortArrow("value")}</th>
                         <th></th>
                       </tr>
                     </thead>
