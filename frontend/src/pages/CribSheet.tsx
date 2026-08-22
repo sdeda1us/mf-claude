@@ -320,12 +320,25 @@ export default function CribSheet() {
               opening reference before you've formed your own opinion.
             </p>
             <p>
-              The underlying strength scores come from real preseason odds and ratings research —
-              Vegas win totals and championship odds for NFL/NBA/NHL/NCAAF, Opta predicted points
-              for EPL, full-field FPI/T-Rank ratings for NCAAF/NCAAMB/NCAAWB, and current ATP/WTA
-              rankings aggregated by country for tennis — run through this app's own scoring
-              formulas (see the Rules page).
+              Each team's underlying strength score is built in two steps. First, the best real
+              preseason signal available for that league is turned into a projected stat line — an
+              expected regular-season record and playoff run, a predicted final points total, or
+              similar. Second, that projected performance is run through <em>this league's own
+              scoring rules</em> (see the Rules page) exactly the way a real season's results would
+              score — so the number lands on the same scale as an actual finished season, not some
+              separate rating scale.
             </p>
+            <p>
+              What feeds step one, by league:
+            </p>
+            <ul>
+              <li><strong>NFL, NBA, NHL:</strong> Vegas preseason win totals and championship odds.</li>
+              <li><strong>NCAAF:</strong> Vegas win totals and title odds, plus ESPN's full-field FPI ratings.</li>
+              <li><strong>NCAAMB, NCAAWB:</strong> Bart Torvik's full-field T-Rank power ratings.</li>
+              <li><strong>EPL:</strong> Opta's published predicted final league points.</li>
+              <li><strong>URC:</strong> the closest available preseason rugby power ratings and odds.</li>
+              <li><strong>ATP, WTA:</strong> current world rankings aggregated by country.</li>
+            </ul>
             <p>
               Those scores are turned into dollars with a value-based-drafting model sized to a
               real auction (6 users, $400 each): every roster slot reserves $1 as a floor, and
