@@ -11,23 +11,34 @@ totals and championship odds for NFL/NBA/NHL/NCAAF, Opta predicted points
 for EPL, full-field FPI/T-Rank ratings for NCAAF/NCAAMB, current ATP/WTA
 rankings aggregated by country) run through this app's real scoring formulas
 (app/league_rules.py). Those are proportional, not final dollar amounts --
-calibrate() below turns them into dollars per league:
+calibrate() below turns them into dollars using a value-based-drafting
+model sized to a real auction (6 users, DEFAULT_FALL_BUDGET_PER_USER each):
 
-  - Rank a league's teams by score, and find the one at position
-    ROSTER_LIMITS[league] * (number of users) -- i.e. the worst team that's
-    still needed to fill every user's roster in that league. That team is
-    priced at exactly $1, and every team ranked above it is scaled by the
-    same factor (so relative spacing between teams is preserved) and
-    rounded to the nearest whole dollar, floored at $1.
+  - Reserve $1 for every roster slot across every league and every user --
+    that's the price floor. What's left of the combined budget (the
+    "surplus pool") is split evenly *per roster slot* across leagues, so a
+    league with more roster slots draws a proportionally bigger share, but
+    no league's total draw depends on the scale its own scoring formula
+    happens to produce.
+  - Within a league, that league's dollar share is divided among its
+    teams by relative score: the worst team still needed to fill every
+    user's roster in that league (position ROSTER_LIMITS[league] * number
+    of users) sits at the $1 floor, and every team ranked above it gets a
+    share proportional to how far above that replacement level its score
+    sits, rounded to the nearest whole dollar.
   - Everything ranked below that cutoff isn't needed by anyone at any
     price under the model, so it's priced at $0 rather than some token
     floor amount.
 
-This intentionally replaced an earlier version of this script that instead
-calibrated to a $1 floor on the single worst team and a league-wide $10
-average -- that put the floor in the wrong place (the actual last-needed
-team was still worth well over $1) and never zeroed out teams nobody's
-projected to draft. Proxy model, not a forecast.
+This replaced two earlier versions of this script: the original calibrated
+to a $1 floor on the single worst team and a league-wide $10 average (the
+floor was in the wrong place, and nothing was ever zeroed); the one after
+that anchored $1 to the actual last-needed team and zeroed the rest, but
+pooled raw scores globally, so leagues whose formula happens to produce
+bigger numbers (e.g. ATP/WTA, which aggregate every player from a country)
+swallowed a wildly disproportionate share of the budget. This version
+still floors/zeros the same way but fixes that by giving every league an
+equal per-slot share up front. Proxy model, not a forecast.
 
 Spring-session leagues (MLB, PGA, LPGA, F1, WNBA, MLS, NWSL, TDF, IPL) are not
 covered yet -- their Team.default_value stays null (crib sheet shows blank,
@@ -37,6 +48,13 @@ same as before this script existed) until the same pricing pass is done there.
 from app.database import SessionLocal
 from app.league_rules import ROSTER_LIMITS
 from app.models import Team, User
+
+# Matches SeasonCreateIn's fall_budget_per_user default (app/schemas.py) --
+# calibrate() needs a concrete number to size the surplus pool, and this
+# script writes one global Team.default_value, not something scoped to a
+# particular season, so it uses the standard default rather than trying to
+# pick "the" current season's configured budget.
+DEFAULT_FALL_BUDGET_PER_USER = 400
 
 # (league, team name) -> relative-strength score within that league (higher
 # is better; NOT a dollar amount -- see calibrate() below). Team names
@@ -1166,18 +1184,29 @@ FALL_EV_RAW_SCORES: dict[tuple[str, str], int] = {
 }
 
 
-def calibrate(num_users: int) -> dict[tuple[str, str], int]:
+def calibrate(num_users: int, budget_per_user: float = DEFAULT_FALL_BUDGET_PER_USER) -> dict[tuple[str, str], int]:
     """Turns FALL_EV_RAW_SCORES into dollar defaults, per the module
-    docstring: the worst team still needed to fill every user's roster in a
-    league prices at $1, everything ranked above it scales the same factor
-    (preserving relative spacing) rounded to whole dollars floored at $1,
-    and everything ranked below that cutoff -- nobody's projected to need
-    it at any price -- prices at $0."""
+    docstring: every league gets an equal average dollar share per roster
+    slot up front (so no league's total budget draw depends on the scale
+    its own scoring formula happens to produce), and each league's own
+    score spread only decides how that league's share is divided among
+    its teams. The worst team still needed to fill every user's roster in
+    a league prices at exactly $1; everything ranked above it scales up
+    from there (preserving relative spacing) rounded to whole dollars;
+    everything ranked below that cutoff -- nobody's projected to need it
+    at any price -- prices at $0."""
     num_users = max(num_users, 1)
 
     by_league: dict[str, list[tuple[str, int]]] = {}
     for (league, name), score in FALL_EV_RAW_SCORES.items():
         by_league.setdefault(league, []).append((name, score))
+
+    total_slots = sum(ROSTER_LIMITS[league] for league in by_league) * num_users
+    total_budget = num_users * budget_per_user
+    # Above the $1-per-slot floor every slot reserves regardless of league,
+    # this is what's left to hand out -- split evenly per slot across
+    # leagues, then within a league by relative score.
+    avg_surplus_per_slot = (total_budget - total_slots) / total_slots
 
     result: dict[tuple[str, str], int] = {}
     for league, teams in by_league.items():
@@ -1186,12 +1215,17 @@ def calibrate(num_users: int) -> dict[tuple[str, str], int]:
         ranked = sorted(teams, key=lambda t: t[1], reverse=True)
         needed = ROSTER_LIMITS[league] * num_users
         cutoff_index = min(needed, len(ranked)) - 1
-        anchor_score = ranked[cutoff_index][1]
-        scale = 1.0 / anchor_score if anchor_score > 0 else 1.0
+        replacement_score = ranked[cutoff_index][1]
+        league_surplus_points = sum(
+            max(0, score - replacement_score) for idx, (_, score) in enumerate(ranked) if idx < needed
+        )
+        league_surplus_dollars = needed * avg_surplus_per_slot
+        rate = league_surplus_dollars / league_surplus_points if league_surplus_points > 0 else 0.0
 
         for idx, (name, score) in enumerate(ranked):
             if idx < needed:
-                result[(league, name)] = max(1, round(score * scale))
+                surplus = max(0, score - replacement_score)
+                result[(league, name)] = max(1, round(1 + surplus * rate))
             else:
                 result[(league, name)] = 0
 

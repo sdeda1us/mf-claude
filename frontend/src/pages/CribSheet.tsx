@@ -327,12 +327,21 @@ export default function CribSheet() {
               formulas (see the Rules page).
             </p>
             <p>
-              Those scores are turned into dollars per league by anchoring to how many teams that
-              league can actually hold across every roster: the worst team still needed to fill
-              everyone's roster spots is priced at exactly $1, every team ranked above it scales
-              by the same factor (preserving the relative gaps between teams) and rounds to the
-              nearest whole dollar, and anything ranked below that cutoff — not projected to be
-              worth a roster spot to anyone — is priced at $0 rather than some token amount.
+              Those scores are turned into dollars with a value-based-drafting model sized to a
+              real auction (6 users, $400 each): every roster slot reserves $1 as a floor, and
+              what's left of the combined budget is split <em>evenly per roster slot across
+              leagues</em> — so a league with more roster spots draws a proportionally bigger
+              share, but no league's total draw depends on the scale its own scoring formula
+              happens to produce (a tennis country's score aggregating many players' results
+              can't out-earn an NFL team's simpler score just because the raw numbers are bigger).
+            </p>
+            <p>
+              Within a league, its share is divided by relative score: the worst team still
+              needed to fill everyone's roster spots in that league sits at the $1 floor, every
+              team ranked above it gets a share proportional to how far above that it scores
+              (rounded to the nearest whole dollar), and anything ranked below that cutoff — not
+              projected to be worth a roster spot to anyone — prices at $0 rather than some
+              token amount.
             </p>
             <p>
               It's a proxy model, not a forecast — a reasonable starting point, not a prediction of
