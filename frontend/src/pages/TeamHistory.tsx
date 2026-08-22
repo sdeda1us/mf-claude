@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { api, type Team, type TeamHistory as TeamHistoryData } from "../lib/api";
 
-// Test scope: only EPL is populated with bios/history so far (see
-// backend/app/team_history.py) — other leagues will show up here once the
-// same research pass is done for them.
-const COVERED_LEAGUES = ["EPL"];
+// Test scope: only these leagues are populated with bios/history so far
+// (see backend/app/team_history.py) — grouped into separate pickers below
+// rather than one giant dropdown. Extend a group's league list (or add a
+// new group) as more leagues get covered.
+const PICKER_GROUPS: { title: string; leagues: string[] }[] = [
+  { title: "EPL", leagues: ["EPL"] },
+  { title: "NFL, NBA, NHL", leagues: ["NFL", "NBA", "NHL"] },
+];
 
 const CHART_WIDTH = 560;
 const CHART_HEIGHT = 220;
@@ -169,21 +173,14 @@ function TeamHistoryPanel({ teamId }: { teamId: number }) {
   );
 }
 
-export default function TeamHistory() {
-  const [teams, setTeams] = useState<Team[]>([]);
+function TeamPicker({ title, teams }: { title: string; teams: Team[] }) {
   const [selectedTeamId, setSelectedTeamId] = useState<number | null>(null);
 
-  useEffect(() => {
-    api.get<Team[]>("/teams").then(setTeams);
-  }, []);
-
-  const coveredTeams = teams.filter((t) => COVERED_LEAGUES.includes(t.league));
-
-  // Grouped by league (even though it's one group today) so this scales
-  // cleanly as more leagues get covered — each becomes its own optgroup
-  // instead of one long flat list.
+  // Grouped by league — a one-league group (EPL) just gets a single
+  // optgroup, but this scales cleanly for a group spanning several
+  // leagues (NFL/NBA/NHL) without changing the picker's shape.
   const byLeague: Record<string, Team[]> = {};
-  for (const t of coveredTeams) {
+  for (const t of teams) {
     (byLeague[t.league] ??= []).push(t);
   }
   for (const list of Object.values(byLeague)) {
@@ -192,17 +189,10 @@ export default function TeamHistory() {
   const leagues = Object.keys(byLeague).sort();
 
   return (
-    <div className="page">
-      <h1>Team History</h1>
-      <p>
-        A short biography and the last several seasons' worth of fantasy points for each team —
-        currently a test covering EPL only, ahead of doing the same research pass for the other
-        leagues.
-      </p>
-
+    <section className="team-history-group">
       <div className="stacked-form" style={{ maxWidth: 320 }}>
         <label>
-          Team
+          {title}
           <select
             value={selectedTeamId ?? ""}
             onChange={(e) => setSelectedTeamId(e.target.value ? Number(e.target.value) : null)}
@@ -226,6 +216,33 @@ export default function TeamHistory() {
           <TeamHistoryPanel teamId={selectedTeamId} />
         </div>
       )}
+    </section>
+  );
+}
+
+export default function TeamHistory() {
+  const [teams, setTeams] = useState<Team[]>([]);
+
+  useEffect(() => {
+    api.get<Team[]>("/teams").then(setTeams);
+  }, []);
+
+  return (
+    <div className="page">
+      <h1>Team History</h1>
+      <p>
+        A short biography and the last several seasons' worth of fantasy points for each team —
+        currently a test covering EPL, NFL, NBA, and NHL, ahead of doing the same research pass
+        for the other leagues.
+      </p>
+
+      {PICKER_GROUPS.map((group) => (
+        <TeamPicker
+          key={group.title}
+          title={group.title}
+          teams={teams.filter((t) => group.leagues.includes(t.league))}
+        />
+      ))}
     </div>
   );
 }

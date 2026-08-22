@@ -720,6 +720,12 @@ button:disabled {
   margin-top: 8px;
 }
 
+.team-history-group + .team-history-group {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid var(--rule);
+}
+
 .team-history-panel h2 {
   margin-bottom: 8px;
 }
