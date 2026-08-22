@@ -6,7 +6,7 @@ from app.deps import get_current_user
 from app.league_rules import compute_score
 from app.models import Team, TeamSeasonResult, User
 from app.schemas import TeamHistoryOut, TeamHistorySeasonOut, TeamOut
-from app.team_history import TEAM_BIOS, TEAM_HISTORY_STATS
+from app.team_history import TEAM_BIOS, TEAM_HISTORY_STATS, TEAM_LOCATIONS
 
 router = APIRouter(prefix="/teams", tags=["teams"])
 
@@ -39,11 +39,14 @@ def get_team_history(
         seasons[result.season_label] = result.stats
 
     recent_labels = sorted(seasons)[-HISTORY_SEASON_COUNT:]
+    location = TEAM_LOCATIONS.get(key)
     return TeamHistoryOut(
         team_id=team.id,
         league=team.league,
         name=team.name,
         bio=TEAM_BIOS.get(key),
+        latitude=location[0] if location else None,
+        longitude=location[1] if location else None,
         seasons=[
             TeamHistorySeasonOut(season_label=label, points=compute_score(team.league, seasons[label]))
             for label in recent_labels

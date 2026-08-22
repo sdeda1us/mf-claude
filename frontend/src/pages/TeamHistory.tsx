@@ -96,6 +96,30 @@ function SeasonChart({ seasons }: { seasons: TeamHistoryData["seasons"] }) {
   );
 }
 
+// How far the embedded map's viewport extends past the stadium marker on
+// each side, in degrees — small enough to read as "this city/neighborhood",
+// not a whole region.
+const MAP_DEGREES_PADDING = 0.02;
+
+function TeamMap({ name, latitude, longitude }: { name: string; latitude: number; longitude: number }) {
+  const bbox = [
+    longitude - MAP_DEGREES_PADDING,
+    latitude - MAP_DEGREES_PADDING,
+    longitude + MAP_DEGREES_PADDING,
+    latitude + MAP_DEGREES_PADDING,
+  ].join(",");
+  const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&marker=${latitude},${longitude}&layer=mapnik`;
+  return (
+    <div className="team-history-map">
+      <iframe
+        title={`Map of where ${name} plays`}
+        src={src}
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
 function TeamHistoryPanel({ teamId }: { teamId: number }) {
   const [history, setHistory] = useState<TeamHistoryData | null>(null);
 
@@ -109,11 +133,16 @@ function TeamHistoryPanel({ teamId }: { teamId: number }) {
   return (
     <div className="team-history-panel">
       <h2>{history.name}</h2>
-      {history.bio ? (
-        <p className="team-history-bio">{history.bio}</p>
-      ) : (
-        <p className="queue-empty">No biography written up for this team yet.</p>
-      )}
+      <div className="team-history-header">
+        {history.bio ? (
+          <p className="team-history-bio">{history.bio}</p>
+        ) : (
+          <p className="queue-empty">No biography written up for this team yet.</p>
+        )}
+        {history.latitude != null && history.longitude != null && (
+          <TeamMap name={history.name} latitude={history.latitude} longitude={history.longitude} />
+        )}
+      </div>
 
       <h3>Fantasy points by season</h3>
       {history.seasons.length === 0 ? (
@@ -144,9 +173,19 @@ export default function TeamHistory() {
     api.get<Team[]>("/teams").then(setTeams);
   }, []);
 
-  const coveredTeams = teams
-    .filter((t) => COVERED_LEAGUES.includes(t.league))
-    .sort((a, b) => a.name.localeCompare(b.name));
+  const coveredTeams = teams.filter((t) => COVERED_LEAGUES.includes(t.league));
+
+  // Grouped by league (even though it's one group today) so this scales
+  // cleanly as more leagues get covered — each becomes its own optgroup
+  // instead of one long flat list.
+  const byLeague: Record<string, Team[]> = {};
+  for (const t of coveredTeams) {
+    (byLeague[t.league] ??= []).push(t);
+  }
+  for (const list of Object.values(byLeague)) {
+    list.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  const leagues = Object.keys(byLeague).sort();
 
   return (
     <div className="page">
@@ -157,17 +196,25 @@ export default function TeamHistory() {
         leagues.
       </p>
 
-      <div className="player-picker">
-        {coveredTeams.map((t) => (
-          <button
-            key={t.id}
-            type="button"
-            className={t.id === selectedTeamId ? "player-picker-item selected" : "player-picker-item"}
-            onClick={() => setSelectedTeamId(t.id)}
+      <div className="stacked-form" style={{ maxWidth: 320 }}>
+        <label>
+          Team
+          <select
+            value={selectedTeamId ?? ""}
+            onChange={(e) => setSelectedTeamId(e.target.value ? Number(e.target.value) : null)}
           >
-            {t.name}
-          </button>
-        ))}
+            <option value="">Choose a team…</option>
+            {leagues.map((league) => (
+              <optgroup key={league} label={league}>
+                {byLeague[league].map((t) => (
+                  <option key={t.id} value={t.id}>
+                    {t.name}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+        </label>
       </div>
 
       {selectedTeamId && (

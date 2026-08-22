@@ -183,5 +183,7 @@ export interface TeamHistory {
   league: string;
   name: string;
   bio: string | null;
+  latitude: number | null;
+  longitude: number | null;
   seasons: TeamHistorySeason[];
 }

@@ -5,8 +5,8 @@ actually played in its league.
 
 Deliberately structured like set_ev_defaults.py's FALL_EV_RAW_SCORES --
 plain content-as-code, no migration needed. This is a test of the feature
-scoped to EPL only; extend TEAM_BIOS/TEAM_HISTORY_STATS with the same
-shape to cover another league.
+scoped to EPL only; extend TEAM_BIOS/TEAM_HISTORY_STATS/TEAM_LOCATIONS
+with the same shape to cover another league.
 
 TEAM_HISTORY_STATS intentionally stops one season short of "now" -- the
 most recent season lives in the Team_season_results table already (the
@@ -14,6 +14,31 @@ same row Example Scores reads), so the history endpoint reads that live
 rather than duplicating it here and letting it drift stale once someone
 updates that row for a new season.
 """
+
+# (league, team name) -> (latitude, longitude) of the team's home ground,
+# for the "where they play" map. Approximate stadium coordinates.
+TEAM_LOCATIONS: dict[tuple[str, str], tuple[float, float]] = {
+    ("EPL", "Arsenal"): (51.5549, -0.1084),  # Emirates Stadium, London
+    ("EPL", "Aston Villa"): (52.5092, -1.8848),  # Villa Park, Birmingham
+    ("EPL", "Bournemouth"): (50.7352, -1.8384),  # Vitality Stadium
+    ("EPL", "Brentford"): (51.4907, -0.2886),  # Gtech Community Stadium, London
+    ("EPL", "Brighton & Hove Albion"): (50.8617, -0.0837),  # Amex Stadium, Falmer
+    ("EPL", "Chelsea"): (51.4816, -0.1910),  # Stamford Bridge, London
+    ("EPL", "Coventry City"): (52.4483, -1.4954),  # CBS Arena, Coventry
+    ("EPL", "Crystal Palace"): (51.3983, -0.0856),  # Selhurst Park, London
+    ("EPL", "Everton"): (53.4483, -2.9925),  # Everton Stadium, Bramley-Moore Dock
+    ("EPL", "Fulham"): (51.4749, -0.2217),  # Craven Cottage, London
+    ("EPL", "Hull City"): (53.7460, -0.3672),  # MKM Stadium
+    ("EPL", "Ipswich Town"): (52.0552, 1.1451),  # Portman Road
+    ("EPL", "Leeds United"): (53.7778, -1.5722),  # Elland Road
+    ("EPL", "Liverpool"): (53.4308, -2.9608),  # Anfield
+    ("EPL", "Manchester City"): (53.4831, -2.2004),  # Etihad Stadium
+    ("EPL", "Manchester United"): (53.4631, -2.2913),  # Old Trafford
+    ("EPL", "Newcastle United"): (54.9756, -1.6217),  # St James' Park
+    ("EPL", "Nottingham Forest"): (52.9400, -1.1328),  # City Ground
+    ("EPL", "Sunderland"): (54.9144, -1.3883),  # Stadium of Light
+    ("EPL", "Tottenham Hotspur"): (51.6043, -0.0662),  # Tottenham Hotspur Stadium, London
+}
 
 # (league, team name) -> a short factual biography (2-4 sentences):
 # founding, home ground, identity/nickname, and a headline moment or two.

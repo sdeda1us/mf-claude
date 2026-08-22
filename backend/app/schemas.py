@@ -61,6 +61,8 @@ class TeamHistoryOut(BaseModel):
     league: str
     name: str
     bio: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
     seasons: list[TeamHistorySeasonOut] = []
 
 

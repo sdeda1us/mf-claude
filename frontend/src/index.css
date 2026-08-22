@@ -724,9 +724,39 @@ button:disabled {
   margin-bottom: 8px;
 }
 
+.team-history-header {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
 .team-history-bio {
+  flex: 1 1 360px;
   max-width: 68ch;
   color: var(--ink-soft);
+  margin: 0;
+}
+
+.team-history-map {
+  flex: 0 0 280px;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 2px 2px 0 var(--shadow);
+}
+
+.team-history-map iframe {
+  display: block;
+  width: 100%;
+  height: 200px;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .team-history-map {
+    flex-basis: 100%;
+  }
 }
 
 .team-history-panel h3 {
