@@ -97,16 +97,20 @@ function SeasonChart({ seasons }: { seasons: TeamHistoryData["seasons"] }) {
 }
 
 // How far the embedded map's viewport extends past the stadium marker on
-// each side, in degrees — small enough to read as "this city/neighborhood",
-// not a whole region.
-const MAP_DEGREES_PADDING = 0.02;
+// each side, in degrees — wide enough to read as "whereabouts in the
+// country", not just the immediate neighborhood. Longitude gets a wider
+// padding than latitude since degrees of longitude cover less ground the
+// further from the equator you are (~0.6x at UK latitudes), and the map
+// panel itself is wider than it is tall.
+const MAP_LAT_PADDING = 2.8;
+const MAP_LON_PADDING = 4.3;
 
 function TeamMap({ name, latitude, longitude }: { name: string; latitude: number; longitude: number }) {
   const bbox = [
-    longitude - MAP_DEGREES_PADDING,
-    latitude - MAP_DEGREES_PADDING,
-    longitude + MAP_DEGREES_PADDING,
-    latitude + MAP_DEGREES_PADDING,
+    longitude - MAP_LON_PADDING,
+    latitude - MAP_LAT_PADDING,
+    longitude + MAP_LON_PADDING,
+    latitude + MAP_LAT_PADDING,
   ].join(",");
   const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&marker=${latitude},${longitude}&layer=mapnik`;
   return (
