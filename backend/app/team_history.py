@@ -135,6 +135,23 @@ TEAM_LOCATIONS: dict[tuple[str, str], tuple[float, float]] = {
     ("NHL", "Seattle Kraken"): (47.6221, -122.3540),  # Climate Pledge Arena
     ("NHL", "Vancouver Canucks"): (49.2778, -123.1088),  # Rogers Arena
     ("NHL", "Vegas Golden Knights"): (36.1028, -115.1784),  # T-Mobile Arena
+    # --- URC ---
+    ("URC", "Leinster"): (53.3282, -6.2270),  # RDS Arena, Dublin
+    ("URC", "Munster"): (52.6748, -8.6314),  # Thomond Park, Limerick
+    ("URC", "Connacht"): (53.2707, -9.0568),  # The Sportsground, Galway
+    ("URC", "Ulster"): (54.5794, -5.8875),  # Kingspan Stadium, Belfast
+    ("URC", "Cardiff"): (51.4784, -3.1811),  # Cardiff Arms Park
+    ("URC", "Ospreys"): (51.6422, -3.9351),  # Swansea.com Stadium
+    ("URC", "Scarlets"): (51.6892, -4.1592),  # Parc y Scarlets, Llanelli
+    ("URC", "Dragons"): (51.5836, -2.9092),  # Rodney Parade, Newport
+    ("URC", "Bulls"): (-25.7536, 28.2225),  # Loftus Versfeld, Pretoria
+    ("URC", "Lions"): (-26.1935, 28.0653),  # Ellis Park, Johannesburg
+    ("URC", "Sharks"): (-29.8279, 31.0292),  # Hollywoodbets Kings Park, Durban
+    ("URC", "Stormers"): (-33.9036, 18.4108),  # DHL Stadium, Cape Town
+    ("URC", "Glasgow Warriors"): (55.8847, -4.3389),  # Scotstoun Stadium
+    ("URC", "Edinburgh"): (55.9461, -3.2472),  # Hive Stadium (DAM Health Stadium)
+    ("URC", "Benetton"): (45.6867, 12.2497),  # Stadio Comunale di Monigo, Treviso
+    ("URC", "Zebre Parma"): (44.8125, 10.3364),  # Stadio Sergio Lanfranchi, Parma
 }
 
 # (league, team name) -> a short factual biography (2-4 sentences):
@@ -704,6 +721,84 @@ TEAM_BIOS: dict[tuple[str, str], str] = {
         "Founded in 2017 as an expansion team and based at T-Mobile Arena, the Golden "
         "Knights reached the Final in their inaugural season (2018) and won a Stanley Cup "
         "in 2023 -- one of the most successful expansion franchises in sports history."
+    ),
+    # --- URC ---
+    ("URC", "Leinster"): (
+        "One of Ireland's four professional provinces, based at the RDS Arena in Dublin, "
+        "Leinster are the most successful side in the league's history across its Celtic "
+        "League/Pro12/Pro14/URC eras, and have won four European Cups (2009, 2011, 2012, "
+        "2018)."
+    ),
+    ("URC", "Munster"): (
+        "One of Ireland's four professional provinces, based at Thomond Park in Limerick, "
+        "Munster have one of rugby's most passionate fanbases and won two Heineken Cups "
+        "(2006, 2008), plus the 2023 URC title."
+    ),
+    ("URC", "Connacht"): (
+        "One of Ireland's four professional provinces, based at the Sportsground in "
+        "Galway, historically the smallest and least funded of the four, Connacht won a "
+        "surprise Pro12 title in 2016 under Pat Lam."
+    ),
+    ("URC", "Ulster"): (
+        "One of Ireland's four professional provinces, based at Kingspan Stadium in "
+        "Belfast, Ulster won the old Heineken Cup in 1999, the first Irish side to do so."
+    ),
+    ("URC", "Cardiff"): (
+        "A Welsh region based at Cardiff Arms Park, with roots in Cardiff RFC (founded "
+        "1876, one of the world's oldest rugby clubs) reorganized as a regional side in "
+        "2003."
+    ),
+    ("URC", "Ospreys"): (
+        "A Welsh region based at the Swansea.com Stadium, formed in 2003 from a merger of "
+        "Neath and Swansea; historically the most domestically successful of the Welsh "
+        "regions."
+    ),
+    ("URC", "Scarlets"): (
+        "A Welsh region based at Parc y Scarlets in Llanelli, with roots in Llanelli RFC "
+        "(founded 1872), famous pre-regional-era for beating the touring All Blacks in "
+        "1972."
+    ),
+    ("URC", "Dragons"): (
+        "A Welsh region based at Rodney Parade in Newport, formed in 2003 as the Newport "
+        "Gwent Dragons; historically the least successful of the Welsh regions."
+    ),
+    ("URC", "Bulls"): (
+        "A South African side based at Loftus Versfeld in Pretoria, a dominant force in "
+        "Super Rugby through the 2000s and 2010s with four titles, who joined the "
+        "rebranded United Rugby Championship in 2021."
+    ),
+    ("URC", "Lions"): (
+        "A South African side based at Ellis Park in Johannesburg, who reached three "
+        "straight Super Rugby finals (2016-2018) without winning one, before joining the "
+        "United Rugby Championship in 2021."
+    ),
+    ("URC", "Sharks"): (
+        "A South African side based at Hollywoodbets Kings Park in Durban, long known as "
+        "Super Rugby's nearly-men after three lost finals (2001, 2007, 2008), who joined "
+        "the United Rugby Championship in 2021."
+    ),
+    ("URC", "Stormers"): (
+        "A South African side based at DHL Stadium in Cape Town, the Stormers won the "
+        "United Rugby Championship's inaugural title in 2022 and reached back-to-back "
+        "finals in 2022 and 2023."
+    ),
+    ("URC", "Glasgow Warriors"): (
+        "A Scottish side based at Scotstoun Stadium, Glasgow won the 2014-15 Pro12 title "
+        "and won the United Rugby Championship in 2024, then reached the final again as "
+        "runners-up in 2025."
+    ),
+    ("URC", "Edinburgh"): (
+        "A Scottish side based at the Hive Stadium, historically less successful "
+        "domestically than fellow Scots Glasgow, Edinburgh reached the European Challenge "
+        "Cup final in 2022."
+    ),
+    ("URC", "Benetton"): (
+        "An Italian side based at the Stadio Comunale di Monigo in Treviso, Benetton were "
+        "the first Italian side to reach the playoffs regularly in the Pro14/URC era."
+    ),
+    ("URC", "Zebre Parma"): (
+        "An Italian side based in Parma, historically the weaker of Italy's two "
+        "professional sides in the league, with no playoff appearance yet."
     ),
 }
 
@@ -1396,5 +1491,104 @@ TEAM_HISTORY_STATS: dict[tuple[str, str], dict[str, dict]] = {
         "2022-23": {"wins": 51, "reg_losses": 22, "ot_losses": 9, "made_playoffs": True, "won_round1": True, "won_round2": True, "won_conf_champ": True, "won_cup": True},
         "2023-24": {"wins": 45, "reg_losses": 29, "ot_losses": 8, "made_playoffs": True},
         "2024-25": {"wins": 50, "reg_losses": 22, "ot_losses": 10, "made_playoffs": True, "won_round1": True, "won_round2": False},
+    },
+    # --- URC --- (season_label is e.g. "2021-22" for the season whose
+    # Grand Final concluded that June; 2021-22 was the URC's first season,
+    # replacing the old Pro14 and adding the four South African sides)
+    ("URC", "Leinster"): {
+        "2021-22": {"table_points": 67, "points_difference": 270, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2022-23": {"table_points": 79, "points_difference": 217, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2023-24": {"table_points": 65, "points_difference": 204, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2024-25": {"table_points": 76, "points_difference": 286, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": True, "won_final": True},
+    },
+    ("URC", "Munster"): {
+        "2021-22": {"table_points": 56, "points_difference": 183, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2022-23": {"table_points": 55, "points_difference": 113, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": True, "won_final": True},
+        "2023-24": {"table_points": 68, "points_difference": 165, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2024-25": {"table_points": 51, "points_difference": 15, "made_playoffs": True, "won_quarterfinal": False},
+    },
+    ("URC", "Connacht"): {
+        "2021-22": {"table_points": 41, "points_difference": -103},
+        "2022-23": {"table_points": 50, "points_difference": 30, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2023-24": {"table_points": 45, "points_difference": -28},
+        "2024-25": {"table_points": 39, "points_difference": -52},
+    },
+    ("URC", "Ulster"): {
+        "2021-22": {"table_points": 59, "points_difference": 115, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2022-23": {"table_points": 68, "points_difference": 176, "made_playoffs": True, "won_quarterfinal": False},
+        "2023-24": {"table_points": 54, "points_difference": 28, "made_playoffs": True, "won_quarterfinal": False},
+        "2024-25": {"table_points": 38, "points_difference": -92},
+    },
+    ("URC", "Cardiff"): {
+        "2021-22": {"table_points": 32, "points_difference": -208},
+        "2022-23": {"table_points": 44, "points_difference": -45},
+        "2023-24": {"table_points": 32, "points_difference": -26},
+        "2024-25": {"table_points": 47, "points_difference": -68},
+    },
+    ("URC", "Ospreys"): {
+        "2021-22": {"table_points": 46, "points_difference": -52},
+        "2022-23": {"table_points": 35, "points_difference": -114},
+        "2023-24": {"table_points": 50, "points_difference": -35, "made_playoffs": True, "won_quarterfinal": False},
+        "2024-25": {"table_points": 40, "points_difference": -17},
+    },
+    ("URC", "Scarlets"): {
+        "2021-22": {"table_points": 45, "points_difference": -40},
+        "2022-23": {"table_points": 34, "points_difference": -71},
+        "2023-24": {"table_points": 27, "points_difference": -262},
+        "2024-25": {"table_points": 48, "points_difference": 45, "made_playoffs": True, "won_quarterfinal": False},
+    },
+    ("URC", "Dragons"): {
+        "2021-22": {"table_points": 19, "points_difference": -242},
+        "2022-23": {"table_points": 24, "points_difference": -143},
+        "2023-24": {"table_points": 16, "points_difference": -311},
+        "2024-25": {"table_points": 9, "points_difference": -302},
+    },
+    ("URC", "Bulls"): {
+        "2021-22": {"table_points": 58, "points_difference": 130, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": True, "won_final": False},
+        "2022-23": {"table_points": 53, "points_difference": 165, "made_playoffs": True, "won_quarterfinal": False},
+        "2023-24": {"table_points": 66, "points_difference": 206, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": True, "won_final": False},
+        "2024-25": {"table_points": 68, "points_difference": 181, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": True, "won_final": False},
+    },
+    ("URC", "Lions"): {
+        "2021-22": {"table_points": 41, "points_difference": -42},
+        "2022-23": {"table_points": 45, "points_difference": -84},
+        "2023-24": {"table_points": 50, "points_difference": 128},
+        "2024-25": {"table_points": 40, "points_difference": -38},
+    },
+    ("URC", "Sharks"): {
+        "2021-22": {"table_points": 57, "points_difference": 145, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2022-23": {"table_points": 48, "points_difference": 6, "made_playoffs": True, "won_quarterfinal": False},
+        "2023-24": {"table_points": 25, "points_difference": -88},
+        "2024-25": {"table_points": 62, "points_difference": 34, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+    },
+    ("URC", "Stormers"): {
+        "2021-22": {"table_points": 61, "points_difference": 153, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": True, "won_final": True},
+        "2022-23": {"table_points": 68, "points_difference": 140, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": True, "won_final": False},
+        "2023-24": {"table_points": 59, "points_difference": 120, "made_playoffs": True, "won_quarterfinal": False},
+        "2024-25": {"table_points": 55, "points_difference": 89, "made_playoffs": True, "won_quarterfinal": False},
+    },
+    ("URC", "Glasgow Warriors"): {
+        "2021-22": {"table_points": 50, "points_difference": 33, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+        "2022-23": {"table_points": 63, "points_difference": 95, "made_playoffs": True, "won_quarterfinal": False},
+        "2023-24": {"table_points": 65, "points_difference": 166, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": True, "won_final": True},
+        "2024-25": {"table_points": 59, "points_difference": 141, "made_playoffs": True, "won_quarterfinal": True, "won_semifinal": False},
+    },
+    ("URC", "Edinburgh"): {
+        "2021-22": {"table_points": 54, "points_difference": 103, "made_playoffs": True, "won_quarterfinal": False},
+        "2022-23": {"table_points": 38, "points_difference": -1},
+        "2023-24": {"table_points": 49, "points_difference": 19},
+        "2024-25": {"table_points": 49, "points_difference": 64, "made_playoffs": True, "won_quarterfinal": False},
+    },
+    ("URC", "Benetton"): {
+        "2021-22": {"table_points": 35, "points_difference": -76},
+        "2022-23": {"table_points": 41, "points_difference": -93},
+        "2023-24": {"table_points": 54, "points_difference": 11, "made_playoffs": True, "won_quarterfinal": False},
+        "2024-25": {"table_points": 46, "points_difference": -85},
+    },
+    ("URC", "Zebre Parma"): {
+        "2021-22": {"table_points": 9, "points_difference": -369},
+        "2022-23": {"table_points": 11, "points_difference": -391},
+        "2023-24": {"table_points": 15, "points_difference": -298},
+        "2024-25": {"table_points": 29, "points_difference": -201},
     },
 }

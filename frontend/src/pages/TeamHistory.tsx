@@ -4,7 +4,7 @@ import { api, type Team, type TeamHistory as TeamHistoryData } from "../lib/api"
 // Test scope: only these leagues are populated with bios/history so far
 // (see backend/app/team_history.py) — each gets its own dropdown. Add a
 // league here once the same research pass covers it.
-const COVERED_LEAGUES = ["EPL", "NFL", "NBA", "NHL"];
+const COVERED_LEAGUES = ["EPL", "NFL", "NBA", "NHL", "URC"];
 
 const CHART_WIDTH = 560;
 const CHART_HEIGHT = 220;
@@ -214,7 +214,7 @@ export default function TeamHistory() {
       <h1>Team History</h1>
       <p>
         A short biography and the last several seasons' worth of fantasy points for each team —
-        currently a test covering EPL, NFL, NBA, and NHL, ahead of doing the same research pass
+        currently a test covering EPL, NFL, NBA, NHL, and URC, ahead of doing the same research pass
         for the other leagues.
       </p>
 
