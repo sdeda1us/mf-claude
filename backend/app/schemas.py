@@ -63,6 +63,7 @@ class TeamHistoryOut(BaseModel):
     bio: str | None = None
     latitude: float | None = None
     longitude: float | None = None
+    prognosis: str | None = None
     seasons: list[TeamHistorySeasonOut] = []
 
 

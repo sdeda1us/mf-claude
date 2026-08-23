@@ -1592,3 +1592,535 @@ TEAM_HISTORY_STATS: dict[tuple[str, str], dict[str, dict]] = {
         "2024-25": {"table_points": 29, "points_difference": -201},
     },
 }
+
+# (league, team name) -> a short outlook for the team's next season, based
+# on real preseason reporting (offseason moves, coaching changes, odds/
+# projections) gathered in mid-to-late August 2026: EPL's 2026-27 season
+# (already under way -- kicked off Aug 21, 2026), NFL's 2026 season
+# (opens Sept 9), NBA's and NHL's 2026-27 seasons (open ~Oct 20 and Sept
+# 29 respectively), and URC's 2026-27 season (opens Sept 19). This is
+# necessarily a snapshot, not a permanent record -- preseason expectations
+# age quickly once games are actually played, so revisit each entry once
+# a season is well under way rather than trusting it indefinitely.
+TEAM_PROGNOSES: dict[tuple[str, str], str] = {
+    # --- EPL (2026-27) ---
+    ("EPL", "Arsenal"): (
+        "Defending their first title since 2003-04, Arsenal reportedly widened the gap on "
+        "the rest of the division over the summer and are the consensus favorites to repeat."
+    ),
+    ("EPL", "Aston Villa"): (
+        "Likely to come back down to earth after outperforming their underlying numbers in "
+        "recent campaigns, with Champions League football adding a heavy workload."
+    ),
+    ("EPL", "Bournemouth"): (
+        "Marco Rose's side are set for their first-ever European campaign, which "
+        "historically drags down a club's league form the following season."
+    ),
+    ("EPL", "Brentford"): (
+        "One of the league's best-run clubs, strengthened over the summer without losing "
+        "any of their key men, and tipped to push for a European spot with no continental "
+        "football of their own to juggle."
+    ),
+    ("EPL", "Brighton & Hove Albion"): (
+        "A run in one of the European competitions could pull focus away from their league "
+        "campaign this season."
+    ),
+    ("EPL", "Chelsea"): (
+        "Xabi Alonso's arrival has sharply improved expectations, with Cole Palmer, Morgan "
+        "Rogers, and Joao Pedro leading a talented attack, and no European football to "
+        "distract from a title push."
+    ),
+    ("EPL", "Coventry City"): (
+        "Back in the top flight under new boss Frank Lampard, considered the best-fancied "
+        "of the three promoted sides but still tipped for a real relegation fight."
+    ),
+    ("EPL", "Crystal Palace"): (
+        "Pierre Sage takes over during a transition period, with continental football "
+        "adding to the strain on a squad also fighting to stay clear of trouble."
+    ),
+    ("EPL", "Everton"): (
+        "David Moyes provides continuity, with the club expected to settle into a secure "
+        "mid-table season."
+    ),
+    ("EPL", "Fulham"): (
+        "A talented squad with a mid-table ceiling; question marks remain over Alvaro "
+        "Arbeloa's managerial pedigree at this level."
+    ),
+    ("EPL", "Hull City"): (
+        "Considered the biggest underdog of the three promoted teams, with the furthest "
+        "gap to bridge to survive."
+    ),
+    ("EPL", "Ipswich Town"): (
+        "Gary O'Neil's previous Premier League track record is a real concern for a side "
+        "already fighting the drop."
+    ),
+    ("EPL", "Leeds United"): (
+        "The signing of goalkeeper James Trafford underpins a solid platform following "
+        "their promotion back to the top flight."
+    ),
+    ("EPL", "Liverpool"): (
+        "Andoni Iraola inherits a squad still adjusting to life after Mohamed Salah's "
+        "departure, with real questions over depth and how quickly his methods click."
+    ),
+    ("EPL", "Manchester City"): (
+        "Enzo Maresca replaces Pep Guardiola, and after Rodri's move to Barcelona there "
+        "are genuine doubts about whether City can go toe-to-toe with Arsenal over a full "
+        "season."
+    ),
+    ("EPL", "Manchester United"): (
+        "Michael Carrick's first full season in charge; still viewed as top-four "
+        "contenders despite thin squad depth and a heavier fixture list from European "
+        "football."
+    ),
+    ("EPL", "Newcastle United"): (
+        "A transitional season follows Eddie Howe's departure, with Matthias Jaissle "
+        "tasked with rebuilding after key sales."
+    ),
+    ("EPL", "Nottingham Forest"): (
+        "Oliver Glasner inherits a deep, talented squad and is expected to push for "
+        "another European finish."
+    ),
+    ("EPL", "Sunderland"): (
+        "Back in the top flight after last year's play-off promotion, expected to come "
+        "back to earth after overperforming, with a congested fixture list adding to the "
+        "challenge."
+    ),
+    ("EPL", "Tottenham Hotspur"): (
+        "Roberto De Zerbi's appointment signals a fresh direction and has some tipping "
+        "Spurs as this season's dark horses, helped by no European football to distract "
+        "from the league."
+    ),
+    # --- NFL (2026) ---
+    ("NFL", "Buffalo Bills"): (
+        "Widely seen as the AFC's best shot at the Super Bowl behind Josh Allen, projected "
+        "among the league's handful of 10-11+ win teams."
+    ),
+    ("NFL", "Miami Dolphins"): (
+        "Tied for the league's lowest projected win total, facing a difficult season."
+    ),
+    ("NFL", "New England Patriots"): (
+        "Fresh off a Super Bowl LX appearance, but oddsmakers see real regression -- the "
+        "first Super Bowl team in one major metric's history to open a season ranked "
+        "outside the top 10; the A.J. Brown addition offers some hope."
+    ),
+    ("NFL", "New York Jets"): (
+        "Widely tipped to finish with the league's worst record and a strong claim on the "
+        "No. 1 overall pick."
+    ),
+    ("NFL", "Baltimore Ravens"): (
+        "Tied for the league's highest projected win total, squarely in the Super Bowl "
+        "conversation."
+    ),
+    ("NFL", "Cincinnati Bengals"): (
+        "Projected as a playoff-caliber team, in the thick of the AFC wild-card race."
+    ),
+    ("NFL", "Cleveland Browns"): (
+        "Near the bottom of most projections, another rebuilding season likely."
+    ),
+    ("NFL", "Pittsburgh Steelers"): (
+        "Some models have them winning a competitive AFC North."
+    ),
+    ("NFL", "Houston Texans"): (
+        "Favored by several models to repeat as AFC South champions."
+    ),
+    ("NFL", "Indianapolis Colts"): (
+        "In the mix for a division title or wild-card spot in a wide-open AFC South."
+    ),
+    ("NFL", "Jacksonville Jaguars"): (
+        "Squarely in the AFC wild-card conversation."
+    ),
+    ("NFL", "Tennessee Titans"): (
+        "Projected near the bottom of a weak AFC South."
+    ),
+    ("NFL", "Denver Broncos"): (
+        "Coming off a strong 2025, but models expect real regression, calling last year's "
+        "close-game success rate unsustainable."
+    ),
+    ("NFL", "Kansas City Chiefs"): (
+        "Carry their worst preseason ranking since 2018 after offensive struggles and "
+        "defensive losses, but Patrick Mahomes and Andy Reid keep them squarely in the "
+        "conversation."
+    ),
+    ("NFL", "Las Vegas Raiders"): (
+        "Near the bottom of the league in projected wins."
+    ),
+    ("NFL", "Los Angeles Chargers"): (
+        "In the thick of a contested AFC West race."
+    ),
+    ("NFL", "Dallas Cowboys"): (
+        "Right on the playoff bubble in most projections."
+    ),
+    ("NFL", "New York Giants"): (
+        "Projected for a middling season."
+    ),
+    ("NFL", "Philadelphia Eagles"): (
+        "Among the very best teams in the league again, tied for the NFC's top projected "
+        "record."
+    ),
+    ("NFL", "Washington Commanders"): (
+        "In the playoff mix, but not viewed as a top-tier team."
+    ),
+    ("NFL", "Chicago Bears"): (
+        "Coming off a surprise 2025 breakthrough, but models expect real regression -- "
+        "under a 1-in-5 shot at repeating as division contenders."
+    ),
+    ("NFL", "Detroit Lions"): (
+        "Narrow favorites in a stacked NFC North."
+    ),
+    ("NFL", "Green Bay Packers"): (
+        "Right there with the Lions atop a deep NFC North."
+    ),
+    ("NFL", "Minnesota Vikings"): (
+        "In the projected playoff picture as part of that same crowded division."
+    ),
+    ("NFL", "Atlanta Falcons"): (
+        "Tipped by some models to win a wide-open NFC South."
+    ),
+    ("NFL", "Carolina Panthers"): (
+        "Projected for a middling record in that same weak division."
+    ),
+    ("NFL", "New Orleans Saints"): (
+        "Hovering around .500 in the NFC South scramble."
+    ),
+    ("NFL", "Tampa Bay Buccaneers"): (
+        "Also squarely in that NFC South mix."
+    ),
+    ("NFL", "Arizona Cardinals"): (
+        "Tied for the league's lowest projected win total, facing a tough year."
+    ),
+    ("NFL", "Los Angeles Rams"): (
+        "The overall Super Bowl favorite, grading first in the league on both offense and "
+        "defense behind Matthew Stafford, newly acquired Myles Garrett, and a contract-year "
+        "Puka Nacua."
+    ),
+    ("NFL", "San Francisco 49ers"): (
+        "Among the top projected teams in a loaded NFC West."
+    ),
+    ("NFL", "Seattle Seahawks"): (
+        "Coming off their Super Bowl LX appearance, though models actually project some "
+        "defensive regression."
+    ),
+    # --- NBA (2026-27) ---
+    ("NBA", "Boston Celtics"): (
+        "Traded Jaylen Brown and added Paul George and Duncan Robinson, prioritizing "
+        "long-term cap flexibility over an immediate repeat push."
+    ),
+    ("NBA", "Brooklyn Nets"): (
+        "Accelerated their rebuild by adding Julius Randle and a lottery pick, still "
+        "assembling a young core."
+    ),
+    ("NBA", "New York Knicks"): (
+        "Reigning conference finalists made only modest moves (swapping Mitchell "
+        "Robinson for Andre Drummond) while staying under the second tax apron."
+    ),
+    ("NBA", "Philadelphia 76ers"): (
+        "A blockbuster overhaul added Jaylen Brown and LeBron James alongside Joel Embiid "
+        "and Tyrese Maxey, giving them one of the league's most talked-about new starting "
+        "lineups and real title-favorite buzz."
+    ),
+    ("NBA", "Toronto Raptors"): (
+        "Offseason left in a holding pattern pending the conclusion of a Kawhi "
+        "Leonard-Clippers investigation."
+    ),
+    ("NBA", "Chicago Bulls"): (
+        "Developing around a promising rookie class alongside Matas Buzelis as part of a "
+        "young core still finding its direction."
+    ),
+    ("NBA", "Cleveland Cavaliers"): (
+        "A quiet offseason built around re-signing James Harden, with an eye on a "
+        "potential LeBron reunion down the line."
+    ),
+    ("NBA", "Detroit Pistons"): (
+        "Made only modest additions after leading the East in wins a year ago."
+    ),
+    ("NBA", "Indiana Pacers"): (
+        "Set to welcome back Tyrese Haliburton from injury alongside newly-acquired Ivica "
+        "Zubac, forming what could be one of the league's best starting lineups."
+    ),
+    ("NBA", "Milwaukee Bucks"): (
+        "A new era begins after trading Giannis Antetokounmpo, with a deep rotation but a "
+        "full rebuild ahead and no first-round pick of their own next year."
+    ),
+    ("NBA", "Atlanta Hawks"): (
+        "Added Luguentz Dort and Andrew Wiggins for elite perimeter defense to pair with "
+        "Dyson Daniels."
+    ),
+    ("NBA", "Charlotte Hornets"): (
+        "Lost LaMelo Ball and Miles Bridges but picked up extra draft capital, rebuilding "
+        "around Brandon Miller and Kon Knueppel."
+    ),
+    ("NBA", "Miami Heat"): (
+        "Landed Giannis Antetokounmpo in a blockbuster trade, though still need more "
+        "shooting to space the floor around their stars."
+    ),
+    ("NBA", "Orlando Magic"): (
+        "Hired Sean Sweeney as head coach and brought Nikola Vucevic back for depth and "
+        "floor spacing around their young core."
+    ),
+    ("NBA", "Washington Wizards"): (
+        "The No. 1 pick, AJ Dybantsa, plus veteran additions Deandre Ayton and Khris "
+        "Middleton join an otherwise rebuilding young core."
+    ),
+    ("NBA", "Denver Nuggets"): (
+        "Little roster turnover for a third straight year since their 2023 title, with the "
+        "front office facing real pressure to reverse the team's gradual slide."
+    ),
+    ("NBA", "Minnesota Timberwolves"): (
+        "Broke up their conference-finals roster in a boom-or-bust swap for LaMelo Ball, "
+        "pairing him with Anthony Edwards in pursuit of a first-ever Finals trip."
+    ),
+    ("NBA", "Oklahoma City Thunder"): (
+        "The defending champions and preseason favorites again, banking on Jalen Williams "
+        "and Ajay Mitchell returning healthy while shedding some luxury-tax money via "
+        "trades."
+    ),
+    ("NBA", "Portland Trail Blazers"): (
+        "Acquired Ja Morant without giving up any draft picks, pairing him with Damian "
+        "Lillard in a bold backcourt experiment."
+    ),
+    ("NBA", "Utah Jazz"): (
+        "Lost defensive anchor Walker Kessler in a sign-and-trade, which lowers their "
+        "ceiling even as other young pieces continue to develop."
+    ),
+    ("NBA", "Golden State Warriors"): (
+        "Running back largely the same core that won 37 games last season, with a "
+        "promising rookie addition unlikely to be enough for a real turnaround on its own."
+    ),
+    ("NBA", "Los Angeles Clippers"): (
+        "A pending Kawhi Leonard trade investigation left the offseason in limbo, with a "
+        "pivot toward a youth movement building around Brandon Ingram."
+    ),
+    ("NBA", "Los Angeles Lakers"): (
+        "Lost LeBron James but pulled off an aggressive sign-and-trade for Walker Kessler, "
+        "mortgaging future assets in the process."
+    ),
+    ("NBA", "Phoenix Suns"): (
+        "Added Miles Bridges and shed money in trades, banking on a key piece returning "
+        "healthy from a hamstring injury."
+    ),
+    ("NBA", "Sacramento Kings"): (
+        "Fully committed to a youth movement after DeMar DeRozan and Russell Westbrook "
+        "departed, leaning on a rookie-heavy roster."
+    ),
+    ("NBA", "Dallas Mavericks"): (
+        "New president Masai Ujiri is taking a patient, long-term approach building "
+        "around Cooper Flagg, adding more youth via this year's draft."
+    ),
+    ("NBA", "Houston Rockets"): (
+        "Added Marcus Smart and Bojan Bogdanovic for depth after injuries undercut last "
+        "season."
+    ),
+    ("NBA", "Memphis Grizzlies"): (
+        "Completed their rebuild by trading Ja Morant, banking a massive haul of draft "
+        "picks (13 first-rounders over the next seven drafts) around a young core led by "
+        "Zach Edey."
+    ),
+    ("NBA", "New Orleans Pelicans"): (
+        "A stagnant, widely-criticized offseason left an already-shaky roster largely "
+        "unchanged."
+    ),
+    ("NBA", "San Antonio Spurs"): (
+        "Running back their surprise Finals-run core with a healthy Victor Wembanyama, "
+        "who signed a team-friendly extension; co-favorites with Oklahoma City for the "
+        "title."
+    ),
+    # --- NHL (2026-27) ---
+    ("NHL", "Boston Bruins"): (
+        "Added JJ Peterka and more defensive depth in a solid, well-rounded offseason."
+    ),
+    ("NHL", "Buffalo Sabres"): (
+        "Lost key players and are banking on internal development while still awaiting a "
+        "decision on pending free agent goaltender Connor Hellebuyck."
+    ),
+    ("NHL", "Detroit Red Wings"): (
+        "Enter the season without a general manager in place and real uncertainty hanging "
+        "over captain Dylan Larkin's future with the club."
+    ),
+    ("NHL", "Florida Panthers"): (
+        "Set to have Aleksander Barkov and the rest of last year's injury-hit roster back "
+        "healthy, plus a blockbuster addition of Brady Tkachuk -- among the favorites for "
+        "a three-peat."
+    ),
+    ("NHL", "Montreal Canadiens"): (
+        "A quiet, low-key offseason after locking up Ivan Demidov to a long-term "
+        "extension."
+    ),
+    ("NHL", "Ottawa Senators"): (
+        "A difficult summer after captain Brady Tkachuk requested a trade out of town; "
+        "the return of Claude Giroux hasn't been enough to offset the loss."
+    ),
+    ("NHL", "Tampa Bay Lightning"): (
+        "Added veteran John Carlson to a core that's still considered a real Stanley Cup "
+        "threat."
+    ),
+    ("NHL", "Toronto Maple Leafs"): (
+        "Won this year's draft lottery, hired a new GM, and made a series of calculated "
+        "moves (including landing Sergei Bobrovsky) widely seen as one of the league's "
+        "most improved offseasons."
+    ),
+    ("NHL", "Carolina Hurricanes"): (
+        "Bring back almost the exact roster that made them Stanley Cup favorites, with "
+        "only minor tweaks."
+    ),
+    ("NHL", "Columbus Blue Jackets"): (
+        "Facing morale concerns after star players signaled they won't re-sign long-term."
+    ),
+    ("NHL", "New Jersey Devils"): (
+        "A busy summer highlighted by locking up Nico Hischier to a long-term extension."
+    ),
+    ("NHL", "New York Islanders"): (
+        "A confusing offseason with minimal additions after losing Anders Lee, leaving "
+        "their scoring questions unaddressed."
+    ),
+    ("NHL", "New York Rangers"): (
+        "Finally trending in the right direction after adding Pavel Dorofeyev and "
+        "shoring up the blue line."
+    ),
+    ("NHL", "Philadelphia Flyers"): (
+        "A failed offer sheet for Leo Carlsson was the highlight of an otherwise low-key "
+        "summer."
+    ),
+    ("NHL", "Pittsburgh Penguins"): (
+        "Struck a deliberate balance between the present and the future rather than "
+        "making any drastic moves."
+    ),
+    ("NHL", "Washington Capitals"): (
+        "The league's most aggressive offseason, adding Alex Tuch, Jordan Kyrou, and "
+        "Boone Jenner around a returning Alex Ovechkin for one more Cup run -- considered "
+        "the Metropolitan's clear second-best team behind Carolina."
+    ),
+    ("NHL", "Chicago Blackhawks"): (
+        "Locked up Connor Bedard to a five-year extension and brought Patrick Kane back "
+        "on a two-year deal, leaning into a nostalgic, feel-good offseason as the young "
+        "core matures."
+    ),
+    ("NHL", "Colorado Avalanche"): (
+        "A quiet summer focused on getting a Cale Makar extension done rather than adding "
+        "pieces, among the Cup favorites regardless."
+    ),
+    ("NHL", "Dallas Stars"): (
+        "Breathed a sigh of relief after signing Jason Robertson to a one-year extension, "
+        "averting a potential crisis."
+    ),
+    ("NHL", "Minnesota Wild"): (
+        "Lost scoring depth and still haven't found the elite center they need, leaving "
+        "the roster feeling incomplete."
+    ),
+    ("NHL", "Nashville Predators"): (
+        "A new GM has made some encouraging moves, headlined by trading for Mavrik "
+        "Bourque, in hopes of escaping the Central Division's murky middle."
+    ),
+    ("NHL", "St. Louis Blues"): (
+        "Shifted focus to the future by trading Jordan Kyrou, a clear step into a "
+        "rebuild."
+    ),
+    ("NHL", "Utah Mammoth"): (
+        "Won the Vincent Trocheck sweepstakes and added goaltender Sebastian Cossa, "
+        "continuing a steady climb after jumping from 77 to 92 points across the last two "
+        "seasons."
+    ),
+    ("NHL", "Winnipeg Jets"): (
+        "An offseason that's \"impossible to evaluate\" while a decision on pending free "
+        "agent Connor Hellebuyck hangs over everything."
+    ),
+    ("NHL", "Anaheim Ducks"): (
+        "Paid a steep price to keep Leo Carlsson, leaving them cap-strapped with "
+        "restricted free agents still unsigned."
+    ),
+    ("NHL", "Calgary Flames"): (
+        "Signaled a full rebuild by trading away Rasmus Andersson and Nazem Kadri, "
+        "banking nearly $19 million in cap space and eight picks in the first three "
+        "rounds of the next few drafts."
+    ),
+    ("NHL", "Edmonton Oilers"): (
+        "Shed cap constraints and added goaltender Frederik Andersen, positioning the "
+        "roster to win now."
+    ),
+    ("NHL", "Los Angeles Kings"): (
+        "Signed a run of aging veterans (Corey Perry, Erik Haula, Mats Zuccarello), seen "
+        "by some as the wrong direction for a team that needs to get younger."
+    ),
+    ("NHL", "San Jose Sharks"): (
+        "Locked up Macklin Celebrini to a record-setting extension worth $18.8 million a "
+        "year, the centerpiece of a rebuild that still has real cap space to work with."
+    ),
+    ("NHL", "Seattle Kraken"): (
+        "A disappointing summer after a Jason Robertson sign-and-trade offer was "
+        "rejected, leaving them still searching for a true star."
+    ),
+    ("NHL", "Vancouver Canucks"): (
+        "A stable, low-key offseason (bringing hometown favorite Brendan Gallagher back) "
+        "as the rebuild continues under new coach Manny Malhotra."
+    ),
+    ("NHL", "Vegas Golden Knights"): (
+        "Lost Pavel Dorofeyev and overpaid to keep Rasmus Andersson, leaving the roster "
+        "with less financial flexibility than in past years."
+    ),
+    # --- URC (2026-27) ---
+    ("URC", "Leinster"): (
+        "Preseason favorites to retain the title and reach double figures in "
+        "championships; lost all-time leading try-scorer James Lowe but replaced him by "
+        "bringing back fly-half Joey Carbery from Bordeaux."
+    ),
+    ("URC", "Munster"): (
+        "Prioritized forward reinforcements (Jack Aungier, Kieran Brookes, Marnus van der "
+        "Merwe) to offset the departures of Jean Kleyn and others."
+    ),
+    ("URC", "Connacht"): (
+        "Strengthened significantly by raiding provincial rivals Leinster for Jerry "
+        "Cahir, Will Connors, and fly-half Ciaran Frawley."
+    ),
+    ("URC", "Ulster"): (
+        "Added depth across the squad (Jamie Benson, Matt Devine, Ben Donnell, Eli "
+        "Snyman) aiming to get back into playoff contention."
+    ),
+    ("URC", "Cardiff"): (
+        "Brought in experienced prop Scott Sio during a critical season for the club "
+        "amid wider turmoil in Welsh rugby."
+    ),
+    ("URC", "Ospreys"): (
+        "Lost Wales captains Dewi Lake and Jac Morgan to Gloucester, but strengthened "
+        "their back three with Tom Rogers after finishing 11th a year ago."
+    ),
+    ("URC", "Scarlets"): (
+        "Lost Jac Morgan but brought in fly-half Gareth Anscombe and lock Cullen Grace to "
+        "freshen up the squad."
+    ),
+    ("URC", "Dragons"): (
+        "Building on a promising campaign with new arrivals including wing Anzelo "
+        "Tuitavuki and back-rower Terrell Peita."
+    ),
+    ("URC", "Bulls"): (
+        "Runners-up in three of the last four finals and the bookmakers' next-best bet "
+        "behind Leinster, despite losing try-scoring winger Kurt-Lee Arendse to Japan."
+    ),
+    ("URC", "Lions"): (
+        "Enter the season as reigning South African Shield champions for the first time, "
+        "having strengthened further with several new signings."
+    ),
+    ("URC", "Sharks"): (
+        "Lost two-time World Cup captain Siya Kolisi to the Stormers, but replaced him up "
+        "front with English tighthead Thomas du Toit."
+    ),
+    ("URC", "Stormers"): (
+        "Landed two Springbok World Cup winners in Siya Kolisi and Cheslin Kolbe, "
+        "instantly becoming one of the sides tipped to challenge Leinster for the title."
+    ),
+    ("URC", "Glasgow Warriors"): (
+        "Lost strike winger Huw Jones to France but added Scotland international Jamie "
+        "Ritchie for leadership and versatility."
+    ),
+    ("URC", "Edinburgh"): (
+        "Added promising scrum-half Louie Chapman from the Crusaders' famed development "
+        "system."
+    ),
+    ("URC", "Benetton"): (
+        "Lost established internationals Thomas Gallo and Eli Snyman but added overseas "
+        "talent from Australia, South Africa, and Argentina to remain Italy's flagship "
+        "side."
+    ),
+    ("URC", "Zebre Parma"): (
+        "Continuing to build one of the league's youngest squads, doubling down on "
+        "developing Italian-qualified talent as the 2027 World Cup approaches."
+    ),
+}

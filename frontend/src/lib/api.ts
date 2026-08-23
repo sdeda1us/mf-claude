@@ -185,5 +185,6 @@ export interface TeamHistory {
   bio: string | null;
   latitude: number | null;
   longitude: number | null;
+  prognosis: string | null;
   seasons: TeamHistorySeason[];
 }

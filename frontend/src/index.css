@@ -762,6 +762,14 @@ button:disabled {
   margin: 0;
 }
 
+.team-history-prognosis {
+  max-width: 68ch;
+  padding: 10px 14px;
+  background: var(--pill-bg);
+  border-left: 3px solid var(--sky);
+  border-radius: 2px;
+}
+
 .team-history-map {
   flex: 0 0 280px;
   border: 2px solid var(--ink);

@@ -148,6 +148,13 @@ function TeamHistoryPanel({ teamId }: { teamId: number }) {
         )}
       </div>
 
+      {history.prognosis && (
+        <>
+          <h3>Outlook for the upcoming season</h3>
+          <p className="team-history-prognosis">{history.prognosis}</p>
+        </>
+      )}
+
       <h3>Fantasy points by season</h3>
       {history.seasons.length === 0 ? (
         <p className="queue-empty">
