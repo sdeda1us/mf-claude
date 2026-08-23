@@ -1,7 +1,7 @@
 # NCAAWB (Women's College Basketball) Game Rules
 
 Identical rules and roster spec to [NCAAMB](game-rules-ncaamb.md) — each
-player owns **7 NCAAWB teams**, with **at most 2** from a "minor"
+player owns **7 NCAAWB teams**, with **at most 1** from a "minor"
 conference (same major/minor conference split as the men's game).
 
 | Event                                                | Points |

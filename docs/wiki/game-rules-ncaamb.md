@@ -1,6 +1,6 @@
 # NCAAMB (Men's College Basketball) Game Rules
 
-Each player owns **7 NCAAMB teams**, with **at most 2** from a "minor"
+Each player owns **7 NCAAMB teams**, with **at most 1** from a "minor"
 conference. Points below accrue per owned team and sum to that player's
 total NCAAMB score for the season.
 
@@ -9,7 +9,7 @@ total NCAAMB score for the season.
 American, ASUN, Atlantic 10, Big Sky, Big South, Big West, CAA, Conference
 USA, Horizon, Ivy, Metro/MAAC, MAC, MEAC, Missouri Valley, Mountain West,
 NEC, OVC, Pac-12, Patriot, SoCon, Southland, SWAC, Summit, Sun Belt, United
-Athletic, WCC). At least 5 of a player's 7 teams must come from the major
+Athletic, WCC). At least 6 of a player's 7 teams must come from the major
 group.
 
 | Event                                                | Points |

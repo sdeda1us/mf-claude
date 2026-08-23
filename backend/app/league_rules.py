@@ -63,8 +63,8 @@ LEAGUE_SESSION: dict[str, str] = {
 # auction_service.py / ws/auction_ws.py via is_minor_conference_team below.
 MINOR_CONFERENCE_CAPS: dict[str, int] = {
     "NCAAF": 1,
-    "NCAAMB": 2,
-    "NCAAWB": 2,
+    "NCAAMB": 1,
+    "NCAAWB": 1,
 }
 
 # NCAAF roster rule: at most 1 of a player's 5 teams may come from a "minor"
@@ -97,7 +97,7 @@ NCAAF_MINOR_CONFERENCE_TEAMS: set[str] = {
     "UConn Huskies",
 }
 
-# NCAAMB/NCAAWB roster rule: at most 2 of a player's 7 teams may come from a
+# NCAAMB/NCAAWB roster rule: at most 1 of a player's 7 teams may come from a
 # "minor" conference. Major = SEC, Big Ten, ACC, Big 12, Big East (Notre
 # Dame plays ACC basketball, UConn plays Big East basketball — no separate
 # independent designation needed here, unlike NCAAF). Same major/minor
