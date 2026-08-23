@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Avatar from "../components/Avatar";
+import TeamLink from "../components/TeamLink";
 import { useAuth } from "../auth/AuthContext";
 import {
   api,
@@ -483,7 +484,9 @@ export default function AuctionRoom() {
           <div className="on-the-clock has-item">
             <div className="ribbon">Live · Up For Bid</div>
             <div className="badge">{item.team.league}</div>
-            <div className="nameplate">{item.team.name}</div>
+            <div className="nameplate">
+              <TeamLink teamId={item.team.id} league={item.team.league} name={item.team.name} />
+            </div>
             <div style={{ marginTop: 8 }}>
               <span className="pill" style={{ marginLeft: 0 }}>
                 {item.team.sport}
@@ -644,7 +647,9 @@ export default function AuctionRoom() {
             <ol className="queue-list">
               {queue.map((entry, idx) => (
                 <li key={entry.id} className="queue-item">
-                  <span className="queue-item-team">{entry.team.name}</span>
+                  <span className="queue-item-team">
+                    <TeamLink teamId={entry.team.id} league={entry.team.league} name={entry.team.name} />
+                  </span>
                   <span className="pill">{entry.team.league}</span>
                   <div className="queue-item-actions">
                     <button
@@ -729,7 +734,9 @@ export default function AuctionRoom() {
                   const queued = queuedTeamIds.has(team.id);
                   return (
                     <tr key={team.id} className={canNominate ? "team-row" : "team-row disabled"}>
-                      <td>{team.name}</td>
+                      <td>
+                        <TeamLink teamId={team.id} league={team.league} name={team.name} />
+                      </td>
                       <td>
                         <span className="pill">{team.league}</span> {team.sport}
                       </td>
@@ -796,7 +803,9 @@ export default function AuctionRoom() {
             ) : (
               activeRosterEntries.map((entry) => (
                 <li key={entry.id}>
-                  <span className="league-sold-team">{entry.team.name}</span>
+                  <span className="league-sold-team">
+                    <TeamLink teamId={entry.team.id} league={entry.team.league} name={entry.team.name} />
+                  </span>
                   <span className="pill">{entry.team.league}</span>
                   <span className="league-sold-price">${entry.price_paid}</span>
                 </li>
@@ -849,7 +858,9 @@ export default function AuctionRoom() {
                       const buyer = usersById.get(entry.user_id);
                       return (
                         <li key={entry.id}>
-                          <span className="league-sold-team">{entry.team.name}</span>
+                          <span className="league-sold-team">
+                            <TeamLink teamId={entry.team.id} league={league} name={entry.team.name} />
+                          </span>
                           <span className="league-sold-price">${entry.price_paid}</span>
                           <span className="league-sold-buyer">
                             {buyer?.display_name ?? `User #${entry.user_id}`}
@@ -903,7 +914,9 @@ export default function AuctionRoom() {
             >
               ×
             </button>
-            <div className="nameplate">{pendingTeam.name}</div>
+            <div className="nameplate">
+              <TeamLink teamId={pendingTeam.id} league={pendingTeam.league} name={pendingTeam.name} />
+            </div>
             <div style={{ marginTop: 8 }}>
               <span className="pill" style={{ marginLeft: 0 }}>
                 {pendingTeam.sport}

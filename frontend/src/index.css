@@ -1621,6 +1621,20 @@ button:disabled {
   text-decoration: underline;
 }
 
+/* A team name that links out to its Team History page — inherits
+   whatever color the surrounding context already set (table cell,
+   nameplate, pill) rather than the browser's default link blue, with a
+   dotted underline as the only hint it's clickable until hovered. */
+.team-link {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+
+.team-link:hover {
+  text-decoration: underline solid;
+}
+
 .player-header {
   display: flex;
   align-items: center;

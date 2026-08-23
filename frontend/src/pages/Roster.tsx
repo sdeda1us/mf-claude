@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Avatar from "../components/Avatar";
+import TeamLink from "../components/TeamLink";
 import { useAuth } from "../auth/AuthContext";
 import { api, type LeagueRules, type RosterEntry, type Season, type User } from "../lib/api";
 
@@ -99,7 +100,9 @@ export default function Roster() {
                   .map((e) => (
                     <tr key={e.id}>
                       <td>{e.team.league}</td>
-                      <td>{e.team.name}</td>
+                      <td>
+                        <TeamLink teamId={e.team.id} league={e.team.league} name={e.team.name} />
+                      </td>
                       <td className="stat">${e.price_paid}</td>
                       <td className="team-row-actions">
                         {e.source === "commissioner_correction" && (

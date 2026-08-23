@@ -9,6 +9,7 @@ import {
   type User,
 } from "../lib/api";
 import Avatar from "./Avatar";
+import TeamLink from "./TeamLink";
 
 interface FilledSlot {
   kind: "filled";
@@ -122,7 +123,13 @@ export default function PlayerRosterPanel({ seasonId, userId }: PlayerRosterPane
               {slots.map((slot) =>
                 slot.kind === "filled" ? (
                   <tr key={slot.entry.id}>
-                    <td>{slot.entry.team.name}</td>
+                    <td>
+                      <TeamLink
+                        teamId={slot.entry.team.id}
+                        league={slot.entry.team.league}
+                        name={slot.entry.team.name}
+                      />
+                    </td>
                     <td className="points-cell">${slot.entry.price_paid}</td>
                     <td className="points-cell">{slot.points ?? "—"}</td>
                   </tr>

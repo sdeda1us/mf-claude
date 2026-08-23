@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import TeamLink from "../components/TeamLink";
 import { api, type CribSheetEntry, type LeagueRules, type Team } from "../lib/api";
 
 export default function CribSheet() {
@@ -195,7 +196,9 @@ export default function CribSheet() {
                         const overridden = hasOverride(team.id);
                         return (
                           <tr key={team.id}>
-                            <td>{team.name}</td>
+                            <td>
+                              <TeamLink teamId={team.id} league={team.league} name={team.name} />
+                            </td>
                             <td>{team.sport}</td>
                             <td className="crib-value-cell">
                               <input
@@ -287,7 +290,8 @@ export default function CribSheet() {
             {hiddenSearchResults.map((team) => (
               <li key={team.id}>
                 <span>
-                  {team.name} <span className="pill">{team.league}</span>
+                  <TeamLink teamId={team.id} league={team.league} name={team.name} />{" "}
+                  <span className="pill">{team.league}</span>
                 </span>
                 <button type="button" onClick={() => addTeam(team.id)}>
                   Add

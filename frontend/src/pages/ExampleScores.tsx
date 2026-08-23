@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
+import TeamLink from "../components/TeamLink";
 import { api, type ExampleScoreRow, type LeagueRules } from "../lib/api";
 
 type SortKey = "points" | "team_name" | "league";
@@ -7,6 +8,7 @@ type Tab = "teams" | "scenarios";
 type ScenarioKey = "best" | "median" | "worst";
 
 interface ScenarioTeam {
+  id: number;
   name: string;
   points: number;
 }
@@ -124,7 +126,7 @@ export default function ExampleScores() {
     const byLeague = new Map<string, ScenarioTeam[]>();
     for (const r of rows) {
       const list = byLeague.get(r.league) ?? [];
-      list.push({ name: r.team_name, points: r.points });
+      list.push({ id: r.team_id, name: r.team_name, points: r.points });
       byLeague.set(r.league, list);
     }
     return Object.entries(rules.roster_limits)
@@ -249,7 +251,9 @@ export default function ExampleScores() {
                       <td>
                         <span className={expanded ? "caret-icon open" : "caret-icon"}>▸</span>
                       </td>
-                      <td>{row.team_name}</td>
+                      <td>
+                        <TeamLink teamId={row.team_id} league={row.league} name={row.team_name} />
+                      </td>
                       <td>
                         <span className="pill">{row.league}</span>
                       </td>
@@ -354,8 +358,10 @@ export default function ExampleScores() {
                                 <table className="crib-sheet-table">
                                   <tbody>
                                     {s.teams[key].map((t) => (
-                                      <tr key={t.name}>
-                                        <td>{t.name}</td>
+                                      <tr key={t.id}>
+                                        <td>
+                                          <TeamLink teamId={t.id} league={s.league} name={t.name} />
+                                        </td>
                                         <td className="points-cell">{t.points}</td>
                                       </tr>
                                     ))}

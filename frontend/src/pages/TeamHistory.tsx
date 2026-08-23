@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { api, type Team, type TeamHistory as TeamHistoryData } from "../lib/api";
-
-// Test scope: only these leagues are populated with bios/history so far
-// (see backend/app/team_history.py) — each gets its own dropdown. Add a
-// league here once the same research pass covers it.
-const COVERED_LEAGUES = ["EPL", "NFL", "NBA", "NHL", "URC"];
+import { COVERED_TEAM_HISTORY_LEAGUES } from "../lib/teamHistory";
 
 const CHART_WIDTH = 560;
 const CHART_HEIGHT = 220;
@@ -210,7 +207,19 @@ function LeaguePicker({
 
 export default function TeamHistory() {
   const [teams, setTeams] = useState<Team[]>([]);
-  const [selectedByLeague, setSelectedByLeague] = useState<Record<string, number | null>>({});
+  const [searchParams] = useSearchParams();
+  // Deep-link support (see components/TeamLink.tsx): a link elsewhere in
+  // the app points here with ?league=&teamId=, which preselects that
+  // league's picker on load — this only runs once, so picking a
+  // different team afterwards isn't fought by a stale URL.
+  const [selectedByLeague, setSelectedByLeague] = useState<Record<string, number | null>>(() => {
+    const league = searchParams.get("league");
+    const teamId = Number(searchParams.get("teamId"));
+    if (league && COVERED_TEAM_HISTORY_LEAGUES.includes(league) && teamId) {
+      return { [league]: teamId };
+    }
+    return {};
+  });
 
   useEffect(() => {
     api.get<Team[]>("/teams").then(setTeams);
@@ -226,7 +235,7 @@ export default function TeamHistory() {
       </p>
 
       <div className="team-history-picker-row">
-        {COVERED_LEAGUES.map((league) => (
+        {COVERED_TEAM_HISTORY_LEAGUES.map((league) => (
           <LeaguePicker
             key={league}
             league={league}
@@ -237,7 +246,7 @@ export default function TeamHistory() {
         ))}
       </div>
 
-      {COVERED_LEAGUES.map((league) => {
+      {COVERED_TEAM_HISTORY_LEAGUES.map((league) => {
         const teamId = selectedByLeague[league];
         if (!teamId) return null;
         return (
