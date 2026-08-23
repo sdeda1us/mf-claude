@@ -720,10 +720,28 @@ button:disabled {
   margin-top: 8px;
 }
 
-.team-history-group + .team-history-group {
+.team-history-picker-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 16px 0 8px;
+}
+
+.team-history-picker {
+  flex: 1 1 200px;
+  min-width: 180px;
+  max-width: 260px;
+  margin: 0;
+}
+
+.team-history-group {
   margin-top: 32px;
   padding-top: 24px;
   border-top: 2px solid var(--rule);
+}
+
+.team-history-group:first-of-type {
+  margin-top: 40px;
 }
 
 .team-history-panel h2 {

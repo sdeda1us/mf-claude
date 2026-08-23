@@ -2,13 +2,9 @@ import { useEffect, useState } from "react";
 import { api, type Team, type TeamHistory as TeamHistoryData } from "../lib/api";
 
 // Test scope: only these leagues are populated with bios/history so far
-// (see backend/app/team_history.py) — grouped into separate pickers below
-// rather than one giant dropdown. Extend a group's league list (or add a
-// new group) as more leagues get covered.
-const PICKER_GROUPS: { title: string; leagues: string[] }[] = [
-  { title: "EPL", leagues: ["EPL"] },
-  { title: "NFL, NBA, NHL", leagues: ["NFL", "NBA", "NHL"] },
-];
+// (see backend/app/team_history.py) — each gets its own dropdown. Add a
+// league here once the same research pass covers it.
+const COVERED_LEAGUES = ["EPL", "NFL", "NBA", "NHL"];
 
 const CHART_WIDTH = 560;
 const CHART_HEIGHT = 220;
@@ -173,55 +169,41 @@ function TeamHistoryPanel({ teamId }: { teamId: number }) {
   );
 }
 
-function TeamPicker({ title, teams }: { title: string; teams: Team[] }) {
-  const [selectedTeamId, setSelectedTeamId] = useState<number | null>(null);
-
-  // Grouped by league — a one-league group (EPL) just gets a single
-  // optgroup, but this scales cleanly for a group spanning several
-  // leagues (NFL/NBA/NHL) without changing the picker's shape.
-  const byLeague: Record<string, Team[]> = {};
-  for (const t of teams) {
-    (byLeague[t.league] ??= []).push(t);
-  }
-  for (const list of Object.values(byLeague)) {
-    list.sort((a, b) => a.name.localeCompare(b.name));
-  }
-  const leagues = Object.keys(byLeague).sort();
-
+function LeaguePicker({
+  league,
+  teams,
+  selectedTeamId,
+  onChange,
+}: {
+  league: string;
+  teams: Team[];
+  selectedTeamId: number | null;
+  onChange: (teamId: number | null) => void;
+}) {
+  const sorted = [...teams].sort((a, b) => a.name.localeCompare(b.name));
   return (
-    <section className="team-history-group">
-      <div className="stacked-form" style={{ maxWidth: 320 }}>
-        <label>
-          {title}
-          <select
-            value={selectedTeamId ?? ""}
-            onChange={(e) => setSelectedTeamId(e.target.value ? Number(e.target.value) : null)}
-          >
-            <option value="">Choose a team…</option>
-            {leagues.map((league) => (
-              <optgroup key={league} label={league}>
-                {byLeague[league].map((t) => (
-                  <option key={t.id} value={t.id}>
-                    {t.name}
-                  </option>
-                ))}
-              </optgroup>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      {selectedTeamId && (
-        <div className="player-picker-panel">
-          <TeamHistoryPanel teamId={selectedTeamId} />
-        </div>
-      )}
-    </section>
+    <div className="stacked-form team-history-picker">
+      <label>
+        {league}
+        <select
+          value={selectedTeamId ?? ""}
+          onChange={(e) => onChange(e.target.value ? Number(e.target.value) : null)}
+        >
+          <option value="">Choose a team…</option>
+          {sorted.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.name}
+            </option>
+          ))}
+        </select>
+      </label>
+    </div>
   );
 }
 
 export default function TeamHistory() {
   const [teams, setTeams] = useState<Team[]>([]);
+  const [selectedByLeague, setSelectedByLeague] = useState<Record<string, number | null>>({});
 
   useEffect(() => {
     api.get<Team[]>("/teams").then(setTeams);
@@ -236,13 +218,27 @@ export default function TeamHistory() {
         for the other leagues.
       </p>
 
-      {PICKER_GROUPS.map((group) => (
-        <TeamPicker
-          key={group.title}
-          title={group.title}
-          teams={teams.filter((t) => group.leagues.includes(t.league))}
-        />
-      ))}
+      <div className="team-history-picker-row">
+        {COVERED_LEAGUES.map((league) => (
+          <LeaguePicker
+            key={league}
+            league={league}
+            teams={teams.filter((t) => t.league === league)}
+            selectedTeamId={selectedByLeague[league] ?? null}
+            onChange={(teamId) => setSelectedByLeague((prev) => ({ ...prev, [league]: teamId }))}
+          />
+        ))}
+      </div>
+
+      {COVERED_LEAGUES.map((league) => {
+        const teamId = selectedByLeague[league];
+        if (!teamId) return null;
+        return (
+          <section key={league} className="team-history-group">
+            <TeamHistoryPanel teamId={teamId} />
+          </section>
+        );
+      })}
     </div>
   );
 }
