@@ -6,12 +6,20 @@ from sqlalchemy.orm import Session
 from app.auction_service import (
     all_non_high_bidders_passed,
     auto_pass_capped_users,
+    count_user_league_teams,
+    count_user_minor_conference_teams,
     current_turn_user_id,
     finalize_active_item,
     get_active_item,
 )
 from app.database import SessionLocal
-from app.league_rules import LEAGUE_SESSION, compute_score
+from app.league_rules import (
+    LEAGUE_SESSION,
+    MINOR_CONFERENCE_CAPS,
+    ROSTER_LIMITS,
+    compute_score,
+    is_minor_conference_team,
+)
 from app.models import (
     Auction,
     AuctionItem,
@@ -171,6 +179,22 @@ async def schedule_bid_timer(item_id: int) -> None:
         return
 
 
+def _team_eligible_for_user(db: Session, season_id: int, user_id: int, team: Team) -> bool:
+    """Mirrors the WS bid handler's roster-cap checks. This path skips that
+    handler entirely -- it inserts the opening (and, since nobody's had a
+    chance to outbid it yet, winning) $1 bid directly -- so it has to
+    re-check both caps itself, or an idle player could time into owning a
+    team that busts their own roster limit."""
+    limit = ROSTER_LIMITS.get(team.league)
+    if limit is not None and count_user_league_teams(db, season_id, user_id, team.league) >= limit:
+        return False
+    minor_cap = MINOR_CONFERENCE_CAPS.get(team.league)
+    if minor_cap is not None and is_minor_conference_team(team.league, team.name):
+        if count_user_minor_conference_teams(db, season_id, user_id, team.league) >= minor_cap:
+            return False
+    return True
+
+
 def _pick_auto_nominate_team(db: Session, auction: Auction, user_id: int) -> Team | None:
     sold_team_ids = {
         row[0]
@@ -182,6 +206,9 @@ def _pick_auto_nominate_team(db: Session, auction: Auction, user_id: int) -> Tea
     def in_session(league: str) -> bool:
         return LEAGUE_SESSION.get(league) == auction.session
 
+    def eligible(team: Team) -> bool:
+        return _team_eligible_for_user(db, auction.season_id, user_id, team)
+
     queue = (
         db.query(QueueEntry)
         .filter(QueueEntry.season_id == auction.season_id, QueueEntry.user_id == user_id)
@@ -192,14 +219,16 @@ def _pick_auto_nominate_team(db: Session, auction: Auction, user_id: int) -> Tea
         # A player can queue teams for a session that isn't live yet, so a
         # queued team may well belong to the *other* session's auction —
         # skip those rather than letting them jump the queue for whichever
-        # auction happens to be timing out right now.
-        if entry.team_id not in sold_team_ids and in_session(entry.team.league):
+        # auction happens to be timing out right now. Also skip anything
+        # they're no longer eligible to own (roster cap or minor-conference
+        # sub-cap) rather than auto-nominating a team that busts either.
+        if entry.team_id not in sold_team_ids and in_session(entry.team.league) and eligible(entry.team):
             return entry.team
 
     best_team: Team | None = None
     best_score: float | None = None
     for result in db.query(TeamSeasonResult).all():
-        if result.team_id in sold_team_ids or not in_session(result.league):
+        if result.team_id in sold_team_ids or not in_session(result.league) or not eligible(result.team):
             continue
         score = compute_score(result.league, result.stats)
         if best_score is None or score > best_score:
@@ -209,9 +238,11 @@ def _pick_auto_nominate_team(db: Session, auction: Auction, user_id: int) -> Tea
         return best_team
 
     # Nothing queued and no historical data for anything left in the pool —
-    # grab any remaining in-session team so the clock doesn't stall the
-    # whole auction.
+    # grab any remaining in-session, still-eligible team so the clock
+    # doesn't stall the whole auction. If nothing qualifies (the user's
+    # filled every league they're still eligible for), there's genuinely
+    # nothing left to nominate for them and the turn is left open.
     for t in db.query(Team).all():
-        if t.id not in sold_team_ids and in_session(t.league):
+        if t.id not in sold_team_ids and in_session(t.league) and eligible(t):
             return t
     return None

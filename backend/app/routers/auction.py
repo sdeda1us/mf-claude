@@ -5,7 +5,14 @@ from typing import Literal
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.auction_service import build_state, current_turn_user_id, finalize_active_item, get_active_item
+from app.auction_service import (
+    build_state,
+    count_user_league_teams,
+    count_user_minor_conference_teams,
+    current_turn_user_id,
+    finalize_active_item,
+    get_active_item,
+)
 from app.auction_timer import (
     BID_TIMEOUT_SECONDS,
     naive_utc,
@@ -14,7 +21,7 @@ from app.auction_timer import (
 )
 from app.database import get_db
 from app.deps import get_current_commissioner, get_current_user
-from app.league_rules import LEAGUE_SESSION
+from app.league_rules import LEAGUE_SESSION, MINOR_CONFERENCE_CAPS, ROSTER_LIMITS, is_minor_conference_team
 from app.models import (
     Auction,
     AuctionItem,
@@ -103,6 +110,27 @@ async def nominate(
             status_code=400,
             detail=f"{team.league} isn't part of the {auction.session} session",
         )
+    # Nominating always pairs with the nominator's own opening bid (the
+    # frontend fires it immediately after), so someone who couldn't
+    # legally roster this team themselves shouldn't be able to nominate it
+    # either -- otherwise the item opens with no valid opening bid and
+    # just sits there.
+    limit = ROSTER_LIMITS.get(team.league)
+    if limit is not None and count_user_league_teams(db, auction.season_id, user.id, team.league) >= limit:
+        raise HTTPException(
+            status_code=400,
+            detail=f"You already own the maximum number of {team.league} teams ({limit})",
+        )
+    minor_cap = MINOR_CONFERENCE_CAPS.get(team.league)
+    if minor_cap is not None and is_minor_conference_team(team.league, team.name):
+        if count_user_minor_conference_teams(db, auction.season_id, user.id, team.league) >= minor_cap:
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    f"You already own the maximum number of minor-conference {team.league} "
+                    f"teams ({minor_cap})"
+                ),
+            )
 
     next_order = len(auction.items)
     item = AuctionItem(

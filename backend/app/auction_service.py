@@ -232,15 +232,19 @@ def resolve_reserve_bids(
 
 
 def auto_pass_capped_users(db: Session, auction: Auction, item: AuctionItem) -> None:
-    """Anyone already at their roster cap for this item's league can't
-    legally bid on it — the WS bid handler already blocks them — so they're
-    auto-passed the moment there's a high bidder to pass around, instead of
-    making them click Pass on a team they were never eligible to win. Call
-    this right after any bid is placed (the only time high_bidder_user_id
-    is defined); safe to call repeatedly, already-passed users are skipped."""
+    """Anyone already at their roster cap for this item's league -- or, if
+    this item's team is itself a minor-conference team, already at their
+    separate minor-conference sub-cap -- can't legally bid on it (the WS
+    bid handler already blocks both). So they're auto-passed the moment
+    there's a high bidder to pass around, instead of making them click
+    Pass on a team they were never eligible to win. Call this right after
+    any bid is placed (the only time high_bidder_user_id is defined);
+    safe to call repeatedly, already-passed users are skipped."""
     league = item.team.league
     limit = ROSTER_LIMITS.get(league)
-    if limit is None:
+    minor_cap = MINOR_CONFERENCE_CAPS.get(league)
+    is_minor = minor_cap is not None and is_minor_conference_team(league, item.team.name)
+    if limit is None and not is_minor:
         return
     winner_id = high_bidder_user_id(item)
     passed = set(item.passed_user_ids)
@@ -248,7 +252,9 @@ def auto_pass_capped_users(db: Session, auction: Auction, item: AuctionItem) -> 
     for u in db.query(User).all():
         if u.id == winner_id or u.id in passed:
             continue
-        if count_user_league_teams(db, auction.season_id, u.id, league) >= limit:
+        capped_overall = limit is not None and count_user_league_teams(db, auction.season_id, u.id, league) >= limit
+        capped_minor = is_minor and count_user_minor_conference_teams(db, auction.season_id, u.id, league) >= minor_cap
+        if capped_overall or capped_minor:
             passed.add(u.id)
             changed = True
     if changed:
