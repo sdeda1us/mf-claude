@@ -868,6 +868,82 @@ button:disabled {
   font-size: 12.5px;
 }
 
+/* ---------- Team card modal: the "baseball card" popup TeamLink opens
+   everywhere except the Team History page (components/TeamCardModal.tsx) --
+   built from the same ribbon/nameplate/rules-card frame devices used for
+   the auction's on-the-clock card, just laid out as a single dense column
+   instead of the wide auction layout. ---------- */
+.modal-card.team-card {
+  max-width: 380px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(165deg, var(--stock-hi) 0%, var(--stock) 100%);
+}
+
+.team-card-nameplate {
+  align-self: flex-start;
+  max-width: 100%;
+}
+
+.team-card-photo {
+  border: 3px solid var(--ink);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 var(--shadow);
+}
+
+.team-card-photo .team-history-map {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.team-card-photo .team-history-map iframe {
+  height: 160px;
+}
+
+.team-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.team-card-bio {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.team-card-section-label {
+  font-family: var(--display-font);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--rule);
+  padding-top: 10px;
+  margin: 0;
+}
+
+.team-card-prognosis {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 8px 10px;
+  background: var(--pill-bg);
+  border-left: 3px solid var(--sky);
+  border-radius: 2px;
+}
+
+.team-card-loading {
+  padding: 40px 0;
+  text-align: center;
+}
+
 .points-cell,
 .stat {
   text-align: right;
@@ -1633,6 +1709,22 @@ button:disabled {
 
 .team-link:hover {
   text-decoration: underline solid;
+}
+
+/* TeamLink renders as a <button> everywhere except the Team History page
+   (see components/TeamLink.tsx) so it can pop the team card modal instead
+   of navigating — strip all button chrome so it reads exactly like the
+   plain-text/anchor version above. */
+.team-link-button {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .player-header {

@@ -15,6 +15,7 @@ import Player from "./pages/Player";
 import Players from "./pages/Players";
 import CribSheet from "./pages/CribSheet";
 import TeamHistory from "./pages/TeamHistory";
+import { TeamCardModalProvider } from "./components/TeamCardModal";
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -40,7 +41,7 @@ export default function App() {
   }, [location.pathname]);
 
   return (
-    <>
+    <TeamCardModalProvider>
       {user && (
         <header className="titlebar">
           <span className="pennant" aria-hidden="true" />
@@ -208,6 +209,6 @@ export default function App() {
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </>
+    </TeamCardModalProvider>
   );
 }
