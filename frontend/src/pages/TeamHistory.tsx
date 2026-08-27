@@ -205,6 +205,8 @@ function LeaguePicker({
   );
 }
 
+type Selection = { league: string; teamId: number } | null;
+
 export default function TeamHistory() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [searchParams] = useSearchParams();
@@ -212,13 +214,13 @@ export default function TeamHistory() {
   // the app points here with ?league=&teamId=, which preselects that
   // league's picker on load — this only runs once, so picking a
   // different team afterwards isn't fought by a stale URL.
-  const [selectedByLeague, setSelectedByLeague] = useState<Record<string, number | null>>(() => {
+  const [selected, setSelected] = useState<Selection>(() => {
     const league = searchParams.get("league");
     const teamId = Number(searchParams.get("teamId"));
     if (league && COVERED_TEAM_HISTORY_LEAGUES.includes(league) && teamId) {
-      return { [league]: teamId };
+      return { league, teamId };
     }
-    return {};
+    return null;
   });
 
   useEffect(() => {
@@ -240,21 +242,21 @@ export default function TeamHistory() {
             key={league}
             league={league}
             teams={teams.filter((t) => t.league === league)}
-            selectedTeamId={selectedByLeague[league] ?? null}
-            onChange={(teamId) => setSelectedByLeague((prev) => ({ ...prev, [league]: teamId }))}
+            // Only ever one team selected across every league's picker —
+            // choosing a new one here (or clearing this one) replaces
+            // whatever was picked in any other league's dropdown, rather
+            // than piling up multiple histories on the page at once.
+            selectedTeamId={selected?.league === league ? selected.teamId : null}
+            onChange={(teamId) => setSelected(teamId ? { league, teamId } : null)}
           />
         ))}
       </div>
 
-      {COVERED_TEAM_HISTORY_LEAGUES.map((league) => {
-        const teamId = selectedByLeague[league];
-        if (!teamId) return null;
-        return (
-          <section key={league} className="team-history-group">
-            <TeamHistoryPanel teamId={teamId} />
-          </section>
-        );
-      })}
+      {selected && (
+        <section className="team-history-group">
+          <TeamHistoryPanel teamId={selected.teamId} />
+        </section>
+      )}
     </div>
   );
 }
