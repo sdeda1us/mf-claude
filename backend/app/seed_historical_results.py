@@ -308,6 +308,11 @@ NCAAF_PLAYOFF_WINS = {
     "Miami (FL) Hurricanes": 3,        # beat Texas A&M, Ohio State, Ole Miss; lost championship to Indiana
     "Indiana Hoosiers": 2,             # bye, beat Alabama (QF) and Oregon (SF); championship win tracked separately
 }
+# Seeds 1-4 skipped round 1 with a first-round bye straight to the
+# quarterfinal -- scores the same +10 as a playoff win (see
+# docs/wiki/game-rules-ncaaf.md), independent of how that team's actual
+# playoff games (above) went.
+NCAAF_PLAYOFF_BYE = {"Indiana Hoosiers", "Ohio State Buckeyes", "Georgia Bulldogs", "Texas Tech Red Raiders"}
 NCAAF_CHAMPIONSHIP_BID = {"Indiana Hoosiers", "Miami (FL) Hurricanes"}
 NCAAF_CHAMPIONSHIP_WINNER = "Indiana Hoosiers"
 
@@ -337,6 +342,7 @@ def ncaaf_stats(name: str) -> dict:
         "reg_season_losses": reg_season_losses,
         "playoff_bid": name in NCAAF_PLAYOFF_BID,
         "playoff_wins": NCAAF_PLAYOFF_WINS.get(name, 0),
+        "playoff_bye": name in NCAAF_PLAYOFF_BYE,
         "championship_bid": name in NCAAF_CHAMPIONSHIP_BID,
         "championship_win": name == NCAAF_CHAMPIONSHIP_WINNER,
     }

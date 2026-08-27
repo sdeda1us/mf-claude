@@ -275,7 +275,7 @@ SCORING_RULES: dict[str, list[dict]] = {
         {"label": "Loss (regular season)", "points": -6},
         {"label": "Loss (bowl or playoff game)", "points": 0},
         {"label": "Playoff bid (make the CFP bracket)", "points": 10},
-        {"label": "Playoff win (any round before the title game)", "points": 10},
+        {"label": "Playoff win (any round before the title game) or bye into next round", "points": 10},
         {"label": "CFP Championship Game bid", "points": 20},
         {"label": "CFP Championship Game winner", "points": 30},
     ],
@@ -407,7 +407,7 @@ def compute_score(league: str, stats: dict) -> float:
             12 * stats["wins"]
             - 6 * stats["reg_season_losses"]
             + (10 if stats.get("playoff_bid") else 0)
-            + 10 * stats.get("playoff_wins", 0)
+            + 10 * (stats.get("playoff_wins", 0) + (1 if stats.get("playoff_bye") else 0))
             + (20 if stats.get("championship_bid") else 0)
             + (30 if stats.get("championship_win") else 0)
         )
@@ -595,6 +595,7 @@ def compute_score_breakdown(league: str, stats: dict) -> list[dict]:
             {"label": f"Regular-season losses ({stats['reg_season_losses']})", "points": -6 * stats["reg_season_losses"]},
             {"label": "CFP bid", "points": 10 if stats.get("playoff_bid") else 0},
             {"label": f"Playoff wins ({stats.get('playoff_wins', 0)})", "points": 10 * stats.get("playoff_wins", 0)},
+            {"label": "1st-round bye", "points": 10 if stats.get("playoff_bye") else 0},
             {"label": "CFP Championship Game bid", "points": 20 if stats.get("championship_bid") else 0},
             {"label": "CFP Championship Game winner", "points": 30 if stats.get("championship_win") else 0},
         ])
