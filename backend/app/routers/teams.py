@@ -28,10 +28,11 @@ def get_team_history(
     way the rest of the app scores results. The most recent season comes
     from TeamSeasonResult (live, same source Example Scores reads);
     anything older comes from the static TEAM_HISTORY_STATS reference
-    data. Currently covers EPL, NFL, NBA, NHL, URC, and the top 50 NCAAF
-    teams by expected fantasy points -- other teams/leagues just return
-    bio/location/prognosis as None, with the season list falling back to
-    whatever's live in TeamSeasonResult (may be empty too)."""
+    data. Currently covers EPL, NFL, NBA, NHL, URC, and the top 50 teams
+    by expected fantasy points in each of NCAAF, NCAAMB, and NCAAWB --
+    other teams/leagues just return bio/location/prognosis as None, with
+    the season list falling back to whatever's live in TeamSeasonResult
+    (may be empty too)."""
     team = db.get(Team, team_id)
     if team is None:
         raise HTTPException(status_code=404, detail="Team not found")

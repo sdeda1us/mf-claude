@@ -115,8 +115,9 @@ export default function TeamHistory() {
       <h1>Team History</h1>
       <p>
         A short biography and the last several seasons' worth of fantasy points for each team —
-        currently covering EPL, NFL, NBA, NHL, URC, and the top 50 NCAAF teams by expected
-        fantasy points, ahead of doing the same research pass for the other leagues.
+        currently covering EPL, NFL, NBA, NHL, URC, and the top 50 teams by expected fantasy
+        points in each of NCAAF, NCAAMB, and NCAAWB, ahead of doing the same research pass for
+        the other leagues.
       </p>
 
       <div className="team-history-picker-row">
