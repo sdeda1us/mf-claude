@@ -152,6 +152,61 @@ TEAM_LOCATIONS: dict[tuple[str, str], tuple[float, float]] = {
     ("URC", "Edinburgh"): (55.9461, -3.2472),  # Hive Stadium (DAM Health Stadium)
     ("URC", "Benetton"): (45.6867, 12.2497),  # Stadio Comunale di Monigo, Treviso
     ("URC", "Zebre Parma"): (44.8125, 10.3364),  # Stadio Sergio Lanfranchi, Parma
+
+    # --- NCAAF --- top 50 teams by expected fall-auction fantasy points
+    # (see set_ev_defaults.FALL_EV_RAW_SCORES) rather than all 138 FBS teams
+    # -- covering every program worth owning at auction, without having to
+    # research all 138 for teams no one will ever draft.
+    ("NCAAF", "Ohio State Buckeyes"): (40.0017, -83.0197),  # Ohio Stadium, Columbus
+    ("NCAAF", "Georgia Bulldogs"): (33.9497, -83.3733),  # Sanford Stadium, Athens
+    ("NCAAF", "Texas Longhorns"): (30.2839, -97.7327),  # DKR-Texas Memorial Stadium, Austin
+    ("NCAAF", "Indiana Hoosiers"): (39.1794, -86.5264),  # Memorial Stadium, Bloomington
+    ("NCAAF", "Oregon Ducks"): (44.0582, -123.0685),  # Autzen Stadium, Eugene
+    ("NCAAF", "Notre Dame Fighting Irish"): (41.6983, -86.2331),  # Notre Dame Stadium
+    ("NCAAF", "Alabama Crimson Tide"): (33.2083, -87.5503),  # Bryant-Denny Stadium, Tuscaloosa
+    ("NCAAF", "LSU Tigers"): (30.4118, -91.1837),  # Tiger Stadium, Baton Rouge
+    ("NCAAF", "Texas A&M Aggies"): (30.6100, -96.3405),  # Kyle Field, College Station
+    ("NCAAF", "Miami (FL) Hurricanes"): (25.9580, -80.2389),  # Hard Rock Stadium, Miami Gardens
+    ("NCAAF", "Texas Tech Red Raiders"): (33.5904, -101.8709),  # Jones AT&T Stadium, Lubbock
+    ("NCAAF", "Oklahoma Sooners"): (35.2058, -97.4425),  # Gaylord Family Oklahoma Memorial Stadium, Norman
+    ("NCAAF", "USC Trojans"): (34.0141, -118.2879),  # LA Memorial Coliseum
+    ("NCAAF", "Ole Miss Rebels"): (34.3646, -89.5348),  # Vaught-Hemingway Stadium, Oxford
+    ("NCAAF", "Tennessee Volunteers"): (35.9550, -83.9250),  # Neyland Stadium, Knoxville
+    ("NCAAF", "Michigan Wolverines"): (42.2658, -83.7487),  # Michigan Stadium, Ann Arbor
+    ("NCAAF", "Auburn Tigers"): (32.6023, -85.4900),  # Jordan-Hare Stadium, Auburn
+    ("NCAAF", "Florida Gators"): (29.6499, -82.3486),  # Ben Hill Griffin Stadium, Gainesville
+    ("NCAAF", "Missouri Tigers"): (38.9358, -92.3331),  # Faurot Field, Columbia
+    ("NCAAF", "Penn State Nittany Lions"): (40.8122, -77.8560),  # Beaver Stadium, University Park
+    ("NCAAF", "Clemson Tigers"): (34.6834, -82.8433),  # Memorial Stadium, Clemson
+    ("NCAAF", "BYU Cougars"): (40.2555, -111.6549),  # LaVell Edwards Stadium, Provo
+    ("NCAAF", "South Carolina Gamecocks"): (33.9727, -81.0192),  # Williams-Brice Stadium, Columbia
+    ("NCAAF", "Iowa Hawkeyes"): (41.6586, -91.5511),  # Kinnick Stadium, Iowa City
+    ("NCAAF", "Washington Huskies"): (47.6503, -122.3017),  # Husky Stadium, Seattle
+    ("NCAAF", "SMU Mustangs"): (32.8371, -96.7828),  # Gerald J. Ford Stadium, Dallas
+    ("NCAAF", "Vanderbilt Commodores"): (36.1447, -86.8069),  # FirstBank Stadium, Nashville
+    ("NCAAF", "Nebraska Cornhuskers"): (40.8206, -96.7056),  # Memorial Stadium, Lincoln
+    ("NCAAF", "Florida State Seminoles"): (30.4380, -84.3040),  # Doak Campbell Stadium, Tallahassee
+    ("NCAAF", "Louisville Cardinals"): (38.2058, -85.7585),  # L&N Federal Credit Union Stadium
+    ("NCAAF", "Utah Utes"): (40.7599, -111.8485),  # Rice-Eccles Stadium, Salt Lake City
+    ("NCAAF", "Pittsburgh Panthers"): (40.4468, -80.0158),  # Acrisure Stadium, Pittsburgh
+    ("NCAAF", "Virginia Cavaliers"): (38.0309, -78.5127),  # Scott Stadium, Charlottesville
+    ("NCAAF", "Virginia Tech Hokies"): (37.2199, -80.4183),  # Lane Stadium, Blacksburg
+    ("NCAAF", "Arizona Wildcats"): (32.2288, -110.9491),  # Arizona Stadium, Tucson
+    ("NCAAF", "Baylor Bears"): (31.5586, -97.1156),  # McLane Stadium, Waco
+    ("NCAAF", "Houston Cougars"): (29.7217, -95.3406),  # TDECU Stadium, Houston
+    ("NCAAF", "Kentucky Wildcats"): (38.0233, -84.5060),  # Kroger Field, Lexington
+    ("NCAAF", "Illinois Fighting Illini"): (40.0956, -88.2359),  # Memorial Stadium, Champaign
+    ("NCAAF", "North Carolina Tar Heels"): (35.9049, -79.0469),  # Kenan Memorial Stadium, Chapel Hill
+    ("NCAAF", "Kansas State Wildcats"): (39.2019, -96.5847),  # Bill Snyder Family Stadium, Manhattan
+    ("NCAAF", "TCU Horned Frogs"): (32.7095, -97.3688),  # Amon G. Carter Stadium, Fort Worth
+    ("NCAAF", "Arkansas Razorbacks"): (36.0678, -94.1786),  # Razorback Stadium, Fayetteville
+    ("NCAAF", "Mississippi State Bulldogs"): (33.4552, -88.7934),  # Davis Wade Stadium, Starkville
+    ("NCAAF", "Wisconsin Badgers"): (43.0700, -89.4123),  # Camp Randall Stadium, Madison
+    ("NCAAF", "Duke Blue Devils"): (36.0009, -78.9412),  # Wallace Wade Stadium, Durham
+    ("NCAAF", "Georgia Tech Yellow Jackets"): (33.7724, -84.3928),  # Bobby Dodd Stadium, Atlanta
+    ("NCAAF", "NC State Wolfpack"): (35.8010, -78.7197),  # Carter-Finley Stadium, Raleigh
+    ("NCAAF", "Arizona State Sun Devils"): (33.4260, -111.9327),  # Mountain America Stadium, Tempe
+    ("NCAAF", "Cincinnati Bearcats"): (39.1310, -84.5157),  # Nippert Stadium, Cincinnati
 }
 
 # (league, team name) -> a short factual biography (2-4 sentences):
@@ -799,6 +854,281 @@ TEAM_BIOS: dict[tuple[str, str], str] = {
     ("URC", "Zebre Parma"): (
         "An Italian side based in Parma, historically the weaker of Italy's two "
         "professional sides in the league, with no playoff appearance yet."
+    ),
+
+    # --- NCAAF --- (top 50 by expected fantasy points, see the note above
+    # TEAM_LOCATIONS's NCAAF section)
+    ("NCAAF", "Ohio State Buckeyes"): (
+        "Founded in 1890 and playing at Ohio Stadium (\"the Horseshoe\") in Columbus, Ohio "
+        "State has won eight consensus national titles, most recently the first-ever "
+        "12-team CFP crown in January 2025 under Ryan Day."
+    ),
+    ("NCAAF", "Georgia Bulldogs"): (
+        "Founded in 1892 and playing at Sanford Stadium in Athens, Georgia won back-to-back "
+        "national titles in 2021 and 2022 under Kirby Smart -- the program's first "
+        "championships since 1980."
+    ),
+    ("NCAAF", "Texas Longhorns"): (
+        "Founded in 1893 and playing at Darrell K Royal-Texas Memorial Stadium in Austin, "
+        "Texas has won four national titles, most recently 2005, and reached the CFP "
+        "semifinals in both 2023 and 2024 under Steve Sarkisian after rejoining the SEC."
+    ),
+    ("NCAAF", "Indiana Hoosiers"): (
+        "Founded in 1887 and playing at Memorial Stadium in Bloomington, Indiana went over "
+        "a century as a Big Ten also-ran before Curt Cignetti's 2024 arrival produced an "
+        "11-1 season and the program's first-ever College Football Playoff appearance."
+    ),
+    ("NCAAF", "Oregon Ducks"): (
+        "Founded in 1894 and playing at Autzen Stadium in Eugene, Oregon is known for its "
+        "Nike-designed uniform variety courtesy of alumnus Phil Knight, and won its first "
+        "Big Ten title in 2024 with an unbeaten regular season after leaving the Pac-12."
+    ),
+    ("NCAAF", "Notre Dame Fighting Irish"): (
+        "Founded in 1887 and playing at Notre Dame Stadium in South Bend, Notre Dame has 11 "
+        "consensus national titles (tied for most all-time), most recently 1988, and reached "
+        "the 2024 CFP championship game under Marcus Freeman before losing to Ohio State."
+    ),
+    ("NCAAF", "Alabama Crimson Tide"): (
+        "Founded in 1892 and playing at Bryant-Denny Stadium in Tuscaloosa, Alabama has won "
+        "18 national titles, most of any program; Kalen DeBoer took over in 2024 after Nick "
+        "Saban's retirement ended a run of six titles in 17 seasons."
+    ),
+    ("NCAAF", "LSU Tigers"): (
+        "Founded in 1893 and playing at Tiger Stadium (\"Death Valley\") in Baton Rouge, "
+        "renowned for its Saturday-night atmosphere, LSU has won four national titles, most "
+        "recently the unbeaten 2019 team; Lane Kiffin arrives in 2026 after Brian Kelly's "
+        "October 2025 firing."
+    ),
+    ("NCAAF", "Texas A&M Aggies"): (
+        "Founded in 1894 and playing at Kyle Field in College Station, home of the \"12th "
+        "Man\" student tradition, Texas A&M has one national title (1939); Mike Elko's 2024 "
+        "debut returned the program to the AP top 10 for the first time in years."
+    ),
+    ("NCAAF", "Miami (FL) Hurricanes"): (
+        "Founded in 1926 and playing at Hard Rock Stadium in Miami Gardens, Miami won five "
+        "national titles across its 1980s-2000s dynasty years; Cam Ward's 2024 Heisman-"
+        "finalist season under Mario Cristobal was the program's best in over a decade."
+    ),
+    ("NCAAF", "Texas Tech Red Raiders"): (
+        "Founded in 1925 and playing at Jones AT&T Stadium in Lubbock, Texas Tech has no "
+        "national titles, but heavy transfer-portal investment under Joey McGuire has made "
+        "the Red Raiders a preseason top-15 fixture entering 2026."
+    ),
+    ("NCAAF", "Oklahoma Sooners"): (
+        "Founded in 1895 and playing at Gaylord Family Oklahoma Memorial Stadium in Norman, "
+        "Oklahoma has won seven national titles; Brent Venables took over in 2022 after "
+        "Lincoln Riley departed for USC, and moved the program from the Big 12 to the SEC "
+        "in 2024."
+    ),
+    ("NCAAF", "USC Trojans"): (
+        "Founded in 1888 and playing at the LA Memorial Coliseum, USC has won 11 national "
+        "titles; Lincoln Riley's Caleb Williams-led 2022 team won 11 games in his debut "
+        "season, but the program has struggled since the 2024 move to the Big Ten."
+    ),
+    ("NCAAF", "Ole Miss Rebels"): (
+        "Founded in 1893 and playing at Vaught-Hemingway Stadium in Oxford, Ole Miss has no "
+        "national titles since the poll era began, but consecutive 11-win seasons in 2023 "
+        "and 2024 under Lane Kiffin made the Rebels a perennial CFP-bubble team before "
+        "Kiffin left for LSU after the 2025 regular season."
+    ),
+    ("NCAAF", "Tennessee Volunteers"): (
+        "Founded in 1891 and playing at Neyland Stadium in Knoxville, one of the sport's "
+        "largest venues, Tennessee has won six national titles, most recently 1998, and "
+        "made the program's first CFP appearance in 2024 under Josh Heupel."
+    ),
+    ("NCAAF", "Michigan Wolverines"): (
+        "Founded in 1879 and playing at Michigan Stadium (\"the Big House\"), the largest "
+        "stadium in the US, Michigan claims a record-tying 12 national titles, most "
+        "recently the undefeated 2023 champions under Jim Harbaugh; Kyle Whittingham "
+        "arrives in 2026 after Sherrone Moore's December 2025 firing."
+    ),
+    ("NCAAF", "Auburn Tigers"): (
+        "Founded in 1892 and playing at Jordan-Hare Stadium in Auburn, Auburn has won two "
+        "national titles (1957, 2010); Alex Golesh arrives in 2026 after Hugh Freeze was "
+        "fired in November 2025 following a 15-19 tenure."
+    ),
+    ("NCAAF", "Florida Gators"): (
+        "Founded in 1906 and playing at Ben Hill Griffin Stadium (\"the Swamp\") in "
+        "Gainesville, Florida has won three national titles under Steve Spurrier and Urban "
+        "Meyer; Jon Sumrall arrives in 2026 after Billy Napier's October 2025 firing ended "
+        "a mostly middling four-year tenure."
+    ),
+    ("NCAAF", "Missouri Tigers"): (
+        "Founded in 1890 and playing at Faurot Field in Columbia, Missouri has no national "
+        "titles, but Eli Drinkwitz's Tigers won 11 and 10 games the last two seasons, the "
+        "program's best stretch in over a decade."
+    ),
+    ("NCAAF", "Penn State Nittany Lions"): (
+        "Founded in 1887 and playing at Beaver Stadium in University Park, the second-"
+        "largest stadium in the US, Penn State has won two national titles (1982, 1986); "
+        "Matt Campbell arrives in 2026 from Iowa State after James Franklin was fired "
+        "mid-2025 following a stunning home loss to Northwestern."
+    ),
+    ("NCAAF", "Clemson Tigers"): (
+        "Founded in 1896 and playing at Memorial Stadium (\"Death Valley\") in Clemson, "
+        "Clemson has won three national titles, two (2016, 2018) under longtime coach Dabo "
+        "Swinney, who enters 2026 needing a bounce-back after a 7-6 2025 finish."
+    ),
+    ("NCAAF", "BYU Cougars"): (
+        "Founded in 1922 and playing at LaVell Edwards Stadium in Provo, BYU won a national "
+        "title in 1984 under its namesake coach's undefeated team; Kalani Sitake's program "
+        "made a surprise 11-2 run in 2024 in its second Big 12 season."
+    ),
+    ("NCAAF", "South Carolina Gamecocks"): (
+        "Founded in 1892 and playing at Williams-Brice Stadium in Columbia, South Carolina "
+        "has no national titles, but Shane Beamer's program reached nine wins in 2024, its "
+        "best mark since 2013."
+    ),
+    ("NCAAF", "Iowa Hawkeyes"): (
+        "Founded in 1889 and playing at Kinnick Stadium in Iowa City, Iowa has no national "
+        "titles since 1958-59, but Kirk Ferentz, the sport's longest-tenured active head "
+        "coach, has kept the Hawkeyes in bowl games in nearly every one of his 27 seasons."
+    ),
+    ("NCAAF", "Washington Huskies"): (
+        "Founded in 1889 and playing at Husky Stadium on Lake Washington in Seattle, "
+        "Washington has won two national titles (1960, 1991) and reached the 2023 CFP "
+        "championship game under Kalen DeBoer before he left for Alabama, with Jedd Fisch "
+        "inheriting a rebuild in the 2024 move to the Big Ten."
+    ),
+    ("NCAAF", "SMU Mustangs"): (
+        "Founded in 1888 and playing at Gerald J. Ford Stadium in Dallas, SMU is remembered "
+        "for the sport's only \"death penalty\" (the 1987 NCAA shutdown); Rhett Lashlee's "
+        "rebuilt Mustangs reached the ACC title game in both 2023 and 2024, making the CFP "
+        "in the latter after joining the conference."
+    ),
+    ("NCAAF", "Vanderbilt Commodores"): (
+        "Founded in 1890 and playing at FirstBank Stadium in Nashville, the SEC's smallest "
+        "campus, Vanderbilt has no national titles and is the league's historic also-ran, "
+        "but Clark Lea's 2024 team went bowling for the first time since 2018 and beat "
+        "Alabama for the first time in decades."
+    ),
+    ("NCAAF", "Nebraska Cornhuskers"): (
+        "Founded in 1890 and playing at Memorial Stadium in Lincoln, home to one of the "
+        "sport's longest sellout streaks, Nebraska has won five national titles, all before "
+        "1998; Matt Rhule ended a seven-year bowl drought in 2024."
+    ),
+    ("NCAAF", "Florida State Seminoles"): (
+        "Founded in 1947 and playing at Doak Campbell Stadium in Tallahassee, Florida State "
+        "has won three national titles; the 2023 team went 13-0 and won the ACC but was "
+        "infamously the first undefeated Power-conference champion left out of the CFP, "
+        "then collapsed to a historically bad 2024."
+    ),
+    ("NCAAF", "Louisville Cardinals"): (
+        "Founded in 1912 and playing at L&N Federal Credit Union Stadium in Louisville, "
+        "Louisville has no national titles, but Jeff Brohm's 2023 arrival produced "
+        "back-to-back 10-win-caliber seasons and an ACC title game appearance."
+    ),
+    ("NCAAF", "Utah Utes"): (
+        "Founded in 1892 and playing at Rice-Eccles Stadium in Salt Lake City, Utah has no "
+        "national titles, but won back-to-back Pac-12 titles in 2021-22 under Kyle "
+        "Whittingham, who left for Michigan after 21 seasons; longtime defensive "
+        "coordinator Morgan Scalley now leads the program in the Big 12."
+    ),
+    ("NCAAF", "Pittsburgh Panthers"): (
+        "Founded in 1890 and playing at Acrisure Stadium (shared with the NFL's Steelers), "
+        "Pitt claims nine national titles, all before 1937; Kenny Pickett's Heisman-"
+        "finalist 2021 team won the program's first ACC title."
+    ),
+    ("NCAAF", "Virginia Cavaliers"): (
+        "Founded in 1888 and playing at Scott Stadium in Charlottesville, Virginia has no "
+        "national titles; the program is still rebuilding under Tony Elliott following the "
+        "tragic November 2022 shooting deaths of three players, with a breakout 8-5 2024 "
+        "season the clearest sign of progress."
+    ),
+    ("NCAAF", "Virginia Tech Hokies"): (
+        "Founded in 1892 and playing at Lane Stadium in Blacksburg, famous for its \"Enter "
+        "Sandman\" pregame entrance, Virginia Tech has no national titles despite a 1999 "
+        "championship-game appearance; James Franklin arrives in 2026 after Brent Pry's "
+        "in-season firing, a year after his own Penn State dismissal."
+    ),
+    ("NCAAF", "Arizona Wildcats"): (
+        "Founded in 1899 and playing at Arizona Stadium in Tucson, Arizona has no national "
+        "titles; the program went from a program-worst 1-11 in 2021 to a 10-3 Alamo Bowl-"
+        "winning 2023 under Jedd Fisch before he left for Washington, with Brent Brennan "
+        "now in charge."
+    ),
+    ("NCAAF", "Baylor Bears"): (
+        "Founded in 1899 and playing at McLane Stadium along the Brazos River in Waco, "
+        "Baylor has no national titles; the program won the 2021 Big 12 title and Sugar "
+        "Bowl under Dave Aranda before back-to-back losing seasons."
+    ),
+    ("NCAAF", "Houston Cougars"): (
+        "Founded in 1946 and playing at TDECU Stadium in Houston, Houston has no national "
+        "titles; Dana Holgorsen's 12-win 2021 American Athletic Conference title season has "
+        "given way to consecutive 4-8 finishes since the 2023 move to the Big 12."
+    ),
+    ("NCAAF", "Kentucky Wildcats"): (
+        "Founded in 1881 and playing at Kroger Field in Lexington, a basketball-first "
+        "school on the gridiron, Kentucky claims one conference title (1976); Mark Stoops "
+        "built the program's winningest modern stretch around 2021 before a recent decline."
+    ),
+    ("NCAAF", "Illinois Fighting Illini"): (
+        "Founded in 1890 and playing at Memorial Stadium in Champaign, Illinois has five "
+        "conference titles, all before 1990; Bret Bielema's program broke through with a "
+        "10-3 2024 season, its best in over a decade."
+    ),
+    ("NCAAF", "North Carolina Tar Heels"): (
+        "Founded in 1888 and playing at Kenan Memorial Stadium in Chapel Hill, a basketball-"
+        "first school on the gridiron, North Carolina has no national titles; Bill "
+        "Belichick's stunning 2025 jump to college football produced a rough 4-8 debut "
+        "season."
+    ),
+    ("NCAAF", "Kansas State Wildcats"): (
+        "Founded in 1896 and playing at Bill Snyder Family Stadium in Manhattan, named for "
+        "the coach who built the sport's most celebrated turnaround, Kansas State claims a "
+        "share of the 2003 national title and won the 2022 Big 12 title under Chris "
+        "Klieman."
+    ),
+    ("NCAAF", "TCU Horned Frogs"): (
+        "Founded in 1896 and playing at Amon G. Carter Stadium in Fort Worth, TCU claims a "
+        "share of the 1938 national title and reached the 2022 CFP championship game in a "
+        "worst-to-first run under Sonny Dykes before a rebuilding stretch."
+    ),
+    ("NCAAF", "Arkansas Razorbacks"): (
+        "Founded in 1894 and playing at Donald W. Reynolds Razorback Stadium in "
+        "Fayetteville, Arkansas has three conference titles, most recently 1989 in the old "
+        "Southwest Conference; Ryan Silverfield arrives in 2026 after Sam Pittman was fired "
+        "just five games into 2025."
+    ),
+    ("NCAAF", "Mississippi State Bulldogs"): (
+        "Founded in 1878 and playing at Davis Wade Stadium in Starkville, famous for its "
+        "cowbell-ringing crowd noise, Mississippi State claims a share of the 1940 national "
+        "title; the program has struggled to replace the late Mike Leach, who died in "
+        "December 2022."
+    ),
+    ("NCAAF", "Wisconsin Badgers"): (
+        "Founded in 1889 and playing at Camp Randall Stadium in Madison, site of the \"Jump "
+        "Around\" tradition, Wisconsin has no national titles since 1901; the program's "
+        "22-year bowl streak ended not long after Luke Fickell's 2023 arrival, a jarring "
+        "change after the Alvarez/Chryst-era stability."
+    ),
+    ("NCAAF", "Duke Blue Devils"): (
+        "Founded in 1888 and playing at Wallace Wade Stadium in Durham, a basketball-first "
+        "school on the gridiron, Duke has no modern national titles; Mike Elko's 2022-23 "
+        "turnaround (16 wins across two seasons) preceded his 2024 departure for Texas "
+        "A&M, with Manny Diaz continuing the momentum."
+    ),
+    ("NCAAF", "Georgia Tech Yellow Jackets"): (
+        "Founded in 1885 and playing at Bobby Dodd Stadium in Atlanta, Georgia Tech has won "
+        "four national titles, most recently 1990; Brent Key's program broke through with "
+        "the school's first bowl win since 2016 in 2023 and a 9-win 2024."
+    ),
+    ("NCAAF", "NC State Wolfpack"): (
+        "Founded in 1892 and playing at Carter-Finley Stadium in Raleigh, NC State claims a "
+        "share of the 1979 conference title; Dave Doeren has built steady 9-win seasons "
+        "around consistently strong defenses."
+    ),
+    ("NCAAF", "Arizona State Sun Devils"): (
+        "Founded in 1896 and playing at Mountain America Stadium in Tempe, Arizona State "
+        "has two Pac-10 titles from the 1980s-90s but no national titles; Kenny "
+        "Dillingham's 2024 team won the Big 12 title in just his second season and reached "
+        "the CFP quarterfinals."
+    ),
+    ("NCAAF", "Cincinnati Bearcats"): (
+        "Founded in 1897 and playing at Nippert Stadium, one of the oldest stadiums in "
+        "college football, Cincinnati has no national titles; the 2021 team went 13-0 and "
+        "became the first Group of Five program to reach the CFP under Luke Fickell, who "
+        "left for Wisconsin after that season."
     ),
 }
 
@@ -1591,6 +1921,314 @@ TEAM_HISTORY_STATS: dict[tuple[str, str], dict[str, dict]] = {
         "2023-24": {"table_points": 15, "points_difference": -298},
         "2024-25": {"table_points": 29, "points_difference": -201},
     },
+
+    # --- NCAAF --- (season_label is the year the season was played, matching
+    # seed_historical_results.py's convention -- the live "2025" row picks up
+    # from where this leaves off). Compiled from each team's Wikipedia
+    # season-by-season records plus the four CFP brackets' actual results;
+    # less-covered programs' plain win-loss (no CFP appearance) is best
+    # effort and could be off by a game in a couple of spots, same caveat as
+    # this file's other proxy/approximate sections.
+    ("NCAAF", "Ohio State Buckeyes"): {
+        "2021": {"wins": 11, "reg_season_losses": 1},
+        "2022": {"wins": 11, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 0},
+        "2023": {"wins": 11, "reg_season_losses": 1},
+        "2024": {"wins": 14, "reg_season_losses": 2, "playoff_bid": True, "playoff_wins": 3, "championship_bid": True, "championship_win": True},
+    },
+    ("NCAAF", "Georgia Bulldogs"): {
+        "2021": {"wins": 14, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 1, "championship_bid": True, "championship_win": True},
+        "2022": {"wins": 15, "reg_season_losses": 0, "playoff_bid": True, "playoff_wins": 1, "championship_bid": True, "championship_win": True},
+        "2023": {"wins": 13, "reg_season_losses": 1},
+        "2024": {"wins": 11, "reg_season_losses": 2, "playoff_bid": True, "playoff_bye": True, "playoff_wins": 0},
+    },
+    ("NCAAF", "Texas Longhorns"): {
+        "2021": {"wins": 5, "reg_season_losses": 7},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 12, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 0},
+        "2024": {"wins": 13, "reg_season_losses": 2, "playoff_bid": True, "playoff_wins": 2},
+    },
+    ("NCAAF", "Indiana Hoosiers"): {
+        "2021": {"wins": 2, "reg_season_losses": 10},
+        "2022": {"wins": 4, "reg_season_losses": 8},
+        "2023": {"wins": 3, "reg_season_losses": 9},
+        "2024": {"wins": 11, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 0},
+    },
+    ("NCAAF", "Oregon Ducks"): {
+        "2021": {"wins": 10, "reg_season_losses": 3},
+        "2022": {"wins": 10, "reg_season_losses": 3},
+        "2023": {"wins": 12, "reg_season_losses": 2},
+        "2024": {"wins": 13, "reg_season_losses": 0, "playoff_bid": True, "playoff_bye": True, "playoff_wins": 0},
+    },
+    ("NCAAF", "Notre Dame Fighting Irish"): {
+        "2021": {"wins": 11, "reg_season_losses": 1},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 10, "reg_season_losses": 1},
+        "2024": {"wins": 14, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 3, "championship_bid": True, "championship_win": False},
+    },
+    ("NCAAF", "Alabama Crimson Tide"): {
+        "2021": {"wins": 13, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 1, "championship_bid": True, "championship_win": False},
+        "2022": {"wins": 11, "reg_season_losses": 2},
+        "2023": {"wins": 12, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 0},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "LSU Tigers"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 10, "reg_season_losses": 4},
+        "2023": {"wins": 10, "reg_season_losses": 3},
+        "2024": {"wins": 10, "reg_season_losses": 3},
+    },
+    ("NCAAF", "Texas A&M Aggies"): {
+        "2021": {"wins": 8, "reg_season_losses": 4},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 7, "reg_season_losses": 5},
+        "2024": {"wins": 8, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Miami (FL) Hurricanes"): {
+        "2021": {"wins": 7, "reg_season_losses": 5},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 7, "reg_season_losses": 5},
+        "2024": {"wins": 10, "reg_season_losses": 2},
+    },
+    ("NCAAF", "Texas Tech Red Raiders"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Oklahoma Sooners"): {
+        "2021": {"wins": 11, "reg_season_losses": 1},
+        "2022": {"wins": 6, "reg_season_losses": 6},
+        "2023": {"wins": 10, "reg_season_losses": 3},
+        "2024": {"wins": 6, "reg_season_losses": 7},
+    },
+    ("NCAAF", "USC Trojans"): {
+        "2021": {"wins": 4, "reg_season_losses": 8},
+        "2022": {"wins": 11, "reg_season_losses": 2},
+        "2023": {"wins": 8, "reg_season_losses": 4},
+        "2024": {"wins": 6, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Ole Miss Rebels"): {
+        "2021": {"wins": 10, "reg_season_losses": 2},
+        "2022": {"wins": 8, "reg_season_losses": 4},
+        "2023": {"wins": 11, "reg_season_losses": 2},
+        "2024": {"wins": 11, "reg_season_losses": 2},
+    },
+    ("NCAAF", "Tennessee Volunteers"): {
+        "2021": {"wins": 7, "reg_season_losses": 5},
+        "2022": {"wins": 11, "reg_season_losses": 1},
+        "2023": {"wins": 9, "reg_season_losses": 4},
+        "2024": {"wins": 10, "reg_season_losses": 2, "playoff_bid": True, "playoff_wins": 0},
+    },
+    ("NCAAF", "Michigan Wolverines"): {
+        "2021": {"wins": 12, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 0},
+        "2022": {"wins": 13, "reg_season_losses": 0, "playoff_bid": True, "playoff_wins": 0},
+        "2023": {"wins": 15, "reg_season_losses": 0, "playoff_bid": True, "playoff_wins": 1, "championship_bid": True, "championship_win": True},
+        "2024": {"wins": 8, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Auburn Tigers"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 6, "reg_season_losses": 7},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Florida Gators"): {
+        "2021": {"wins": 6, "reg_season_losses": 7},
+        "2022": {"wins": 6, "reg_season_losses": 7},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Missouri Tigers"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 6, "reg_season_losses": 6},
+        "2023": {"wins": 11, "reg_season_losses": 2},
+        "2024": {"wins": 10, "reg_season_losses": 3},
+    },
+    ("NCAAF", "Penn State Nittany Lions"): {
+        "2021": {"wins": 7, "reg_season_losses": 5},
+        "2022": {"wins": 11, "reg_season_losses": 2},
+        "2023": {"wins": 10, "reg_season_losses": 2},
+        "2024": {"wins": 13, "reg_season_losses": 2, "playoff_bid": True, "playoff_wins": 2},
+    },
+    ("NCAAF", "Clemson Tigers"): {
+        "2021": {"wins": 10, "reg_season_losses": 2},
+        "2022": {"wins": 11, "reg_season_losses": 2},
+        "2023": {"wins": 9, "reg_season_losses": 4},
+        "2024": {"wins": 10, "reg_season_losses": 3, "playoff_bid": True, "playoff_wins": 0},
+    },
+    ("NCAAF", "BYU Cougars"): {
+        "2021": {"wins": 10, "reg_season_losses": 2},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 11, "reg_season_losses": 2},
+    },
+    ("NCAAF", "South Carolina Gamecocks"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 8, "reg_season_losses": 4},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 9, "reg_season_losses": 2},
+    },
+    ("NCAAF", "Iowa Hawkeyes"): {
+        "2021": {"wins": 11, "reg_season_losses": 1},
+        "2022": {"wins": 10, "reg_season_losses": 3},
+        "2023": {"wins": 10, "reg_season_losses": 3},
+        "2024": {"wins": 8, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Washington Huskies"): {
+        "2021": {"wins": 4, "reg_season_losses": 8},
+        "2022": {"wins": 11, "reg_season_losses": 2},
+        "2023": {"wins": 14, "reg_season_losses": 0, "playoff_bid": True, "playoff_wins": 1, "championship_bid": True, "championship_win": False},
+        "2024": {"wins": 6, "reg_season_losses": 6},
+    },
+    ("NCAAF", "SMU Mustangs"): {
+        "2021": {"wins": 8, "reg_season_losses": 4},
+        "2022": {"wins": 7, "reg_season_losses": 5},
+        "2023": {"wins": 11, "reg_season_losses": 2},
+        "2024": {"wins": 11, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 0},
+    },
+    ("NCAAF", "Vanderbilt Commodores"): {
+        "2021": {"wins": 2, "reg_season_losses": 10},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 6, "reg_season_losses": 7},
+        "2024": {"wins": 7, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Nebraska Cornhuskers"): {
+        "2021": {"wins": 3, "reg_season_losses": 9},
+        "2022": {"wins": 4, "reg_season_losses": 8},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 7, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Florida State Seminoles"): {
+        "2021": {"wins": 5, "reg_season_losses": 7},
+        "2022": {"wins": 10, "reg_season_losses": 3},
+        "2023": {"wins": 13, "reg_season_losses": 0},
+        "2024": {"wins": 2, "reg_season_losses": 10},
+    },
+    ("NCAAF", "Louisville Cardinals"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 10, "reg_season_losses": 3},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Utah Utes"): {
+        "2021": {"wins": 10, "reg_season_losses": 3},
+        "2022": {"wins": 10, "reg_season_losses": 3},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Pittsburgh Panthers"): {
+        "2021": {"wins": 11, "reg_season_losses": 2},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 3, "reg_season_losses": 9},
+        "2024": {"wins": 7, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Virginia Cavaliers"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 3, "reg_season_losses": 7},
+        "2023": {"wins": 3, "reg_season_losses": 9},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Virginia Tech Hokies"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 6, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Arizona Wildcats"): {
+        "2021": {"wins": 1, "reg_season_losses": 11},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 10, "reg_season_losses": 3},
+        "2024": {"wins": 6, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Baylor Bears"): {
+        "2021": {"wins": 12, "reg_season_losses": 2},
+        "2022": {"wins": 6, "reg_season_losses": 6},
+        "2023": {"wins": 3, "reg_season_losses": 9},
+        "2024": {"wins": 8, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Houston Cougars"): {
+        "2021": {"wins": 12, "reg_season_losses": 2},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 4, "reg_season_losses": 8},
+    },
+    ("NCAAF", "Kentucky Wildcats"): {
+        "2021": {"wins": 10, "reg_season_losses": 3},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 6, "reg_season_losses": 6},
+        "2024": {"wins": 4, "reg_season_losses": 8},
+    },
+    ("NCAAF", "Illinois Fighting Illini"): {
+        "2021": {"wins": 5, "reg_season_losses": 7},
+        "2022": {"wins": 8, "reg_season_losses": 4},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 10, "reg_season_losses": 3},
+    },
+    ("NCAAF", "North Carolina Tar Heels"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 8, "reg_season_losses": 4},
+        "2024": {"wins": 5, "reg_season_losses": 8},
+    },
+    ("NCAAF", "Kansas State Wildcats"): {
+        "2021": {"wins": 8, "reg_season_losses": 5},
+        "2022": {"wins": 10, "reg_season_losses": 3},
+        "2023": {"wins": 9, "reg_season_losses": 4},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "TCU Horned Frogs"): {
+        "2021": {"wins": 5, "reg_season_losses": 7},
+        "2022": {"wins": 13, "reg_season_losses": 1, "playoff_bid": True, "playoff_wins": 1, "championship_bid": True, "championship_win": False},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Arkansas Razorbacks"): {
+        "2021": {"wins": 9, "reg_season_losses": 4},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 7, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Mississippi State Bulldogs"): {
+        "2021": {"wins": 7, "reg_season_losses": 5},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 5, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Wisconsin Badgers"): {
+        "2021": {"wins": 9, "reg_season_losses": 4},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 7, "reg_season_losses": 5},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Duke Blue Devils"): {
+        "2021": {"wins": 3, "reg_season_losses": 9},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 9, "reg_season_losses": 3},
+    },
+    ("NCAAF", "Georgia Tech Yellow Jackets"): {
+        "2021": {"wins": 3, "reg_season_losses": 9},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 9, "reg_season_losses": 3},
+    },
+    ("NCAAF", "NC State Wolfpack"): {
+        "2021": {"wins": 9, "reg_season_losses": 3},
+        "2022": {"wins": 8, "reg_season_losses": 4},
+        "2023": {"wins": 9, "reg_season_losses": 4},
+        "2024": {"wins": 6, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Arizona State Sun Devils"): {
+        "2021": {"wins": 8, "reg_season_losses": 4},
+        "2022": {"wins": 3, "reg_season_losses": 9},
+        "2023": {"wins": 3, "reg_season_losses": 9},
+        "2024": {"wins": 11, "reg_season_losses": 2, "playoff_bid": True, "playoff_bye": True, "playoff_wins": 0},
+    },
+    ("NCAAF", "Cincinnati Bearcats"): {
+        "2021": {"wins": 13, "reg_season_losses": 0, "playoff_bid": True, "playoff_wins": 0},
+        "2022": {"wins": 9, "reg_season_losses": 3},
+        "2023": {"wins": 3, "reg_season_losses": 9},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
 }
 
 # (league, team name) -> a short outlook for the team's next season, based
@@ -2122,5 +2760,216 @@ TEAM_PROGNOSES: dict[tuple[str, str], str] = {
     ("URC", "Zebre Parma"): (
         "Continuing to build one of the league's youngest squads, doubling down on "
         "developing Italian-qualified talent as the 2027 World Cup approaches."
+    ),
+
+    # --- NCAAF (2026 season) ---
+    ("NCAAF", "Ohio State Buckeyes"): (
+        "Preseason No. 1 in both the AP poll and SP+, defending national champions with "
+        "Julian Sayin at quarterback -- the clear favorite to repeat."
+    ),
+    ("NCAAF", "Georgia Bulldogs"): (
+        "Preseason No. 3 (AP) / No. 4 (SP+); Kirby Smart's roster reloads as usual and the "
+        "Bulldogs are viewed as Ohio State's top challenger."
+    ),
+    ("NCAAF", "Texas Longhorns"): (
+        "Preseason No. 5 (AP) / No. 6 (SP+) behind Arch Manning's third year as starter; "
+        "considered a clear playoff contender in Steve Sarkisian's fifth season."
+    ),
+    ("NCAAF", "Indiana Hoosiers"): (
+        "Preseason No. 6, the highest ranking in program history, as Curt Cignetti looks "
+        "to prove 2024's breakout was no fluke."
+    ),
+    ("NCAAF", "Oregon Ducks"): (
+        "Preseason No. 2 in the AP poll, with Dante Moore succeeding Dillon Gabriel at "
+        "quarterback -- considered Ohio State's stiffest national competition."
+    ),
+    ("NCAAF", "Notre Dame Fighting Irish"): (
+        "Preseason No. 4, with C.J. Carr back after last year's championship-game run; "
+        "expected to contend for a return trip to the playoff."
+    ),
+    ("NCAAF", "Alabama Crimson Tide"): (
+        "Preseason No. 13 (AP), with SP+ notably higher at No. 6; Kalen DeBoer's biggest "
+        "fall-camp storyline was an open quarterback battle between Austin Mack and "
+        "five-star Keelon Russell."
+    ),
+    ("NCAAF", "LSU Tigers"): (
+        "Preseason No. 11, entering the Lane Kiffin era on a record $91 million contract "
+        "after Brian Kelly's October 2025 firing -- considerable buzz but a true unknown "
+        "until Kiffin's first games."
+    ),
+    ("NCAAF", "Texas A&M Aggies"): (
+        "Preseason No. 8, coming off Mike Elko's strong 2024-25 debut seasons; expected to "
+        "contend in a stacked SEC."
+    ),
+    ("NCAAF", "Miami (FL) Hurricanes"): (
+        "Preseason No. 7, and per SP+ the favorite to win an ACC where the runner-up race "
+        "is a jumbled six-team cluster."
+    ),
+    ("NCAAF", "Texas Tech Red Raiders"): (
+        "Preseason No. 12, considered the Big 12's most established team by SP+ despite "
+        "lingering questions at quarterback."
+    ),
+    ("NCAAF", "Oklahoma Sooners"): (
+        "Preseason No. 10, with Brent Venables looking to build on a bounce-back 2025 "
+        "after two rocky opening SEC seasons."
+    ),
+    ("NCAAF", "USC Trojans"): (
+        "Preseason No. 15, with Lincoln Riley aiming to stabilize a program that has swung "
+        "between 11-win and losing seasons since the Big Ten move."
+    ),
+    ("NCAAF", "Ole Miss Rebels"): (
+        "Preseason No. 9, now under first-time head coach Pete Golding after Lane Kiffin's "
+        "abrupt in-season departure for LSU during the 2025 CFP run."
+    ),
+    ("NCAAF", "Tennessee Volunteers"): (
+        "Preseason No. 20, replacing its starting quarterback for a fifth consecutive "
+        "season after Joey Aguilar's eligibility expired."
+    ),
+    ("NCAAF", "Michigan Wolverines"): (
+        "Preseason No. 16, opening the Kyle Whittingham era on September 5 after Sherrone "
+        "Moore's stunning December 2025 firing and arrest."
+    ),
+    ("NCAAF", "Auburn Tigers"): (
+        "Outside the AP top 25 but received votes; new coach Alex Golesh arrives from "
+        "South Florida after Hugh Freeze's November 2025 firing."
+    ),
+    ("NCAAF", "Florida Gators"): (
+        "Outside the AP top 25 but received votes; new coach Jon Sumrall arrives from "
+        "Tulane with an open quarterback competition after Billy Napier's October 2025 "
+        "firing."
+    ),
+    ("NCAAF", "Missouri Tigers"): (
+        "Preseason No. 25, with Eli Drinkwitz looking to sustain the program's best "
+        "two-year stretch in over a decade."
+    ),
+    ("NCAAF", "Penn State Nittany Lions"): (
+        "Preseason No. 18, with new coach Matt Campbell arriving from Iowa State after "
+        "James Franklin's shocking mid-2025 firing following a 3-3 start."
+    ),
+    ("NCAAF", "Clemson Tigers"): (
+        "Outside the AP top 25 but received the most votes of any unranked team; Dabo "
+        "Swinney needs a bounce-back after a 7-6 2025 finish and Cade Klubnik's departure "
+        "leaves a quarterback vacancy."
+    ),
+    ("NCAAF", "BYU Cougars"): (
+        "Preseason No. 14, with SP+ notably cooler (No. 21); Kalani Sitake's program looks "
+        "to build on 2024's surprise 11-2 season."
+    ),
+    ("NCAAF", "South Carolina Gamecocks"): (
+        "Outside the AP top 25 but SP+ has them at No. 24, with Shane Beamer's program "
+        "trending upward after back-to-back nine-plus-win seasons."
+    ),
+    ("NCAAF", "Iowa Hawkeyes"): (
+        "Preseason No. 22, with Kirk Ferentz's typically stout defense again expected to "
+        "carry an offense that's lagged in recent years."
+    ),
+    ("NCAAF", "Washington Huskies"): (
+        "Preseason No. 17, with Jedd Fisch aiming to build on a difficult first Big Ten "
+        "season as the Huskies try to recapture their 2023 CFP-run form."
+    ),
+    ("NCAAF", "SMU Mustangs"): (
+        "Preseason No. 19, with Rhett Lashlee's Mustangs looking to get back to the ACC "
+        "title game after a first-round CFP exit in 2024."
+    ),
+    ("NCAAF", "Vanderbilt Commodores"): (
+        "Outside the AP top 25 but SP+ has them at No. 29, with Clark Lea's program riding "
+        "real momentum after 2024's breakthrough and an upset of Alabama."
+    ),
+    ("NCAAF", "Nebraska Cornhuskers"): (
+        "Outside the AP top 25 but SP+ has them at No. 33, with Matt Rhule's program "
+        "looking for a second straight bowl season after ending a seven-year drought in "
+        "2024."
+    ),
+    ("NCAAF", "Florida State Seminoles"): (
+        "Outside the AP top 25 but SP+ has them at No. 35, looking to rebound after an "
+        "infamous 2023 CFP snub was followed by the program's worst season in half a "
+        "century in 2024."
+    ),
+    ("NCAAF", "Louisville Cardinals"): (
+        "Preseason No. 24, with Jeff Brohm's program looking to build on back-to-back "
+        "10-win-caliber seasons and an ACC title game appearance."
+    ),
+    ("NCAAF", "Utah Utes"): (
+        "Preseason No. 21, opening the Morgan Scalley era after Kyle Whittingham's "
+        "21-season tenure ended with his move to Michigan."
+    ),
+    ("NCAAF", "Pittsburgh Panthers"): (
+        "Outside the AP top 25 but SP+ has them at No. 41, with the program still "
+        "searching for the consistency of Kenny Pickett's 2021 ACC title season."
+    ),
+    ("NCAAF", "Virginia Cavaliers"): (
+        "Outside the AP top 25 but SP+ has them at No. 37, with Tony Elliott's program "
+        "looking to build on 2024's breakthrough as it continues rebuilding in the wake of "
+        "the 2022 team shooting tragedy."
+    ),
+    ("NCAAF", "Virginia Tech Hokies"): (
+        "Outside the AP top 25 but SP+ has them at No. 36 and projects an 18.7-point "
+        "rebound behind new coach James Franklin, who arrives after his own Penn State "
+        "dismissal to replace the in-season-fired Brent Pry."
+    ),
+    ("NCAAF", "Arizona Wildcats"): (
+        "Received AP preseason votes just outside the top 25, with Brent Brennan looking "
+        "to recapture the form of 2023's 10-win Alamo Bowl season."
+    ),
+    ("NCAAF", "Baylor Bears"): (
+        "Outside the AP top 25 but SP+ has them at No. 54, with Dave Aranda under pressure "
+        "to return to 2021 Big 12 title-game form."
+    ),
+    ("NCAAF", "Houston Cougars"): (
+        "Preseason No. 23, though SP+ is notably cooler at No. 38; Dana Holgorsen looks to "
+        "end back-to-back 4-8 finishes since the Big 12 move."
+    ),
+    ("NCAAF", "Kentucky Wildcats"): (
+        "Outside the AP top 25 but SP+ has them at No. 47, with Mark Stoops under pressure "
+        "after the program's early-2020s momentum faded."
+    ),
+    ("NCAAF", "Illinois Fighting Illini"): (
+        "Outside the AP top 25 but SP+ has them at No. 28, with Bret Bielema looking to "
+        "build on 2024's 10-win breakthrough, the program's best season in over a decade."
+    ),
+    ("NCAAF", "North Carolina Tar Heels"): (
+        "Outside the AP top 25 but SP+ has them at No. 56, with Bill Belichick's second "
+        "season aiming to improve on a rough 4-8 debut in his jump from the NFL."
+    ),
+    ("NCAAF", "Kansas State Wildcats"): (
+        "Outside the AP top 25 but SP+ has them at No. 34, with Chris Klieman's program "
+        "looking to return to its 2022 Big 12 title-game form."
+    ),
+    ("NCAAF", "TCU Horned Frogs"): (
+        "Received AP preseason votes just outside the top 25, with Sonny Dykes looking to "
+        "rebuild toward the level of the 2022 CFP-runner-up team."
+    ),
+    ("NCAAF", "Arkansas Razorbacks"): (
+        "Outside the AP top 25 but SP+ has them at No. 44, opening the Ryan Silverfield "
+        "era after Sam Pittman's firing just five games into 2025."
+    ),
+    ("NCAAF", "Mississippi State Bulldogs"): (
+        "Outside the AP top 25 but SP+ has them at No. 52, with Jeff Lebby's rebuild still "
+        "finding its footing three seasons after Mike Leach's death."
+    ),
+    ("NCAAF", "Wisconsin Badgers"): (
+        "Outside the AP top 25 but SP+ has them at No. 53, with Luke Fickell looking to "
+        "reverse a jarring decline since the program's 22-year bowl streak ended."
+    ),
+    ("NCAAF", "Duke Blue Devils"): (
+        "Outside the AP top 25 but SP+ has them at No. 45, with Manny Diaz aiming to "
+        "sustain the momentum Mike Elko built before his 2024 departure for Texas A&M."
+    ),
+    ("NCAAF", "Georgia Tech Yellow Jackets"): (
+        "Outside the AP top 25 but SP+ has them at No. 42, with Brent Key's program "
+        "looking to build on consecutive winning seasons for the first time in years."
+    ),
+    ("NCAAF", "NC State Wolfpack"): (
+        "Outside the AP top 25 but SP+ has them at No. 43, with Dave Doeren's steady, "
+        "defense-first program again projected for a mid-tier ACC finish."
+    ),
+    ("NCAAF", "Arizona State Sun Devils"): (
+        "Outside the AP top 25 but SP+ has them at No. 51, looking to prove 2024's Big 12 "
+        "title and CFP quarterfinal run under Kenny Dillingham was sustainable rather than "
+        "a one-off."
+    ),
+    ("NCAAF", "Cincinnati Bearcats"): (
+        "Outside the AP top 25 but SP+ has them at No. 59, with the program still "
+        "searching for the form of its 2021 CFP season under Scott Satterfield."
     ),
 }
