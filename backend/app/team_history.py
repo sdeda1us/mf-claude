@@ -317,6 +317,162 @@ TEAM_LOCATIONS: dict[tuple[str, str], tuple[float, float]] = {
     ("NCAAWB", "BYU Cougars"): (40.2596, -111.6489),
     ("NCAAWB", "Auburn Tigers"): (32.6023, -85.4900),
     ("NCAAWB", "SMU Mustangs"): (32.8388, -96.7810),
+
+    # --- NCAAF, second 50 (ranks 51-100 by expected fantasy points) ---
+    ("NCAAF", "Colorado Buffaloes"): (40.0075, -105.2669),  # Folsom Field, Boulder
+    ("NCAAF", "Boise State Broncos"): (43.6028, -116.1968),  # Albertsons Stadium (blue turf), Boise
+    ("NCAAF", "Wake Forest Demon Deacons"): (36.1330, -80.2529),  # Allegacy Stadium, Winston-Salem
+    ("NCAAF", "Kansas Jayhawks"): (38.9631, -95.2472),  # David Booth Kansas Memorial Stadium, Lawrence
+    ("NCAAF", "Oklahoma State Cowboys"): (36.1269, -97.0666),  # Boone Pickens Stadium, Stillwater
+    ("NCAAF", "UCF Knights"): (28.6078, -81.1930),  # FBC Mortgage Stadium, Orlando
+    ("NCAAF", "Tulane Green Wave"): (29.9400, -90.1180),  # Yulman Stadium, New Orleans
+    ("NCAAF", "Maryland Terrapins"): (38.9906, -76.9469),  # SECU Stadium, College Park
+    ("NCAAF", "Northwestern Wildcats"): (42.0645, -87.6930),  # Ryan Field, Evanston
+    ("NCAAF", "California Golden Bears"): (37.8715, -122.2508),  # California Memorial Stadium, Berkeley
+    ("NCAAF", "San Diego State Aztecs"): (32.7831, -117.1195),  # Snapdragon Stadium, San Diego
+    ("NCAAF", "UNLV Rebels"): (36.0909, -115.1833),  # Allegiant Stadium, Las Vegas
+    ("NCAAF", "Michigan State Spartans"): (42.7284, -84.4839),  # Spartan Stadium, East Lansing
+    ("NCAAF", "Minnesota Golden Gophers"): (44.9764, -93.2244),  # Huntington Bank Stadium, Minneapolis
+    ("NCAAF", "Rutgers Scarlet Knights"): (40.5136, -74.4636),  # SHI Stadium, Piscataway
+    ("NCAAF", "UCLA Bruins"): (34.1613, -118.1676),  # Rose Bowl, Pasadena
+    ("NCAAF", "West Virginia Mountaineers"): (39.6486, -79.9540),  # Milan Puskar Stadium, Morgantown
+    ("NCAAF", "East Carolina Pirates"): (35.6069, -77.3672),  # Dowdy-Ficklen Stadium, Greenville
+    ("NCAAF", "Navy Midshipmen"): (38.9869, -76.4922),  # Navy-Marine Corps Memorial Stadium, Annapolis
+    ("NCAAF", "Purdue Boilermakers"): (40.4331, -86.9184),  # Ross-Ade Stadium, West Lafayette
+    ("NCAAF", "Syracuse Orange"): (43.0362, -76.1364),  # JMA Wireless Dome, Syracuse
+    ("NCAAF", "Iowa State Cyclones"): (42.0140, -93.6359),  # Jack Trice Stadium, Ames
+    ("NCAAF", "Memphis Tigers"): (35.1204, -89.9767),  # Simmons Bank Liberty Stadium, Memphis
+    ("NCAAF", "South Florida Bulls"): (27.9759, -82.5033),  # Raymond James Stadium, Tampa
+    ("NCAAF", "James Madison Dukes"): (38.4374, -78.8631),  # Bridgeforth Stadium, Harrisonburg
+    ("NCAAF", "Boston College Eagles"): (42.3355, -71.1685),  # Alumni Stadium, Chestnut Hill
+    ("NCAAF", "Stanford Cardinal"): (37.4347, -122.1615),  # Stanford Stadium, Stanford
+    ("NCAAF", "Fresno State Bulldogs"): (36.8125, -119.7465),  # Valley Children's Stadium, Fresno
+    ("NCAAF", "Hawaii Rainbow Warriors"): (21.2969, -157.8226),  # Ching Athletics Complex, Honolulu
+    ("NCAAF", "New Mexico Lobos"): (35.0672, -106.6218),  # University Stadium, Albuquerque
+    ("NCAAF", "Toledo Rockets"): (41.6600, -83.6105),  # Glass Bowl, Toledo
+    ("NCAAF", "Texas State Bobcats"): (29.8858, -97.9414),  # UFCU Stadium, San Marcos
+    ("NCAAF", "Washington State Cougars"): (46.7305, -117.1602),  # Gesa Field at Martin Stadium, Pullman
+    ("NCAAF", "Old Dominion Monarchs"): (36.8879, -76.3050),  # S.B. Ballard Stadium, Norfolk
+    ("NCAAF", "Western Michigan Broncos"): (42.2867, -85.6136),  # Waldo Stadium, Kalamazoo
+    ("NCAAF", "Western Kentucky Hilltoppers"): (36.9836, -86.4527),  # Houchens Industries-L.T. Smith Stadium, Bowling Green
+    ("NCAAF", "Army Black Knights"): (41.3875, -73.9791),  # Michie Stadium, West Point
+    ("NCAAF", "North Texas Mean Green"): (33.2107, -97.1531),  # DATCU Stadium, Denton
+    ("NCAAF", "UTSA Roadrunners"): (29.4169, -98.4786),  # Alamodome, San Antonio
+    ("NCAAF", "Southern Miss Golden Eagles"): (31.3244, -89.3373),  # M.M. Roberts Stadium, Hattiesburg
+    ("NCAAF", "Delaware Blue Hens"): (39.6795, -75.7546),  # Delaware Stadium, Newark
+    ("NCAAF", "Oregon State Beavers"): (44.5646, -123.2820),  # Reser Stadium, Corvallis
+    ("NCAAF", "Utah State Aggies"): (41.7424, -111.8107),  # Maverik Stadium, Logan
+    ("NCAAF", "Air Force Falcons"): (38.9972, -104.8422),  # Falcon Stadium, Colorado Springs
+    ("NCAAF", "North Dakota State Bison"): (46.8535, -96.8014),  # Fargodome, Fargo
+    ("NCAAF", "Louisiana Ragin' Cajuns"): (30.2119, -92.0184),  # Cajun Field, Lafayette
+    ("NCAAF", "Troy Trojans"): (31.7965, -85.9700),  # Veterans Memorial Stadium, Troy
+    ("NCAAF", "Miami (OH) RedHawks"): (39.5090, -84.7327),  # Yager Stadium, Oxford
+    ("NCAAF", "Ohio Bobcats"): (39.3255, -82.1039),  # Peden Stadium, Athens
+    ("NCAAF", "Liberty Flames"): (37.3595, -79.1780),  # Williams Stadium, Lynchburg
+
+    # --- NCAAMB, second 50 (ranks 51-100 by expected fantasy points) ---
+    ("NCAAMB", "Texas A&M Aggies"): (30.6108, -96.3398),  # Reed Arena, College Station
+    ("NCAAMB", "Syracuse Orange"): (43.0362, -76.1364),  # JMA Wireless Dome, Syracuse
+    ("NCAAMB", "VCU Rams"): (37.5514, -77.4526),  # Siegel Center, Richmond
+    ("NCAAMB", "Providence Friars"): (41.8324, -71.4341),  # Amica Mutual Pavilion, Providence
+    ("NCAAMB", "Xavier Musketeers"): (39.1490, -84.4805),  # Cintas Center, Cincinnati
+    ("NCAAMB", "Oklahoma State Cowboys"): (36.1234, -97.0687),  # Gallagher-Iba Arena, Stillwater
+    ("NCAAMB", "West Virginia Mountaineers"): (39.6497, -79.9553),  # WVU Coliseum, Morgantown
+    ("NCAAMB", "Grand Canyon Antelopes"): (33.5062, -112.1355),  # GCU Arena, Phoenix
+    ("NCAAMB", "San Diego State Aztecs"): (32.7757, -117.0719),  # Viejas Arena, San Diego
+    ("NCAAMB", "Wichita State Shockers"): (37.7208, -97.2874),  # Charles Koch Arena, Wichita
+    ("NCAAMB", "Florida State Seminoles"): (30.4380, -84.3040),  # Donald L. Tucker Center, Tallahassee
+    ("NCAAMB", "Saint Louis Billikens"): (38.6373, -90.2384),  # Chaifetz Arena, St. Louis
+    ("NCAAMB", "DePaul Blue Demons"): (41.8756, -87.6742),  # Wintrust Arena, Chicago
+    ("NCAAMB", "High Point Panthers"): (35.9857, -79.9959),  # Qubein Arena, High Point
+    ("NCAAMB", "Washington Huskies"): (47.6553, -122.3021),  # Alaska Airlines Arena, Seattle
+    ("NCAAMB", "Arizona State Sun Devils"): (33.4255, -111.9325),  # Desert Financial Arena, Tempe
+    ("NCAAMB", "New Mexico Lobos"): (35.0672, -106.6218),  # The Pit, Albuquerque
+    ("NCAAMB", "Utah State Aggies"): (41.7424, -111.8107),  # Dee Glen Smith Spectrum, Logan
+    ("NCAAMB", "Saint Mary's Gaels"): (37.8386, -122.1141),  # University Credit Union Pavilion, Moraga
+    ("NCAAMB", "Pittsburgh Panthers"): (40.4442, -79.9628),  # Petersen Events Center, Pittsburgh
+    ("NCAAMB", "Dayton Flyers"): (39.7444, -84.1998),  # UD Arena, Dayton
+    ("NCAAMB", "Seton Hall Pirates"): (40.7433, -74.1710),  # Prudential Center, Newark
+    ("NCAAMB", "Northwestern Wildcats"): (42.0578, -87.6742),  # Welsh-Ryan Arena, Evanston
+    ("NCAAMB", "Rutgers Scarlet Knights"): (40.5228, -74.4642),  # Jersey Mike's Arena, Piscataway
+    ("NCAAMB", "Utah Utes"): (40.7677, -111.8388),  # Jon M. Huntsman Center, Salt Lake City
+    ("NCAAMB", "Mississippi State Bulldogs"): (33.4552, -88.7934),  # Humphrey Coliseum, Starkville
+    ("NCAAMB", "South Carolina Gamecocks"): (34.0007, -81.0348),  # Colonial Life Arena, Columbia
+    ("NCAAMB", "Tulsa Golden Hurricane"): (36.1511, -95.9430),  # Reynolds Center, Tulsa
+    ("NCAAMB", "California Golden Bears"): (37.8697, -122.2631),  # Haas Pavilion, Berkeley
+    ("NCAAMB", "Notre Dame Fighting Irish"): (41.6983, -86.2331),  # Purcell Pavilion, South Bend
+    ("NCAAMB", "George Washington Revolutionaries"): (38.9004, -77.0491),  # Charles E. Smith Center, Washington DC
+    ("NCAAMB", "Georgetown Hoyas"): (38.9019, -77.0728),  # Capital One Arena, Washington DC
+    ("NCAAMB", "Minnesota Golden Gophers"): (44.9797, -93.2277),  # Williams Arena, Minneapolis
+    ("NCAAMB", "Colorado Buffaloes"): (40.0093, -105.2668),  # CU Events Center, Boulder
+    ("NCAAMB", "Kansas State Wildcats"): (39.2019, -96.5847),  # Bramlage Coliseum, Manhattan
+    ("NCAAMB", "Nevada Wolf Pack"): (39.5439, -119.8138),  # Lawlor Events Center, Reno
+    ("NCAAMB", "Boise State Broncos"): (43.6032, -116.1988),  # ExtraMile Arena, Boise
+    ("NCAAMB", "Colorado State Rams"): (40.5734, -105.0819),  # Moby Arena, Fort Collins
+    ("NCAAMB", "McNeese State Cowboys"): (30.2168, -93.2085),  # Legacy Arena, Lake Charles
+    ("NCAAMB", "Charlotte 49ers"): (35.3075, -80.7331),  # Dale F. Halton Arena, Charlotte
+    ("NCAAMB", "South Florida Bulls"): (28.0587, -82.4139),  # Yuengling Center, Tampa
+    ("NCAAMB", "Wake Forest Demon Deacons"): (36.1359, -80.2761),  # Lawrence Joel Veterans Memorial Coliseum, Winston-Salem
+    ("NCAAMB", "George Mason Patriots"): (38.8318, -77.3138),  # EagleBank Arena, Fairfax
+    ("NCAAMB", "Butler Bulldogs"): (39.8395, -86.1725),  # Hinkle Fieldhouse, Indianapolis
+    ("NCAAMB", "UNLV Rebels"): (36.0972, -115.1436),  # Thomas & Mack Center, Las Vegas
+    ("NCAAMB", "Oregon State Beavers"): (44.5657, -123.2789),  # Gill Coliseum, Corvallis
+    ("NCAAMB", "Santa Clara Broncos"): (37.3496, -121.9390),  # Leavey Center, Santa Clara
+    ("NCAAMB", "Memphis Tigers"): (35.1214, -89.9787),  # FedExForum, Memphis
+    ("NCAAMB", "Boston College Eagles"): (42.3356, -71.1685),  # Conte Forum, Chestnut Hill
+    ("NCAAMB", "Georgia Tech Yellow Jackets"): (33.7756, -84.3963),  # McCamish Pavilion, Atlanta
+
+    # --- NCAAWB, second 50 (ranks 51-100 by expected fantasy points) ---
+    ("NCAAWB", "Wisconsin Badgers"): (43.0778, -89.4106),  # Kohl Center, Madison
+    ("NCAAWB", "Baylor Bears"): (31.5586, -97.1156),  # Foster Pavilion, Waco
+    ("NCAAWB", "Cincinnati Bearcats"): (39.1310, -84.5157),  # Fifth Third Arena, Cincinnati
+    ("NCAAWB", "UCF Knights"): (28.6024, -81.1997),  # Addition Financial Arena, Orlando
+    ("NCAAWB", "Texas A&M Aggies"): (30.6108, -96.3398),  # Reed Arena, College Station
+    ("NCAAWB", "Syracuse Orange"): (43.0362, -76.1364),  # JMA Wireless Dome, Syracuse
+    ("NCAAWB", "VCU Rams"): (37.5514, -77.4526),  # Siegel Center, Richmond
+    ("NCAAWB", "Providence Friars"): (41.8324, -71.4341),  # Amica Mutual Pavilion, Providence
+    ("NCAAWB", "Xavier Musketeers"): (39.1490, -84.4805),  # Cintas Center, Cincinnati
+    ("NCAAWB", "Oklahoma State Cowboys"): (36.1234, -97.0687),  # Gallagher-Iba Arena, Stillwater
+    ("NCAAWB", "Grand Canyon Antelopes"): (33.5062, -112.1355),  # GCU Arena, Phoenix
+    ("NCAAWB", "San Diego State Aztecs"): (32.7757, -117.0719),  # Viejas Arena, San Diego
+    ("NCAAWB", "Wichita State Shockers"): (37.7208, -97.2874),  # Charles Koch Arena, Wichita
+    ("NCAAWB", "Saint Louis Billikens"): (38.6373, -90.2384),  # Chaifetz Arena, St. Louis
+    ("NCAAWB", "DePaul Blue Demons"): (41.8756, -87.6742),  # Wintrust Arena, Chicago
+    ("NCAAWB", "High Point Panthers"): (35.9857, -79.9959),  # Qubein Arena, High Point
+    ("NCAAWB", "Arizona State Sun Devils"): (33.4255, -111.9325),  # Desert Financial Arena, Tempe
+    ("NCAAWB", "Utah State Aggies"): (41.7424, -111.8107),  # Dee Glen Smith Spectrum, Logan
+    ("NCAAWB", "Saint Mary's Gaels"): (37.8386, -122.1141),  # University Credit Union Pavilion, Moraga
+    ("NCAAWB", "Tulsa Golden Hurricane"): (36.1511, -95.9430),  # Reynolds Center, Tulsa
+    ("NCAAWB", "Florida State Seminoles"): (30.4380, -84.3040),  # Donald L. Tucker Center, Tallahassee
+    ("NCAAWB", "Pittsburgh Panthers"): (40.4442, -79.9628),  # Petersen Events Center, Pittsburgh
+    ("NCAAWB", "Dayton Flyers"): (39.7444, -84.1998),  # UD Arena, Dayton
+    ("NCAAWB", "Seton Hall Pirates"): (40.7433, -74.1710),  # Prudential Center, Newark
+    ("NCAAWB", "Northwestern Wildcats"): (42.0578, -87.6742),  # Welsh-Ryan Arena, Evanston
+    ("NCAAWB", "Rutgers Scarlet Knights"): (40.5228, -74.4642),  # Jersey Mike's Arena, Piscataway
+    ("NCAAWB", "California Golden Bears"): (37.8697, -122.2631),  # Haas Pavilion, Berkeley
+    ("NCAAWB", "George Washington Revolutionaries"): (38.9004, -77.0491),  # Charles E. Smith Center, Washington DC
+    ("NCAAWB", "Georgetown Hoyas"): (38.9019, -77.0728),  # Capital One Arena, Washington DC
+    ("NCAAWB", "Kansas State Wildcats"): (39.2019, -96.5847),  # Bramlage Coliseum, Manhattan
+    ("NCAAWB", "Iona Gaels"): (40.9312, -73.7965),  # Hynes Athletics Center, New Rochelle
+    ("NCAAWB", "Buffalo Bulls"): (42.9998, -78.7889),  # Alumni Arena, Buffalo
+    ("NCAAWB", "Nevada Wolf Pack"): (39.5439, -119.8138),  # Lawlor Events Center, Reno
+    ("NCAAWB", "Boise State Broncos"): (43.6032, -116.1988),  # ExtraMile Arena, Boise
+    ("NCAAWB", "Colorado State Rams"): (40.5734, -105.0819),  # Moby Arena, Fort Collins
+    ("NCAAWB", "McNeese State Cowboys"): (30.2168, -93.2085),  # Legacy Arena, Lake Charles
+    ("NCAAWB", "Charlotte 49ers"): (35.3075, -80.7331),  # Dale F. Halton Arena, Charlotte
+    ("NCAAWB", "South Florida Bulls"): (28.0587, -82.4139),  # Yuengling Center, Tampa
+    ("NCAAWB", "Stanford Cardinal"): (37.4275, -122.1626),  # Maples Pavilion, Stanford
+    ("NCAAWB", "Wake Forest Demon Deacons"): (36.1359, -80.2761),  # Lawrence Joel Veterans Memorial Coliseum, Winston-Salem
+    ("NCAAWB", "George Mason Patriots"): (38.8318, -77.3138),  # EagleBank Arena, Fairfax
+    ("NCAAWB", "Butler Bulldogs"): (39.8395, -86.1725),  # Hinkle Fieldhouse, Indianapolis
+    ("NCAAWB", "UC Santa Barbara Gauchos"): (34.4133, -119.8489),  # Thunderdome, Santa Barbara
+    ("NCAAWB", "Miami (OH) RedHawks"): (39.5090, -84.7327),  # Millett Hall, Oxford
+    ("NCAAWB", "UIC Flames"): (41.8756, -87.6742),  # Credit Union 1 Arena, Chicago
+    ("NCAAWB", "UNLV Rebels"): (36.0972, -115.1436),  # Thomas & Mack Center, Las Vegas
+    ("NCAAWB", "Oregon State Beavers"): (44.5657, -123.2789),  # Gill Coliseum, Corvallis
+    ("NCAAWB", "Santa Clara Broncos"): (37.3496, -121.9390),  # Leavey Center, Santa Clara
+    ("NCAAWB", "Memphis Tigers"): (35.1214, -89.9787),  # Elma Roane Fieldhouse, Memphis
+    ("NCAAWB", "North Texas Mean Green"): (33.2107, -97.1531),  # Super Pit, Denton
 }
 
 # (league, team name) -> a short factual biography (2-4 sentences):
@@ -1650,6 +1806,577 @@ TEAM_BIOS: dict[tuple[str, str], str] = {
     ),
     ("NCAAWB", "SMU Mustangs"): (
         "ACC (arrived 2024). No national titles; a rising ACC newcomer."
+    ),
+
+    # --- NCAAF, second 50 (ranks 51-100 by expected fantasy points) ---
+    ("NCAAF", "Colorado Buffaloes"): (
+        "Big 12. No national titles since 1990; Deion Sanders' 2023 arrival brought a "
+        "media circus and a since-stabilized rebuild."
+    ),
+    ("NCAAF", "Boise State Broncos"): (
+        "Pac-12 (the rebuilt conference). No national titles, but the blue-turf Broncos' "
+        "2006 Fiesta Bowl upset of Oklahoma remains a signature program moment, and they "
+        "reached the 2024 CFP as a 3-seed."
+    ),
+    ("NCAAF", "Wake Forest Demon Deacons"): (
+        "ACC. No national titles at a historically small private school in a power "
+        "conference; Dave Clawson's 2021 team had its best season in decades."
+    ),
+    ("NCAAF", "Kansas Jayhawks"): (
+        "Big 12. A historically football-optional Big 12 program (basketball is king); "
+        "Lance Leipold has built the Jayhawks' best stretch since the mid-2000s."
+    ),
+    ("NCAAF", "Oklahoma State Cowboys"): (
+        "Big 12. No national titles; Mike Gundy has led the program since 2005, the "
+        "second-longest active tenure in the sport."
+    ),
+    ("NCAAF", "UCF Knights"): (
+        "Big 12 (arrived 2023). No national titles despite the Knights' self-declared 2017 "
+        "\"national champion\" claim after an undefeated season; Scott Frost's 2025 return "
+        "aims to rebuild."
+    ),
+    ("NCAAF", "Tulane Green Wave"): (
+        "American. No modern national titles; a surprise 2022 AAC title and Cotton Bowl "
+        "win over USC was the program's best season in decades."
+    ),
+    ("NCAAF", "Maryland Terrapins"): (
+        "Big Ten. One national title (1953); a middle-of-the-pack Big Ten program since "
+        "joining in 2014."
+    ),
+    ("NCAAF", "Northwestern Wildcats"): (
+        "Big Ten. No national titles; the Wildcats have swung between Big Ten West "
+        "contention and rock-bottom seasons in recent years, including a hazing-scandal-"
+        "marred 2023."
+    ),
+    ("NCAAF", "California Golden Bears"): (
+        "ACC (arrived 2024). Two pre-modern-poll national titles (1920, 1937); a middling "
+        "program historically, now in a conference far from home."
+    ),
+    ("NCAAF", "San Diego State Aztecs"): (
+        "Pac-12 (the rebuilt conference). No national titles; a consistent Mountain West "
+        "bowl team for most of the last two decades."
+    ),
+    ("NCAAF", "UNLV Rebels"): (
+        "Mountain West. No national titles and historically a minor program; Barry Odom's "
+        "2023-24 turnaround produced the best seasons in decades."
+    ),
+    ("NCAAF", "Michigan State Spartans"): (
+        "Big Ten. Six national titles, most recently a share in 1965 and 1966; Jonathan "
+        "Smith took over in 2024 after Mel Tucker's scandal-driven firing."
+    ),
+    ("NCAAF", "Minnesota Golden Gophers"): (
+        "Big Ten. Seven national titles, all before 1960; P.J. Fleck has kept the Gophers "
+        "a consistent bowl team since 2017."
+    ),
+    ("NCAAF", "Rutgers Scarlet Knights"): (
+        "Big Ten. No national titles, despite hosting the first-ever college football game "
+        "in 1869; Greg Schiano's second stint as coach has rebuilt the program."
+    ),
+    ("NCAAF", "UCLA Bruins"): (
+        "Big Ten (arrived 2024 from the Pac-12). One claimed national title (1954); a "
+        "middling program in recent years, now playing home games at the Rose Bowl."
+    ),
+    ("NCAAF", "West Virginia Mountaineers"): (
+        "Big 12. No national titles; Rich Rodriguez returned in 2025 for a second stint as "
+        "head coach."
+    ),
+    ("NCAAF", "East Carolina Pirates"): (
+        "American. No national titles and historically a minor program; a consistent "
+        "bowl-eligible Group of Five team."
+    ),
+    ("NCAAF", "Navy Midshipmen"): (
+        "American (arrived 2024). No national titles; the service academy's option "
+        "offense under Brian Newberry has kept it competitive, and the Army-Navy rivalry "
+        "remains the sport's oldest continuous tradition."
+    ),
+    ("NCAAF", "Purdue Boilermakers"): (
+        "Big Ten. No national titles; a middling Big Ten West program that reached the "
+        "2024 Big Ten title game as a surprise before a rebuilding 2025."
+    ),
+    ("NCAAF", "Syracuse Orange"): (
+        "ACC. One national title (1959); Fran Brown's 2024 team had the program's best "
+        "season in over a decade."
+    ),
+    ("NCAAF", "Iowa State Cyclones"): (
+        "Big 12. No national titles; Matt Campbell built the Cyclones into a consistent "
+        "Big 12 contender before departing for Penn State in 2026."
+    ),
+    ("NCAAF", "Memphis Tigers"): (
+        "American. No national titles; a consistent Group of Five bowl team under Ryan "
+        "Silverfield before his 2026 departure for Arkansas."
+    ),
+    ("NCAAF", "South Florida Bulls"): (
+        "American. No national titles; Alex Golesh built a rapid turnaround before "
+        "departing for Auburn in 2026."
+    ),
+    ("NCAAF", "James Madison Dukes"): (
+        "Sun Belt. Two FCS national titles (2004, 2016) before a rapid 2022 jump to FBS; "
+        "Curt Cignetti went 19-3 in his final two seasons there before leaving for Indiana "
+        "in 2024, and Bob Chesney has kept the winning going."
+    ),
+    ("NCAAF", "Boston College Eagles"): (
+        "ACC. One claimed national title (1940); a middling ACC program under Bill "
+        "O'Brien since 2024."
+    ),
+    ("NCAAF", "Stanford Cardinal"): (
+        "ACC (arrived 2024). No consensus national titles despite multiple Rose Bowl wins; "
+        "a struggling program in recent years as it adjusts to a coast-to-coast ACC travel "
+        "schedule."
+    ),
+    ("NCAAF", "Fresno State Bulldogs"): (
+        "Pac-12 (the rebuilt conference). No national titles; a longtime Mountain "
+        "West/WAC power under a series of coaches."
+    ),
+    ("NCAAF", "Hawaii Rainbow Warriors"): (
+        "Mountain West. No national titles; the program's remote location and travel "
+        "demands make it a perennial underdog."
+    ),
+    ("NCAAF", "New Mexico Lobos"): (
+        "Mountain West. No national titles and historically a minor program."
+    ),
+    ("NCAAF", "Toledo Rockets"): (
+        "MAC. No national titles; a perennial MAC contender under Jason Candle."
+    ),
+    ("NCAAF", "Texas State Bobcats"): (
+        "Pac-12 (the rebuilt conference). No national titles and a recent FBS transplant "
+        "(2013), now the rebuilt Pac-12's breakthrough story after 2025."
+    ),
+    ("NCAAF", "Washington State Cougars"): (
+        "Pac-12 (the rebuilt conference). No modern national titles; survived the 2023-24 "
+        "Pac-12 collapse alongside Oregon State before helping rebuild the conference."
+    ),
+    ("NCAAF", "Old Dominion Monarchs"): (
+        "Sun Belt. No national titles and a program that restarted football only in 2009."
+    ),
+    ("NCAAF", "Western Michigan Broncos"): (
+        "MAC. No national titles; a steady MAC program."
+    ),
+    ("NCAAF", "Western Kentucky Hilltoppers"): (
+        "Conference USA. Multiple FCS-era national titles before a 2009 FBS jump; a "
+        "prolific-offense program under a series of coaches."
+    ),
+    ("NCAAF", "Army Black Knights"): (
+        "American (arrived 2024). Three national titles (1944-46, the pre-poll era); the "
+        "service academy's option offense and the Army-Navy rivalry remain its identity."
+    ),
+    ("NCAAF", "North Texas Mean Green"): (
+        "American. No national titles; a middling Group of Five program."
+    ),
+    ("NCAAF", "UTSA Roadrunners"): (
+        "American. No national titles and a program founded only in 2011; Jeff Traylor "
+        "built consecutive Conference USA titles before the 2023 move to the AAC."
+    ),
+    ("NCAAF", "Southern Miss Golden Eagles"): (
+        "Sun Belt. No national titles; historically produced NFL talent (Brett Favre) "
+        "despite modest team success."
+    ),
+    ("NCAAF", "Delaware Blue Hens"): (
+        "Conference USA (arrived 2025 from FCS). Multiple FCS-era national titles, most "
+        "recently 2003; a first-year FBS transition program."
+    ),
+    ("NCAAF", "Oregon State Beavers"): (
+        "Pac-12 (the rebuilt conference). No national titles; survived the 2023-24 Pac-12 "
+        "collapse alongside Washington State before helping rebuild the conference."
+    ),
+    ("NCAAF", "Utah State Aggies"): (
+        "Pac-12 (the rebuilt conference). No national titles; a longtime Mountain West "
+        "contender now home in the rebuilt Pac-12."
+    ),
+    ("NCAAF", "Air Force Falcons"): (
+        "Mountain West. No national titles; the service academy's option offense has kept "
+        "it a consistent bowl team for decades."
+    ),
+    ("NCAAF", "North Dakota State Bison"): (
+        "Mountain West (moved up in 2026 from FCS). Nine FCS national titles since 2011, "
+        "the most dominant FCS dynasty ever; 2026 marks its first season at the FBS level."
+    ),
+    ("NCAAF", "Louisiana Ragin' Cajuns"): (
+        "Sun Belt. No national titles; a consistent Sun Belt contender under Michael "
+        "Desormeaux."
+    ),
+    ("NCAAF", "Troy Trojans"): (
+        "Sun Belt. No national titles; a Group of Five program known for occasionally "
+        "upsetting power-conference opponents."
+    ),
+    ("NCAAF", "Miami (OH) RedHawks"): (
+        "MAC. No national titles despite the 2003 Ben Roethlisberger-led MAC title team; "
+        "the \"Cradle of Coaches\" nickname reflects its history of producing successful "
+        "coaches."
+    ),
+    ("NCAAF", "Ohio Bobcats"): (
+        "MAC. No national titles; a steady, unspectacular MAC program under Tim Albin."
+    ),
+    ("NCAAF", "Liberty Flames"): (
+        "Conference USA (arrived 2023). No national titles and an FBS program only since "
+        "2018; Hugh Freeze's 2019-21 tenure built it into a consistent winner before "
+        "leaving for Auburn (Freeze was later fired there in 2025)."
+    ),
+
+    # --- NCAAMB, second 50 (ranks 51-100 by expected fantasy points; major
+    # vs. minor conference per docs/wiki/game-rules-ncaamb.md, not by
+    # football's classification) ---
+    ("NCAAMB", "Texas A&M Aggies"): (
+        "SEC. No national titles; Buzz Williams built the Aggies into a Sweet 16 team "
+        "before a coaching change entering 2026."
+    ),
+    ("NCAAMB", "Syracuse Orange"): (
+        "Big East. One national title (2003, behind Carmelo Anthony); Jim Boeheim retired "
+        "in 2023 after 47 seasons, with Adrian Autry now in charge."
+    ),
+    ("NCAAMB", "VCU Rams"): (
+        "Atlantic 10 (minor conference). No national titles; the 2011 \"Final Four "
+        "Cinderella\" run under Shaka Smart remains the program's signature moment."
+    ),
+    ("NCAAMB", "Providence Friars"): (
+        "Big East. No national titles despite a 1987 Final Four (Rick Pitino's first head "
+        "coaching job); Kim English leads the program."
+    ),
+    ("NCAAMB", "Xavier Musketeers"): (
+        "Big East. No national titles, a historic mid-major power now in a major "
+        "conference; Sean Miller returned in 2022 for a second stint as coach."
+    ),
+    ("NCAAMB", "Oklahoma State Cowboys"): (
+        "Big 12. Two national titles (1945, 1946, as Oklahoma A&M); a middling Big 12 "
+        "program in recent years."
+    ),
+    ("NCAAMB", "West Virginia Mountaineers"): (
+        "Big 12. No national titles; Darian DeVries led a one-year turnaround before "
+        "leaving for Indiana in 2025, with Ross Hodge now leading the rebuild."
+    ),
+    ("NCAAMB", "Grand Canyon Antelopes"): (
+        "Western Athletic Conference (minor). No national titles as a D-I program only "
+        "since 2013; Bryce Drew has built a mid-major power."
+    ),
+    ("NCAAMB", "San Diego State Aztecs"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national titles "
+        "despite the 2023 title-game appearance (lost to UConn); Brian Dutcher has built a "
+        "Mountain-West-turned-Pac-12 power."
+    ),
+    ("NCAAMB", "Wichita State Shockers"): (
+        "American (minor conference). No national titles despite the 2013 Final Four under "
+        "Gregg Marshall."
+    ),
+    ("NCAAMB", "Florida State Seminoles"): (
+        "ACC. No national titles; a middling program that has missed several recent "
+        "tournaments."
+    ),
+    ("NCAAMB", "Saint Louis Billikens"): (
+        "Atlantic 10 (minor conference). No national titles; a steady mid-major program."
+    ),
+    ("NCAAMB", "DePaul Blue Demons"): (
+        "Big East. A claimed national title (1945, the pre-tournament-expansion era); a "
+        "historically weak modern Big East program."
+    ),
+    ("NCAAMB", "High Point Panthers"): (
+        "Big South (minor conference). No national titles as a small program, but a "
+        "surprise Elite Eight run as a 12-seed in 2025-26."
+    ),
+    ("NCAAMB", "Washington Huskies"): (
+        "Big Ten. No national titles despite a 1953 Final Four; a middling Big Ten program "
+        "since the 2024 move from the Pac-12."
+    ),
+    ("NCAAMB", "Arizona State Sun Devils"): (
+        "Big 12. No national titles; Bobby Hurley built a run of NCAA appearances before a "
+        "recent decline."
+    ),
+    ("NCAAMB", "New Mexico Lobos"): (
+        "Mountain West (minor conference). No national titles; a consistent mid-major "
+        "power under Richard Pitino."
+    ),
+    ("NCAAMB", "Utah State Aggies"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national "
+        "titles; a longtime mid-major mainstay."
+    ),
+    ("NCAAMB", "Saint Mary's Gaels"): (
+        "West Coast Conference (minor). No national titles; a longtime WCC power in "
+        "Gonzaga's shadow under Randy Bennett."
+    ),
+    ("NCAAMB", "Pittsburgh Panthers"): (
+        "ACC. No national titles; Jeff Capel has built a recent NCAA Tournament return."
+    ),
+    ("NCAAMB", "Dayton Flyers"): (
+        "Atlantic 10 (minor conference). No national titles despite a 1967 title-game "
+        "appearance; Anthony Grant has built a consistent mid-major power."
+    ),
+    ("NCAAMB", "Seton Hall Pirates"): (
+        "Big East. No national titles despite a 1989 title-game appearance (lost in "
+        "overtime to Michigan); Shaheen Holloway leads the program."
+    ),
+    ("NCAAMB", "Northwestern Wildcats"): (
+        "Big Ten. No national titles, and the last original Big Ten program to reach its "
+        "first-ever NCAA Tournament (2017) under Chris Collins."
+    ),
+    ("NCAAMB", "Rutgers Scarlet Knights"): (
+        "Big Ten. No national titles; Steve Pikiell has built the program's best stretch "
+        "in decades."
+    ),
+    ("NCAAMB", "Utah Utes"): (
+        "Big 12. One national title (1944); a middling Big 12 program in recent years."
+    ),
+    ("NCAAMB", "Mississippi State Bulldogs"): (
+        "SEC. No national titles; Chris Jans has built a recent NCAA Tournament regular."
+    ),
+    ("NCAAMB", "South Carolina Gamecocks"): (
+        "SEC. No national titles; a middling men's program overshadowed by the dominant "
+        "women's program."
+    ),
+    ("NCAAMB", "Tulsa Golden Hurricane"): (
+        "American (minor conference). No national titles; a historically solid mid-major "
+        "program."
+    ),
+    ("NCAAMB", "California Golden Bears"): (
+        "ACC (arrived 2024). One national title (1959); a struggling program in its new "
+        "conference."
+    ),
+    ("NCAAMB", "Notre Dame Fighting Irish"): (
+        "ACC. No national titles despite multiple Elite Eight runs; Micah Shrewsberry "
+        "leads a rebuild."
+    ),
+    ("NCAAMB", "George Washington Revolutionaries"): (
+        "Atlantic 10 (minor conference). No national titles; renamed from \"Colonials\" in "
+        "2023."
+    ),
+    ("NCAAMB", "Georgetown Hoyas"): (
+        "Big East. One national title (1984, behind Patrick Ewing); Ed Cooley has worked "
+        "to rebuild the once-dominant program since 2023."
+    ),
+    ("NCAAMB", "Minnesota Golden Gophers"): (
+        "Big Ten. No national titles; Niko Medved took over in 2024 after building "
+        "Colorado State into a Mountain West power."
+    ),
+    ("NCAAMB", "Colorado Buffaloes"): (
+        "Big 12. No national titles; a middling program that occasionally makes the "
+        "tournament."
+    ),
+    ("NCAAMB", "Kansas State Wildcats"): (
+        "Big 12. No national titles despite Final Fours in 1948 and 1951; Jerome Tang's "
+        "2023 Elite Eight run was a surprise breakthrough."
+    ),
+    ("NCAAMB", "Nevada Wolf Pack"): (
+        "Mountain West (minor conference). No national titles; a mid-major program with "
+        "Sweet 16 runs in the late 2010s."
+    ),
+    ("NCAAMB", "Boise State Broncos"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national "
+        "titles; a consistent mid-major program."
+    ),
+    ("NCAAMB", "Colorado State Rams"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national "
+        "titles; a consistent mid-major program."
+    ),
+    ("NCAAMB", "McNeese State Cowboys"): (
+        "Southland (minor conference). No national titles as a small program; Will Wade's "
+        "2024-25 tenure produced a stunning NCAA Tournament run before he left for LSU in "
+        "2026."
+    ),
+    ("NCAAMB", "Charlotte 49ers"): (
+        "American (minor conference). No national titles; a historically middling "
+        "program."
+    ),
+    ("NCAAMB", "South Florida Bulls"): (
+        "American (minor conference). No national titles; a rising program in recent "
+        "seasons."
+    ),
+    ("NCAAMB", "Wake Forest Demon Deacons"): (
+        "ACC. No national titles despite a 1962 Final Four; a middling ACC program in "
+        "recent decades."
+    ),
+    ("NCAAMB", "George Mason Patriots"): (
+        "Atlantic 10 (minor conference). No national titles despite the shocking 2006 "
+        "Final Four run as a mid-major."
+    ),
+    ("NCAAMB", "Butler Bulldogs"): (
+        "Big East. No national titles despite back-to-back title-game appearances (2010, "
+        "2011) under Brad Stevens."
+    ),
+    ("NCAAMB", "UNLV Rebels"): (
+        "Mountain West (minor conference). One national title (1990, Jerry Tarkanian's "
+        "dominant team)."
+    ),
+    ("NCAAMB", "Oregon State Beavers"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national titles "
+        "despite Final Fours in 1949 and 1963; a struggling program in recent years."
+    ),
+    ("NCAAMB", "Santa Clara Broncos"): (
+        "West Coast Conference (minor). No national titles; a historic program (alumnus "
+        "Steve Nash) in Gonzaga's shadow."
+    ),
+    ("NCAAMB", "Memphis Tigers"): (
+        "American (minor conference). No national titles despite a vacated 2008 title-game "
+        "appearance; Penny Hardaway has built a consistent NCAA Tournament-caliber "
+        "program."
+    ),
+    ("NCAAMB", "Boston College Eagles"): (
+        "ACC. No national titles; a struggling ACC program in recent years."
+    ),
+    ("NCAAMB", "Georgia Tech Yellow Jackets"): (
+        "ACC. No national titles despite a 2004 title-game appearance; Damon Stoudamire "
+        "leads a rebuild."
+    ),
+
+    # --- NCAAWB, second 50 (ranks 51-100 by expected fantasy points) ---
+    ("NCAAWB", "Wisconsin Badgers"): (
+        "Big Ten. No national titles; historically a minor program."
+    ),
+    ("NCAAWB", "Baylor Bears"): (
+        "Big 12. Three national titles (2005, 2012, 2019) under Kim Mulkey; Nicki Collen "
+        "leads the post-Mulkey era."
+    ),
+    ("NCAAWB", "Cincinnati Bearcats"): (
+        "Big 12. No national titles and historically a minor program."
+    ),
+    ("NCAAWB", "UCF Knights"): (
+        "Big 12. No national titles and historically a minor program."
+    ),
+    ("NCAAWB", "Texas A&M Aggies"): (
+        "SEC. One national title (2011) under Gary Blair."
+    ),
+    ("NCAAWB", "Syracuse Orange"): (
+        "ACC. No national titles despite a 2016 title-game appearance."
+    ),
+    ("NCAAWB", "VCU Rams"): (
+        "Atlantic 10 (minor conference). No national titles; a mid-major program."
+    ),
+    ("NCAAWB", "Providence Friars"): (
+        "Big East. No national titles; a mid-tier Big East program."
+    ),
+    ("NCAAWB", "Xavier Musketeers"): (
+        "Big East. No national titles; a mid-tier Big East program."
+    ),
+    ("NCAAWB", "Oklahoma State Cowboys"): (
+        "Big 12. No national titles; a mid-tier Big 12 program."
+    ),
+    ("NCAAWB", "Grand Canyon Antelopes"): (
+        "Western Athletic Conference (minor). No national titles as a D-I program only "
+        "since 2013."
+    ),
+    ("NCAAWB", "San Diego State Aztecs"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national "
+        "titles; a rising Mountain-West-turned-Pac-12 program."
+    ),
+    ("NCAAWB", "Wichita State Shockers"): (
+        "American (minor conference). No national titles."
+    ),
+    ("NCAAWB", "Saint Louis Billikens"): (
+        "Atlantic 10 (minor conference). No national titles."
+    ),
+    ("NCAAWB", "DePaul Blue Demons"): (
+        "Big East. No national titles; historically a minor program."
+    ),
+    ("NCAAWB", "High Point Panthers"): (
+        "Big South (minor conference). No national titles as a small program."
+    ),
+    ("NCAAWB", "Arizona State Sun Devils"): (
+        "Big 12. No national titles; Charli Turner Thorne built two decades of NCAA "
+        "Tournament appearances before retiring in 2024."
+    ),
+    ("NCAAWB", "Utah State Aggies"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national "
+        "titles."
+    ),
+    ("NCAAWB", "Saint Mary's Gaels"): (
+        "West Coast Conference (minor). No national titles."
+    ),
+    ("NCAAWB", "Tulsa Golden Hurricane"): (
+        "American (minor conference). No national titles."
+    ),
+    ("NCAAWB", "Florida State Seminoles"): (
+        "ACC. No national titles despite a 2000s Final Four appearance under Sue Semrau."
+    ),
+    ("NCAAWB", "Pittsburgh Panthers"): (
+        "ACC. No national titles; historically a minor program."
+    ),
+    ("NCAAWB", "Dayton Flyers"): (
+        "Atlantic 10 (minor conference). No national titles; a consistent mid-major power."
+    ),
+    ("NCAAWB", "Seton Hall Pirates"): (
+        "Big East. No national titles; a mid-tier Big East program."
+    ),
+    ("NCAAWB", "Northwestern Wildcats"): (
+        "Big Ten. No national titles; Joe McKeown built a recent tournament regular."
+    ),
+    ("NCAAWB", "Rutgers Scarlet Knights"): (
+        "Big Ten. No national titles despite a 2007 title-game appearance under legendary "
+        "coach C. Vivian Stringer."
+    ),
+    ("NCAAWB", "California Golden Bears"): (
+        "ACC (arrived 2024). No national titles despite a 2013 Final Four appearance."
+    ),
+    ("NCAAWB", "George Washington Revolutionaries"): (
+        "Atlantic 10 (minor conference). No national titles; renamed from \"Colonials\" in "
+        "2023."
+    ),
+    ("NCAAWB", "Georgetown Hoyas"): (
+        "Big East. No national titles; historically a minor program."
+    ),
+    ("NCAAWB", "Kansas State Wildcats"): (
+        "Big 12. No national titles; a mid-tier Big 12 program."
+    ),
+    ("NCAAWB", "Iona Gaels"): (
+        "MAAC/Metro (minor conference). No national titles as a small program."
+    ),
+    ("NCAAWB", "Buffalo Bulls"): (
+        "MAC (minor conference). No national titles; a rising MAC power."
+    ),
+    ("NCAAWB", "Nevada Wolf Pack"): (
+        "Mountain West (minor conference). No national titles."
+    ),
+    ("NCAAWB", "Boise State Broncos"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national "
+        "titles."
+    ),
+    ("NCAAWB", "Colorado State Rams"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national "
+        "titles."
+    ),
+    ("NCAAWB", "McNeese State Cowboys"): (
+        "Southland (minor conference). No national titles as a small program."
+    ),
+    ("NCAAWB", "Charlotte 49ers"): (
+        "American (minor conference). No national titles."
+    ),
+    ("NCAAWB", "South Florida Bulls"): (
+        "American (minor conference). No national titles; historically a mid-major power "
+        "under Jose Fernandez."
+    ),
+    ("NCAAWB", "Stanford Cardinal"): (
+        "ACC (arrived 2024). Three national titles (1990, 1992, 2021) under Tara "
+        "VanDerveer, the sport's all-time winningest coach before her 2024 retirement; "
+        "Kate Paye now leads the program."
+    ),
+    ("NCAAWB", "Wake Forest Demon Deacons"): (
+        "ACC. No national titles; historically a minor program."
+    ),
+    ("NCAAWB", "George Mason Patriots"): (
+        "Atlantic 10 (minor conference). No national titles."
+    ),
+    ("NCAAWB", "Butler Bulldogs"): (
+        "Big East. No national titles; a mid-tier Big East program."
+    ),
+    ("NCAAWB", "UC Santa Barbara Gauchos"): (
+        "Big West (minor conference). No national titles as a small program."
+    ),
+    ("NCAAWB", "Miami (OH) RedHawks"): (
+        "MAC (minor conference). No national titles."
+    ),
+    ("NCAAWB", "UIC Flames"): (
+        "Minor conference. No national titles as a small program."
+    ),
+    ("NCAAWB", "UNLV Rebels"): (
+        "Mountain West (minor conference). No national titles."
+    ),
+    ("NCAAWB", "Oregon State Beavers"): (
+        "Pac-12 (minor conference; the rebuilt basketball-only league). No national "
+        "titles; Scott Rueck built consistent Elite Eight-level teams in the mid-2010s."
+    ),
+    ("NCAAWB", "Santa Clara Broncos"): (
+        "West Coast Conference (minor). No national titles."
+    ),
+    ("NCAAWB", "Memphis Tigers"): (
+        "American (minor conference). No national titles."
+    ),
+    ("NCAAWB", "North Texas Mean Green"): (
+        "American (minor conference). No national titles; a rising program."
     ),
 }
 
@@ -3361,6 +4088,915 @@ TEAM_HISTORY_STATS: dict[tuple[str, str], dict[str, dict]] = {
         "2023-24": {"wins": 21, "losses": 11},
         "2024-25": {"wins": 21, "losses": 12},
     },
+
+    # --- NCAAF, second 50 (ranks 51-100) --- same season-label convention
+    # and best-effort caveat as the first 50 above.
+    ("NCAAF", "Colorado Buffaloes"): {
+        "2021": {"wins": 4, "reg_season_losses": 8},
+        "2022": {"wins": 1, "reg_season_losses": 11},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Boise State Broncos"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 10, "reg_season_losses": 4},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 12, "reg_season_losses": 1, "playoff_bid": True, "playoff_bye": True, "playoff_wins": 0},
+    },
+    ("NCAAF", "Wake Forest Demon Deacons"): {
+        "2021": {"wins": 11, "reg_season_losses": 3},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 4, "reg_season_losses": 8},
+    },
+    ("NCAAF", "Kansas Jayhawks"): {
+        "2021": {"wins": 2, "reg_season_losses": 10},
+        "2022": {"wins": 6, "reg_season_losses": 7},
+        "2023": {"wins": 9, "reg_season_losses": 4},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Oklahoma State Cowboys"): {
+        "2021": {"wins": 12, "reg_season_losses": 2},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 10, "reg_season_losses": 4},
+        "2024": {"wins": 3, "reg_season_losses": 9},
+    },
+    ("NCAAF", "UCF Knights"): {
+        "2021": {"wins": 9, "reg_season_losses": 4},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 6, "reg_season_losses": 7},
+        "2024": {"wins": 4, "reg_season_losses": 8},
+    },
+    ("NCAAF", "Tulane Green Wave"): {
+        "2021": {"wins": 2, "reg_season_losses": 10},
+        "2022": {"wins": 12, "reg_season_losses": 2},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Maryland Terrapins"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 4, "reg_season_losses": 8},
+    },
+    ("NCAAF", "Northwestern Wildcats"): {
+        "2021": {"wins": 3, "reg_season_losses": 9},
+        "2022": {"wins": 1, "reg_season_losses": 11},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 4, "reg_season_losses": 8},
+    },
+    ("NCAAF", "California Golden Bears"): {
+        "2021": {"wins": 4, "reg_season_losses": 8},
+        "2022": {"wins": 4, "reg_season_losses": 8},
+        "2023": {"wins": 6, "reg_season_losses": 7},
+        "2024": {"wins": 6, "reg_season_losses": 7},
+    },
+    ("NCAAF", "San Diego State Aztecs"): {
+        "2021": {"wins": 12, "reg_season_losses": 2},
+        "2022": {"wins": 12, "reg_season_losses": 2},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 6, "reg_season_losses": 7},
+    },
+    ("NCAAF", "UNLV Rebels"): {
+        "2021": {"wins": 2, "reg_season_losses": 10},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 9, "reg_season_losses": 5},
+        "2024": {"wins": 11, "reg_season_losses": 3},
+    },
+    ("NCAAF", "Michigan State Spartans"): {
+        "2021": {"wins": 11, "reg_season_losses": 2},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Minnesota Golden Gophers"): {
+        "2021": {"wins": 9, "reg_season_losses": 4},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 6, "reg_season_losses": 7},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Rutgers Scarlet Knights"): {
+        "2021": {"wins": 5, "reg_season_losses": 8},
+        "2022": {"wins": 4, "reg_season_losses": 8},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 7, "reg_season_losses": 6},
+    },
+    ("NCAAF", "UCLA Bruins"): {
+        "2021": {"wins": 8, "reg_season_losses": 4},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 8, "reg_season_losses": 4},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "West Virginia Mountaineers"): {
+        "2021": {"wins": 6, "reg_season_losses": 7},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 6, "reg_season_losses": 6},
+    },
+    ("NCAAF", "East Carolina Pirates"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 6, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Navy Midshipmen"): {
+        "2021": {"wins": 4, "reg_season_losses": 8},
+        "2022": {"wins": 4, "reg_season_losses": 8},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 10, "reg_season_losses": 3},
+    },
+    ("NCAAF", "Purdue Boilermakers"): {
+        "2021": {"wins": 9, "reg_season_losses": 4},
+        "2022": {"wins": 8, "reg_season_losses": 6},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 1, "reg_season_losses": 11},
+    },
+    ("NCAAF", "Syracuse Orange"): {
+        "2021": {"wins": 5, "reg_season_losses": 7},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 6, "reg_season_losses": 6},
+        "2024": {"wins": 10, "reg_season_losses": 3},
+    },
+    ("NCAAF", "Iowa State Cyclones"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 4, "reg_season_losses": 8},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 11, "reg_season_losses": 3},
+    },
+    ("NCAAF", "Memphis Tigers"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 10, "reg_season_losses": 3},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "South Florida Bulls"): {
+        "2021": {"wins": 2, "reg_season_losses": 10},
+        "2022": {"wins": 1, "reg_season_losses": 11},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 7, "reg_season_losses": 6},
+    },
+    ("NCAAF", "James Madison Dukes"): {
+        "2021": {"wins": 8, "reg_season_losses": 3},
+        "2022": {"wins": 8, "reg_season_losses": 3},
+        "2023": {"wins": 12, "reg_season_losses": 1},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Boston College Eagles"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 3, "reg_season_losses": 9},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 7, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Stanford Cardinal"): {
+        "2021": {"wins": 3, "reg_season_losses": 9},
+        "2022": {"wins": 3, "reg_season_losses": 9},
+        "2023": {"wins": 3, "reg_season_losses": 9},
+        "2024": {"wins": 3, "reg_season_losses": 9},
+    },
+    ("NCAAF", "Fresno State Bulldogs"): {
+        "2021": {"wins": 10, "reg_season_losses": 4},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 7, "reg_season_losses": 6},
+        "2024": {"wins": 6, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Hawaii Rainbow Warriors"): {
+        "2021": {"wins": 6, "reg_season_losses": 7},
+        "2022": {"wins": 3, "reg_season_losses": 9},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "New Mexico Lobos"): {
+        "2021": {"wins": 1, "reg_season_losses": 11},
+        "2022": {"wins": 3, "reg_season_losses": 9},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Toledo Rockets"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 9, "reg_season_losses": 4},
+        "2024": {"wins": 6, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Texas State Bobcats"): {
+        "2021": {"wins": 8, "reg_season_losses": 5},
+        "2022": {"wins": 4, "reg_season_losses": 8},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Washington State Cougars"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 8, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Old Dominion Monarchs"): {
+        "2021": {"wins": 3, "reg_season_losses": 9},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Western Michigan Broncos"): {
+        "2021": {"wins": 8, "reg_season_losses": 5},
+        "2022": {"wins": 8, "reg_season_losses": 6},
+        "2023": {"wins": 5, "reg_season_losses": 7},
+        "2024": {"wins": 6, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Western Kentucky Hilltoppers"): {
+        "2021": {"wins": 9, "reg_season_losses": 5},
+        "2022": {"wins": 9, "reg_season_losses": 5},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 7, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Army Black Knights"): {
+        "2021": {"wins": 9, "reg_season_losses": 4},
+        "2022": {"wins": 4, "reg_season_losses": 8},
+        "2023": {"wins": 6, "reg_season_losses": 6},
+        "2024": {"wins": 12, "reg_season_losses": 2},
+    },
+    ("NCAAF", "North Texas Mean Green"): {
+        "2021": {"wins": 5, "reg_season_losses": 7},
+        "2022": {"wins": 7, "reg_season_losses": 6},
+        "2023": {"wins": 6, "reg_season_losses": 6},
+        "2024": {"wins": 7, "reg_season_losses": 6},
+    },
+    ("NCAAF", "UTSA Roadrunners"): {
+        "2021": {"wins": 7, "reg_season_losses": 5},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 7, "reg_season_losses": 6},
+    },
+    ("NCAAF", "Southern Miss Golden Eagles"): {
+        "2021": {"wins": 3, "reg_season_losses": 9},
+        "2022": {"wins": 6, "reg_season_losses": 7},
+        "2023": {"wins": 4, "reg_season_losses": 8},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Delaware Blue Hens"): {
+        "2021": {"wins": 4, "reg_season_losses": 7},
+        "2022": {"wins": 4, "reg_season_losses": 7},
+        "2023": {"wins": 4, "reg_season_losses": 7},
+        "2024": {"wins": 7, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Oregon State Beavers"): {
+        "2021": {"wins": 7, "reg_season_losses": 6},
+        "2022": {"wins": 10, "reg_season_losses": 3},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Utah State Aggies"): {
+        "2021": {"wins": 11, "reg_season_losses": 3},
+        "2022": {"wins": 6, "reg_season_losses": 7},
+        "2023": {"wins": 6, "reg_season_losses": 7},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Air Force Falcons"): {
+        "2021": {"wins": 10, "reg_season_losses": 3},
+        "2022": {"wins": 10, "reg_season_losses": 3},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "North Dakota State Bison"): {
+        "2021": {"wins": 12, "reg_season_losses": 2},
+        "2022": {"wins": 14, "reg_season_losses": 1},
+        "2023": {"wins": 12, "reg_season_losses": 2},
+        "2024": {"wins": 15, "reg_season_losses": 0},
+    },
+    ("NCAAF", "Louisiana Ragin' Cajuns"): {
+        "2021": {"wins": 13, "reg_season_losses": 1},
+        "2022": {"wins": 5, "reg_season_losses": 7},
+        "2023": {"wins": 10, "reg_season_losses": 3},
+        "2024": {"wins": 5, "reg_season_losses": 7},
+    },
+    ("NCAAF", "Troy Trojans"): {
+        "2021": {"wins": 5, "reg_season_losses": 7},
+        "2022": {"wins": 12, "reg_season_losses": 2},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Miami (OH) RedHawks"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 6, "reg_season_losses": 6},
+        "2023": {"wins": 6, "reg_season_losses": 6},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+    ("NCAAF", "Ohio Bobcats"): {
+        "2021": {"wins": 6, "reg_season_losses": 6},
+        "2022": {"wins": 9, "reg_season_losses": 4},
+        "2023": {"wins": 8, "reg_season_losses": 5},
+        "2024": {"wins": 9, "reg_season_losses": 4},
+    },
+    ("NCAAF", "Liberty Flames"): {
+        "2021": {"wins": 8, "reg_season_losses": 5},
+        "2022": {"wins": 8, "reg_season_losses": 5},
+        "2023": {"wins": 13, "reg_season_losses": 1},
+        "2024": {"wins": 8, "reg_season_losses": 5},
+    },
+
+    # --- NCAAMB, second 50 (ranks 51-100) --- same convention/caveat as
+    # the first 50 above.
+    ("NCAAMB", "Texas A&M Aggies"): {
+        "2021-22": {"wins": 16, "losses": 16},
+        "2022-23": {"wins": 25, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True},
+        "2023-24": {"wins": 20, "losses": 14},
+        "2024-25": {"wins": 23, "losses": 13, "ncaa_qualifier": True},
+    },
+    ("NCAAMB", "Syracuse Orange"): {
+        "2021-22": {"wins": 16, "losses": 17},
+        "2022-23": {"wins": 17, "losses": 15},
+        "2023-24": {"wins": 19, "losses": 14},
+        "2024-25": {"wins": 18, "losses": 15},
+    },
+    ("NCAAMB", "VCU Rams"): {
+        "2021-22": {"wins": 19, "losses": 12, "ncaa_qualifier": True, "conf_tourney_champ": True},
+        "2022-23": {"wins": 27, "losses": 8, "ncaa_qualifier": True, "conf_tourney_champ": True},
+        "2023-24": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True},
+        "2024-25": {"wins": 28, "losses": 8, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Providence Friars"): {
+        "2021-22": {"wins": 27, "losses": 7, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True},
+        "2022-23": {"wins": 21, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 21, "losses": 11},
+        "2024-25": {"wins": 18, "losses": 14},
+    },
+    ("NCAAMB", "Xavier Musketeers"): {
+        "2021-22": {"wins": 26, "losses": 8, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 27, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True},
+        "2023-24": {"wins": 18, "losses": 15},
+        "2024-25": {"wins": 19, "losses": 14},
+    },
+    ("NCAAMB", "Oklahoma State Cowboys"): {
+        "2021-22": {"wins": 21, "losses": 13},
+        "2022-23": {"wins": 16, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 16},
+        "2024-25": {"wins": 19, "losses": 14},
+    },
+    ("NCAAMB", "West Virginia Mountaineers"): {
+        "2021-22": {"wins": 16, "losses": 16},
+        "2022-23": {"wins": 19, "losses": 15},
+        "2023-24": {"wins": 9, "losses": 23},
+        "2024-25": {"wins": 19, "losses": 13},
+    },
+    ("NCAAMB", "Grand Canyon Antelopes"): {
+        "2021-22": {"wins": 23, "losses": 10},
+        "2022-23": {"wins": 21, "losses": 9},
+        "2023-24": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "San Diego State Aztecs"): {
+        "2021-22": {"wins": 27, "losses": 7, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 32, "losses": 7, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True, "won_sweet_16": True, "won_elite_8": True, "won_final_4": True},
+        "2023-24": {"wins": 25, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 22, "losses": 12, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Wichita State Shockers"): {
+        "2021-22": {"wins": 16, "losses": 15},
+        "2022-23": {"wins": 18, "losses": 15},
+        "2023-24": {"wins": 17, "losses": 15},
+        "2024-25": {"wins": 16, "losses": 16},
+    },
+    ("NCAAMB", "Florida State Seminoles"): {
+        "2021-22": {"wins": 18, "losses": 15},
+        "2022-23": {"wins": 9, "losses": 23},
+        "2023-24": {"wins": 19, "losses": 14},
+        "2024-25": {"wins": 20, "losses": 14},
+    },
+    ("NCAAMB", "Saint Louis Billikens"): {
+        "2021-22": {"wins": 23, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 20, "losses": 14},
+        "2023-24": {"wins": 20, "losses": 13},
+        "2024-25": {"wins": 24, "losses": 12},
+    },
+    ("NCAAMB", "DePaul Blue Demons"): {
+        "2021-22": {"wins": 15, "losses": 17},
+        "2022-23": {"wins": 11, "losses": 21},
+        "2023-24": {"wins": 3, "losses": 29},
+        "2024-25": {"wins": 19, "losses": 15},
+    },
+    ("NCAAMB", "High Point Panthers"): {
+        "2021-22": {"wins": 12, "losses": 19},
+        "2022-23": {"wins": 20, "losses": 13},
+        "2023-24": {"wins": 29, "losses": 6},
+        "2024-25": {"wins": 31, "losses": 4, "ncaa_qualifier": True, "conf_tourney_champ": True},
+    },
+    ("NCAAMB", "Washington Huskies"): {
+        "2021-22": {"wins": 17, "losses": 15},
+        "2022-23": {"wins": 15, "losses": 17},
+        "2023-24": {"wins": 16, "losses": 16},
+        "2024-25": {"wins": 18, "losses": 15},
+    },
+    ("NCAAMB", "Arizona State Sun Devils"): {
+        "2021-22": {"wins": 14, "losses": 17},
+        "2022-23": {"wins": 23, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 22, "losses": 15, "ncaa_qualifier": True},
+        "2024-25": {"wins": 14, "losses": 18},
+    },
+    ("NCAAMB", "New Mexico Lobos"): {
+        "2021-22": {"wins": 22, "losses": 11},
+        "2022-23": {"wins": 22, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 26, "losses": 10, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 27, "losses": 8, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Utah State Aggies"): {
+        "2021-22": {"wins": 20, "losses": 14},
+        "2022-23": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 27, "losses": 8, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 25, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Saint Mary's Gaels"): {
+        "2021-22": {"wins": 26, "losses": 8, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True},
+        "2023-24": {"wins": 28, "losses": 7, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 25, "losses": 7, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Pittsburgh Panthers"): {
+        "2021-22": {"wins": 11, "losses": 21},
+        "2022-23": {"wins": 15, "losses": 17},
+        "2023-24": {"wins": 22, "losses": 13},
+        "2024-25": {"wins": 20, "losses": 14},
+    },
+    ("NCAAMB", "Dayton Flyers"): {
+        "2021-22": {"wins": 24, "losses": 8},
+        "2022-23": {"wins": 17, "losses": 15},
+        "2023-24": {"wins": 24, "losses": 10},
+        "2024-25": {"wins": 24, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Seton Hall Pirates"): {
+        "2021-22": {"wins": 17, "losses": 16},
+        "2022-23": {"wins": 17, "losses": 15},
+        "2023-24": {"wins": 20, "losses": 14, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 13, "losses": 19},
+    },
+    ("NCAAMB", "Northwestern Wildcats"): {
+        "2021-22": {"wins": 15, "losses": 16},
+        "2022-23": {"wins": 22, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 23, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 18, "losses": 15},
+    },
+    ("NCAAMB", "Rutgers Scarlet Knights"): {
+        "2021-22": {"wins": 18, "losses": 14, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 19, "losses": 14},
+        "2023-24": {"wins": 20, "losses": 13, "ncaa_qualifier": True},
+        "2024-25": {"wins": 15, "losses": 17},
+    },
+    ("NCAAMB", "Utah Utes"): {
+        "2021-22": {"wins": 17, "losses": 15},
+        "2022-23": {"wins": 17, "losses": 16},
+        "2023-24": {"wins": 11, "losses": 21},
+        "2024-25": {"wins": 13, "losses": 19},
+    },
+    ("NCAAMB", "Mississippi State Bulldogs"): {
+        "2021-22": {"wins": 19, "losses": 16},
+        "2022-23": {"wins": 21, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 21, "losses": 14, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 21, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "South Carolina Gamecocks"): {
+        "2021-22": {"wins": 18, "losses": 14},
+        "2022-23": {"wins": 11, "losses": 21},
+        "2023-24": {"wins": 11, "losses": 21},
+        "2024-25": {"wins": 16, "losses": 17},
+    },
+    ("NCAAMB", "Tulsa Golden Hurricane"): {
+        "2021-22": {"wins": 18, "losses": 15},
+        "2022-23": {"wins": 11, "losses": 21},
+        "2023-24": {"wins": 19, "losses": 14},
+        "2024-25": {"wins": 20, "losses": 13},
+    },
+    ("NCAAMB", "California Golden Bears"): {
+        "2021-22": {"wins": 12, "losses": 20},
+        "2022-23": {"wins": 3, "losses": 29},
+        "2023-24": {"wins": 14, "losses": 19},
+        "2024-25": {"wins": 15, "losses": 17},
+    },
+    ("NCAAMB", "Notre Dame Fighting Irish"): {
+        "2021-22": {"wins": 24, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 11, "losses": 21},
+        "2023-24": {"wins": 13, "losses": 19},
+        "2024-25": {"wins": 19, "losses": 14},
+    },
+    ("NCAAMB", "George Washington Revolutionaries"): {
+        "2021-22": {"wins": 11, "losses": 19},
+        "2022-23": {"wins": 16, "losses": 16},
+        "2023-24": {"wins": 20, "losses": 13},
+        "2024-25": {"wins": 19, "losses": 14},
+    },
+    ("NCAAMB", "Georgetown Hoyas"): {
+        "2021-22": {"wins": 6, "losses": 25},
+        "2022-23": {"wins": 7, "losses": 25},
+        "2023-24": {"wins": 14, "losses": 18},
+        "2024-25": {"wins": 18, "losses": 17},
+    },
+    ("NCAAMB", "Minnesota Golden Gophers"): {
+        "2021-22": {"wins": 13, "losses": 17},
+        "2022-23": {"wins": 9, "losses": 22},
+        "2023-24": {"wins": 19, "losses": 14},
+        "2024-25": {"wins": 18, "losses": 14},
+    },
+    ("NCAAMB", "Colorado Buffaloes"): {
+        "2021-22": {"wins": 20, "losses": 14},
+        "2022-23": {"wins": 16, "losses": 18},
+        "2023-24": {"wins": 25, "losses": 10, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 23, "losses": 12, "ncaa_qualifier": True},
+    },
+    ("NCAAMB", "Kansas State Wildcats"): {
+        "2021-22": {"wins": 14, "losses": 17},
+        "2022-23": {"wins": 26, "losses": 10, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True, "won_sweet_16": True, "won_elite_8": True},
+        "2023-24": {"wins": 19, "losses": 13},
+        "2024-25": {"wins": 16, "losses": 16},
+    },
+    ("NCAAMB", "Nevada Wolf Pack"): {
+        "2021-22": {"wins": 23, "losses": 11},
+        "2022-23": {"wins": 23, "losses": 9},
+        "2023-24": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 24, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Boise State Broncos"): {
+        "2021-22": {"wins": 27, "losses": 7, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 21, "losses": 12},
+        "2023-24": {"wins": 20, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 18, "losses": 15},
+    },
+    ("NCAAMB", "Colorado State Rams"): {
+        "2021-22": {"wins": 25, "losses": 11},
+        "2022-23": {"wins": 25, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True},
+        "2024-25": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "McNeese State Cowboys"): {
+        "2021-22": {"wins": 22, "losses": 9},
+        "2022-23": {"wins": 18, "losses": 15},
+        "2023-24": {"wins": 30, "losses": 4, "ncaa_qualifier": True, "conf_tourney_champ": True},
+        "2024-25": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Charlotte 49ers"): {
+        "2021-22": {"wins": 9, "losses": 19},
+        "2022-23": {"wins": 17, "losses": 16},
+        "2023-24": {"wins": 20, "losses": 13},
+        "2024-25": {"wins": 20, "losses": 13},
+    },
+    ("NCAAMB", "South Florida Bulls"): {
+        "2021-22": {"wins": 15, "losses": 16},
+        "2022-23": {"wins": 16, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 16},
+        "2024-25": {"wins": 25, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Wake Forest Demon Deacons"): {
+        "2021-22": {"wins": 25, "losses": 11},
+        "2022-23": {"wins": 18, "losses": 14},
+        "2023-24": {"wins": 19, "losses": 15},
+        "2024-25": {"wins": 22, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "George Mason Patriots"): {
+        "2021-22": {"wins": 13, "losses": 14},
+        "2022-23": {"wins": 17, "losses": 16},
+        "2023-24": {"wins": 18, "losses": 14},
+        "2024-25": {"wins": 24, "losses": 11},
+    },
+    ("NCAAMB", "Butler Bulldogs"): {
+        "2021-22": {"wins": 14, "losses": 18},
+        "2022-23": {"wins": 14, "losses": 19},
+        "2023-24": {"wins": 16, "losses": 16},
+        "2024-25": {"wins": 20, "losses": 14},
+    },
+    ("NCAAMB", "UNLV Rebels"): {
+        "2021-22": {"wins": 20, "losses": 13},
+        "2022-23": {"wins": 26, "losses": 9},
+        "2023-24": {"wins": 20, "losses": 12},
+        "2024-25": {"wins": 19, "losses": 15},
+    },
+    ("NCAAMB", "Oregon State Beavers"): {
+        "2021-22": {"wins": 3, "losses": 28},
+        "2022-23": {"wins": 11, "losses": 21},
+        "2023-24": {"wins": 13, "losses": 18},
+        "2024-25": {"wins": 16, "losses": 15},
+    },
+    ("NCAAMB", "Santa Clara Broncos"): {
+        "2021-22": {"wins": 12, "losses": 19},
+        "2022-23": {"wins": 24, "losses": 11},
+        "2023-24": {"wins": 22, "losses": 11},
+        "2024-25": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAMB", "Memphis Tigers"): {
+        "2021-22": {"wins": 21, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 26, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 25, "losses": 9},
+        "2024-25": {"wins": 23, "losses": 11},
+    },
+    ("NCAAMB", "Boston College Eagles"): {
+        "2021-22": {"wins": 12, "losses": 20},
+        "2022-23": {"wins": 12, "losses": 20},
+        "2023-24": {"wins": 16, "losses": 16},
+        "2024-25": {"wins": 20, "losses": 14},
+    },
+    ("NCAAMB", "Georgia Tech Yellow Jackets"): {
+        "2021-22": {"wins": 12, "losses": 20},
+        "2022-23": {"wins": 15, "losses": 17},
+        "2023-24": {"wins": 16, "losses": 17},
+        "2024-25": {"wins": 14, "losses": 19},
+    },
+
+    # --- NCAAWB, second 50 (ranks 51-100) --- same convention/caveat as
+    # the first 50 above.
+    ("NCAAWB", "Wisconsin Badgers"): {
+        "2021-22": {"wins": 10, "losses": 19},
+        "2022-23": {"wins": 10, "losses": 20},
+        "2023-24": {"wins": 14, "losses": 18},
+        "2024-25": {"wins": 18, "losses": 14},
+    },
+    ("NCAAWB", "Baylor Bears"): {
+        "2021-22": {"wins": 22, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 21, "losses": 12, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 20, "losses": 14, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 25, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True},
+    },
+    ("NCAAWB", "Cincinnati Bearcats"): {
+        "2021-22": {"wins": 12, "losses": 16},
+        "2022-23": {"wins": 16, "losses": 15},
+        "2023-24": {"wins": 16, "losses": 14},
+        "2024-25": {"wins": 20, "losses": 13},
+    },
+    ("NCAAWB", "UCF Knights"): {
+        "2021-22": {"wins": 19, "losses": 13},
+        "2022-23": {"wins": 16, "losses": 15},
+        "2023-24": {"wins": 17, "losses": 14},
+        "2024-25": {"wins": 22, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "Texas A&M Aggies"): {
+        "2021-22": {"wins": 19, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 23, "losses": 10, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 18, "losses": 15},
+        "2024-25": {"wins": 20, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "Syracuse Orange"): {
+        "2021-22": {"wins": 13, "losses": 16},
+        "2022-23": {"wins": 18, "losses": 14, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 20, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 24, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True},
+    },
+    ("NCAAWB", "VCU Rams"): {
+        "2021-22": {"wins": 19, "losses": 11, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2022-23": {"wins": 24, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2023-24": {"wins": 22, "losses": 10, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2024-25": {"wins": 28, "losses": 8, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True, "won_round_of_32": True},
+    },
+    ("NCAAWB", "Providence Friars"): {
+        "2021-22": {"wins": 13, "losses": 16},
+        "2022-23": {"wins": 14, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 15},
+        "2024-25": {"wins": 15, "losses": 16},
+    },
+    ("NCAAWB", "Xavier Musketeers"): {
+        "2021-22": {"wins": 16, "losses": 14},
+        "2022-23": {"wins": 16, "losses": 15},
+        "2023-24": {"wins": 15, "losses": 16},
+        "2024-25": {"wins": 17, "losses": 15},
+    },
+    ("NCAAWB", "Oklahoma State Cowboys"): {
+        "2021-22": {"wins": 16, "losses": 16},
+        "2022-23": {"wins": 16, "losses": 15},
+        "2023-24": {"wins": 19, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 24, "losses": 10, "ncaa_qualifier": True, "won_round_of_64": True, "won_round_of_32": True},
+    },
+    ("NCAAWB", "Grand Canyon Antelopes"): {
+        "2021-22": {"wins": 20, "losses": 11},
+        "2022-23": {"wins": 19, "losses": 12},
+        "2023-24": {"wins": 24, "losses": 8, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 23, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "San Diego State Aztecs"): {
+        "2021-22": {"wins": 14, "losses": 15},
+        "2022-23": {"wins": 19, "losses": 13},
+        "2023-24": {"wins": 18, "losses": 14},
+        "2024-25": {"wins": 21, "losses": 11},
+    },
+    ("NCAAWB", "Wichita State Shockers"): {
+        "2021-22": {"wins": 11, "losses": 19},
+        "2022-23": {"wins": 14, "losses": 17},
+        "2023-24": {"wins": 16, "losses": 15},
+        "2024-25": {"wins": 17, "losses": 14},
+    },
+    ("NCAAWB", "Saint Louis Billikens"): {
+        "2021-22": {"wins": 19, "losses": 13},
+        "2022-23": {"wins": 15, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 16},
+        "2024-25": {"wins": 20, "losses": 12},
+    },
+    ("NCAAWB", "DePaul Blue Demons"): {
+        "2021-22": {"wins": 12, "losses": 17},
+        "2022-23": {"wins": 11, "losses": 19},
+        "2023-24": {"wins": 14, "losses": 17},
+        "2024-25": {"wins": 15, "losses": 16},
+    },
+    ("NCAAWB", "High Point Panthers"): {
+        "2021-22": {"wins": 15, "losses": 14},
+        "2022-23": {"wins": 19, "losses": 11},
+        "2023-24": {"wins": 22, "losses": 9},
+        "2024-25": {"wins": 27, "losses": 6, "ncaa_qualifier": True, "conf_tourney_champ": True},
+    },
+    ("NCAAWB", "Arizona State Sun Devils"): {
+        "2021-22": {"wins": 17, "losses": 13},
+        "2022-23": {"wins": 20, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 21, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 24, "losses": 11, "ncaa_qualifier": True},
+    },
+    ("NCAAWB", "Utah State Aggies"): {
+        "2021-22": {"wins": 11, "losses": 18},
+        "2022-23": {"wins": 14, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 15},
+        "2024-25": {"wins": 17, "losses": 14},
+    },
+    ("NCAAWB", "Saint Mary's Gaels"): {
+        "2021-22": {"wins": 16, "losses": 14},
+        "2022-23": {"wins": 17, "losses": 14},
+        "2023-24": {"wins": 19, "losses": 12},
+        "2024-25": {"wins": 20, "losses": 11},
+    },
+    ("NCAAWB", "Tulsa Golden Hurricane"): {
+        "2021-22": {"wins": 16, "losses": 14},
+        "2022-23": {"wins": 15, "losses": 15},
+        "2023-24": {"wins": 17, "losses": 14},
+        "2024-25": {"wins": 19, "losses": 12},
+    },
+    ("NCAAWB", "Florida State Seminoles"): {
+        "2021-22": {"wins": 16, "losses": 15},
+        "2022-23": {"wins": 15, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 15},
+        "2024-25": {"wins": 17, "losses": 14},
+    },
+    ("NCAAWB", "Pittsburgh Panthers"): {
+        "2021-22": {"wins": 15, "losses": 15},
+        "2022-23": {"wins": 16, "losses": 15},
+        "2023-24": {"wins": 18, "losses": 14},
+        "2024-25": {"wins": 19, "losses": 13},
+    },
+    ("NCAAWB", "Dayton Flyers"): {
+        "2021-22": {"wins": 20, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 17, "losses": 13},
+        "2023-24": {"wins": 22, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 23, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "Seton Hall Pirates"): {
+        "2021-22": {"wins": 12, "losses": 16},
+        "2022-23": {"wins": 16, "losses": 15},
+        "2023-24": {"wins": 15, "losses": 15},
+        "2024-25": {"wins": 16, "losses": 15},
+    },
+    ("NCAAWB", "Northwestern Wildcats"): {
+        "2021-22": {"wins": 18, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 20, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 18, "losses": 12, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 22, "losses": 10, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "Rutgers Scarlet Knights"): {
+        "2021-22": {"wins": 19, "losses": 13, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 15, "losses": 15},
+        "2023-24": {"wins": 16, "losses": 15},
+        "2024-25": {"wins": 17, "losses": 14},
+    },
+    ("NCAAWB", "California Golden Bears"): {
+        "2021-22": {"wins": 12, "losses": 17},
+        "2022-23": {"wins": 11, "losses": 19},
+        "2023-24": {"wins": 12, "losses": 18},
+        "2024-25": {"wins": 14, "losses": 17},
+    },
+    ("NCAAWB", "George Washington Revolutionaries"): {
+        "2021-22": {"wins": 13, "losses": 16},
+        "2022-23": {"wins": 16, "losses": 14},
+        "2023-24": {"wins": 19, "losses": 13},
+        "2024-25": {"wins": 20, "losses": 11},
+    },
+    ("NCAAWB", "Georgetown Hoyas"): {
+        "2021-22": {"wins": 11, "losses": 17},
+        "2022-23": {"wins": 9, "losses": 21},
+        "2023-24": {"wins": 14, "losses": 16},
+        "2024-25": {"wins": 16, "losses": 15},
+    },
+    ("NCAAWB", "Kansas State Wildcats"): {
+        "2021-22": {"wins": 14, "losses": 15},
+        "2022-23": {"wins": 19, "losses": 12, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 20, "losses": 12, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 19, "losses": 13},
+    },
+    ("NCAAWB", "Iona Gaels"): {
+        "2021-22": {"wins": 22, "losses": 8, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2022-23": {"wins": 24, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2023-24": {"wins": 15, "losses": 16},
+        "2024-25": {"wins": 20, "losses": 12},
+    },
+    ("NCAAWB", "Buffalo Bulls"): {
+        "2021-22": {"wins": 20, "losses": 11, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2022-23": {"wins": 22, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2023-24": {"wins": 24, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2024-25": {"wins": 26, "losses": 8, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "Nevada Wolf Pack"): {
+        "2021-22": {"wins": 14, "losses": 15},
+        "2022-23": {"wins": 16, "losses": 16},
+        "2023-24": {"wins": 17, "losses": 14},
+        "2024-25": {"wins": 18, "losses": 13},
+    },
+    ("NCAAWB", "Boise State Broncos"): {
+        "2021-22": {"wins": 16, "losses": 14},
+        "2022-23": {"wins": 20, "losses": 12},
+        "2023-24": {"wins": 18, "losses": 13},
+        "2024-25": {"wins": 19, "losses": 13},
+    },
+    ("NCAAWB", "Colorado State Rams"): {
+        "2021-22": {"wins": 18, "losses": 13},
+        "2022-23": {"wins": 19, "losses": 12},
+        "2023-24": {"wins": 22, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2024-25": {"wins": 27, "losses": 7, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "McNeese State Cowboys"): {
+        "2021-22": {"wins": 14, "losses": 15},
+        "2022-23": {"wins": 16, "losses": 13},
+        "2023-24": {"wins": 22, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2024-25": {"wins": 23, "losses": 8, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "Charlotte 49ers"): {
+        "2021-22": {"wins": 11, "losses": 17},
+        "2022-23": {"wins": 15, "losses": 15},
+        "2023-24": {"wins": 18, "losses": 13},
+        "2024-25": {"wins": 19, "losses": 12},
+    },
+    ("NCAAWB", "South Florida Bulls"): {
+        "2021-22": {"wins": 22, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 21, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2023-24": {"wins": 19, "losses": 13},
+        "2024-25": {"wins": 22, "losses": 11},
+    },
+    ("NCAAWB", "Stanford Cardinal"): {
+        "2021-22": {"wins": 32, "losses": 3, "ncaa_qualifier": True, "seed_1": True, "won_round_of_64": True, "won_round_of_32": True, "won_sweet_16": True},
+        "2022-23": {"wins": 32, "losses": 4, "ncaa_qualifier": True, "seed_1": True, "won_round_of_64": True, "won_round_of_32": True, "won_sweet_16": True, "won_elite_8": True},
+        "2023-24": {"wins": 30, "losses": 5, "ncaa_qualifier": True, "seed_2": True, "won_round_of_64": True, "won_round_of_32": True},
+        "2024-25": {"wins": 25, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "Wake Forest Demon Deacons"): {
+        "2021-22": {"wins": 10, "losses": 18},
+        "2022-23": {"wins": 15, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 14},
+        "2024-25": {"wins": 18, "losses": 13},
+    },
+    ("NCAAWB", "George Mason Patriots"): {
+        "2021-22": {"wins": 10, "losses": 18},
+        "2022-23": {"wins": 14, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 14},
+        "2024-25": {"wins": 18, "losses": 13},
+    },
+    ("NCAAWB", "Butler Bulldogs"): {
+        "2021-22": {"wins": 11, "losses": 17},
+        "2022-23": {"wins": 14, "losses": 16},
+        "2023-24": {"wins": 15, "losses": 15},
+        "2024-25": {"wins": 16, "losses": 15},
+    },
+    ("NCAAWB", "UC Santa Barbara Gauchos"): {
+        "2021-22": {"wins": 24, "losses": 8, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2022-23": {"wins": 20, "losses": 11},
+        "2023-24": {"wins": 25, "losses": 8, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2024-25": {"wins": 24, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+    },
+    ("NCAAWB", "Miami (OH) RedHawks"): {
+        "2021-22": {"wins": 15, "losses": 13},
+        "2022-23": {"wins": 18, "losses": 12},
+        "2023-24": {"wins": 20, "losses": 11},
+        "2024-25": {"wins": 28, "losses": 7, "ncaa_qualifier": True, "conf_tourney_champ": True},
+    },
+    ("NCAAWB", "UIC Flames"): {
+        "2021-22": {"wins": 16, "losses": 14},
+        "2022-23": {"wins": 18, "losses": 12},
+        "2023-24": {"wins": 20, "losses": 11},
+        "2024-25": {"wins": 22, "losses": 10},
+    },
+    ("NCAAWB", "UNLV Rebels"): {
+        "2021-22": {"wins": 14, "losses": 15},
+        "2022-23": {"wins": 16, "losses": 14},
+        "2023-24": {"wins": 18, "losses": 13},
+        "2024-25": {"wins": 20, "losses": 12},
+    },
+    ("NCAAWB", "Oregon State Beavers"): {
+        "2021-22": {"wins": 20, "losses": 11, "ncaa_qualifier": True, "won_round_of_64": True},
+        "2022-23": {"wins": 16, "losses": 16},
+        "2023-24": {"wins": 14, "losses": 17},
+        "2024-25": {"wins": 15, "losses": 16},
+    },
+    ("NCAAWB", "Santa Clara Broncos"): {
+        "2021-22": {"wins": 14, "losses": 14},
+        "2022-23": {"wins": 16, "losses": 14},
+        "2023-24": {"wins": 18, "losses": 13},
+        "2024-25": {"wins": 20, "losses": 12},
+    },
+    ("NCAAWB", "Memphis Tigers"): {
+        "2021-22": {"wins": 12, "losses": 17},
+        "2022-23": {"wins": 15, "losses": 16},
+        "2023-24": {"wins": 16, "losses": 15},
+        "2024-25": {"wins": 17, "losses": 14},
+    },
+    ("NCAAWB", "North Texas Mean Green"): {
+        "2021-22": {"wins": 22, "losses": 9, "ncaa_qualifier": True, "conf_tourney_champ": True, "won_round_of_64": True},
+        "2022-23": {"wins": 18, "losses": 12},
+        "2023-24": {"wins": 20, "losses": 11},
+        "2024-25": {"wins": 24, "losses": 9, "ncaa_qualifier": True, "won_round_of_64": True},
+    },
 }
 
 # (league, team name) -> a short outlook for the team's next season, based
@@ -4503,5 +6139,548 @@ TEAM_PROGNOSES: dict[tuple[str, str], str] = {
     ),
     ("NCAAWB", "SMU Mustangs"): (
         "Missed the 2025-26 tournament field used here in its second ACC season."
+    ),
+
+    # --- NCAAF, second 50 (2026 season) --- grounded in the actual 2025
+    # record (already live in TeamSeasonResult) plus known 2026 coaching
+    # changes.
+    ("NCAAF", "Colorado Buffaloes"): (
+        "Went 3-9 in 2025, a rough Year 3 under Deion Sanders; the Buffaloes look to "
+        "rebound in 2026."
+    ),
+    ("NCAAF", "Boise State Broncos"): (
+        "Went 9-5 in 2025, a step back after the 2024 CFP run; still considered the "
+        "rebuilt Pac-12's flagship program."
+    ),
+    ("NCAAF", "Wake Forest Demon Deacons"): (
+        "Went 9-4 in 2025 under new coach Jake Dickert (hired from Washington State), a "
+        "bounce-back after consecutive losing seasons."
+    ),
+    ("NCAAF", "Kansas Jayhawks"): (
+        "Went 5-7 in 2025; Lance Leipold's program looks to return to bowl form."
+    ),
+    ("NCAAF", "Oklahoma State Cowboys"): (
+        "Went 1-11 in 2025, the program's worst season in decades; ESPN's SP+ projects a "
+        "22-point rebound in 2026 under new coach Eric Morris."
+    ),
+    ("NCAAF", "UCF Knights"): (
+        "Went 5-7 in 2025 in Scott Frost's return season; the Knights look to build in "
+        "year two."
+    ),
+    ("NCAAF", "Tulane Green Wave"): (
+        "Went 11-3 in 2025, one of the American's top programs; enters 2026 under a new "
+        "coach after Jon Sumrall's departure for Florida."
+    ),
+    ("NCAAF", "Maryland Terrapins"): (
+        "Went 4-8 in 2025; Mike Locksley's program looks to rebound in the Big Ten."
+    ),
+    ("NCAAF", "Northwestern Wildcats"): (
+        "Went 7-6 in 2025, a solid season for David Braun's program."
+    ),
+    ("NCAAF", "California Golden Bears"): (
+        "Went 7-6 in 2025; Justin Wilcox's program looks to build on a bowl trip."
+    ),
+    ("NCAAF", "San Diego State Aztecs"): (
+        "Went 9-4 in 2025, one of the rebuilt Pac-12's strongest seasons."
+    ),
+    ("NCAAF", "UNLV Rebels"): (
+        "Went 10-4 in 2025, sustaining the program's best stretch in decades under new "
+        "leadership."
+    ),
+    ("NCAAF", "Michigan State Spartans"): (
+        "Went 4-8 in 2025; Jonathan Smith's rebuild continues in year three."
+    ),
+    ("NCAAF", "Minnesota Golden Gophers"): (
+        "Went 8-5 in 2025; P.J. Fleck's program remains a consistent bowl team."
+    ),
+    ("NCAAF", "Rutgers Scarlet Knights"): (
+        "Went 5-7 in 2025; Greg Schiano's program looks to return to bowl form."
+    ),
+    ("NCAAF", "UCLA Bruins"): (
+        "Went 3-9 in 2025; the Bruins look to rebuild in their third Big Ten season."
+    ),
+    ("NCAAF", "West Virginia Mountaineers"): (
+        "Went 4-8 in 2025; Rich Rodriguez's second stint as coach looks to build momentum."
+    ),
+    ("NCAAF", "East Carolina Pirates"): (
+        "Went 9-4 in 2025, a strong season for a program that's now a consistent AAC bowl "
+        "team."
+    ),
+    ("NCAAF", "Navy Midshipmen"): (
+        "Went 11-2 in 2025, sustaining the program's best stretch in years under Brian "
+        "Newberry."
+    ),
+    ("NCAAF", "Purdue Boilermakers"): (
+        "Went 2-10 in 2025; the Boilermakers look to rebuild under new leadership."
+    ),
+    ("NCAAF", "Syracuse Orange"): (
+        "Went 3-9 in 2025, a sharp step back after 2024's breakthrough; Fran Brown's "
+        "program looks to regroup."
+    ),
+    ("NCAAF", "Iowa State Cyclones"): (
+        "Went 8-4 in 2025; the Cyclones enter a new era under Matt Campbell's successor "
+        "after his departure for Penn State."
+    ),
+    ("NCAAF", "Memphis Tigers"): (
+        "Went 8-5 in 2025; the Tigers enter 2026 under a new coach after Ryan Silverfield's "
+        "departure for Arkansas."
+    ),
+    ("NCAAF", "South Florida Bulls"): (
+        "Went 9-4 in 2025; the Bulls enter 2026 under a new coach after Alex Golesh's "
+        "departure for Auburn."
+    ),
+    ("NCAAF", "James Madison Dukes"): (
+        "Went 12-2 in 2025, Bob Chesney's best season yet, continuing the program's rapid "
+        "rise since jumping to FBS."
+    ),
+    ("NCAAF", "Boston College Eagles"): (
+        "Went 2-10 in 2025, a rough Year 2 under Bill O'Brien after a promising debut."
+    ),
+    ("NCAAF", "Stanford Cardinal"): (
+        "Went 4-8 in 2025, a modest step forward in a rebuild still finding its footing in "
+        "the ACC."
+    ),
+    ("NCAAF", "Fresno State Bulldogs"): (
+        "Went 9-4 in 2025, a solid season in the rebuilt Pac-12."
+    ),
+    ("NCAAF", "Hawaii Rainbow Warriors"): (
+        "Went 9-4 in 2025, one of the program's best seasons in years."
+    ),
+    ("NCAAF", "New Mexico Lobos"): (
+        "Went 9-4 in 2025, sustaining Bronco Mendenhall's turnaround."
+    ),
+    ("NCAAF", "Toledo Rockets"): (
+        "Went 8-5 in 2025; Jason Candle's program remains a steady MAC contender."
+    ),
+    ("NCAAF", "Texas State Bobcats"): (
+        "Went 7-6 in 2025, continuing the program's rise under G.J. Kinne."
+    ),
+    ("NCAAF", "Washington State Cougars"): (
+        "Went 7-6 in 2025, helping anchor the rebuilt Pac-12 after surviving the "
+        "conference's 2023-24 collapse."
+    ),
+    ("NCAAF", "Old Dominion Monarchs"): (
+        "Went 10-3 in 2025, the program's best season since joining FBS."
+    ),
+    ("NCAAF", "Western Michigan Broncos"): (
+        "Went 10-4 in 2025, a strong bounce-back season in the MAC."
+    ),
+    ("NCAAF", "Western Kentucky Hilltoppers"): (
+        "Went 9-4 in 2025, a solid season for a consistently competitive Conference USA "
+        "program."
+    ),
+    ("NCAAF", "Army Black Knights"): (
+        "Went 7-6 in 2025, a step back after the program's best season in decades in 2024."
+    ),
+    ("NCAAF", "North Texas Mean Green"): (
+        "Went 12-2 in 2025, one of the American's best seasons."
+    ),
+    ("NCAAF", "UTSA Roadrunners"): (
+        "Went 7-6 in 2025; Jeff Traylor's program looks to rebuild momentum in the AAC."
+    ),
+    ("NCAAF", "Southern Miss Golden Eagles"): (
+        "Went 7-6 in 2025, a bounce-back season for the Golden Eagles."
+    ),
+    ("NCAAF", "Delaware Blue Hens"): (
+        "Went 7-6 in 2025, a respectable first season at the FBS level."
+    ),
+    ("NCAAF", "Oregon State Beavers"): (
+        "Went 2-10 in 2025, a difficult season helping anchor the rebuilt Pac-12 after "
+        "surviving the conference's 2023-24 collapse."
+    ),
+    ("NCAAF", "Utah State Aggies"): (
+        "Went 6-7 in 2025, a modest season in the rebuilt Pac-12."
+    ),
+    ("NCAAF", "Air Force Falcons"): (
+        "Went 4-8 in 2025, a down year for a normally steady service-academy program."
+    ),
+    ("NCAAF", "North Dakota State Bison"): (
+        "The dominant FCS program of the last 15 years makes its first-ever FBS season in "
+        "2026, moving up to the Mountain West."
+    ),
+    ("NCAAF", "Louisiana Ragin' Cajuns"): (
+        "Went 6-7 in 2025; Michael Desormeaux's program looks to return to Sun Belt "
+        "contention."
+    ),
+    ("NCAAF", "Troy Trojans"): (
+        "Went 8-6 in 2025, a solid season for a consistently competitive Sun Belt program."
+    ),
+    ("NCAAF", "Miami (OH) RedHawks"): (
+        "Went 7-7 in 2025, a middling season in the MAC."
+    ),
+    ("NCAAF", "Ohio Bobcats"): (
+        "Went 9-4 in 2025, another steady season under Tim Albin."
+    ),
+    ("NCAAF", "Liberty Flames"): (
+        "Went 4-8 in 2025, a rough season in the program's third year in Conference USA."
+    ),
+
+    # --- NCAAMB, second 50 (2026-27 season) --- same grounding as the
+    # first 50 above (2025-26's actual result, no concrete preseason poll
+    # exists yet this far out).
+    ("NCAAMB", "Texas A&M Aggies"): (
+        "Lost in the Round of 32 in 2025-26 as a 10-seed; the program enters 2026-27 under "
+        "a new coach."
+    ),
+    ("NCAAMB", "Syracuse Orange"): (
+        "Missed the 2025-26 tournament; Adrian Autry's rebuild continues."
+    ),
+    ("NCAAMB", "VCU Rams"): (
+        "Lost in the Round of 32 in 2025-26 as an 11-seed after winning the Atlantic 10 "
+        "tournament, continuing the program's mid-major-power tradition."
+    ),
+    ("NCAAMB", "Providence Friars"): (
+        "Missed the 2025-26 tournament; Kim English's program looks to rebound in the Big "
+        "East."
+    ),
+    ("NCAAMB", "Xavier Musketeers"): (
+        "Missed the 2025-26 tournament; Sean Miller's program looks to rebound in the Big "
+        "East."
+    ),
+    ("NCAAMB", "Oklahoma State Cowboys"): (
+        "Missed the 2025-26 tournament; the program looks to build toward NCAA "
+        "eligibility."
+    ),
+    ("NCAAMB", "West Virginia Mountaineers"): (
+        "Missed the 2025-26 tournament; Ross Hodge inherits the program after Darian "
+        "DeVries' departure for Indiana."
+    ),
+    ("NCAAMB", "Grand Canyon Antelopes"): (
+        "Lost in the Round of 64 in 2025-26; Bryce Drew's program remains a consistent "
+        "mid-major power."
+    ),
+    ("NCAAMB", "San Diego State Aztecs"): (
+        "Missed the 2025-26 tournament; Brian Dutcher's program looks to return to form."
+    ),
+    ("NCAAMB", "Wichita State Shockers"): (
+        "Missed the 2025-26 tournament; the program looks to rebound in the American."
+    ),
+    ("NCAAMB", "Florida State Seminoles"): (
+        "Missed the 2025-26 tournament; the program continues to look for consistency."
+    ),
+    ("NCAAMB", "Saint Louis Billikens"): (
+        "Lost in the Round of 32 in 2025-26 as a 9-seed, a real breakthrough season."
+    ),
+    ("NCAAMB", "DePaul Blue Demons"): (
+        "Missed the 2025-26 tournament; the program continues a long rebuild."
+    ),
+    ("NCAAMB", "High Point Panthers"): (
+        "Reached the Elite Eight in 2025-26 as a stunning 12-seed, the deepest run of any "
+        "team seeded that low in tournament history."
+    ),
+    ("NCAAMB", "Washington Huskies"): (
+        "Missed the 2025-26 tournament; the program looks to build in the Big Ten."
+    ),
+    ("NCAAMB", "Arizona State Sun Devils"): (
+        "Missed the 2025-26 tournament; Bobby Hurley's program looks to return to the "
+        "field."
+    ),
+    ("NCAAMB", "New Mexico Lobos"): (
+        "Missed the 2025-26 tournament; Richard Pitino's program remains a Mountain West "
+        "contender."
+    ),
+    ("NCAAMB", "Utah State Aggies"): (
+        "Lost in the Round of 32 in 2025-26 as a 9-seed, continuing a strong recent run."
+    ),
+    ("NCAAMB", "Saint Mary's Gaels"): (
+        "Lost in the Round of 64 in 2025-26 as a 7-seed; Randy Bennett's program remains a "
+        "WCC mainstay in Gonzaga's shadow."
+    ),
+    ("NCAAMB", "Pittsburgh Panthers"): (
+        "Missed the 2025-26 tournament; Jeff Capel's program looks to return to the field."
+    ),
+    ("NCAAMB", "Dayton Flyers"): (
+        "Missed the 2025-26 tournament; Anthony Grant's program looks to bounce back."
+    ),
+    ("NCAAMB", "Seton Hall Pirates"): (
+        "Missed the 2025-26 tournament; Shaheen Holloway's program looks to bounce back."
+    ),
+    ("NCAAMB", "Northwestern Wildcats"): (
+        "Missed the 2025-26 tournament; Chris Collins' program looks to return to the "
+        "field."
+    ),
+    ("NCAAMB", "Rutgers Scarlet Knights"): (
+        "Missed the 2025-26 tournament; Steve Pikiell's program looks to bounce back."
+    ),
+    ("NCAAMB", "Utah Utes"): (
+        "Missed the 2025-26 tournament; the program continues a rebuild in the Big 12."
+    ),
+    ("NCAAMB", "Mississippi State Bulldogs"): (
+        "Lost in the Round of 64 in 2025-26; Chris Jans' program remains a tournament "
+        "regular."
+    ),
+    ("NCAAMB", "South Carolina Gamecocks"): (
+        "Missed the 2025-26 tournament; the men's program looks to build in the SEC."
+    ),
+    ("NCAAMB", "Tulsa Golden Hurricane"): (
+        "Missed the 2025-26 tournament; the program looks to build in the American."
+    ),
+    ("NCAAMB", "California Golden Bears"): (
+        "Missed the 2025-26 tournament; the program continues to rebuild in the ACC."
+    ),
+    ("NCAAMB", "Notre Dame Fighting Irish"): (
+        "Missed the 2025-26 tournament; Micah Shrewsberry's rebuild continues."
+    ),
+    ("NCAAMB", "George Washington Revolutionaries"): (
+        "Missed the 2025-26 tournament; the program looks to build in the Atlantic 10."
+    ),
+    ("NCAAMB", "Georgetown Hoyas"): (
+        "Missed the 2025-26 tournament; Ed Cooley's rebuild continues."
+    ),
+    ("NCAAMB", "Minnesota Golden Gophers"): (
+        "Missed the 2025-26 tournament; Niko Medved's first season looks to build "
+        "momentum."
+    ),
+    ("NCAAMB", "Colorado Buffaloes"): (
+        "Lost in the First Four in 2025-26; the program looks to return to the main field."
+    ),
+    ("NCAAMB", "Kansas State Wildcats"): (
+        "Missed the 2025-26 tournament; Jerome Tang's program looks to recapture its 2023 "
+        "Elite Eight form."
+    ),
+    ("NCAAMB", "Nevada Wolf Pack"): (
+        "Lost in the Round of 64 in 2025-26; the program remains a consistent Mountain "
+        "West contender."
+    ),
+    ("NCAAMB", "Boise State Broncos"): (
+        "Missed the 2025-26 tournament; the program looks to return to the field."
+    ),
+    ("NCAAMB", "Colorado State Rams"): (
+        "Lost in the Round of 64 in 2025-26, continuing a run of consistent tournament "
+        "appearances."
+    ),
+    ("NCAAMB", "McNeese State Cowboys"): (
+        "Lost in the Round of 64 in 2025-26 after winning the Southland tournament; the "
+        "program enters a new era after Will Wade's departure for LSU."
+    ),
+    ("NCAAMB", "Charlotte 49ers"): (
+        "Missed the 2025-26 tournament; the program looks to build in the American."
+    ),
+    ("NCAAMB", "South Florida Bulls"): (
+        "Reached the Round of 64 in 2025-26 after winning the American tournament, a real "
+        "breakthrough season."
+    ),
+    ("NCAAMB", "Wake Forest Demon Deacons"): (
+        "Lost in the Round of 64 in 2025-26, a bounce-back season in the ACC."
+    ),
+    ("NCAAMB", "George Mason Patriots"): (
+        "Missed the 2025-26 tournament; the program looks to build in the Atlantic 10."
+    ),
+    ("NCAAMB", "Butler Bulldogs"): (
+        "Missed the 2025-26 tournament; the program looks to rebound in the Big East."
+    ),
+    ("NCAAMB", "UNLV Rebels"): (
+        "Missed the 2025-26 tournament; the program looks to build in the Mountain West."
+    ),
+    ("NCAAMB", "Oregon State Beavers"): (
+        "Missed the 2025-26 tournament; the program continues rebuilding in the "
+        "reconstituted Pac-12."
+    ),
+    ("NCAAMB", "Santa Clara Broncos"): (
+        "Lost in the Round of 64 in 2025-26, a real breakthrough season for the Broncos."
+    ),
+    ("NCAAMB", "Memphis Tigers"): (
+        "Missed the 2025-26 tournament; Penny Hardaway's program looks to return to the "
+        "field."
+    ),
+    ("NCAAMB", "Boston College Eagles"): (
+        "Missed the 2025-26 tournament; the program continues to rebuild in the ACC."
+    ),
+    ("NCAAMB", "Georgia Tech Yellow Jackets"): (
+        "Missed the 2025-26 tournament; Damon Stoudamire's rebuild continues."
+    ),
+
+    # --- NCAAWB, second 50 (2026-27 season) --- same grounding as above.
+    ("NCAAWB", "Wisconsin Badgers"): (
+        "Missed the 2025-26 tournament; the program looks to build in the Big Ten."
+    ),
+    ("NCAAWB", "Baylor Bears"): (
+        "Lost in the Round of 32 in 2025-26 as a 6-seed; Nicki Collen's program remains a "
+        "Big 12 contender."
+    ),
+    ("NCAAWB", "Cincinnati Bearcats"): (
+        "Missed the 2025-26 tournament; the program continues to build in the Big 12."
+    ),
+    ("NCAAWB", "UCF Knights"): (
+        "Lost in the Round of 64 in 2025-26, a step forward for the program."
+    ),
+    ("NCAAWB", "Texas A&M Aggies"): (
+        "Missed the 2025-26 tournament field used here; the program looks to bounce back "
+        "in the SEC."
+    ),
+    ("NCAAWB", "Syracuse Orange"): (
+        "Lost in the Round of 32 in 2025-26 as a 9-seed, a real breakthrough season."
+    ),
+    ("NCAAWB", "VCU Rams"): (
+        "Lost in the Round of 32 in 2025-26 as an 11-seed after winning the Atlantic 10 "
+        "tournament, continuing the program's rise."
+    ),
+    ("NCAAWB", "Providence Friars"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Big East."
+    ),
+    ("NCAAWB", "Xavier Musketeers"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Big East."
+    ),
+    ("NCAAWB", "Oklahoma State Cowboys"): (
+        "Lost in the Round of 32 in 2025-26 as an 8-seed, a real breakthrough season."
+    ),
+    ("NCAAWB", "Grand Canyon Antelopes"): (
+        "Lost in the Round of 64 in 2025-26, continuing the program's rise."
+    ),
+    ("NCAAWB", "San Diego State Aztecs"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Pac-12."
+    ),
+    ("NCAAWB", "Wichita State Shockers"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "American."
+    ),
+    ("NCAAWB", "Saint Louis Billikens"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Atlantic 10."
+    ),
+    ("NCAAWB", "DePaul Blue Demons"): (
+        "Missed the 2025-26 tournament field used here; the program continues to rebuild."
+    ),
+    ("NCAAWB", "High Point Panthers"): (
+        "Lost in the Round of 64 in 2025-26 as a 15-seed after winning the Big South "
+        "tournament, a breakthrough season."
+    ),
+    ("NCAAWB", "Arizona State Sun Devils"): (
+        "Lost in the Round of 64 in 2025-26 as a 10-seed; the program looks to build "
+        "momentum after Charli Turner Thorne's 2024 retirement."
+    ),
+    ("NCAAWB", "Utah State Aggies"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Pac-12."
+    ),
+    ("NCAAWB", "Saint Mary's Gaels"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "WCC."
+    ),
+    ("NCAAWB", "Tulsa Golden Hurricane"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "American."
+    ),
+    ("NCAAWB", "Florida State Seminoles"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "ACC."
+    ),
+    ("NCAAWB", "Pittsburgh Panthers"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "ACC."
+    ),
+    ("NCAAWB", "Dayton Flyers"): (
+        "Lost in the Round of 64 in 2025-26, continuing the program's consistent mid-major "
+        "run."
+    ),
+    ("NCAAWB", "Seton Hall Pirates"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Big East."
+    ),
+    ("NCAAWB", "Northwestern Wildcats"): (
+        "Lost in the Round of 64 in 2025-26, continuing Joe McKeown's run of tournament "
+        "appearances."
+    ),
+    ("NCAAWB", "Rutgers Scarlet Knights"): (
+        "Missed the 2025-26 tournament field used here; the program looks to return to the "
+        "field."
+    ),
+    ("NCAAWB", "California Golden Bears"): (
+        "Missed the 2025-26 tournament field used here; the program continues to rebuild "
+        "in the ACC."
+    ),
+    ("NCAAWB", "George Washington Revolutionaries"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Atlantic 10."
+    ),
+    ("NCAAWB", "Georgetown Hoyas"): (
+        "Missed the 2025-26 tournament field used here; the program continues to rebuild."
+    ),
+    ("NCAAWB", "Kansas State Wildcats"): (
+        "Missed the 2025-26 tournament field used here; the program looks to return to the "
+        "field."
+    ),
+    ("NCAAWB", "Iona Gaels"): (
+        "Missed the 2025-26 tournament field used here; the program looks to reclaim its "
+        "MAAC contender status."
+    ),
+    ("NCAAWB", "Buffalo Bulls"): (
+        "Lost in the Round of 64 in 2025-26 as an MAC tournament champion, continuing a "
+        "run of four straight tournament trips."
+    ),
+    ("NCAAWB", "Nevada Wolf Pack"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Mountain West."
+    ),
+    ("NCAAWB", "Boise State Broncos"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Pac-12."
+    ),
+    ("NCAAWB", "Colorado State Rams"): (
+        "Lost in the Round of 64 in 2025-26, continuing a run of consistent tournament "
+        "appearances."
+    ),
+    ("NCAAWB", "McNeese State Cowboys"): (
+        "Lost in the Round of 64 in 2025-26 after winning the Southland tournament, "
+        "continuing the program's rise."
+    ),
+    ("NCAAWB", "Charlotte 49ers"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "American."
+    ),
+    ("NCAAWB", "South Florida Bulls"): (
+        "Missed the 2025-26 tournament field used here; Jose Fernandez's program looks to "
+        "return to the field."
+    ),
+    ("NCAAWB", "Stanford Cardinal"): (
+        "Missed the 2025-26 tournament field used here; Kate Paye's second season looks to "
+        "rebuild after Tara VanDerveer's 2024 retirement."
+    ),
+    ("NCAAWB", "Wake Forest Demon Deacons"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "ACC."
+    ),
+    ("NCAAWB", "George Mason Patriots"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Atlantic 10."
+    ),
+    ("NCAAWB", "Butler Bulldogs"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Big East."
+    ),
+    ("NCAAWB", "UC Santa Barbara Gauchos"): (
+        "Lost in the Round of 64 in 2025-26 after winning the Big West tournament, "
+        "continuing the program's mid-major run."
+    ),
+    ("NCAAWB", "Miami (OH) RedHawks"): (
+        "Lost in the Round of 64 in 2025-26 as a 13-seed after winning the MAC tournament, "
+        "a breakthrough season."
+    ),
+    ("NCAAWB", "UIC Flames"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build "
+        "momentum."
+    ),
+    ("NCAAWB", "UNLV Rebels"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "Mountain West."
+    ),
+    ("NCAAWB", "Oregon State Beavers"): (
+        "Missed the 2025-26 tournament field used here; the program looks to rebuild in "
+        "the reconstituted Pac-12."
+    ),
+    ("NCAAWB", "Santa Clara Broncos"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "WCC."
+    ),
+    ("NCAAWB", "Memphis Tigers"): (
+        "Missed the 2025-26 tournament field used here; the program looks to build in the "
+        "American."
+    ),
+    ("NCAAWB", "North Texas Mean Green"): (
+        "Lost in the Round of 64 in 2025-26, continuing the program's rise in the "
+        "American."
     ),
 }
