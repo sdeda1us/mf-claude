@@ -9,6 +9,7 @@ from app.models import (
     AuctionItem,
     AuctionItemStatus,
     Bid,
+    CribSheetEntry,
     QueueEntry,
     ReserveBid,
     RosterEntry,
@@ -35,6 +36,24 @@ SESSION_ROSTER_SLOTS: dict[str, int] = {
     session: sum(ROSTER_LIMITS[league] for league in leagues)
     for session, leagues in SESSION_LEAGUES.items()
 }
+
+
+def effective_crib_value(db: Session, user_id: int, team_id: int) -> float | None:
+    """A user's own valuation of a team: their CribSheetEntry override if
+    they have one, else the team's modeled default_value, else None. Same
+    fallback the frontend already applies for "Your Value" and the reserve-
+    bid input's default (see Auction.tsx's cribValueByTeamId) — this is the
+    server-side version, used to seed a new queue entry's starting reserve
+    price."""
+    entry = (
+        db.query(CribSheetEntry)
+        .filter(CribSheetEntry.user_id == user_id, CribSheetEntry.team_id == team_id)
+        .first()
+    )
+    if entry is not None:
+        return float(entry.value)
+    team = db.get(Team, team_id)
+    return float(team.default_value) if team is not None and team.default_value is not None else None
 
 
 def remaining_budget_by_user(db: Session, season: Season, session: str) -> dict[int, float]:
@@ -229,6 +248,55 @@ def resolve_reserve_bids(
             remaining_seconds = (_naive_utc(item.bid_deadline) - now).total_seconds()
             if remaining_seconds < bid_extension_threshold_seconds:
                 item.bid_deadline = now + timedelta(seconds=bid_extension_seconds)
+
+
+def apply_queue_reserves(db: Session, auction: Auction, item: AuctionItem) -> None:
+    """The moment an item goes live, applies every queued reserve price on
+    this team as that user's standing ReserveBid -- as if they'd locked it
+    in by hand the instant the item opened. Covers everyone who queued this
+    team, not just whoever nominated it (a team can be sitting in several
+    players' queues at once). Still fully editable afterward via the normal
+    reserve-bid UI (WS "reserve" message / the Unlock button).
+
+    Only seeds the row -- callers are responsible for calling
+    resolve_reserve_bids() afterward if a bid already exists on the item
+    (there isn't one yet when this runs from nominate(), since that request
+    creates the item and the nominator's own opening bid follows as a
+    separate WS message moments later, which triggers resolve itself; the
+    timeout auto-nominate path inserts its opening bid directly and bypasses
+    the WS handler entirely, so it must call resolve_reserve_bids itself
+    right after this). Safe to call more than once for the same item --
+    skips any user who already has a ReserveBid row on it."""
+    entries = (
+        db.query(QueueEntry)
+        .filter(
+            QueueEntry.season_id == auction.season_id,
+            QueueEntry.team_id == item.team_id,
+            QueueEntry.reserve_price.isnot(None),
+        )
+        .all()
+    )
+    if not entries:
+        return
+    high_bid = current_high_bid(item)
+    existing_user_ids = {
+        r.user_id
+        for r in db.query(ReserveBid).filter(ReserveBid.auction_item_id == item.id).all()
+    }
+    for entry in entries:
+        if entry.user_id in existing_user_ids:
+            continue
+        if entry.reserve_price is None or entry.reserve_price <= high_bid:
+            continue
+        db.add(
+            ReserveBid(
+                auction_item_id=item.id,
+                user_id=entry.user_id,
+                max_amount=entry.reserve_price,
+                active=True,
+            )
+        )
+        existing_user_ids.add(entry.user_id)
 
 
 def auto_pass_capped_users(db: Session, auction: Auction, item: AuctionItem) -> None:

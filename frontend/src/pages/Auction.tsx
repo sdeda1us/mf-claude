@@ -201,6 +201,43 @@ export default function AuctionRoom() {
     setQueue(updated);
   };
 
+  // Uncommitted text for the reserve-price input on each queue row, keyed by
+  // entry id — same draft-then-commit-on-blur pattern as the Crib Sheet's
+  // value inputs, so typing a new digit doesn't fire a request per keystroke.
+  const [queueReserveDrafts, setQueueReserveDrafts] = useState<Record<number, string>>({});
+
+  const queueReserveDraftFor = (entry: QueueEntry): string => {
+    if (entry.id in queueReserveDrafts) return queueReserveDrafts[entry.id];
+    return entry.reserve_price != null ? String(entry.reserve_price) : "";
+  };
+
+  const saveQueueReserve = async (entry: QueueEntry, raw: string) => {
+    if (!seasonId) return;
+    const trimmed = raw.trim();
+    const reserve_price = trimmed === "" ? null : Number(trimmed);
+    if (reserve_price != null && (!Number.isFinite(reserve_price) || reserve_price <= 0)) {
+      return;
+    }
+    if (reserve_price === entry.reserve_price) {
+      setQueueReserveDrafts((prev) => {
+        const next = { ...prev };
+        delete next[entry.id];
+        return next;
+      });
+      return;
+    }
+    const updated = await api.put<QueueEntry>(
+      `/seasons/${seasonId}/queue/${entry.id}/reserve-price`,
+      { reserve_price }
+    );
+    setQueue((prev) => prev.map((e) => (e.id === updated.id ? updated : e)));
+    setQueueReserveDrafts((prev) => {
+      const next = { ...prev };
+      delete next[entry.id];
+      return next;
+    });
+  };
+
   const usersById = useMemo(() => new Map(users.map((u) => [u.id, u])), [users]);
   const soldTeamIds = useMemo(() => new Set(roster.map((r) => r.team.id)), [roster]);
   const scoreByTeamId = useMemo(() => new Map(scores.map((s) => [s.team_id, s.points])), [scores]);
@@ -644,53 +681,77 @@ export default function AuctionRoom() {
               runs out, the top of your queue gets auto-nominated with a $1 bid.
             </p>
           ) : (
-            <ol className="queue-list">
-              {queue.map((entry, idx) => (
-                <li key={entry.id} className="queue-item">
-                  <span className="queue-item-team">
-                    <TeamLink teamId={entry.team.id} league={entry.team.league} name={entry.team.name} />
-                  </span>
-                  <span className="pill">{entry.team.league}</span>
-                  <div className="queue-item-actions">
-                    <button
-                      type="button"
-                      className="queue-move-btn"
-                      disabled={idx === 0}
-                      title="Move up"
-                      onClick={() => moveQueueEntry(entry.id, "up")}
+            <>
+              <p className="queue-hint">
+                Each team's reserve bid is applied automatically the instant it's nominated by
+                anyone — win it below your reserve, or it auto-tops you up to it. Starts at your
+                crib sheet value; edit it anytime, before or after it goes live.
+              </p>
+              <ol className="queue-list">
+                {queue.map((entry, idx) => (
+                  <li key={entry.id} className="queue-item">
+                    <span className="queue-item-team">
+                      <TeamLink teamId={entry.team.id} league={entry.team.league} name={entry.team.name} />
+                    </span>
+                    <span className="pill">{entry.team.league}</span>
+                    <label
+                      className="queue-item-reserve"
+                      title="Reserve bid to apply automatically the moment this team comes up for auction — starts at your crib sheet value, and you can still change it after it goes live."
                     >
-                      ▲
-                    </button>
-                    <button
-                      type="button"
-                      className="queue-move-btn"
-                      disabled={idx === queue.length - 1}
-                      title="Move down"
-                      onClick={() => moveQueueEntry(entry.id, "down")}
-                    >
-                      ▼
-                    </button>
-                    {!item && !isPaused && isMyTurn && rules?.league_session[entry.team.league] === session && (
+                      $
+                      <input
+                        type="number"
+                        min={1}
+                        step="1"
+                        placeholder="—"
+                        value={queueReserveDraftFor(entry)}
+                        onChange={(e) =>
+                          setQueueReserveDrafts((prev) => ({ ...prev, [entry.id]: e.target.value }))
+                        }
+                        onBlur={(e) => saveQueueReserve(entry, e.target.value)}
+                      />
+                    </label>
+                    <div className="queue-item-actions">
                       <button
                         type="button"
-                        className="btn-success queue-bid-btn"
-                        onClick={() => openBidModal(entry.team)}
+                        className="queue-move-btn"
+                        disabled={idx === 0}
+                        title="Move up"
+                        onClick={() => moveQueueEntry(entry.id, "up")}
                       >
-                        Bid
+                        ▲
                       </button>
-                    )}
-                    <button
-                      type="button"
-                      className="rollback-btn"
-                      title="Remove from queue"
-                      onClick={() => removeFromQueue(entry.id)}
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ol>
+                      <button
+                        type="button"
+                        className="queue-move-btn"
+                        disabled={idx === queue.length - 1}
+                        title="Move down"
+                        onClick={() => moveQueueEntry(entry.id, "down")}
+                      >
+                        ▼
+                      </button>
+                      {!item && !isPaused && isMyTurn && rules?.league_session[entry.team.league] === session && (
+                        <button
+                          type="button"
+                          className="btn-success queue-bid-btn"
+                          onClick={() => openBidModal(entry.team)}
+                        >
+                          Bid
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        className="rollback-btn"
+                        title="Remove from queue"
+                        onClick={() => removeFromQueue(entry.id)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </>
           )}
         </div>
 

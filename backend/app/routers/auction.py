@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.auction_service import (
+    apply_queue_reserves,
     build_state,
     count_user_league_teams,
     count_user_minor_conference_teams,
@@ -142,6 +143,13 @@ async def nominate(
     )
     auction.status = AuctionStatus.live
     db.add(item)
+    db.flush()
+    # Anyone -- not just this nominator -- who has this team queued with a
+    # reserve price gets it applied as their standing reserve bid right now.
+    # No bid exists on the item yet (the nominator's own opening bid arrives
+    # moments later as a separate WS message, which triggers the usual
+    # resolve_reserve_bids itself), so nothing further to resolve here.
+    apply_queue_reserves(db, auction, item)
     db.commit()
     db.refresh(auction)
     db.refresh(item)

@@ -220,7 +220,15 @@ class RosterEntry(Base):
 class QueueEntry(Base):
     """A team a player has queued up to bid on ahead of time. Consumed
     automatically by the nomination auto-nominate timeout, or bid on manually
-    once it's the player's turn."""
+    once it's the player's turn.
+
+    reserve_price defaults to the player's crib sheet value for the team the
+    moment it's added (see routers/queue.py's add_to_queue), and stays fully
+    editable from then on. The moment this team's AuctionItem actually goes
+    live -- nominated by anyone, not just this player -- it's applied
+    automatically as this player's standing reserve bid (see
+    auction_service.apply_queue_reserves), still editable from there via the
+    normal reserve-bid UI. Null means no reserve gets applied automatically."""
 
     __tablename__ = "queue_entries"
 
@@ -229,6 +237,7 @@ class QueueEntry(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))
     order: Mapped[int] = mapped_column(default=0)
+    reserve_price: Mapped[float | None] = mapped_column(Numeric(10, 2), nullable=True)
     created_at: Mapped[datetime] = mapped_column(default=utcnow)
 
     team: Mapped["Team"] = relationship()

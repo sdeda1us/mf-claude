@@ -1563,6 +1563,26 @@ button:disabled {
   font-style: italic;
 }
 
+.queue-hint {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.queue-item-reserve {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.queue-item-reserve input {
+  width: 56px;
+  padding: 2px 4px;
+}
+
 .queue-list {
   list-style: none;
   padding: 0;

@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from app.auction_service import effective_crib_value
 from app.database import get_db
 from app.deps import get_current_user
 from app.models import QueueEntry, RosterEntry, Season, Team, User
-from app.schemas import QueueAddIn, QueueEntryOut, QueueMoveIn
+from app.schemas import QueueAddIn, QueueEntryOut, QueueMoveIn, QueueReservePriceIn
 
 router = APIRouter(prefix="/seasons/{season_id}/queue", tags=["queue"])
 
@@ -67,6 +68,10 @@ def add_to_queue(
         user_id=user.id,
         team_id=payload.team_id,
         order=(max(existing_orders) + 1) if existing_orders else 0,
+        # Starting point for the reserve price this team will bid up to once
+        # it's nominated (by anyone) and applied automatically — same crib
+        # sheet value shown everywhere else, fully editable from here on.
+        reserve_price=effective_crib_value(db, user.id, payload.team_id),
     )
     db.add(entry)
     db.commit()
@@ -94,6 +99,33 @@ def remove_from_queue(
         raise HTTPException(status_code=404, detail="Queue entry not found")
     db.delete(entry)
     db.commit()
+
+
+@router.put("/{entry_id}/reserve-price", response_model=QueueEntryOut)
+def set_queue_reserve_price(
+    season_id: int,
+    entry_id: int,
+    payload: QueueReservePriceIn,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user),
+):
+    entry = (
+        db.query(QueueEntry)
+        .filter(
+            QueueEntry.id == entry_id,
+            QueueEntry.season_id == season_id,
+            QueueEntry.user_id == user.id,
+        )
+        .first()
+    )
+    if entry is None:
+        raise HTTPException(status_code=404, detail="Queue entry not found")
+    if payload.reserve_price is not None and payload.reserve_price <= 0:
+        raise HTTPException(status_code=400, detail="Reserve price must be greater than 0")
+    entry.reserve_price = payload.reserve_price
+    db.commit()
+    db.refresh(entry)
+    return entry
 
 
 @router.post("/{entry_id}/move", response_model=list[QueueEntryOut])

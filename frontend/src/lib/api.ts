@@ -165,6 +165,7 @@ export interface QueueEntry {
   user_id: number;
   team: Team;
   order: number;
+  reserve_price: number | null;
 }
 
 export interface CribSheetEntry {

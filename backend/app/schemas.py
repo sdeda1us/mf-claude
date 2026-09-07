@@ -180,6 +180,7 @@ class QueueEntryOut(BaseModel):
     user_id: int
     team: TeamOut
     order: int
+    reserve_price: float | None
 
     model_config = {"from_attributes": True}
 
@@ -190,6 +191,12 @@ class QueueAddIn(BaseModel):
 
 class QueueMoveIn(BaseModel):
     direction: Literal["up", "down"]
+
+
+class QueueReservePriceIn(BaseModel):
+    # None clears the reserve — the team stays queued, it just won't get an
+    # automatic reserve bid applied once it comes up for auction.
+    reserve_price: float | None
 
 
 class CribSheetEntryOut(BaseModel):

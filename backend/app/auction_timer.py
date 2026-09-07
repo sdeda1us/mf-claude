@@ -5,12 +5,14 @@ from sqlalchemy.orm import Session
 
 from app.auction_service import (
     all_non_high_bidders_passed,
+    apply_queue_reserves,
     auto_pass_capped_users,
     count_user_league_teams,
     count_user_minor_conference_teams,
     current_turn_user_id,
     finalize_active_item,
     get_active_item,
+    resolve_reserve_bids,
 )
 from app.database import SessionLocal
 from app.league_rules import (
@@ -107,6 +109,14 @@ async def schedule_turn_timer(auction_id: int) -> None:
         opening_bid = Bid(auction_item_id=item.id, user_id=turn_user_id, amount=1)
         item.bids.append(opening_bid)
         db.add(opening_bid)
+        # Apply everyone's queued reserve price for this team -- including
+        # the timed-out user's own, if they'd set one -- before clearing the
+        # queue entry that was just consumed, since apply_queue_reserves
+        # reads QueueEntry rows and would otherwise miss it. This path
+        # inserts its opening bid directly rather than going through the WS
+        # bid handler, so (unlike nominate()) it has to call
+        # resolve_reserve_bids itself right after.
+        apply_queue_reserves(db, auction, item)
         db.query(QueueEntry).filter(
             QueueEntry.season_id == auction.season_id,
             QueueEntry.user_id == turn_user_id,
@@ -117,6 +127,13 @@ async def schedule_turn_timer(auction_id: int) -> None:
         # everyone else is already passed, the team sells outright rather
         # than sitting open with a countdown nobody left can act on.
         auto_pass_capped_users(db, auction, item)
+        resolve_reserve_bids(
+            db,
+            auction,
+            item,
+            bid_extension_threshold_seconds=BID_EXTENSION_THRESHOLD_SECONDS,
+            bid_extension_seconds=BID_EXTENSION_SECONDS,
+        )
         sold_immediately = all_non_high_bidders_passed(db, item)
         if sold_immediately:
             finalize_active_item(db, auction, item)
