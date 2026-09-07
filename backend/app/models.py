@@ -228,7 +228,17 @@ class QueueEntry(Base):
     live -- nominated by anyone, not just this player -- it's applied
     automatically as this player's standing reserve bid (see
     auction_service.apply_queue_reserves), still editable from there via the
-    normal reserve-bid UI. Null means no reserve gets applied automatically."""
+    normal reserve-bid UI. Null means no reserve gets applied automatically.
+
+    nomination_price defaults to $1 (the app's long-standing opening-bid
+    convention) and is the amount actually placed as the opening bid when
+    this team is nominated -- pre-filling the bid-confirmation modal when a
+    player nominates it themselves from their queue, or used directly by the
+    idle-timeout auto-nominate path (auction_timer.schedule_turn_timer),
+    which bypasses that modal entirely. Unlike reserve_price, this one's
+    only consulted for the queue's own owner, since nominating (and its
+    paired opening bid) is a one-time action tied to whoever's turn it is,
+    not something every queued-team-holder gets a say in."""
 
     __tablename__ = "queue_entries"
 
@@ -238,6 +248,7 @@ class QueueEntry(Base):
     team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))
     order: Mapped[int] = mapped_column(default=0)
     reserve_price: Mapped[float | None] = mapped_column(Numeric(10, 2), nullable=True)
+    nomination_price: Mapped[float | None] = mapped_column(Numeric(10, 2), nullable=True)
     created_at: Mapped[datetime] = mapped_column(default=utcnow)
 
     team: Mapped["Team"] = relationship()

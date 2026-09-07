@@ -166,6 +166,7 @@ export interface QueueEntry {
   team: Team;
   order: number;
   reserve_price: number | null;
+  nomination_price: number | null;
 }
 
 export interface CribSheetEntry {

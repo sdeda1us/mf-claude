@@ -5,7 +5,13 @@ from app.auction_service import effective_crib_value
 from app.database import get_db
 from app.deps import get_current_user
 from app.models import QueueEntry, RosterEntry, Season, Team, User
-from app.schemas import QueueAddIn, QueueEntryOut, QueueMoveIn, QueueReservePriceIn
+from app.schemas import (
+    QueueAddIn,
+    QueueEntryOut,
+    QueueMoveIn,
+    QueueNominationPriceIn,
+    QueueReservePriceIn,
+)
 
 router = APIRouter(prefix="/seasons/{season_id}/queue", tags=["queue"])
 
@@ -17,6 +23,21 @@ def _ordered_queue(db: Session, season_id: int, user_id: int) -> list[QueueEntry
         .order_by(QueueEntry.order, QueueEntry.id)
         .all()
     )
+
+
+def _get_owned_entry(db: Session, season_id: int, entry_id: int, user_id: int) -> QueueEntry:
+    entry = (
+        db.query(QueueEntry)
+        .filter(
+            QueueEntry.id == entry_id,
+            QueueEntry.season_id == season_id,
+            QueueEntry.user_id == user_id,
+        )
+        .first()
+    )
+    if entry is None:
+        raise HTTPException(status_code=404, detail="Queue entry not found")
+    return entry
 
 
 @router.get("", response_model=list[QueueEntryOut])
@@ -72,6 +93,10 @@ def add_to_queue(
         # it's nominated (by anyone) and applied automatically — same crib
         # sheet value shown everywhere else, fully editable from here on.
         reserve_price=effective_crib_value(db, user.id, payload.team_id),
+        # Starting point for the opening bid placed when *this* player
+        # nominates the team — the app's long-standing $1 convention,
+        # fully editable from here on.
+        nomination_price=1,
     )
     db.add(entry)
     db.commit()
@@ -86,17 +111,7 @@ def remove_from_queue(
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ):
-    entry = (
-        db.query(QueueEntry)
-        .filter(
-            QueueEntry.id == entry_id,
-            QueueEntry.season_id == season_id,
-            QueueEntry.user_id == user.id,
-        )
-        .first()
-    )
-    if entry is None:
-        raise HTTPException(status_code=404, detail="Queue entry not found")
+    entry = _get_owned_entry(db, season_id, entry_id, user.id)
     db.delete(entry)
     db.commit()
 
@@ -109,20 +124,27 @@ def set_queue_reserve_price(
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ):
-    entry = (
-        db.query(QueueEntry)
-        .filter(
-            QueueEntry.id == entry_id,
-            QueueEntry.season_id == season_id,
-            QueueEntry.user_id == user.id,
-        )
-        .first()
-    )
-    if entry is None:
-        raise HTTPException(status_code=404, detail="Queue entry not found")
+    entry = _get_owned_entry(db, season_id, entry_id, user.id)
     if payload.reserve_price is not None and payload.reserve_price <= 0:
         raise HTTPException(status_code=400, detail="Reserve price must be greater than 0")
     entry.reserve_price = payload.reserve_price
+    db.commit()
+    db.refresh(entry)
+    return entry
+
+
+@router.put("/{entry_id}/nomination-price", response_model=QueueEntryOut)
+def set_queue_nomination_price(
+    season_id: int,
+    entry_id: int,
+    payload: QueueNominationPriceIn,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user),
+):
+    entry = _get_owned_entry(db, season_id, entry_id, user.id)
+    if payload.nomination_price is not None and payload.nomination_price <= 0:
+        raise HTTPException(status_code=400, detail="Nomination price must be greater than 0")
+    entry.nomination_price = payload.nomination_price
     db.commit()
     db.refresh(entry)
     return entry

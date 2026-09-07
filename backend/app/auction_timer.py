@@ -12,6 +12,7 @@ from app.auction_service import (
     current_turn_user_id,
     finalize_active_item,
     get_active_item,
+    remaining_budget_by_user,
     resolve_reserve_bids,
 )
 from app.database import SessionLocal
@@ -106,7 +107,32 @@ async def schedule_turn_timer(auction_id: int) -> None:
         )
         db.add(item)
         db.flush()
-        opening_bid = Bid(auction_item_id=item.id, user_id=turn_user_id, amount=1)
+
+        # If this team came from the timed-out player's own queue, look it
+        # up before consuming it below, both for its nomination_price (the
+        # opening bid to place on their behalf) and its reserve_price
+        # (handled by apply_queue_reserves further down).
+        queued_entry = (
+            db.query(QueueEntry)
+            .filter(
+                QueueEntry.season_id == auction.season_id,
+                QueueEntry.user_id == turn_user_id,
+                QueueEntry.team_id == team.id,
+            )
+            .first()
+        )
+        opening_amount = 1.0
+        if queued_entry is not None and queued_entry.nomination_price is not None:
+            opening_amount = float(queued_entry.nomination_price)
+        # This path inserts its opening bid directly rather than going
+        # through the WS bid handler, so unlike a manual nomination it never
+        # gets that handler's "bid exceeds your remaining budget" check —
+        # clamp here so an aggressive nomination price can't push the
+        # player's budget negative.
+        remaining = remaining_budget_by_user(db, auction.season, auction.session).get(turn_user_id, 1.0)
+        opening_amount = max(1.0, min(opening_amount, remaining))
+
+        opening_bid = Bid(auction_item_id=item.id, user_id=turn_user_id, amount=opening_amount)
         item.bids.append(opening_bid)
         db.add(opening_bid)
         # Apply everyone's queued reserve price for this team -- including
@@ -117,11 +143,8 @@ async def schedule_turn_timer(auction_id: int) -> None:
         # bid handler, so (unlike nominate()) it has to call
         # resolve_reserve_bids itself right after.
         apply_queue_reserves(db, auction, item)
-        db.query(QueueEntry).filter(
-            QueueEntry.season_id == auction.season_id,
-            QueueEntry.user_id == turn_user_id,
-            QueueEntry.team_id == team.id,
-        ).delete()
+        if queued_entry is not None:
+            db.delete(queued_entry)
         # Anyone already at their roster cap for this league can't bid on
         # it, so they're auto-passed immediately — if that means literally
         # everyone else is already passed, the team sells outright rather

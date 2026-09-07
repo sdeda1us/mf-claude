@@ -181,6 +181,7 @@ class QueueEntryOut(BaseModel):
     team: TeamOut
     order: int
     reserve_price: float | None
+    nomination_price: float | None
 
     model_config = {"from_attributes": True}
 
@@ -197,6 +198,11 @@ class QueueReservePriceIn(BaseModel):
     # None clears the reserve — the team stays queued, it just won't get an
     # automatic reserve bid applied once it comes up for auction.
     reserve_price: float | None
+
+
+class QueueNominationPriceIn(BaseModel):
+    # None falls back to the app's standard $1 opening bid.
+    nomination_price: float | None
 
 
 class CribSheetEntryOut(BaseModel):
