@@ -460,6 +460,25 @@ h2 {
   margin-left: 8px;
 }
 
+.season-admin-table {
+  margin-top: 8px;
+}
+
+.season-admin-table th {
+  cursor: default;
+}
+
+.season-active-pill {
+  background: var(--grass);
+  border-color: var(--grass);
+  color: var(--stock-hi);
+}
+
+.season-admin-actions {
+  display: flex;
+  gap: 8px;
+}
+
 .inline-form,
 .stacked-form {
   display: flex;
