@@ -134,6 +134,22 @@ Australian Open, missing a major from the drafted season). Between "rosters
 sit idle for a few months" and "rosters are set after the season's already
 partly or mostly over," the fall session is the smaller problem for both.
 
+## Auction Timers & Quiet Hours
+
+Two clocks drive a live auction: a 3-hour nomination timeout (idle too
+long on your turn and the top of your queue gets auto-nominated for you)
+and an 8-hour bid window per item (with a 10-minute soft-close extension
+on any late bid). Both observe a nightly **quiet hours** window, 9 PM-9 AM
+Eastern: any deadline that would otherwise land inside that window gets
+pushed out to skip it entirely (see `backend/app/quiet_hours.py`), so
+nobody's turn times out and no item's bidding closes overnight. This
+doesn't touch anyone's ability to act, though — bidding, passing, and
+setting reserves all work exactly the same at 3 AM as at 3 PM; only the
+two *automatic* clock-driven actions (auto-nominate, auto-close) pause.
+The auction state includes an `is_quiet_hours` flag purely for display
+(so the frontend can show a "quiet hours" note instead of a misleadingly
+long countdown) — it's informational only, not a gate on anything.
+
 ## Leagues
 
 - [MLB](game-rules-mlb.md)

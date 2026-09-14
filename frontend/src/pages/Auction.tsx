@@ -19,11 +19,6 @@ import { useAuctionSocket } from "../lib/useAuctionSocket";
 type SortKey = "name" | "league" | "points";
 type SortDir = "asc" | "desc";
 
-// Must match backend/app/auction_timer.py's NOMINATION_TIMEOUT_SECONDS —
-// the actual deadline is server-driven (measured from turn_started_at), this
-// is only used client-side to compute the live countdown display.
-const NOMINATION_TIMEOUT_SECONDS = 3 * 60 * 60; // 3 hours
-
 // The backend serializes datetimes as UTC with no "Z"/offset suffix (SQLite
 // and a plain Postgres TIMESTAMP column both drop tzinfo on round-trip) —
 // without forcing UTC here, `new Date(...)` parses it as local time and
@@ -432,11 +427,14 @@ export default function AuctionRoom() {
       : null;
   const nominatedByUser = nominatedByUserId != null ? usersById.get(nominatedByUserId) : null;
 
-  const turnStartedAtRaw = state?.auction.turn_started_at ?? auction.turn_started_at;
-  const secondsRemaining = Math.max(
-    0,
-    NOMINATION_TIMEOUT_SECONDS - Math.floor((nowTick - parseUtcMs(turnStartedAtRaw)) / 1000)
-  );
+  // Server-computed (app/auction_service.py's build_state) rather than
+  // derived from turn_started_at client-side, since the real deadline
+  // skips overnight quiet hours (9 PM-9 AM Eastern) — re-deriving it here
+  // from a flat NOMINATION_TIMEOUT_SECONDS would show a countdown hitting
+  // zero hours before the server actually auto-nominates.
+  const secondsRemaining = state?.nomination_deadline
+    ? Math.max(0, Math.floor((parseUtcMs(state.nomination_deadline) - nowTick) / 1000))
+    : 0;
 
   const rosterStatuses = state?.roster_status_by_user ?? {};
   const totalBudgetRemaining = Object.values(rosterStatuses).reduce(
@@ -530,6 +528,13 @@ export default function AuctionRoom() {
           <span className="summary-label">total open roster spots</span>
         </div>
       </div>
+
+      {state?.is_quiet_hours && (
+        <p className="quiet-hours-banner">
+          🌙 Quiet hours (9 PM – 9 AM ET) — nomination and bid clocks are frozen for the night, but
+          bidding, passing, and reserves work as usual. Clocks pick back up at 9 AM ET.
+        </p>
+      )}
 
       <div className="auction-layout">
       <div className="auction-main">

@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import jwt
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
@@ -18,15 +18,15 @@ from app.auction_service import (
     resolve_reserve_bids,
 )
 from app.auction_timer import (
-    BID_EXTENSION_SECONDS,
-    BID_EXTENSION_THRESHOLD_SECONDS,
     naive_utc,
     schedule_turn_timer,
 )
+from app.auction_timing import BID_EXTENSION_SECONDS, BID_EXTENSION_THRESHOLD_SECONDS
 from app.database import SessionLocal
 from app.deps import get_user_from_websocket
 from app.league_rules import MINOR_CONFERENCE_CAPS, ROSTER_LIMITS, is_minor_conference_team
 from app.models import Auction, Bid, ReserveBid
+from app.quiet_hours import add_active_duration
 from app.ws.connection_manager import manager
 
 router = APIRouter()
@@ -242,7 +242,7 @@ async def auction_room(websocket: WebSocket, auction_id: int):
                 now = datetime.utcnow()
                 remaining_seconds = (naive_utc(item.bid_deadline) - now).total_seconds()
                 if remaining_seconds < BID_EXTENSION_THRESHOLD_SECONDS:
-                    item.bid_deadline = now + timedelta(seconds=BID_EXTENSION_SECONDS)
+                    item.bid_deadline = add_active_duration(now, BID_EXTENSION_SECONDS)
             # Anyone now at their roster cap for this league can't bid on it
             # again, so they're auto-passed rather than left to click Pass
             # on a team they're no longer eligible to win.

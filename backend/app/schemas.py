@@ -151,6 +151,20 @@ class AuctionStateOut(BaseModel):
     remaining_budget_by_user: dict[int, float]
     current_turn_user_id: int | None
     roster_status_by_user: dict[int, RosterStatusOut]
+    # True during the nightly 9 PM-9 AM Eastern quiet-hours window --
+    # server-computed so the frontend doesn't need its own timezone/DST
+    # logic. Purely informational: nomination/bid deadlines already skip
+    # this window on their own (see app/quiet_hours.py), so this only
+    # drives display (e.g. showing "quiet hours" instead of a ticking
+    # countdown) — it doesn't gate bidding, passing, or reserves at all.
+    is_quiet_hours: bool
+    # When it's someone's turn to nominate, the actual wall-clock deadline
+    # schedule_turn_timer will auto-nominate at — already adjusted to skip
+    # quiet hours, so the frontend can count down to this directly instead
+    # of re-deriving (and getting wrong) auction.turn_started_at +
+    # NOMINATION_TIMEOUT_SECONDS itself. None when an item is active (no
+    # turn is open) or the auction has no nomination order yet.
+    nomination_deadline: datetime | None
 
 
 class ScoringRuleLine(BaseModel):

@@ -1,5 +1,4 @@
 import random
-from datetime import timedelta
 from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -15,11 +14,11 @@ from app.auction_service import (
     get_active_item,
 )
 from app.auction_timer import (
-    BID_TIMEOUT_SECONDS,
     naive_utc,
     schedule_bid_timer,
     schedule_turn_timer,
 )
+from app.auction_timing import BID_TIMEOUT_SECONDS
 from app.database import get_db
 from app.deps import get_current_commissioner, get_current_user
 from app.league_rules import LEAGUE_SESSION, MINOR_CONFERENCE_CAPS, ROSTER_LIMITS, is_minor_conference_team
@@ -33,6 +32,7 @@ from app.models import (
     User,
     utcnow,
 )
+from app.quiet_hours import add_active_duration
 from app.schemas import AuctionOut, AuctionStateOut, ForceTurnIn, NominateIn
 from app.ws.connection_manager import manager
 
@@ -139,7 +139,7 @@ async def nominate(
         team_id=payload.team_id,
         order=next_order,
         status=AuctionItemStatus.active,
-        bid_deadline=utcnow() + timedelta(seconds=BID_TIMEOUT_SECONDS),
+        bid_deadline=add_active_duration(utcnow(), BID_TIMEOUT_SECONDS),
     )
     auction.status = AuctionStatus.live
     db.add(item)

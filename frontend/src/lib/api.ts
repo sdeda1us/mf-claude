@@ -124,6 +124,8 @@ export interface AuctionState {
   remaining_budget_by_user: Record<string, number>;
   current_turn_user_id: number | null;
   roster_status_by_user: Record<string, RosterStatus>;
+  is_quiet_hours: boolean;
+  nomination_deadline: string | null;
 }
 
 export interface RosterEntry {

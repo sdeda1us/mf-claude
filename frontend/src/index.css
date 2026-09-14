@@ -1720,6 +1720,17 @@ button:disabled {
   font-weight: 600;
 }
 
+.quiet-hours-banner {
+  margin: 0 0 16px;
+  padding: 8px 14px;
+  background: var(--pill-bg);
+  border: 1px solid var(--sky);
+  border-left: 4px solid var(--sky-deep);
+  border-radius: 2px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
 .player-link {
   display: inline-flex;
   align-items: center;

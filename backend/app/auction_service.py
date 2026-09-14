@@ -1,8 +1,9 @@
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
+from app.auction_timing import NOMINATION_TIMEOUT_SECONDS
 from app.league_rules import LEAGUE_SESSION, MINOR_CONFERENCE_CAPS, ROSTER_LIMITS, is_minor_conference_team
 from app.models import (
     Auction,
@@ -19,6 +20,7 @@ from app.models import (
     User,
     utcnow,
 )
+from app.quiet_hours import add_active_duration, is_quiet_hours
 from app.schemas import AuctionItemOut, AuctionOut, AuctionStateOut, ReserveBidOut, RosterStatusOut
 
 TOTAL_ROSTER_SLOTS = sum(ROSTER_LIMITS.values())
@@ -145,12 +147,24 @@ def build_state(db: Session, auction: Auction, viewer_user_id: int) -> AuctionSt
             active_item_out.my_reserve = ReserveBidOut(
                 amount=float(reserve.max_amount), active=reserve.active
             )
+    turn_user_id = current_turn_user_id(db, auction)
+    # Mirrors schedule_turn_timer's own deadline math exactly (same
+    # function, same inputs) so the frontend's countdown agrees with when
+    # the server will actually auto-nominate — quiet hours push this out
+    # overnight, same as it does for that timer.
+    nomination_deadline = (
+        add_active_duration(_naive_utc(auction.turn_started_at), NOMINATION_TIMEOUT_SECONDS)
+        if turn_user_id is not None
+        else None
+    )
     return AuctionStateOut(
         auction=AuctionOut.model_validate(auction),
         active_item=active_item_out,
         remaining_budget_by_user=remaining_budget_by_user(db, auction.season, auction.session),
-        current_turn_user_id=current_turn_user_id(db, auction),
+        current_turn_user_id=turn_user_id,
         roster_status_by_user=roster_status_by_user(db, auction.season, auction.session),
+        is_quiet_hours=is_quiet_hours(),
+        nomination_deadline=nomination_deadline,
     )
 
 
@@ -247,7 +261,7 @@ def resolve_reserve_bids(
             now = datetime.utcnow()
             remaining_seconds = (_naive_utc(item.bid_deadline) - now).total_seconds()
             if remaining_seconds < bid_extension_threshold_seconds:
-                item.bid_deadline = now + timedelta(seconds=bid_extension_seconds)
+                item.bid_deadline = add_active_duration(now, bid_extension_seconds)
 
 
 def apply_queue_reserves(db: Session, auction: Auction, item: AuctionItem) -> None:

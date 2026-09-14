@@ -1,5 +1,5 @@
 import asyncio
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from sqlalchemy.orm import Session
 
@@ -14,6 +14,12 @@ from app.auction_service import (
     get_active_item,
     remaining_budget_by_user,
     resolve_reserve_bids,
+)
+from app.auction_timing import (
+    BID_EXTENSION_SECONDS,
+    BID_EXTENSION_THRESHOLD_SECONDS,
+    BID_TIMEOUT_SECONDS,
+    NOMINATION_TIMEOUT_SECONDS,
 )
 from app.database import SessionLocal
 from app.league_rules import (
@@ -33,12 +39,8 @@ from app.models import (
     Team,
     TeamSeasonResult,
 )
+from app.quiet_hours import add_active_duration
 from app.ws.connection_manager import manager
-
-NOMINATION_TIMEOUT_SECONDS = 3 * 60 * 60  # 3 hours
-BID_TIMEOUT_SECONDS = 8 * 60 * 60  # 8 hours
-BID_EXTENSION_THRESHOLD_SECONDS = 10 * 60  # 10 minutes
-BID_EXTENSION_SECONDS = 10 * 60  # 10 minutes
 
 
 def naive_utc(dt: datetime) -> datetime:
@@ -61,7 +63,12 @@ async def schedule_turn_timer(auction_id: int) -> None:
     Measuring from turn_started_at rather than sleeping a flat duration
     matters for the case where this is scheduled well after the turn
     actually opened — e.g. on server startup, re-arming timers for turns
-    that were already in progress before the restart."""
+    that were already in progress before the restart. The deadline itself
+    is computed via add_active_duration (app/quiet_hours.py), which skips
+    over the nightly 9 PM-9 AM Eastern quiet-hours window -- so a turn
+    that opens at, say, 8pm doesn't time out overnight, and re-deriving it
+    the same way on every re-arm (rather than storing it) keeps that
+    correct across restarts too."""
     db = SessionLocal()
     try:
         auction = db.get(Auction, auction_id)
@@ -71,11 +78,11 @@ async def schedule_turn_timer(auction_id: int) -> None:
         if turn_user_id is None:
             return
         items_at_schedule_time = len(auction.items)
-        elapsed = (datetime.utcnow() - naive_utc(auction.turn_started_at)).total_seconds()
+        deadline = add_active_duration(naive_utc(auction.turn_started_at), NOMINATION_TIMEOUT_SECONDS)
     finally:
         db.close()
 
-    await asyncio.sleep(max(0.0, NOMINATION_TIMEOUT_SECONDS - elapsed))
+    await asyncio.sleep(max(0.0, (deadline - datetime.utcnow()).total_seconds()))
 
     db = SessionLocal()
     try:
@@ -103,7 +110,7 @@ async def schedule_turn_timer(auction_id: int) -> None:
             team_id=team.id,
             order=len(auction.items),
             status=AuctionItemStatus.active,
-            bid_deadline=datetime.utcnow() + timedelta(seconds=BID_TIMEOUT_SECONDS),
+            bid_deadline=add_active_duration(datetime.utcnow(), BID_TIMEOUT_SECONDS),
         )
         db.add(item)
         db.flush()

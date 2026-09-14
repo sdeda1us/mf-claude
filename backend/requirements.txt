@@ -9,3 +9,7 @@ pydantic-settings>=2.3
 pyjwt>=2.8
 resend>=2.0
 python-multipart>=0.0.9
+# zoneinfo's fallback tz database -- guarantees ZoneInfo("America/New_York")
+# (app/quiet_hours.py) resolves even if the container image's own OS-level
+# tzdata is missing or stripped down.
+tzdata>=2024.1
