@@ -138,17 +138,25 @@ partly or mostly over," the fall session is the smaller problem for both.
 
 Two clocks drive a live auction: a 3-hour nomination timeout (idle too
 long on your turn and the top of your queue gets auto-nominated for you)
-and an 8-hour bid window per item (with a 10-minute soft-close extension
-on any late bid). Both observe a nightly **quiet hours** window, 9 PM-9 AM
-Eastern: any deadline that would otherwise land inside that window gets
-pushed out to skip it entirely (see `backend/app/quiet_hours.py`), so
-nobody's turn times out and no item's bidding closes overnight. This
-doesn't touch anyone's ability to act, though — bidding, passing, and
-setting reserves all work exactly the same at 3 AM as at 3 PM; only the
-two *automatic* clock-driven actions (auto-nominate, auto-close) pause.
-The auction state includes an `is_quiet_hours` flag purely for display
-(so the frontend can show a "quiet hours" note instead of a misleadingly
-long countdown) — it's informational only, not a gate on anything.
+and a per-item bid window, with a 10-minute soft-close extension on any
+late bid. The bid window itself is 3 hours normally, but 8 hours instead
+whenever that base 3-hour window would touch the overnight quiet-hours
+window at all — starts inside it, or would otherwise run into it before
+closing (see `quiet_hours.bid_window_deadline`) — so an item that opens
+right before or during the night gets more room to react rather than
+closing in the middle of it or right at 9 AM.
+
+Both clocks (and the extended bid window's own 8 hours) observe a nightly
+**quiet hours** window, 9 PM-9 AM Eastern: any deadline that would
+otherwise land inside that window gets pushed out to skip it entirely
+(see `backend/app/quiet_hours.py`), so nobody's turn times out and no
+item's bidding closes overnight. This doesn't touch anyone's ability to
+act, though — bidding, passing, and setting reserves all work exactly the
+same at 3 AM as at 3 PM; only the two *automatic* clock-driven actions
+(auto-nominate, auto-close) pause. The auction state includes an
+`is_quiet_hours` flag purely for display (so the frontend can show a
+"quiet hours" note instead of a misleadingly long countdown) — it's
+informational only, not a gate on anything.
 
 ## Leagues
 

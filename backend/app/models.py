@@ -150,10 +150,13 @@ class AuctionItem(Base):
     )
     winning_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), nullable=True)
     winning_bid: Mapped[float | None] = mapped_column(Numeric(10, 2), nullable=True)
-    # Bidding on this item closes when this passes — BID_TIMEOUT_SECONDS from
-    # nomination, reset to exactly BID_EXTENSION_SECONDS from "now" by any
-    # bid placed with under BID_EXTENSION_THRESHOLD_SECONDS left (a
-    # soft-close / anti-sniping extension) — see auction_timer.py.
+    # Bidding on this item closes when this passes — BID_TIMEOUT_SECONDS
+    # from nomination normally, or BID_TIMEOUT_EXTENDED_SECONDS instead if
+    # that base window would touch the 9 PM-9 AM Eastern quiet hours (see
+    # quiet_hours.bid_window_deadline) — then reset to exactly
+    # BID_EXTENSION_SECONDS from "now" by any bid placed with under
+    # BID_EXTENSION_THRESHOLD_SECONDS left (a soft-close / anti-sniping
+    # extension) — see auction_timer.py.
     bid_deadline: Mapped[datetime | None] = mapped_column(nullable=True, default=None)
     # Users who've declared they're out of bidding on this item. Once every
     # user except the current high bidder is in here, bidding ends

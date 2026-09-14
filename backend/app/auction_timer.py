@@ -18,6 +18,7 @@ from app.auction_service import (
 from app.auction_timing import (
     BID_EXTENSION_SECONDS,
     BID_EXTENSION_THRESHOLD_SECONDS,
+    BID_TIMEOUT_EXTENDED_SECONDS,
     BID_TIMEOUT_SECONDS,
     NOMINATION_TIMEOUT_SECONDS,
 )
@@ -39,7 +40,7 @@ from app.models import (
     Team,
     TeamSeasonResult,
 )
-from app.quiet_hours import add_active_duration
+from app.quiet_hours import add_active_duration, bid_window_deadline
 from app.ws.connection_manager import manager
 
 
@@ -110,7 +111,7 @@ async def schedule_turn_timer(auction_id: int) -> None:
             team_id=team.id,
             order=len(auction.items),
             status=AuctionItemStatus.active,
-            bid_deadline=add_active_duration(datetime.utcnow(), BID_TIMEOUT_SECONDS),
+            bid_deadline=bid_window_deadline(datetime.utcnow(), BID_TIMEOUT_SECONDS, BID_TIMEOUT_EXTENDED_SECONDS),
         )
         db.add(item)
         db.flush()
