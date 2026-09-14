@@ -26,6 +26,7 @@ ROSTER_LIMITS: dict[str, int] = {
     "WNBA": 2,
     "MLS": 4,
     "URC": 2,
+    "UCL": 4,
     "IPL": 1,
     "NWSL": 2,
     # Single-event classification (one Tour a year, one final ranking) —
@@ -47,6 +48,7 @@ LEAGUE_SESSION: dict[str, str] = {
     "ATP": "fall",
     "WTA": "fall",
     "URC": "fall",
+    "UCL": "fall",
     "MLB": "spring",
     "PGA": "spring",
     "LPGA": "spring",
@@ -336,6 +338,22 @@ SCORING_RULES: dict[str, list[dict]] = {
         {"label": "Win Semifinal (reach Grand Final)", "points": 25},
         {"label": "Win the Grand Final (champion)", "points": 35},
     ],
+    # League phase term mirrors EPL's shape (3 here instead of 2, since UCL's
+    # 8-game league phase is much shorter than a 38-game domestic season, so
+    # per-point value needed to be higher for it to matter at all) plus 1-
+    # per-goal GD, same as EPL. Knockout side is a flat +10 per round
+    # survived, halving the field each time (36 -> 24 -> 16 -> 8 -> 4 -> 2 ->
+    # champion) -- each stacks cumulatively, so the champion banks all six.
+    "UCL": [
+        {"label": "Per league phase point (win=3/draw=1/loss=0)", "points": 3},
+        {"label": "Per goal of league phase goal differential (GD)", "points": 1},
+        {"label": "Make the knockout phase (finish top 24 of 36)", "points": 10},
+        {"label": "Reach the Round of 16", "points": 10},
+        {"label": "Reach the quarter-finals", "points": 10},
+        {"label": "Reach the semi-finals", "points": 10},
+        {"label": "Reach the final", "points": 10},
+        {"label": "Win the final", "points": 10},
+    ],
     # NFL-style base: real IPL points, like real NFL standings, never
     # penalize a loss (2 pts/win, 1 for a tie/no-result, 0 for a loss), so
     # this mirrors NFL's exact non-punitive shape (10/win, 5/tie, nothing
@@ -520,6 +538,17 @@ def compute_score(league: str, stats: dict) -> float:
             + (25 if stats.get("won_semifinal") else 0)
             + (35 if stats.get("won_final") else 0)
         )
+    if league == "UCL":
+        return (
+            3 * stats["points"]
+            + 1 * stats["goal_differential"]
+            + (10 if stats.get("made_final_24") else 0)
+            + (10 if stats.get("made_final_16") else 0)
+            + (10 if stats.get("made_final_8") else 0)
+            + (10 if stats.get("made_final_4") else 0)
+            + (10 if stats.get("made_final_2") else 0)
+            + (10 if stats.get("won_final") else 0)
+        )
     if league == "IPL":
         return round(
             10 * stats["wins"]
@@ -697,6 +726,17 @@ def compute_score_breakdown(league: str, stats: dict) -> list[dict]:
             {"label": "Won Quarterfinal", "points": 15 if stats.get("won_quarterfinal") else 0},
             {"label": "Won Semifinal", "points": 25 if stats.get("won_semifinal") else 0},
             {"label": "Won the Grand Final", "points": 35 if stats.get("won_final") else 0},
+        ])
+    if league == "UCL":
+        return _nonzero([
+            {"label": f"League phase points ({stats['points']})", "points": 3 * stats["points"]},
+            {"label": f"League phase goal differential ({stats['goal_differential']:+d})", "points": 1 * stats["goal_differential"]},
+            {"label": "Made the knockout phase (top 24)", "points": 10 if stats.get("made_final_24") else 0},
+            {"label": "Reached the Round of 16", "points": 10 if stats.get("made_final_16") else 0},
+            {"label": "Reached the quarter-finals", "points": 10 if stats.get("made_final_8") else 0},
+            {"label": "Reached the semi-finals", "points": 10 if stats.get("made_final_4") else 0},
+            {"label": "Reached the final", "points": 10 if stats.get("made_final_2") else 0},
+            {"label": "Won the final", "points": 10 if stats.get("won_final") else 0},
         ])
     if league == "IPL":
         return _nonzero([

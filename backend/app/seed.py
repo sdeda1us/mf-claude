@@ -352,6 +352,19 @@ URC_TEAMS = [
     "Scarlets", "Sharks", "Stormers", "Ulster", "Zebre Parma",
 ]
 
+# UEFA Champions League: the 2026-27 league phase's 36 clubs, across 4
+# seeding pots (irrelevant here — the draft doesn't care about pots).
+UCL_TEAMS = [
+    "Paris Saint-Germain", "Bayern Munich", "Real Madrid", "Liverpool",
+    "Inter Milan", "Manchester City", "Arsenal", "Barcelona",
+    "Atlético Madrid", "Borussia Dortmund", "Roma", "Sporting CP",
+    "Aston Villa", "Porto", "Manchester United", "Club Brugge",
+    "Real Betis", "PSV", "Feyenoord", "Lille", "Bodø/Glimt", "Napoli",
+    "RB Leipzig", "Villarreal", "Shakhtar Donetsk", "Galatasaray",
+    "Fenerbahçe", "Slavia Prague", "Slovan Bratislava", "VfB Stuttgart",
+    "LASK", "Como", "Lens", "Sabah FK", "Viking", "AEK Athens",
+]
+
 # IPL: 10 franchises, split into two 5-team groups for 2026 scheduling
 # purposes only (the points table itself is unified, no group split).
 IPL_TEAMS = [
@@ -378,6 +391,7 @@ LEAGUE_TEAMS = [
     ("WNBA", "Basketball", WNBA_TEAMS),
     ("MLS", "Soccer", MLS_TEAMS),
     ("URC", "Rugby", URC_TEAMS),
+    ("UCL", "Soccer", UCL_TEAMS),
     ("IPL", "Cricket", IPL_TEAMS),
     ("NWSL", "Soccer", NWSL_TEAMS),
     ("TDF", "Cycling", TDF_TEAMS),

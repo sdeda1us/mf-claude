@@ -473,6 +473,44 @@ TEAM_LOCATIONS: dict[tuple[str, str], tuple[float, float]] = {
     ("NCAAWB", "Santa Clara Broncos"): (37.3496, -121.9390),  # Leavey Center, Santa Clara
     ("NCAAWB", "Memphis Tigers"): (35.1214, -89.9787),  # Elma Roane Fieldhouse, Memphis
     ("NCAAWB", "North Texas Mean Green"): (33.2107, -97.1531),  # Super Pit, Denton
+
+    # --- UCL, all 36 clubs in the 2026-27 league phase ---
+    ("UCL", "Paris Saint-Germain"): (48.8414, 2.2530),  # Parc des Princes, Paris
+    ("UCL", "Bayern Munich"): (48.2188, 11.6247),  # Allianz Arena, Munich
+    ("UCL", "Real Madrid"): (40.4531, -3.6883),  # Santiago Bernabéu, Madrid
+    ("UCL", "Liverpool"): (53.4308, -2.9608),  # Anfield, Liverpool
+    ("UCL", "Inter Milan"): (45.4781, 9.1240),  # San Siro, Milan
+    ("UCL", "Manchester City"): (53.4831, -2.2004),  # Etihad Stadium, Manchester
+    ("UCL", "Arsenal"): (51.5549, -0.1084),  # Emirates Stadium, London
+    ("UCL", "Barcelona"): (41.3809, 2.1228),  # Spotify Camp Nou, Barcelona
+    ("UCL", "Atlético Madrid"): (40.4362, -3.5995),  # Cívitas Metropolitano, Madrid
+    ("UCL", "Borussia Dortmund"): (51.4926, 7.4517),  # Signal Iduna Park, Dortmund
+    ("UCL", "Roma"): (41.9342, 12.4547),  # Stadio Olimpico, Rome
+    ("UCL", "Sporting CP"): (38.7614, -9.1614),  # Estádio José Alvalade, Lisbon
+    ("UCL", "Aston Villa"): (52.5092, -1.8848),  # Villa Park, Birmingham
+    ("UCL", "Porto"): (41.1617, -8.5839),  # Estádio do Dragão, Porto
+    ("UCL", "Manchester United"): (53.4631, -2.2913),  # Old Trafford, Manchester
+    ("UCL", "Club Brugge"): (51.1949, 3.1801),  # Jan Breydel Stadium, Bruges
+    ("UCL", "Real Betis"): (37.3564, -5.9819),  # Estadio Benito Villamarín, Seville
+    ("UCL", "PSV"): (51.4416, 5.4677),  # Philips Stadion, Eindhoven
+    ("UCL", "Feyenoord"): (51.8939, 4.5231),  # De Kuip, Rotterdam
+    ("UCL", "Lille"): (50.6119, 3.1300),  # Stade Pierre-Mauroy, Villeneuve-d'Ascq
+    ("UCL", "Bodø/Glimt"): (67.2926, 14.3946),  # Aspmyra Stadion, Bodø
+    ("UCL", "Napoli"): (40.8280, 14.1930),  # Stadio Diego Armando Maradona, Naples
+    ("UCL", "RB Leipzig"): (51.3458, 12.3486),  # Red Bull Arena, Leipzig
+    ("UCL", "Villarreal"): (39.9442, -0.1035),  # Estadio de la Cerámica, Villarreal
+    ("UCL", "Shakhtar Donetsk"): (48.0159, 37.8058),  # Donbas Arena, Donetsk (displaced by war; plays "home" games elsewhere in Europe)
+    ("UCL", "Galatasaray"): (41.1039, 28.9925),  # Rams Park, Istanbul
+    ("UCL", "Fenerbahçe"): (40.9878, 29.0367),  # Şükrü Saracoğlu Stadium, Istanbul
+    ("UCL", "Slavia Prague"): (50.0644, 14.4954),  # Sinobo Stadium, Prague
+    ("UCL", "Slovan Bratislava"): (48.1631, 17.1178),  # Tehelné pole, Bratislava
+    ("UCL", "VfB Stuttgart"): (48.7922, 9.2322),  # MHPArena, Stuttgart
+    ("UCL", "LASK"): (48.2313, 14.2306),  # Raiffeisen Arena, Pasching/Linz
+    ("UCL", "Como"): (45.8081, 9.0871),  # Stadio Giuseppe Sinigaglia, Como
+    ("UCL", "Lens"): (50.4328, 2.8151),  # Stade Bollaert-Delelis, Lens
+    ("UCL", "Sabah FK"): (40.3728, 49.8386),  # Dalga Arena, Baku
+    ("UCL", "Viking"): (58.9022, 5.6717),  # SR-Bank Arena, Stavanger
+    ("UCL", "AEK Athens"): (38.0186, 23.7517),  # OPAP Arena, Athens
 }
 
 # (league, team name) -> a short factual biography (2-4 sentences):
@@ -2377,6 +2415,153 @@ TEAM_BIOS: dict[tuple[str, str], str] = {
     ),
     ("NCAAWB", "North Texas Mean Green"): (
         "American (minor conference). No national titles; a rising program."
+    ),
+
+    # --- UCL, all 36 clubs in the 2026-27 league phase ---
+    ("UCL", "Paris Saint-Germain"): (
+        "France. Qatari-funded since 2011, PSG finally broke through for their first European Cup "
+        "in 2024-25 and retained it in 2025-26, beating Arsenal on penalties."
+    ),
+    ("UCL", "Bayern Munich"): (
+        "Germany. Six European Cups, most recently the 2020 treble under Hansi Flick; the "
+        "competition's most decorated German club by a wide margin."
+    ),
+    ("UCL", "Real Madrid"): (
+        "Spain. The competition's all-time most successful club by far — 15 titles, including "
+        "an unprecedented five in a row from 2016 to 2018, most recently 2024."
+    ),
+    ("UCL", "Liverpool"): (
+        "England. Six European Cups, most recently 2019; the 2005 \"Miracle of Istanbul\" comeback "
+        "from 3-0 down against Milan remains the competition's most famous final."
+    ),
+    ("UCL", "Inter Milan"): (
+        "Italy. Three European Cups (1964, 1965, and the 2010 treble under José Mourinho), plus "
+        "runner-up finishes in 2023 and 2025."
+    ),
+    ("UCL", "Manchester City"): (
+        "England. One title, the 2023 treble under Pep Guardiola, capping a rise into a European "
+        "superpower since Abu Dhabi ownership took over in 2008."
+    ),
+    ("UCL", "Arsenal"): (
+        "England. No Champions League title yet despite a 2006 final loss to Barcelona and a "
+        "2025-26 final loss to PSG on penalties; still chasing a first European Cup."
+    ),
+    ("UCL", "Barcelona"): (
+        "Spain. Five European Cups; the Messi-Guardiola sides of 2009 and 2011 are widely "
+        "considered among the greatest club teams ever assembled."
+    ),
+    ("UCL", "Atlético Madrid"): (
+        "Spain. No title despite three final losses (1974, 2014, 2016), the last two both to "
+        "cross-town rivals Real Madrid; the longtime signature near-misses of the Diego Simeone era."
+    ),
+    ("UCL", "Borussia Dortmund"): (
+        "Germany. One title, in 1997; runners-up in 2013 and again in 2024."
+    ),
+    ("UCL", "Roma"): (
+        "Italy. Never won it — their closest brush was losing the 1984 final on penalties at "
+        "their own Stadio Olimpico."
+    ),
+    ("UCL", "Sporting CP"): (
+        "Portugal. Never won the European Cup itself (a Cup Winners' Cup in 1964 is their "
+        "continental peak), but a long-running production line of star talent, Cristiano Ronaldo "
+        "among its academy alumni."
+    ),
+    ("UCL", "Aston Villa"): (
+        "England. A surprise champion in 1982 under Tony Barton, their only European Cup, won "
+        "just months after Ron Saunders left the club mid-campaign."
+    ),
+    ("UCL", "Porto"): (
+        "Portugal. Two titles — 1987, and 2004 under a young José Mourinho — and a fixture of the "
+        "competition's knockout rounds for decades."
+    ),
+    ("UCL", "Manchester United"): (
+        "England. Three titles: 1968 (the first English winner), the 1999 treble, and 2008."
+    ),
+    ("UCL", "Club Brugge"): (
+        "Belgium. Never won it; Belgium's most successful domestic club and a near-annual "
+        "European qualifier."
+    ),
+    ("UCL", "Real Betis"): (
+        "Spain. Never won it; a Seville club making its first Champions League appearance since "
+        "2005-06."
+    ),
+    ("UCL", "PSV"): (
+        "Netherlands. One title, in 1988 under Guus Hiddink, as part of a treble-winning season."
+    ),
+    ("UCL", "Feyenoord"): (
+        "Netherlands. One title, in 1970 — the first non-Latin, non-British winner of the "
+        "competition."
+    ),
+    ("UCL", "Lille"): (
+        "France. Never won it; a small-budget club that punches well above its weight, including "
+        "a shock 2020-21 Ligue 1 title over PSG."
+    ),
+    ("UCL", "Bodø/Glimt"): (
+        "Norway. Never previously reached this stage; the world's northernmost top-flight "
+        "professional club (inside the Arctic Circle), on a remarkable rise under longtime coach "
+        "Kjetil Knutsen."
+    ),
+    ("UCL", "Napoli"): (
+        "Italy. Never won it; defined historically by Diego Maradona's 1980s Serie A titles, with "
+        "two more Scudetti added in 2023 and 2025."
+    ),
+    ("UCL", "RB Leipzig"): (
+        "Germany. Never won it; a Red Bull-backed club that has risen from Germany's fourth tier "
+        "since its 2009 founding."
+    ),
+    ("UCL", "Villarreal"): (
+        "Spain. Never won it; a small-town club (\"the Yellow Submarine\") that has reached the "
+        "semifinal twice, in 2006 and 2022."
+    ),
+    ("UCL", "Shakhtar Donetsk"): (
+        "Ukraine. Never won it; Ukraine's most successful modern club, forced to play \"home\" "
+        "games elsewhere in Europe since the war in eastern Ukraine began in 2014."
+    ),
+    ("UCL", "Galatasaray"): (
+        "Turkey. Never won the Champions League itself, though they won the old UEFA Cup and "
+        "Super Cup double in 2000; Turkey's most decorated club, with a famously hostile home "
+        "atmosphere (\"Welcome to Hell\")."
+    ),
+    ("UCL", "Fenerbahçe"): (
+        "Turkey. Never won it; one of Istanbul's \"big three\" alongside Galatasaray and Beşiktaş."
+    ),
+    ("UCL", "Slavia Prague"): (
+        "Czech Republic. Never won it; Czech giants who went unbeaten through an entire 2020-21 "
+        "domestic league season."
+    ),
+    ("UCL", "Slovan Bratislava"): (
+        "Slovakia. Never won it; Slovakia's most successful club, a European Cup Winners' Cup "
+        "winner back in 1969."
+    ),
+    ("UCL", "VfB Stuttgart"): (
+        "Germany. Never won it; German champions as recently as 1992 and a regular Bundesliga "
+        "fixture."
+    ),
+    ("UCL", "LASK"): (
+        "Austria. Never previously reached this stage; Linz's club (full name Linzer ASK) making "
+        "its league-phase debut."
+    ),
+    ("UCL", "Como"): (
+        "Italy. Never previously reached this stage; a yo-yo club that dropped as low as Serie D "
+        "before Indonesian-backed investment revived it, winning promotion back to Serie A in "
+        "2024 and now debuting in Europe's top competition."
+    ),
+    ("UCL", "Lens"): (
+        "France. Never won it; a passionate northern-France mining-town club known for the "
+        "atmosphere at the Stade Bollaert-Delelis."
+    ),
+    ("UCL", "Sabah FK"): (
+        "Azerbaijan. Never previously reached this stage; founded only in 2017, one of the "
+        "newest clubs ever to reach the league phase."
+    ),
+    ("UCL", "Viking"): (
+        "Norway. Never previously reached this stage; Norway's oldest professional club, making a "
+        "rare appearance at this level."
+    ),
+    ("UCL", "AEK Athens"): (
+        "Greece. Never won it; founded in 1924 by Greek refugees from Constantinople (the club's "
+        "name honors the Athletic Union of Constantinople), back in Europe's top competition after "
+        "a long absence."
     ),
 }
 
@@ -6682,5 +6867,150 @@ TEAM_PROGNOSES: dict[tuple[str, str], str] = {
     ("NCAAWB", "North Texas Mean Green"): (
         "Lost in the Round of 64 in 2025-26, continuing the program's rise in the "
         "American."
+    ),
+
+    # --- UCL (2026-27) ---
+    ("UCL", "Paris Saint-Germain"): (
+        "Bidding for an unprecedented third straight title after winning in 2024-25 and again in "
+        "2025-26 (on penalties over Arsenal); still the team to beat."
+    ),
+    ("UCL", "Bayern Munich"): (
+        "Reached the 2025-26 quarterfinal under Vincent Kompany and remain among the favorites "
+        "again this time."
+    ),
+    ("UCL", "Real Madrid"): (
+        "José Mourinho begins a second spell in charge, a bold, high-stakes appointment aimed at "
+        "ending the club's recent trophy drought in the competition it has dominated more than "
+        "anyone."
+    ),
+    ("UCL", "Liverpool"): (
+        "Reached the 2025-26 quarterfinal before falling to PSG; expected to be in the mix again "
+        "under Arne Slot."
+    ),
+    ("UCL", "Inter Milan"): (
+        "Cristian Chivu, who won the Scudetto in his first season after replacing Simone Inzaghi "
+        "in 2025, leads a squad still knockout-quality despite an early playoff-round exit last "
+        "year."
+    ),
+    ("UCL", "Manchester City"): (
+        "Missed a top-8 bye last time and were knocked out in the Round of 16; back under Pep "
+        "Guardiola looking to reassert themselves among the favorites."
+    ),
+    ("UCL", "Arsenal"): (
+        "Runners-up in 2025-26 after the best league-phase campaign of any club (24 points, +19 "
+        "GD); many expect Mikel Arteta's side to go one better this time."
+    ),
+    ("UCL", "Barcelona"): (
+        "Hansi Flick continues after a strong debut season; reached the 2025-26 quarterfinal "
+        "before falling to Atlético Madrid."
+    ),
+    ("UCL", "Atlético Madrid"): (
+        "Reached the 2025-26 semifinal, their deepest run in years under Diego Simeone, before "
+        "losing to eventual runners-up Arsenal."
+    ),
+    ("UCL", "Borussia Dortmund"): (
+        "Fell in the knockout playoff round last year; look to reassert themselves as a genuine "
+        "contender again."
+    ),
+    ("UCL", "Roma"): (
+        "Gian Piero Gasperini's first full season in charge after leaving Atalanta; didn't "
+        "feature in the 2025-26 competition, so this is a fresh European push."
+    ),
+    ("UCL", "Sporting CP"): (
+        "Reached the 2025-26 quarterfinal, their best run in years, before falling to eventual "
+        "runners-up Arsenal."
+    ),
+    ("UCL", "Aston Villa"): (
+        "Missed out on qualification for 2025-26; back looking to build on their 2024-25 "
+        "quarterfinal run."
+    ),
+    ("UCL", "Porto"): (
+        "Absent from the 2025-26 field; a fixture of Portuguese football looking to reestablish "
+        "itself in the knockout rounds."
+    ),
+    ("UCL", "Manchester United"): (
+        "Missed continental football entirely in 2025-26; a return to the competition after a "
+        "difficult stretch domestically."
+    ),
+    ("UCL", "Club Brugge"): (
+        "Fell in the knockout playoff round to Atlético Madrid last year; Belgium's most reliable "
+        "European ever-present again."
+    ),
+    ("UCL", "Real Betis"): (
+        "A first Champions League appearance since 2005-06 — a milestone season for the club "
+        "regardless of how the run itself goes."
+    ),
+    ("UCL", "PSV"): (
+        "Eliminated after the league phase in 2025-26; look to build on a positive domestic "
+        "campaign."
+    ),
+    ("UCL", "Feyenoord"): (
+        "Absent from the 2025-26 field; back to try to reestablish themselves both domestically "
+        "and in Europe."
+    ),
+    ("UCL", "Lille"): (
+        "Absent last year; a return for a club that has punched above its budget before."
+    ),
+    ("UCL", "Bodø/Glimt"): (
+        "Reached the Round of 16 in a stunning 2025-26 debut run at this level (beating Inter "
+        "Milan in the playoff round along the way) — the standout Cinderella story of the "
+        "format's early years, back to see if it was a fluke."
+    ),
+    ("UCL", "Napoli"): (
+        "Eliminated after the league phase in 2025-26; Massimiliano Allegri's first season in "
+        "charge after succeeding Antonio Conte, aiming to turn Scudetto-winning form into a real "
+        "European run."
+    ),
+    ("UCL", "RB Leipzig"): (
+        "Absent last year; back to try to reestablish their now-familiar spot near the "
+        "Bundesliga's top four."
+    ),
+    ("UCL", "Villarreal"): (
+        "Finished bottom of the 2025-26 table; a rebuild season after a rare disappointing "
+        "continental campaign."
+    ),
+    ("UCL", "Shakhtar Donetsk"): (
+        "Absent last year; still fielding a competitive squad domestically despite the enormous "
+        "disruption of playing every \"home\" game away from home throughout the war."
+    ),
+    ("UCL", "Galatasaray"): (
+        "Won the knockout playoff round before falling in the Round of 16 to Liverpool last year; "
+        "back as Turkey's flagbearer."
+    ),
+    ("UCL", "Fenerbahçe"): (
+        "Absent from the 2025-26 field; look to end a long wait for a deep continental run."
+    ),
+    ("UCL", "Slavia Prague"): (
+        "Finished in the bottom half of the 2025-26 table without reaching the knockout rounds; a "
+        "step up in class awaits again."
+    ),
+    ("UCL", "Slovan Bratislava"): (
+        "Absent last year; Slovakia's flagbearer looking to make an impression."
+    ),
+    ("UCL", "VfB Stuttgart"): (
+        "Absent last year; back after a strong recent run of domestic form."
+    ),
+    ("UCL", "LASK"): (
+        "League-phase debutants; simply reaching this stage is the achievement for Austria's "
+        "third-biggest club."
+    ),
+    ("UCL", "Como"): (
+        "League-phase debutants remarkably soon after an Indonesian-backed revival from the "
+        "lower divisions; a landmark season regardless of results."
+    ),
+    ("UCL", "Lens"): (
+        "Absent last year; a return for the passionate northern-France club."
+    ),
+    ("UCL", "Sabah FK"): (
+        "League-phase debutants and one of the newest clubs ever to reach this stage — a "
+        "historic season for Azerbaijani football."
+    ),
+    ("UCL", "Viking"): (
+        "League-phase debutants for a famous old Norwegian name; a rare taste of Europe's top "
+        "table."
+    ),
+    ("UCL", "AEK Athens"): (
+        "Back in the top competition after a long absence — a milestone return for Greek "
+        "football's historic Constantinople-refugee club."
     ),
 }

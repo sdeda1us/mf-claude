@@ -444,6 +444,32 @@ exact repeat of the 2025 final — for a 2nd straight title and a record
 **2026-27 season (next):** Not yet officially scheduled — historically
 opens in late September.
 
+### UCL (UEFA Champions League) — 36 teams
+
+The draftable pool is the 36 clubs in the league phase (not the whole
+knockout bracket, which draws from the same 36 — see
+`game-rules-ucl.md`). Added mid-cycle for the 2026-27 fall season; the
+2027-28 field won't be known until qualifying concludes next August, so
+re-verify this list before reusing it for a future season.
+
+Paris Saint-Germain, Bayern Munich, Real Madrid, Liverpool, Inter Milan,
+Manchester City, Arsenal, Barcelona, Atlético Madrid, Borussia Dortmund,
+Roma, Sporting CP, Aston Villa, Porto, Manchester United, Club Brugge,
+Real Betis, PSV, Feyenoord, Lille, Bodø/Glimt, Napoli, RB Leipzig,
+Villarreal, Shakhtar Donetsk, Galatasaray, Fenerbahçe, Slavia Prague,
+Slovan Bratislava, VfB Stuttgart, LASK, Como, Lens, Sabah FK, Viking,
+AEK Athens
+
+Note: Real Betis are back for the first time since 2005-06; Como, LASK,
+Sabah FK, and Viking are making their league-phase debuts.
+
+**2025-26 season (most recently complete):** Sept 16, 2025 → league phase
+through Jan 28, 2026 → final May 30, 2026 (Puskás Aréna, Budapest) — Paris
+Saint-Germain beat Arsenal 1-1 (4-3 on penalties) for a 2nd straight title.
+**2026-27 season (in progress):** League phase Sept 8, 2026 → Jan 27, 2027
+→ final expected late May 2027 (venue not yet confirmed as of this
+writing).
+
 ### IPL (Indian Premier League) — 10 teams
 
 Chennai Super Kings, Delhi Capitals, Gujarat Titans, Kolkata Knight

@@ -32,7 +32,11 @@ def get_team_history(
     by expected fantasy points in each of NCAAF, NCAAMB, and NCAAWB --
     other teams/leagues just return bio/location/prognosis as None, with
     the season list falling back to whatever's live in TeamSeasonResult
-    (may be empty too)."""
+    (may be empty too). UCL is scoped down further still -- bio/location/
+    prognosis for all 36 league-phase clubs, but no TEAM_HISTORY_STATS
+    backfill (it's a brand-new league; there's only ever the one live
+    2025-26 season to chart so far, and 18 of the 36 clubs weren't even in
+    that season's field, so their chart is empty for now)."""
     team = db.get(Team, team_id)
     if team is None:
         raise HTTPException(status_code=404, detail="Team not found")

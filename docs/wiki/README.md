@@ -4,8 +4,8 @@ Game rules and scoring reference, one page per league. This is separate from
 `CLAUDE.md`'s "Sports Leagues" section (team rosters / season dates) — this
 wiki covers how points are actually scored once the season is underway.
 
-All 19 leagues (MLB/NFL/NBA/NHL/EPL/NCAAF/NCAAMB/NCAAWB/ATP/WTA/PGA/LPGA/F1/
-WNBA/MLS/URC/IPL/NWSL/TDF) have scoring and roster limits wired into the app
+All 20 leagues (MLB/NFL/NBA/NHL/EPL/NCAAF/NCAAMB/NCAAWB/ATP/WTA/PGA/LPGA/F1/
+WNBA/MLS/URC/UCL/IPL/NWSL/TDF) have scoring and roster limits wired into the app
 (`backend/app/league_rules.py`, the `/rules` page, roster caps enforced at
 bid time) and `/example-scores` historical data
 (`backend/app/seed_historical_results.py`). The 6 added after the original
@@ -26,7 +26,11 @@ exact points+GD base with cumulative playoff-round bonuses (MLS has a
 bracket, EPL doesn't) — see game-rules-mls.md. URC blends EPL's points+
 differential base (rescaled — rugby's points-difference swings much wider
 than a soccer goal differential) with WNBA-style 3-round playoff bonuses,
-since URC has a knockout bracket EPL doesn't — see game-rules-urc.md. IPL
+since URC has a knockout bracket EPL doesn't — see game-rules-urc.md. UCL
+is EPL's points+GD base again (scaled to 3 points per league-phase point
+instead of 2, since its league phase is only 8 games) plus a flat +10 per
+knockout round survived, halving the 36-team field each time down to a
+champion — see game-rules-ucl.md. IPL
 mirrors NFL's non-punitive base (no penalty for a loss, matching real
 IPL/NFL points systems) plus Net Run Rate as the differential term, with
 bonuses tracking IPL's "page playoff" knockout stage rather than named
@@ -116,7 +120,7 @@ at once, so a league's roster is drafted reasonably close to when it's
 actually being played:
 
 - **Fall session** (~late August): EPL, NCAAF, NFL, NHL, NBA, NCAAMB,
-  NCAAWB, ATP, WTA, URC
+  NCAAWB, ATP, WTA, URC, UCL
 - **Spring session** (~March): MLB, PGA, LPGA, F1, WNBA, MLS, IPL, NWSL, TDF
 
 The fall/spring grouping doesn't perfectly track each league's own season
@@ -148,6 +152,7 @@ partly or mostly over," the fall session is the smaller problem for both.
 - [WNBA](game-rules-wnba.md)
 - [MLS](game-rules-mls.md)
 - [URC (United Rugby Championship)](game-rules-urc.md)
+- [UCL (UEFA Champions League)](game-rules-ucl.md)
 - [IPL (Indian Premier League)](game-rules-ipl.md)
 - [NWSL](game-rules-nwsl.md)
 - [TDF (Tour de France Team Classification)](game-rules-tdf.md)

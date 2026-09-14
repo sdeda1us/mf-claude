@@ -8,6 +8,7 @@ export const COVERED_TEAM_HISTORY_LEAGUES = [
   "NBA",
   "NHL",
   "URC",
+  "UCL",
   "NCAAF",
   "NCAAMB",
   "NCAAWB",

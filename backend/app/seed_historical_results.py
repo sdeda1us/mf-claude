@@ -1073,6 +1073,77 @@ def urc_stats(name: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# UCL 2025-26 (PSG champions, beating Arsenal on penalties) — league phase
+# points/GD plus knockout milestones, sourced from the dedicated league-phase
+# and final Wikipedia articles. Only the 18 of the 2025-26 season's 36 teams
+# that are ALSO in the 2026-27 field get an entry here — the other 18 in
+# this year's field (Roma, Aston Villa, Porto, Man Utd, Real Betis,
+# Feyenoord, Lille, RB Leipzig, Shakhtar Donetsk, Fenerbahçe, Slovan
+# Bratislava, VfB Stuttgart, LASK, Como, Lens, Sabah FK, Viking, AEK Athens)
+# didn't play in it at all, so there's nothing real to seed for them —
+# same "no current-season row yet" gap as any team new to a league's pool.
+UCL_TABLE = {
+    # (league_phase_points, goal_differential) — from the 36-team final
+    # league-phase table (top 8 bye to Round of 16, 9-24 go to a knockout
+    # playoff round for the other 8 R16 spots, 25-36 eliminated).
+    "Arsenal": (24, 19),
+    "Bayern Munich": (21, 14),
+    "Liverpool": (18, 12),
+    "Barcelona": (16, 8),
+    "Sporting CP": (16, 6),
+    "Manchester City": (16, 6),
+    "Real Madrid": (15, 9),
+    "Inter Milan": (15, 8),
+    "Paris Saint-Germain": (14, 10),
+    "Atlético Madrid": (13, 2),
+    "Borussia Dortmund": (11, 2),
+    "Club Brugge": (10, -2),
+    "Galatasaray": (10, -2),
+    "Bodø/Glimt": (9, -1),
+    "PSV": (8, 0),
+    "Napoli": (8, -6),
+    "Slavia Prague": (3, -14),
+    "Villarreal": (1, -13),
+}
+# Finished top 24 of 36 (survived the league phase into the knockout
+# structure, whether via a direct bye or the playoff round) -- everyone
+# above except the bottom four (PSV, Napoli, Slavia Prague, Villarreal, all
+# ranked 28th or worse) made it.
+UCL_MADE_FINAL_24 = set(UCL_TABLE) - {"PSV", "Napoli", "Slavia Prague", "Villarreal"}
+# Reached the Round of 16: the top-8 direct byes, plus whoever won the
+# knockout playoff round (Dortmund and Club Brugge made the playoff round
+# but lost it, to Atalanta and Atlético Madrid respectively).
+UCL_MADE_FINAL_16 = {
+    "Arsenal", "Bayern Munich", "Liverpool", "Barcelona", "Sporting CP", "Manchester City",
+    "Paris Saint-Germain", "Galatasaray", "Real Madrid", "Atlético Madrid", "Bodø/Glimt",
+}
+# Won their Round of 16 tie to reach the quarter-finals.
+UCL_MADE_FINAL_8 = {
+    "Sporting CP", "Arsenal", "Paris Saint-Germain", "Real Madrid",
+    "Barcelona", "Bayern Munich", "Liverpool", "Atlético Madrid",
+}
+# Won their quarter-final to reach the semis.
+UCL_MADE_FINAL_4 = {"Paris Saint-Germain", "Atlético Madrid", "Bayern Munich", "Arsenal"}
+# Won their semi-final to reach the final.
+UCL_MADE_FINAL_2 = {"Paris Saint-Germain", "Arsenal"}
+UCL_FINAL_WINNER = "Paris Saint-Germain"
+
+
+def ucl_stats(name: str) -> dict:
+    points, goal_differential = UCL_TABLE[name]
+    return {
+        "points": points,
+        "goal_differential": goal_differential,
+        "made_final_24": name in UCL_MADE_FINAL_24,
+        "made_final_16": name in UCL_MADE_FINAL_16,
+        "made_final_8": name in UCL_MADE_FINAL_8,
+        "made_final_4": name in UCL_MADE_FINAL_4,
+        "made_final_2": name in UCL_MADE_FINAL_2,
+        "won_final": name == UCL_FINAL_WINNER,
+    }
+
+
+# ---------------------------------------------------------------------------
 # IPL 2026 — final points table (Royal Challengers Bengaluru back-to-back
 # champions, beat Gujarat Titans in the Final). Unlike every other spring
 # league above, IPL 2026 (March 28 - May 31, 2026) is already the most
@@ -1144,6 +1215,7 @@ LEAGUE_SEASONS = [
     ("WNBA", "2025", WNBA_RECORDS, wnba_stats),
     ("MLS", "2025", MLS_TABLE, mls_stats),
     ("URC", "2025-26", URC_TABLE, urc_stats),
+    ("UCL", "2025-26", UCL_TABLE, ucl_stats),
     ("IPL", "2026", IPL_TABLE, ipl_stats),
     ("NWSL", "2025", NWSL_TABLE, nwsl_stats),
     ("TDF", "2026", TDF_ACHIEVEMENTS, tdf_stats),
