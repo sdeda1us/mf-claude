@@ -37,7 +37,9 @@ class SeasonOut(BaseModel):
 
 class SeasonCreateIn(BaseModel):
     name: str
-    fall_budget_per_user: float = 400
+    # $440, not $400 -- covers the 4 extra UCL roster slots added mid-cycle
+    # to the fall session (see app/set_ev_defaults.py's matching default).
+    fall_budget_per_user: float = 440
     spring_budget_per_user: float = 240
 
 

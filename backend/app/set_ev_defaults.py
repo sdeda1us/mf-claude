@@ -54,7 +54,7 @@ from app.models import Team, User
 # script writes one global Team.default_value, not something scoped to a
 # particular season, so it uses the standard default rather than trying to
 # pick "the" current season's configured budget.
-DEFAULT_FALL_BUDGET_PER_USER = 400
+DEFAULT_FALL_BUDGET_PER_USER = 440
 
 # (league, team name) -> relative-strength score within that league (higher
 # is better; NOT a dollar amount -- see calibrate() below). Team names

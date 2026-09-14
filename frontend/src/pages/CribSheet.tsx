@@ -319,9 +319,9 @@ export default function CribSheet() {
               ×
             </button>
             <p>
-              Every fall-session team (NFL, NBA, NHL, EPL, URC, NCAAF, NCAAMB, NCAAWB, ATP, WTA)
-              starts with a modeled expected-value price instead of a blank $0, so there's a sane
-              opening reference before you've formed your own opinion.
+              Every fall-session team (NFL, NBA, NHL, EPL, URC, UCL, NCAAF, NCAAMB, NCAAWB, ATP,
+              WTA) starts with a modeled expected-value price instead of a blank $0, so there's a
+              sane opening reference before you've formed your own opinion.
             </p>
             <p>
               Each team's underlying strength score is built in two steps. First, the best real
@@ -341,11 +341,12 @@ export default function CribSheet() {
               <li><strong>NCAAMB, NCAAWB:</strong> Bart Torvik's full-field T-Rank power ratings.</li>
               <li><strong>EPL:</strong> Opta's published predicted final league points.</li>
               <li><strong>URC:</strong> the closest available preseason rugby power ratings and odds.</li>
+              <li><strong>UCL:</strong> outright-winner odds/market shares for the tournament.</li>
               <li><strong>ATP, WTA:</strong> current world rankings aggregated by country.</li>
             </ul>
             <p>
               Those scores are turned into dollars with a value-based-drafting model sized to a
-              real auction (6 users, $400 each): every roster slot reserves $1 as a floor, and
+              real auction (6 users, $440 each): every roster slot reserves $1 as a floor, and
               what's left of the combined budget is split <em>evenly per roster slot across
               leagues</em> — so a league with more roster spots draws a proportionally bigger
               share, but no league's total draw depends on the scale its own scoring formula
