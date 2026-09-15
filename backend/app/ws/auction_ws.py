@@ -27,6 +27,7 @@ from app.deps import get_user_from_websocket
 from app.league_rules import MINOR_CONFERENCE_CAPS, ROSTER_LIMITS, is_minor_conference_team
 from app.models import Auction, Bid, ReserveBid
 from app.quiet_hours import add_active_duration
+from app.slack_notify import notify_bid, notify_reserve_bid_cascade, notify_sold
 from app.ws.connection_manager import manager
 
 router = APIRouter()
@@ -91,6 +92,7 @@ async def auction_room(websocket: WebSocket, auction_id: int):
 
                 if all_non_high_bidders_passed(db, item):
                     finalize_active_item(db, auction, item)
+                    notify_sold(db, item)
                     db.commit()
                     db.refresh(auction)
                     await manager.broadcast_state(auction_id, db, auction)
@@ -172,19 +174,21 @@ async def auction_room(websocket: WebSocket, auction_id: int):
                     )
                 db.commit()
 
-                resolve_reserve_bids(
+                reserve_bids_placed = resolve_reserve_bids(
                     db,
                     auction,
                     item,
                     bid_extension_threshold_seconds=BID_EXTENSION_THRESHOLD_SECONDS,
                     bid_extension_seconds=BID_EXTENSION_SECONDS,
                 )
+                notify_reserve_bid_cascade(db, item, reserve_bids_placed)
                 db.commit()
 
                 await manager.broadcast_state(auction_id, db, auction)
 
                 if all_non_high_bidders_passed(db, item):
                     finalize_active_item(db, auction, item)
+                    notify_sold(db, item)
                     db.commit()
                     db.refresh(auction)
                     await manager.broadcast_state(auction_id, db, auction)
@@ -234,6 +238,7 @@ async def auction_room(websocket: WebSocket, auction_id: int):
             new_bid = Bid(auction_item_id=item.id, user_id=user.id, amount=amount)
             item.bids.append(new_bid)
             db.add(new_bid)
+            notify_bid(user.display_name, item.team.name, item.team.league, amount)
             # Soft close: once under BID_EXTENSION_THRESHOLD_SECONDS remain,
             # any bid resets the clock back to exactly BID_EXTENSION_SECONDS
             # rather than extending from whatever was left, so late snipes
@@ -251,19 +256,21 @@ async def auction_room(websocket: WebSocket, auction_id: int):
             # it by $1 (possibly cascading against a rival reserve) before
             # this settles — a locked reserve should react the same way a
             # human watching the auction would.
-            resolve_reserve_bids(
+            reserve_bids_placed = resolve_reserve_bids(
                 db,
                 auction,
                 item,
                 bid_extension_threshold_seconds=BID_EXTENSION_THRESHOLD_SECONDS,
                 bid_extension_seconds=BID_EXTENSION_SECONDS,
             )
+            notify_reserve_bid_cascade(db, item, reserve_bids_placed)
             db.commit()
 
             await manager.broadcast_state(auction_id, db, auction)
 
             if all_non_high_bidders_passed(db, item):
                 finalize_active_item(db, auction, item)
+                notify_sold(db, item)
                 db.commit()
                 db.refresh(auction)
                 await manager.broadcast_state(auction_id, db, auction)

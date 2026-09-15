@@ -9,6 +9,10 @@ pydantic-settings>=2.3
 pyjwt>=2.8
 resend>=2.0
 python-multipart>=0.0.9
+# Was already present as a transitive dependency (of resend), but
+# app/slack_notify.py now imports it directly, so it's pinned explicitly
+# rather than relying on that staying true.
+requests>=2.31
 # zoneinfo's fallback tz database -- guarantees ZoneInfo("America/New_York")
 # (app/quiet_hours.py) resolves even if the container image's own OS-level
 # tzdata is missing or stripped down.

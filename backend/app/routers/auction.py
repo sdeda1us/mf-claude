@@ -34,6 +34,7 @@ from app.models import (
 )
 from app.quiet_hours import bid_window_deadline
 from app.schemas import AuctionOut, AuctionStateOut, ForceTurnIn, NominateIn
+from app.slack_notify import notify_nomination, notify_sold
 from app.ws.connection_manager import manager
 
 router = APIRouter(prefix="/auctions", tags=["auction"])
@@ -155,6 +156,7 @@ async def nominate(
     db.refresh(item)
     await manager.broadcast_state(auction_id, db, auction)
     manager.spawn(schedule_bid_timer(item.id))
+    notify_nomination(user.display_name, team.name, team.league)
     return build_state(db, auction, viewer_user_id=user.id)
 
 
@@ -241,6 +243,7 @@ async def close_item(
         raise HTTPException(status_code=400, detail="No active item to close")
 
     finalize_active_item(db, auction, item)
+    notify_sold(db, item)
     db.commit()
     db.refresh(auction)
     await manager.broadcast_state(auction_id, db, auction)

@@ -208,7 +208,7 @@ def resolve_reserve_bids(
     *,
     bid_extension_threshold_seconds: int,
     bid_extension_seconds: int,
-) -> None:
+) -> list[tuple[int, float]]:
     """After any bid changes the high bidder, auto-place bids on behalf of
     anyone with an active reserve (ReserveBid) on this item, topping the
     new high bid by $1 — repeating (a reserve's own auto-bid can trigger a
@@ -216,11 +216,18 @@ def resolve_reserve_bids(
     higher. Each auto-bid is a real Bid row and gets the same soft-close
     deadline extension a manual bid would, so it's indistinguishable from
     one in the bid log. Call this after auto_pass_capped_users so already-
-    capped users are correctly excluded."""
+    capped users are correctly excluded.
+
+    Returns every (user_id, amount) auto-bid placed, in order, so callers
+    can post a Slack notification for each — this module can't spawn that
+    itself (app.ws.connection_manager, which owns the background-task
+    spawner, already imports build_state from here, so importing it back
+    would be a cycle)."""
     league = item.team.league
     limit = ROSTER_LIMITS.get(league)
     minor_cap = MINOR_CONFERENCE_CAPS.get(league)
     is_minor = minor_cap is not None and is_minor_conference_team(league, item.team.name)
+    placed: list[tuple[int, float]] = []
 
     while True:
         current_high = current_high_bid(item)
@@ -251,11 +258,12 @@ def resolve_reserve_bids(
             break
 
         if candidate is None:
-            return
+            return placed
 
         new_bid = Bid(auction_item_id=item.id, user_id=candidate.user_id, amount=next_amount)
         item.bids.append(new_bid)
         db.add(new_bid)
+        placed.append((candidate.user_id, float(next_amount)))
 
         if item.bid_deadline is not None:
             now = datetime.utcnow()

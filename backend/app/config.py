@@ -13,6 +13,12 @@ class Settings(BaseSettings):
     resend_api_key: str | None = None
     email_from: str = "Megafantasy <onboarding@resend.dev>"
 
+    # Slack Incoming Webhook URL for live auction notifications (new
+    # nominations, new high bids, items selling) — see app/slack_notify.py.
+    # Unset by default: notifications silently no-op until this is
+    # configured (a Railway env var, never committed to the repo).
+    slack_webhook_url: str | None = None
+
     # Public base URL used to build magic-link URLs sent in email
     app_base_url: str = "http://localhost:5173"
     # Where the API is served from (used by the /auth/verify redirect target)
