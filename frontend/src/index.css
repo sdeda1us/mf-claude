@@ -549,6 +549,53 @@ button:disabled {
   border-color: var(--ink);
 }
 
+/* The homepage's single most important call to action — self-contained
+   (doesn't rely on the bare `button` selector, since this is an <a>/Link,
+   not a <button>) and deliberately oversized with a slow attention pulse
+   so it reads as THE thing to do on the page, not one link among several. */
+.fall-auction-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--display-font);
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 20px;
+  padding: 16px 30px;
+  margin: 6px 0 18px;
+  border: 3px solid var(--ink);
+  border-radius: 2px;
+  background: var(--red);
+  color: var(--stock-hi);
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--ink);
+  animation: fall-auction-cta-pulse 2.4s ease-in-out infinite;
+}
+
+.fall-auction-cta:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+  animation-play-state: paused;
+}
+
+@keyframes fall-auction-cta-pulse {
+  0%,
+  100% {
+    box-shadow: 4px 4px 0 var(--ink), 0 0 0 0 color-mix(in srgb, var(--red) 55%, transparent);
+  }
+  50% {
+    box-shadow: 4px 4px 0 var(--ink), 0 0 0 10px color-mix(in srgb, var(--red) 0%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fall-auction-cta {
+    animation: none;
+  }
+}
+
 .season-list {
   list-style: none;
   padding: 0;

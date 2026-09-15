@@ -115,6 +115,9 @@ export default function Home() {
           snapshots.map(({ season, rows }) => (
             <div key={season.id} className="rules-card">
               <div className="ribbon">{season.name}</div>
+              <Link to={`/seasons/${season.id}/auction/fall`} className="fall-auction-cta">
+                🔨 Go to fall auction →
+              </Link>
               <p className="rules-card-meta">
                 <span className="pill">${season.fall_budget_per_user} fall budget</span>
                 <span className="pill">${season.spring_budget_per_user} spring budget</span>
@@ -149,7 +152,6 @@ export default function Home() {
               </p>
               <p className="inline-form">
                 <Link to={`/seasons/${season.id}/roster`}>View full roster →</Link>
-                <Link to={`/seasons/${season.id}/auction/fall`}>Go to fall auction →</Link>
                 <Link to={`/seasons/${season.id}/auction/spring`}>Go to spring auction →</Link>
               </p>
             </div>
