@@ -16,7 +16,7 @@ import {
 } from "../lib/api";
 import { useAuctionSocket } from "../lib/useAuctionSocket";
 
-type SortKey = "name" | "league" | "points";
+type SortKey = "name" | "league" | "points" | "value";
 type SortDir = "asc" | "desc";
 
 // The backend serializes datetimes as UTC with no "Z"/offset suffix (SQLite
@@ -330,7 +330,7 @@ export default function AuctionRoom() {
       setSortDir((d) => (d === "asc" ? "desc" : "asc"));
     } else {
       setSortKey(key);
-      setSortDir(key === "points" ? "desc" : "asc");
+      setSortDir(key === "points" || key === "value" ? "desc" : "asc");
     }
   };
   const arrow = (key: SortKey) => (sortKey === key ? (sortDir === "asc" ? " ▲" : " ▼") : "");
@@ -361,6 +361,7 @@ export default function AuctionRoom() {
     rows.sort((a, b) => {
       let cmp: number;
       if (sortKey === "points") cmp = (a.points ?? -1) - (b.points ?? -1);
+      else if (sortKey === "value") cmp = (a.cribValue ?? -1) - (b.cribValue ?? -1);
       else if (sortKey === "league") cmp = a.team.league.localeCompare(b.team.league);
       else cmp = a.team.name.localeCompare(b.team.name);
       return sortDir === "asc" ? cmp : -cmp;
@@ -832,8 +833,11 @@ export default function AuctionRoom() {
                   <th onClick={() => toggleSort("name")}>Team{arrow("name")}</th>
                   <th onClick={() => toggleSort("league")}>League / Sport{arrow("league")}</th>
                   <th onClick={() => toggleSort("points")}>Prior season points{arrow("points")}</th>
-                  <th title="From your crib sheet — a modeled default until you override it there. See the Crib Sheet page for how defaults are calculated.">
-                    Your Value
+                  <th
+                    onClick={() => toggleSort("value")}
+                    title="From your crib sheet — a modeled default until you override it there. See the Crib Sheet page for how defaults are calculated."
+                  >
+                    Your Value{arrow("value")}
                   </th>
                   <th>Actions</th>
                 </tr>
