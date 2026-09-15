@@ -549,6 +549,16 @@ button:disabled {
   border-color: var(--ink);
 }
 
+/* Row holding the homepage's two hero buttons — wraps on narrow screens
+   rather than squeezing either one. */
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 18px;
+}
+
 /* The homepage's single most important call to action — self-contained
    (doesn't rely on the bare `button` selector, since this is an <a>/Link,
    not a <button>) and deliberately oversized with a slow attention pulse
@@ -564,7 +574,6 @@ button:disabled {
   letter-spacing: 0.03em;
   font-size: 20px;
   padding: 16px 30px;
-  margin: 6px 0 18px;
   border: 3px solid var(--ink);
   border-radius: 2px;
   background: var(--red);
@@ -594,6 +603,32 @@ button:disabled {
   .fall-auction-cta {
     animation: none;
   }
+}
+
+/* The "urgent" announcement button next to it — gold/caution-taped rather
+   than matching the fall-auction red, so the two don't blur into one
+   button, and no pulse (one pulsing element per page is plenty). */
+.announcement-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--display-font);
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 14px;
+  padding: 16px 22px;
+  border: 3px solid var(--ink);
+  border-radius: 2px;
+  background: var(--gold);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.announcement-cta:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
 }
 
 .season-list {

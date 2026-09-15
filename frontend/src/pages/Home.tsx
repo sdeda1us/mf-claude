@@ -14,6 +14,7 @@ export default function Home() {
   const [rules, setRules] = useState<LeagueRules | null>(null);
   const [teams, setTeams] = useState<Team[]>([]);
   const [snapshots, setSnapshots] = useState<SeasonSnapshot[]>([]);
+  const [showAnnouncement, setShowAnnouncement] = useState(false);
 
   useEffect(() => {
     api.get<Season[]>("/seasons").then(setSeasons);
@@ -115,9 +116,18 @@ export default function Home() {
           snapshots.map(({ season, rows }) => (
             <div key={season.id} className="rules-card">
               <div className="ribbon">{season.name}</div>
-              <Link to={`/seasons/${season.id}/auction/fall`} className="fall-auction-cta">
-                🔨 Go to fall auction →
-              </Link>
+              <div className="hero-cta-row">
+                <Link to={`/seasons/${season.id}/auction/fall`} className="fall-auction-cta">
+                  🔨 Go to fall auction →
+                </Link>
+                <button
+                  type="button"
+                  className="announcement-cta"
+                  onClick={() => setShowAnnouncement(true)}
+                >
+                  ⚠️ IMPORTNAT ANNOUNCEMENT - PLEASE READ
+                </button>
+              </div>
               <p className="rules-card-meta">
                 <span className="pill">${season.fall_budget_per_user} fall budget</span>
                 <span className="pill">${season.spring_budget_per_user} spring budget</span>
@@ -184,6 +194,28 @@ export default function Home() {
           <Link to="/seasons">All seasons →</Link>
         </p>
       </section>
+
+      {showAnnouncement && (
+        <div className="modal-backdrop" onClick={() => setShowAnnouncement(false)}>
+          <div className="modal-card rules-card" onClick={(e) => e.stopPropagation()}>
+            <div className="ribbon">Important Announcement</div>
+            <button
+              type="button"
+              className="modal-close"
+              onClick={() => setShowAnnouncement(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <p>
+              Pizza Hut has been sold by Yum! Brands and acquired by LongRange Capital. As a
+              result of this transaction, Pizza Hut, as defined in our Privacy Policy is now the
+              controller of your personal data processed in connection with the Pizza Hut® brand
+              and Hut Rewards® loyalty program. The transfer took place on September 1, 2026.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
