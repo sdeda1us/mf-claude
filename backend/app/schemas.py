@@ -130,6 +130,7 @@ class RosterEntryOut(BaseModel):
     team: TeamOut
     price_paid: float
     source: RosterSource
+    created_at: datetime
 
     model_config = {"from_attributes": True}
 

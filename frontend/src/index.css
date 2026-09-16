@@ -1285,6 +1285,16 @@ button:disabled {
   color: var(--ink-soft);
 }
 
+.summary-chart-stat {
+  min-width: 240px;
+}
+
+.summary-chart-empty {
+  font-size: 13px;
+  color: var(--ink-soft);
+  padding-top: 4px;
+}
+
 .auction-layout {
   display: grid;
   grid-template-columns: 1fr 320px;

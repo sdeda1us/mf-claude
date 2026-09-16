@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Plotly from "plotly.js-basic-dist-min";
+import createPlotlyComponent from "react-plotly.js/factory";
 import Avatar from "../components/Avatar";
 import TeamLink from "../components/TeamLink";
 import { useAuth } from "../auth/AuthContext";
@@ -16,8 +18,36 @@ import {
 } from "../lib/api";
 import { useAuctionSocket } from "../lib/useAuctionSocket";
 
+const Plot = createPlotlyComponent(Plotly);
+
 type SortKey = "name" | "league" | "points" | "value";
 type SortDir = "asc" | "desc";
+
+// Reads the app's theme CSS variables so the chart's bar/grid/text colors
+// stay in sync with light/dark mode — Plotly renders into its own SVG and
+// won't pick up var(--x) the way regular CSS does, so the concrete color
+// has to be resolved in JS. Re-reads on prefers-color-scheme flips since
+// there's no in-app theme toggle to hook into instead.
+function readChartTheme() {
+  const style = getComputedStyle(document.documentElement);
+  const read = (name: string, fallback: string) => style.getPropertyValue(name).trim() || fallback;
+  return {
+    bar: read("--sky-deep", "#4c86a8"),
+    grid: read("--rule", "#e0d3ab"),
+    text: read("--ink-soft", "#58513f"),
+  };
+}
+
+function useChartTheme() {
+  const [theme, setTheme] = useState(readChartTheme);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const update = () => setTheme(readChartTheme());
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return theme;
+}
 
 // The backend serializes datetimes as UTC with no "Z"/offset suffix (SQLite
 // and a plain Postgres TIMESTAMP column both drop tzinfo on round-trip) —
@@ -75,6 +105,7 @@ export default function AuctionRoom() {
 
   const { state, error, connected, sendBid, sendPass, sendReserve, sendReserveAutoPass } =
     useAuctionSocket(auction?.id ?? null);
+  const chartTheme = useChartTheme();
 
   // Refetch the roster whenever the active item changes (a new nomination,
   // or a sale closing) — that's the authoritative source of which teams are
@@ -315,6 +346,27 @@ export default function AuctionRoom() {
     return grouped;
   }, [roster]);
 
+  // Teams sold per calendar day, this session only — the roster endpoint
+  // returns every entry for the season, fall and spring alike, so this
+  // filters to leagues that belong to the session this auction room is
+  // showing. created_at is a UTC-naive "YYYY-MM-DDTHH:MM:SS" string (see
+  // parseUtcMs above); its first 10 characters are the UTC calendar date,
+  // no timezone math needed since we only bucket by day.
+  const auctionedPerDay = useMemo(() => {
+    if (!rules) return [] as Array<[string, number]>;
+    const counts = new Map<string, number>();
+    for (const entry of roster) {
+      if (rules.league_session[entry.team.league] !== session) continue;
+      // Defensive: entry.created_at is only missing if a stale (pre-restart)
+      // backend served this response without the field — skip rather than
+      // throw and blank the whole page on a plain string.slice() call.
+      const day = entry.created_at?.slice(0, 10);
+      if (!day) continue;
+      counts.set(day, (counts.get(day) ?? 0) + 1);
+    }
+    return Array.from(counts.entries()).sort(([a], [b]) => a.localeCompare(b));
+  }, [roster, rules, session]);
+
   const toggleLeague = (league: string) => {
     setExpandedLeagues((prev) => {
       const next = new Set(prev);
@@ -526,6 +578,42 @@ export default function AuctionRoom() {
         <div className="summary-stat">
           <span className="summary-value">{totalSpotsRemaining}</span>
           <span className="summary-label">total open roster spots</span>
+        </div>
+        <div className="summary-stat summary-chart-stat">
+          <span className="summary-label">teams auctioned per day</span>
+          {auctionedPerDay.length > 0 ? (
+            <Plot
+              data={[
+                {
+                  type: "bar",
+                  x: auctionedPerDay.map(([day]) => day),
+                  y: auctionedPerDay.map(([, count]) => count),
+                  marker: { color: chartTheme.bar, cornerradius: 3 },
+                  hovertemplate: "%{x|%b %d}<br>%{y} team(s) sold<extra></extra>",
+                },
+              ]}
+              layout={{
+                width: 240,
+                height: 90,
+                margin: { l: 28, r: 8, t: 4, b: 22 },
+                paper_bgcolor: "transparent",
+                plot_bgcolor: "transparent",
+                font: { size: 9, color: chartTheme.text },
+                bargap: 0.4,
+                xaxis: { type: "date", tickformat: "%b %d", showgrid: false, linecolor: chartTheme.grid },
+                yaxis: {
+                  rangemode: "tozero",
+                  dtick: Math.max(1, Math.ceil(Math.max(...auctionedPerDay.map(([, c]) => c)) / 4)),
+                  gridcolor: chartTheme.grid,
+                  zeroline: false,
+                },
+              }}
+              config={{ displayModeBar: false, responsive: false }}
+              style={{ width: 240, height: 90 }}
+            />
+          ) : (
+            <span className="summary-chart-empty">No teams sold yet</span>
+          )}
         </div>
       </div>
 

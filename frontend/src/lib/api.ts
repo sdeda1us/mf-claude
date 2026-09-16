@@ -136,6 +136,7 @@ export interface RosterEntry {
   team: Team;
   price_paid: number;
   source: "auction" | "commissioner_correction";
+  created_at: string;
 }
 
 export interface ScoringRuleLine {
