@@ -84,5 +84,11 @@ export function useAuctionSocket(auctionId: number | null) {
     }
   };
 
-  return { state, error, connected, sendBid, sendPass, sendReserve };
+  const sendReserveAutoPass = (enabled: boolean) => {
+    if (wsRef.current?.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify({ type: "reserve_auto_pass", enabled }));
+    }
+  };
+
+  return { state, error, connected, sendBid, sendPass, sendReserve, sendReserveAutoPass };
 }

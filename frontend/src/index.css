@@ -1602,6 +1602,24 @@ button:disabled {
   cursor: help;
 }
 
+.reserve-auto-pass-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  cursor: help;
+}
+
+.reserve-auto-pass-toggle input[type="checkbox"] {
+  width: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .team-board-controls {
   display: flex;
   gap: 8px;

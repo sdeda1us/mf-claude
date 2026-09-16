@@ -94,6 +94,7 @@ class BidOut(BaseModel):
 class ReserveBidOut(BaseModel):
     amount: float
     active: bool
+    auto_pass_if_exceeded: bool
 
 
 class AuctionItemOut(BaseModel):

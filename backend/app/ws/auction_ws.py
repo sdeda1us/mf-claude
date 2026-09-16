@@ -61,7 +61,7 @@ async def auction_room(websocket: WebSocket, auction_id: int):
         while True:
             message = await websocket.receive_json()
             message_type = message.get("type")
-            if message_type not in ("bid", "pass", "reserve"):
+            if message_type not in ("bid", "pass", "reserve", "reserve_auto_pass"):
                 await manager.send_error(websocket, "Unknown message type")
                 continue
 
@@ -185,6 +185,57 @@ async def auction_room(websocket: WebSocket, auction_id: int):
                 if auction.slack_notifications_enabled:
                     notify_reserve_bid_cascade(db, item, reserve_bids_placed)
                 db.commit()
+
+                await manager.broadcast_state(auction_id, db, auction)
+
+                if all_non_high_bidders_passed(db, item):
+                    finalize_active_item(db, auction, item)
+                    if auction.slack_notifications_enabled:
+                        notify_sold(db, item)
+                    db.commit()
+                    db.refresh(auction)
+                    await manager.broadcast_state(auction_id, db, auction)
+                    manager.spawn(schedule_turn_timer(auction_id))
+                continue
+
+            if message_type == "reserve_auto_pass":
+                enabled = message.get("enabled")
+                if not isinstance(enabled, bool):
+                    await manager.send_error(websocket, "Invalid request")
+                    continue
+
+                existing = (
+                    db.query(ReserveBid)
+                    .filter(
+                        ReserveBid.auction_item_id == item.id,
+                        ReserveBid.user_id == user.id,
+                        ReserveBid.active.is_(True),
+                    )
+                    .first()
+                )
+                if existing is None:
+                    await manager.send_error(
+                        websocket, "You don't have an active reserve on this team"
+                    )
+                    continue
+
+                existing.auto_pass_if_exceeded = enabled
+                db.commit()
+
+                if enabled:
+                    # Retroactive: if this reserve is already exceeded (the
+                    # high bid already at or above its ceiling), pass right
+                    # now rather than waiting for the next bid to trigger it.
+                    reserve_bids_placed = resolve_reserve_bids(
+                        db,
+                        auction,
+                        item,
+                        bid_extension_threshold_seconds=BID_EXTENSION_THRESHOLD_SECONDS,
+                        bid_extension_seconds=BID_EXTENSION_SECONDS,
+                    )
+                    if auction.slack_notifications_enabled:
+                        notify_reserve_bid_cascade(db, item, reserve_bids_placed)
+                    db.commit()
 
                 await manager.broadcast_state(auction_id, db, auction)
 

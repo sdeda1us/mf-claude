@@ -73,9 +73,8 @@ export default function AuctionRoom() {
     api.get<CribSheetEntry[]>("/crib-sheet").then(setCribSheet);
   }, [seasonId, session]);
 
-  const { state, error, connected, sendBid, sendPass, sendReserve } = useAuctionSocket(
-    auction?.id ?? null
-  );
+  const { state, error, connected, sendBid, sendPass, sendReserve, sendReserveAutoPass } =
+    useAuctionSocket(auction?.id ?? null);
 
   // Refetch the roster whenever the active item changes (a new nomination,
   // or a sale closing) — that's the authoritative source of which teams are
@@ -619,12 +618,26 @@ export default function AuctionRoom() {
                   Reserve bid
                 </p>
                 {item.my_reserve?.active ? (
-                  <p className="inline-form">
-                    Locked at <strong>${item.my_reserve.amount}</strong>
-                    <button type="button" onClick={unlockReserve} disabled={isPaused}>
-                      Unlock
-                    </button>
-                  </p>
+                  <>
+                    <p className="inline-form">
+                      Locked at <strong>${item.my_reserve.amount}</strong>
+                      <button type="button" onClick={unlockReserve} disabled={isPaused}>
+                        Unlock
+                      </button>
+                    </p>
+                    <label
+                      className="reserve-auto-pass-toggle"
+                      title="If your reserve can no longer keep up with the bidding, automatically pass instead of leaving you sitting on a dead reserve."
+                    >
+                      <input
+                        type="checkbox"
+                        checked={item.my_reserve.auto_pass_if_exceeded}
+                        onChange={(e) => sendReserveAutoPass(e.target.checked)}
+                        disabled={isPaused}
+                      />
+                      Pass if my reserve bid is exceeded
+                    </label>
+                  </>
                 ) : (
                   <form onSubmit={lockReserve} className="inline-form">
                     <input

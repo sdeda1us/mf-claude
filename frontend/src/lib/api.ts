@@ -84,6 +84,7 @@ export interface Bid {
 export interface ReserveBid {
   amount: number;
   active: boolean;
+  auto_pass_if_exceeded: boolean;
 }
 
 export interface AuctionItem {

@@ -201,6 +201,12 @@ class ReserveBid(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     max_amount: Mapped[float] = mapped_column(Numeric(10, 2))
     active: Mapped[bool] = mapped_column(default=True)
+    # Opt-in, defaults off, toggled independently of the lock itself (see
+    # the "reserve_auto_pass" WS message) -- once on, the moment this
+    # reserve can no longer keep up (current high bid reaches max_amount)
+    # this user is passed automatically instead of being left sitting on
+    # a dead reserve. See auction_service.resolve_reserve_bids.
+    auto_pass_if_exceeded: Mapped[bool] = mapped_column(default=False)
     created_at: Mapped[datetime] = mapped_column(default=utcnow)
 
     __table_args__ = (UniqueConstraint("auction_item_id", "user_id", name="uq_reserve_item_user"),)

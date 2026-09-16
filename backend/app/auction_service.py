@@ -145,7 +145,9 @@ def build_state(db: Session, auction: Auction, viewer_user_id: int) -> AuctionSt
         )
         if reserve is not None:
             active_item_out.my_reserve = ReserveBidOut(
-                amount=float(reserve.max_amount), active=reserve.active
+                amount=float(reserve.max_amount),
+                active=reserve.active,
+                auto_pass_if_exceeded=reserve.auto_pass_if_exceeded,
             )
     turn_user_id = current_turn_user_id(db, auction)
     # Mirrors schedule_turn_timer's own deadline math exactly (same
@@ -222,7 +224,13 @@ def resolve_reserve_bids(
     can post a Slack notification for each — this module can't spawn that
     itself (app.ws.connection_manager, which owns the background-task
     spawner, already imports build_state from here, so importing it back
-    would be a cycle)."""
+    would be a cycle).
+
+    Along the way, also passes anyone whose reserve has
+    auto_pass_if_exceeded set the moment their reserve can no longer keep
+    up (its max_amount is below what it'd now take to lead) — opt-in, so
+    they're not left sitting on a dead reserve until they notice and pass
+    by hand."""
     league = item.team.league
     limit = ROSTER_LIMITS.get(league)
     minor_cap = MINOR_CONFERENCE_CAPS.get(league)
@@ -242,11 +250,17 @@ def resolve_reserve_bids(
         )
         budgets = remaining_budget_by_user(db, auction.season, auction.session)
 
+        passed = set(item.passed_user_ids)
+        newly_passed = False
         candidate = None
         for r in reserves:
-            if r.user_id == winner_id or r.user_id in item.passed_user_ids:
+            if r.user_id == winner_id or r.user_id in passed:
                 continue
             if r.max_amount < next_amount:
+                if r.auto_pass_if_exceeded:
+                    passed.add(r.user_id)
+                    r.active = False
+                    newly_passed = True
                 continue
             if next_amount > budgets.get(r.user_id, 0):
                 continue
@@ -256,6 +270,9 @@ def resolve_reserve_bids(
                 continue
             candidate = r
             break
+
+        if newly_passed:
+            item.passed_user_ids = list(passed)
 
         if candidate is None:
             return placed
