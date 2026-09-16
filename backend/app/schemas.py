@@ -77,6 +77,7 @@ class AuctionOut(BaseModel):
     nomination_order: list[int]
     turn_started_at: datetime
     is_paused: bool
+    slack_notifications_enabled: bool
 
     model_config = {"from_attributes": True}
 

@@ -144,7 +144,8 @@ async def schedule_turn_timer(auction_id: int) -> None:
         opening_bid = Bid(auction_item_id=item.id, user_id=turn_user_id, amount=opening_amount)
         item.bids.append(opening_bid)
         db.add(opening_bid)
-        notify_auto_nomination(db, turn_user_id, team.name, team.league, opening_amount)
+        if auction.slack_notifications_enabled:
+            notify_auto_nomination(db, turn_user_id, team.name, team.league, opening_amount)
         # Apply everyone's queued reserve price for this team -- including
         # the timed-out user's own, if they'd set one -- before clearing the
         # queue entry that was just consumed, since apply_queue_reserves
@@ -167,11 +168,13 @@ async def schedule_turn_timer(auction_id: int) -> None:
             bid_extension_threshold_seconds=BID_EXTENSION_THRESHOLD_SECONDS,
             bid_extension_seconds=BID_EXTENSION_SECONDS,
         )
-        notify_reserve_bid_cascade(db, item, reserve_bids_placed)
+        if auction.slack_notifications_enabled:
+            notify_reserve_bid_cascade(db, item, reserve_bids_placed)
         sold_immediately = all_non_high_bidders_passed(db, item)
         if sold_immediately:
             finalize_active_item(db, auction, item)
-            notify_sold(db, item)
+            if auction.slack_notifications_enabled:
+                notify_sold(db, item)
         db.commit()
         db.refresh(auction)
         db.refresh(item)
@@ -221,7 +224,8 @@ async def schedule_bid_timer(item_id: int) -> None:
                 continue  # extended while we slept; wait out the new time
 
             finalize_active_item(db, auction, item)
-            notify_sold(db, item)
+            if auction.slack_notifications_enabled:
+                notify_sold(db, item)
             db.commit()
             db.refresh(auction)
             await manager.broadcast_state(auction.id, db, auction)

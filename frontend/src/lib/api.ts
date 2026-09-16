@@ -109,6 +109,7 @@ export interface Auction {
   nomination_order: number[];
   turn_started_at: string;
   is_paused: boolean;
+  slack_notifications_enabled: boolean;
 }
 
 export interface RosterStatus {

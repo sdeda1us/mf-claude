@@ -130,6 +130,10 @@ class Auction(Base):
     # deadline was running forward by exactly how long the pause lasted, so
     # paused time never counts against the clock.
     paused_at: Mapped[datetime | None] = mapped_column(nullable=True, default=None)
+    # Per-auction override for Slack notifications (app/slack_notify.py) --
+    # on by default, but flippable for e.g. a leftover test auction that's
+    # still technically live but shouldn't be pinging the real channel.
+    slack_notifications_enabled: Mapped[bool] = mapped_column(default=True)
     created_at: Mapped[datetime] = mapped_column(default=utcnow)
 
     season: Mapped["Season"] = relationship(back_populates="auctions")
