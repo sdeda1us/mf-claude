@@ -27,6 +27,7 @@ from app.models import (
     AuctionItem,
     AuctionItemStatus,
     AuctionStatus,
+    ReserveBid,
     Season,
     Team,
     User,
@@ -221,6 +222,12 @@ async def cancel_nomination(
 
     for bid in item.bids:
         db.delete(bid)
+    # Reserve bids aren't a mapped relationship on AuctionItem (nothing
+    # cascades), and apply_queue_reserves seeds one for anyone with a
+    # queued reserve on this team the moment it's nominated — so most
+    # nominations already have one by the time this runs. Deleting the
+    # item without clearing these first leaves a dangling FK and 500s.
+    db.query(ReserveBid).filter(ReserveBid.auction_item_id == item.id).delete()
     db.delete(item)
     auction.turn_started_at = utcnow()
     db.commit()
