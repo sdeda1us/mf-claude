@@ -79,7 +79,7 @@ export default function AuctionRoom() {
   const [bidAmount, setBidAmount] = useState("");
   const [reserveAmount, setReserveAmount] = useState("");
   const [nameFilter, setNameFilter] = useState("");
-  const [sportFilter, setSportFilter] = useState("");
+  const [leagueFilter, setLeagueFilter] = useState("");
   const [showTeamBoard, setShowTeamBoard] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("name");
   const [sortDir, setSortDir] = useState<SortDir>("asc");
@@ -394,8 +394,8 @@ export default function AuctionRoom() {
     return teams.filter((t) => rules.league_session[t.league] === session);
   }, [teams, rules, session]);
 
-  const sports = useMemo(
-    () => Array.from(new Set(sessionTeams.map((t) => t.sport))).sort(),
+  const leagues = useMemo(
+    () => Array.from(new Set(sessionTeams.map((t) => t.league))).sort(),
     [sessionTeams]
   );
 
@@ -403,7 +403,7 @@ export default function AuctionRoom() {
     const rows = sessionTeams
       .filter((t) => !soldTeamIds.has(t.id))
       .filter((t) => t.name.toLowerCase().includes(nameFilter.toLowerCase()))
-      .filter((t) => !sportFilter || t.sport === sportFilter)
+      .filter((t) => !leagueFilter || t.league === leagueFilter)
       .map((t) => ({
         team: t,
         points: scoreByTeamId.get(t.id) ?? null,
@@ -418,7 +418,7 @@ export default function AuctionRoom() {
       return sortDir === "asc" ? cmp : -cmp;
     });
     return rows;
-  }, [sessionTeams, soldTeamIds, nameFilter, sportFilter, scoreByTeamId, cribValueByTeamId, sortKey, sortDir]);
+  }, [sessionTeams, soldTeamIds, nameFilter, leagueFilter, scoreByTeamId, cribValueByTeamId, sortKey, sortDir]);
 
   const sessionLabel = session === "fall" ? "Fall" : "Spring";
   const sessionTabs = (
@@ -930,11 +930,11 @@ export default function AuctionRoom() {
                 value={nameFilter}
                 onChange={(e) => setNameFilter(e.target.value)}
               />
-              <select value={sportFilter} onChange={(e) => setSportFilter(e.target.value)}>
-                <option value="">All sports</option>
-                {sports.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
+              <select value={leagueFilter} onChange={(e) => setLeagueFilter(e.target.value)}>
+                <option value="">All leagues</option>
+                {leagues.map((l) => (
+                  <option key={l} value={l}>
+                    {l}
                   </option>
                 ))}
               </select>
