@@ -501,6 +501,18 @@ export default function AuctionRoom() {
   const activeRosterUserId =
     rosterTabUserId ?? user?.id ?? auction.nomination_order[0] ?? null;
   const activeRosterEntries = activeRosterUserId != null ? rosterByUserId[activeRosterUserId] ?? [] : [];
+  // How many of this session's leagues the highlighted player has filled,
+  // e.g. "UCL 1/4" — same session filter as the Leagues list below, so it
+  // only shows caps that are actually live in this auction.
+  const activeRosterCapsByLeague = rules
+    ? Object.keys(rules.roster_limits)
+        .filter((league) => rules.league_session[league] === session)
+        .map((league) => ({
+          league,
+          owned: activeRosterEntries.filter((e) => e.team.league === league).length,
+          limit: rules.roster_limits[league],
+        }))
+    : [];
 
   return (
     <div className="page page-wide">
@@ -1011,6 +1023,16 @@ export default function AuctionRoom() {
               );
             })}
           </div>
+          <ul className="roster-cap-list">
+            {activeRosterCapsByLeague.map(({ league, owned, limit }) => (
+              <li key={league}>
+                <span className="pill">{league}</span>
+                <span className="roster-cap-count">
+                  {owned}/{limit}
+                </span>
+              </li>
+            ))}
+          </ul>
           <ul className="roster-tab-list">
             {activeRosterEntries.length === 0 ? (
               <li className="league-sold-empty">No teams yet.</li>
