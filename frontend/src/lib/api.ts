@@ -113,6 +113,30 @@ export interface Auction {
   slack_notifications_enabled: boolean;
 }
 
+export interface AuctionSummary {
+  id: number;
+  season_id: number;
+  season_name: string;
+  session: "fall" | "spring";
+  status: "pending" | "live" | "complete";
+  created_at: string;
+}
+
+export interface AuctionSpendingFacet {
+  owner_id: number | null;
+  display_name: string;
+  teams_sold: number;
+  by_league: Record<string, number>;
+}
+
+export interface AuctionSpending {
+  auction_id: number;
+  season_name: string;
+  session: "fall" | "spring";
+  leagues: string[];
+  facets: AuctionSpendingFacet[];
+}
+
 export interface RosterStatus {
   budget_remaining: number;
   spots_filled: number;

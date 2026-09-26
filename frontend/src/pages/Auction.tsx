@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Plotly from "plotly.js-basic-dist-min";
-import createPlotlyComponent from "react-plotly.js/factory";
 import Avatar from "../components/Avatar";
 import TeamLink from "../components/TeamLink";
 import { useAuth } from "../auth/AuthContext";
@@ -16,9 +14,8 @@ import {
   type Team,
   type User,
 } from "../lib/api";
+import Plot from "../lib/plotly";
 import { useAuctionSocket } from "../lib/useAuctionSocket";
-
-const Plot = createPlotlyComponent(Plotly);
 
 type SortKey = "name" | "league" | "points" | "value";
 type SortDir = "asc" | "desc";

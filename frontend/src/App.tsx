@@ -4,6 +4,7 @@ import Avatar from "./components/Avatar";
 import { useAuth } from "./auth/AuthContext";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Analytics from "./pages/Analytics";
 import Seasons from "./pages/Seasons";
 import Roster from "./pages/Roster";
 import AuctionRoom from "./pages/Auction";
@@ -63,6 +64,9 @@ export default function App() {
             <NavLink to="/" end className={({ isActive }) => (isActive ? "current" : undefined)}>
               Home
             </NavLink>
+            <NavLink to="/analytics" className={({ isActive }) => (isActive ? "current" : undefined)}>
+              Analytics
+            </NavLink>
             <NavLink to="/seasons" className={({ isActive }) => (isActive ? "current" : undefined)}>
               Seasons
             </NavLink>
@@ -108,6 +112,14 @@ export default function App() {
           element={
             <RequireAuth>
               <Home />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/analytics"
+          element={
+            <RequireAuth>
+              <Analytics />
             </RequireAuth>
           }
         />

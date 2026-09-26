@@ -82,6 +82,39 @@ class AuctionOut(BaseModel):
     model_config = {"from_attributes": True}
 
 
+class AuctionSummaryOut(BaseModel):
+    """One row of the analytics page's auction picker -- everything it
+    needs to label an option and know whether it's still in progress,
+    without the turn-by-turn detail AuctionOut carries."""
+
+    id: int
+    season_id: int
+    season_name: str
+    session: str
+    status: AuctionStatus
+    created_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class AuctionSpendingFacetOut(BaseModel):
+    """One facet of the analytics page's radial charts: either the whole
+    league combined (owner_id/display_name None) or a single owner."""
+
+    owner_id: int | None
+    display_name: str
+    teams_sold: int
+    by_league: dict[str, float]
+
+
+class AuctionSpendingOut(BaseModel):
+    auction_id: int
+    season_name: str
+    session: str
+    leagues: list[str]
+    facets: list[AuctionSpendingFacetOut]
+
+
 class BidOut(BaseModel):
     id: int
     user_id: int

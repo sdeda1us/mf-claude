@@ -12,6 +12,26 @@
   --rule: #e0d3ab;
   --pill-bg: #ece0bd;
   --shadow: rgba(32, 28, 22, 0.2);
+  /* Chart-only categorical hues (analytics page owner facets) -- brighter
+     versions of --sky/--gold/--grass (--chart-gold matches --gold exactly
+     in light mode, split off only because dark mode needs a darker gold
+     than the site chrome's) plus two new hues (teal, violet), stepped up
+     in saturation past the site chrome's muted versions because a
+     categorical data color needs more chroma to read as distinct than a
+     UI accent does. --chart-red intentionally equals --red as-is in both
+     modes -- it's the one slot that already cleared every check unchanged.
+     Validated as a set with dataviz's validate_palette.js against this
+     exact --stock surface, both modes: lightness band, chroma floor,
+     adjacent CVD (worst pair ΔE 10.4 light / 11.3 dark, >=8 target),
+     adjacent normal-vision floor (>=15) all clear. Order (red, sky, gold,
+     teal, violet, grass) matters -- it's the CVD-safe sequence, not
+     cosmetic. */
+  --chart-red: #c8372e;
+  --chart-sky: #2f7ba8;
+  --chart-gold: #d9a73b;
+  --chart-teal: #0d9488;
+  --chart-violet: #7a5ea8;
+  --chart-grass: #1f8a4a;
   --display-font: "Arial Narrow", "Helvetica Neue Condensed Bold", "Franklin Gothic Bold",
     "Segoe UI Semibold", system-ui, sans-serif;
   color-scheme: light dark;
@@ -32,6 +52,12 @@
     --rule: #3a3427;
     --pill-bg: #2e2820;
     --shadow: rgba(0, 0, 0, 0.55);
+    --chart-red: #d9564c;
+    --chart-sky: #3987b8;
+    --chart-gold: #b8842a;
+    --chart-teal: #17a595;
+    --chart-violet: #8a6fc4;
+    --chart-grass: #2f9d5c;
   }
 }
 
@@ -49,6 +75,12 @@
   --rule: #3a3427;
   --pill-bg: #2e2820;
   --shadow: rgba(0, 0, 0, 0.55);
+  --chart-red: #d9564c;
+  --chart-sky: #3987b8;
+  --chart-gold: #b8842a;
+  --chart-teal: #17a595;
+  --chart-violet: #8a6fc4;
+  --chart-grass: #2f9d5c;
 }
 
 :root[data-theme="light"] {
@@ -65,6 +97,12 @@
   --rule: #e0d3ab;
   --pill-bg: #ece0bd;
   --shadow: rgba(32, 28, 22, 0.2);
+  --chart-red: #c8372e;
+  --chart-sky: #2f7ba8;
+  --chart-gold: #d9a73b;
+  --chart-teal: #0d9488;
+  --chart-violet: #7a5ea8;
+  --chart-grass: #1f8a4a;
 }
 
 * {
@@ -1959,4 +1997,54 @@ button:disabled {
   margin-left: 0;
   padding: 8px 14px;
   font-size: 13px;
+}
+
+.analytics-picker {
+  margin: 12px 0 32px;
+}
+
+.analytics-picker label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.analytics-picker select {
+  font-size: 15px;
+  text-transform: none;
+  letter-spacing: normal;
+  min-width: 320px;
+  max-width: 100%;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.analytics-facet {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.analytics-facet-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.analytics-facet-meta {
+  margin: 2px 0 4px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.analytics-facet-chart {
+  align-self: center;
 }
