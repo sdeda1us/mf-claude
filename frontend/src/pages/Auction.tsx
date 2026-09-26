@@ -57,6 +57,39 @@ function parseUtcMs(raw: string): number {
   return Date.parse(/Z|[+-]\d\d:\d\d$/.test(raw) ? raw : `${raw}Z`);
 }
 
+function csvField(value: string | number): string {
+  const s = String(value);
+  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+
+function downloadAuctionResultsCsv(
+  entries: RosterEntry[],
+  usersById: Map<number, User>,
+  sessionLabel: string
+) {
+  const header = ["Team", "League", "Sport", "Buyer", "Price Paid", "Sold At"];
+  const lines = [header.map(csvField).join(",")];
+  for (const entry of entries) {
+    const buyer = usersById.get(entry.user_id)?.display_name ?? `User #${entry.user_id}`;
+    const line = [
+      entry.team.name,
+      entry.team.league,
+      entry.team.sport,
+      buyer,
+      entry.price_paid,
+      entry.created_at,
+    ];
+    lines.push(line.map(csvField).join(","));
+  }
+  const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `megafantasy-${sessionLabel.toLowerCase()}-auction-results.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 function formatCountdown(totalSeconds: number): string {
   const h = Math.floor(totalSeconds / 3600);
   const m = Math.floor((totalSeconds % 3600) / 60);
@@ -514,20 +547,40 @@ export default function AuctionRoom() {
         }))
     : [];
 
+  // Every sold team in this session, priciest first — same "sold" source
+  // as everywhere else on this page (roster entries only exist once an
+  // item's finalized), so a team currently up for bid never appears here;
+  // it just doesn't have a RosterEntry yet.
+  const sessionSoldEntries = rules
+    ? roster
+        .filter((entry) => rules.league_session[entry.team.league] === session)
+        .slice()
+        .sort((a, b) => b.price_paid - a.price_paid)
+    : [];
+
   return (
     <div className="page page-wide">
       {sessionTabs}
       <div className="auction-header">
         <h1>{sessionLabel} Auction Room</h1>
-        {user?.is_commissioner && (
+        <div className="auction-header-actions">
           <button
             type="button"
-            className={isPaused ? "btn-success pause-btn" : "btn-primary pause-btn"}
-            onClick={isPaused ? resumeAuction : pauseAuction}
+            title="Download a CSV of every team sold so far this session"
+            onClick={() => downloadAuctionResultsCsv(sessionSoldEntries, usersById, sessionLabel)}
           >
-            {isPaused ? "Resume Auction" : "Pause Auction"}
+            ⬇ Download results (CSV)
           </button>
-        )}
+          {user?.is_commissioner && (
+            <button
+              type="button"
+              className={isPaused ? "btn-success pause-btn" : "btn-primary pause-btn"}
+              onClick={isPaused ? resumeAuction : pauseAuction}
+            >
+              {isPaused ? "Resume Auction" : "Pause Auction"}
+            </button>
+          )}
+        </div>
       </div>
       <p className="connection-status">
         <span className={connected ? "status-dot" : "status-dot warn"} aria-hidden="true" />

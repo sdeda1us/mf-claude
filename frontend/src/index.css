@@ -723,6 +723,13 @@ button:disabled {
   margin: 0;
 }
 
+.auction-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .pause-btn {
   flex-shrink: 0;
 }
