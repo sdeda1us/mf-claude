@@ -166,6 +166,65 @@ export default function Analytics() {
       });
   }, [spending, rosterEntries, ownerOrder, ownerColor, ownerName, palette.neutral]);
 
+  // Actual price paid vs. Team.default_value (the league-wide modeled
+  // valuation shown everywhere else in the app, e.g. the team board's
+  // "Your Value" column before an owner overrides it) -- deliberately
+  // NOT each owner's own private crib sheet override, since every
+  // crib-sheet endpoint today is scoped so nobody but the owner
+  // themselves can ever see it; default_value is the one valuation this
+  // shared page can show without leaking anyone's private numbers.
+  // One trace per owner (not per team, unlike the stacked chart above) --
+  // each point is already independently positioned by its own x/y, so
+  // there's no same-color-adjacent-segment ambiguity that needs the
+  // legendgroup trick this time, and Plotly's default one-entry-per-trace
+  // legend is exactly what's wanted: one entry per owner.
+  const valueVsPriceChart = useMemo(() => {
+    if (!spending) return { traces: [], maxVal: 1 };
+    const leagues = new Set(spending.leagues);
+    const priced = rosterEntries.filter(
+      (e) => leagues.has(e.team.league) && e.team.default_value != null
+    );
+    const byOwner = new Map<number, { x: number[]; y: number[]; text: string[] }>();
+    for (const e of priced) {
+      const bucket = byOwner.get(e.user_id) ?? { x: [], y: [], text: [] };
+      bucket.x.push(e.team.default_value as number);
+      bucket.y.push(e.price_paid);
+      bucket.text.push(e.team.name);
+      byOwner.set(e.user_id, bucket);
+    }
+    const maxVal =
+      priced.length === 0
+        ? 1
+        : Math.max(...priced.flatMap((e) => [e.team.default_value as number, e.price_paid])) * 1.1;
+
+    const referenceLine = {
+      type: "scatter" as const,
+      mode: "lines" as const,
+      x: [0, maxVal],
+      y: [0, maxVal],
+      line: { color: palette.grid, width: 1.5, dash: "dash" as const },
+      hoverinfo: "skip" as const,
+      showlegend: false,
+    };
+    const ownerTraces = Array.from(byOwner.entries())
+      .sort(([a], [b]) => (ownerOrder[a] ?? 0) - (ownerOrder[b] ?? 0))
+      .map(([uid, bucket]) => ({
+        type: "scatter" as const,
+        mode: "markers" as const,
+        x: bucket.x,
+        y: bucket.y,
+        text: bucket.text,
+        name: ownerName[uid] ?? `User #${uid}`,
+        marker: {
+          color: ownerColor[uid] ?? palette.neutral,
+          size: 10,
+          line: { color: "#000000", width: 1 },
+        },
+        hovertemplate: "%{text}<br>Predicted: $%{x:.0f}<br>Paid: $%{y:.0f}<extra></extra>",
+      }));
+    return { traces: [referenceLine, ...ownerTraces], maxVal };
+  }, [spending, rosterEntries, ownerOrder, ownerColor, ownerName, palette.grid, palette.neutral]);
+
   return (
     <div className="page page-wide">
       <h1>Auction Analytics</h1>
@@ -282,6 +341,56 @@ export default function Analytics() {
                 }}
                 config={{ displayModeBar: false, responsive: true }}
                 style={{ width: "100%", height: 460 }}
+                useResizeHandler
+              />
+            </div>
+          </section>
+
+          <section>
+            <h2>Price Paid vs. Predicted Value</h2>
+            <div className="analytics-scatter-chart">
+              <Plot
+                data={valueVsPriceChart.traces}
+                layout={{
+                  autosize: true,
+                  height: 500,
+                  margin: { l: 64, r: 16, t: 8, b: 48 },
+                  paper_bgcolor: "transparent",
+                  plot_bgcolor: "transparent",
+                  font: { size: 12, color: palette.text },
+                  xaxis: {
+                    title: { text: "Predicted value ($)" },
+                    range: [0, valueVsPriceChart.maxVal],
+                    tickprefix: "$",
+                    gridcolor: palette.grid,
+                    linecolor: palette.grid,
+                    zeroline: false,
+                  },
+                  yaxis: {
+                    title: { text: "Actual price paid ($)" },
+                    range: [0, valueVsPriceChart.maxVal],
+                    tickprefix: "$",
+                    gridcolor: palette.grid,
+                    linecolor: palette.grid,
+                    zeroline: false,
+                    // Locks a true 1:1 aspect ratio to the x-axis, so the
+                    // dashed reference line always reads as an honest 45°
+                    // diagonal (points above it overpaid relative to the
+                    // model, below it underpaid) regardless of the
+                    // container's own width/height.
+                    scaleanchor: "x",
+                    scaleratio: 1,
+                  },
+                  legend: {
+                    orientation: "h",
+                    x: 0,
+                    y: 1.1,
+                    xanchor: "left",
+                    font: { size: 12, color: palette.text },
+                  },
+                }}
+                config={{ displayModeBar: false, responsive: true }}
+                style={{ width: "100%", height: 500 }}
                 useResizeHandler
               />
             </div>

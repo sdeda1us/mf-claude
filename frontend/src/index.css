@@ -2049,6 +2049,7 @@ button:disabled {
   align-self: center;
 }
 
-.analytics-stacked-chart {
+.analytics-stacked-chart,
+.analytics-scatter-chart {
   width: 100%;
 }
