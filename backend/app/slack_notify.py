@@ -41,6 +41,16 @@ def notify_slack(text: str) -> None:
     manager.spawn(asyncio.to_thread(_post, text))
 
 
+def notify_slack_sync(text: str) -> None:
+    """Same as notify_slack, but posts inline instead of scheduling a
+    task — for callers with no running event loop to schedule onto (e.g.
+    app/backup.py's run_backup, which is also invoked standalone via
+    `python -m app.backup`). Already blocking-safe on its own (same `_post`,
+    same short timeout), so there's nothing to gain from backgrounding it
+    outside of an event loop context anyway."""
+    _post(text)
+
+
 def _display_name(db: Session, user_id: int) -> str:
     user = db.get(User, user_id)
     return user.display_name if user is not None else f"User #{user_id}"

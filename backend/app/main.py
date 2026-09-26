@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.auction_service import current_turn_user_id, get_active_item
 from app.auction_timer import schedule_bid_timer, schedule_turn_timer
+from app.backup import nightly_backup_loop
 from app.config import settings
 from app.database import SessionLocal
 from app.models import Auction, AuctionStatus
@@ -37,6 +38,7 @@ async def lifespan(_: FastAPI):
                 manager.spawn(schedule_turn_timer(a.id))
     finally:
         db.close()
+    manager.spawn(nightly_backup_loop())
     yield
 
 
