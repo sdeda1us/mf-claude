@@ -2048,3 +2048,7 @@ button:disabled {
 .analytics-facet-chart {
   align-self: center;
 }
+
+.analytics-stacked-chart {
+  width: 100%;
+}
