@@ -153,7 +153,14 @@ export default function Analytics() {
           name,
           legendgroup: String(e.user_id),
           showlegend: isFirst,
-          marker: { color: ownerColor[e.user_id] ?? palette.neutral },
+          marker: {
+            color: ownerColor[e.user_id] ?? palette.neutral,
+            // A hairline between every team segment, even adjacent ones
+            // from the same owner (same fill color) -- otherwise two
+            // teams bought by the same person in the same league would
+            // fuse into one solid block with no visible seam.
+            line: { color: "#000000", width: 1 },
+          },
           hovertemplate: `${e.team.name} — ${name}<br>$${Number(e.price_paid).toFixed(0)}<extra></extra>`,
         };
       });
