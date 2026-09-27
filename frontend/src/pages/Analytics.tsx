@@ -365,6 +365,13 @@ export default function Analytics() {
                     gridcolor: palette.grid,
                     linecolor: palette.grid,
                     zeroline: false,
+                    // Without this, satisfying yaxis's 1:1 scaleanchor
+                    // below stretches THIS axis's range to fill the
+                    // container's actual (wide, not square) pixel
+                    // dimensions instead -- "domain" tells Plotly to pad
+                    // the plot area with whitespace instead, keeping the
+                    // range exactly [0, maxVal] as set here.
+                    constrain: "domain",
                   },
                   yaxis: {
                     title: { text: "Actual price paid ($)" },
@@ -380,6 +387,7 @@ export default function Analytics() {
                     // container's own width/height.
                     scaleanchor: "x",
                     scaleratio: 1,
+                    constrain: "domain",
                   },
                   legend: {
                     orientation: "h",
