@@ -134,19 +134,22 @@ export default function Analytics() {
   // color means the same thing in both visuals on this page. "Whole
   // League" is skipped here; it isn't an owner and never appears in the
   // stacked chart.
-  const { ownerColor, ownerName, ownerOrder } = useMemo(() => {
+  const { ownerColor, ownerName, ownerOrder, ownerLegendEntries } = useMemo(() => {
     const color: Record<number, string> = {};
     const name: Record<number, string> = {};
     const order: Record<number, number> = {};
+    const entries: { ownerId: number; name: string; color: string }[] = [];
     let i = 0;
     for (const facet of spending?.facets ?? []) {
       if (facet.owner_id == null) continue;
-      color[facet.owner_id] = palette.owners[i % palette.owners.length];
+      const c = palette.owners[i % palette.owners.length];
+      color[facet.owner_id] = c;
       name[facet.owner_id] = facet.display_name;
       order[facet.owner_id] = i;
+      entries.push({ ownerId: facet.owner_id, name: facet.display_name, color: c });
       i++;
     }
-    return { ownerColor: color, ownerName: name, ownerOrder: order };
+    return { ownerColor: color, ownerName: name, ownerOrder: order, ownerLegendEntries: entries };
   }, [spending, palette.owners]);
 
   // Every facet's radial axis shares this same upper bound, so a glance
@@ -382,6 +385,27 @@ export default function Analytics() {
 
           <section>
             <h2>Where the Money Went</h2>
+            {stackedChartNarrow && (
+              // Plotly's own legend wraps to 2-3 rows at this width (6
+              // owners, nowhere near enough room for one row), and no
+              // combination of margin.t / legend.y I tried kept its
+              // wrapped height from eating into the first bar or two --
+              // its rendered position turned out to scale with margin.t
+              // instead of landing at a fixed offset, so there was no
+              // margin value that satisfied both "big enough" and
+              // "doesn't just push the overlap along with it". A plain
+              // HTML legend in normal document flow sidesteps that
+              // entirely: it just takes the vertical space it needs,
+              // and the chart starts wherever it ends.
+              <ul className="analytics-html-legend">
+                {ownerLegendEntries.map((o) => (
+                  <li key={o.ownerId}>
+                    <span className="analytics-html-legend-swatch" style={{ background: o.color }} />
+                    {o.name}
+                  </li>
+                ))}
+              </ul>
+            )}
             <div className="analytics-stacked-chart">
               <Plot
                 data={stackedTraces}
@@ -389,11 +413,9 @@ export default function Analytics() {
                   autosize: true,
                   height: 460,
                   barmode: "stack",
+                  showlegend: !stackedChartNarrow,
                   margin: stackedChartNarrow
-                    // The horizontal legend wraps to 2-3 rows at this
-                    // width (6 owners, not enough room for one row) --
-                    // needs real top margin or it overlaps the first bar.
-                    ? { l: 72, r: 16, t: 112, b: 40 }
+                    ? { l: 72, r: 16, t: 8, b: 40 }
                     : { l: 56, r: 16, t: 8, b: 40 },
                   paper_bgcolor: "transparent",
                   plot_bgcolor: "transparent",
