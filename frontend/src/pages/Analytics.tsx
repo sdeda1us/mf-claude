@@ -1,5 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { api, type AuctionSpending, type AuctionSummary, type RosterEntry } from "../lib/api";
+import {
+  api,
+  type AuctionSpending,
+  type AuctionSummary,
+  type LeagueRules,
+  type RosterEntry,
+  type Team,
+} from "../lib/api";
 import Plot from "../lib/plotly";
 
 // Reads the analytics chart palette from CSS custom properties so it stays
@@ -52,8 +59,20 @@ export default function Analytics() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [spending, setSpending] = useState<AuctionSpending | null>(null);
   const [rosterEntries, setRosterEntries] = useState<RosterEntry[]>([]);
+  const [teams, setTeams] = useState<Team[]>([]);
+  const [rules, setRules] = useState<LeagueRules | null>(null);
   const [loading, setLoading] = useState(false);
   const palette = useAnalyticsPalette();
+
+  // Static reference data for the "Still on the Board" chart -- the full
+  // team catalog (to find what's unsold) and roster limits (to know how
+  // many slots exist per league in the first place). Same endpoints the
+  // auction room already uses; neither depends on which auction is
+  // selected.
+  useEffect(() => {
+    api.get<Team[]>("/teams").then(setTeams);
+    api.get<LeagueRules>("/leagues/rules").then(setRules);
+  }, []);
 
   useEffect(() => {
     api.get<AuctionSummary[]>("/analytics/auctions").then((rows) => {
@@ -225,6 +244,40 @@ export default function Analytics() {
     return { traces: [referenceLine, ...ownerTraces], maxVal };
   }, [spending, rosterEntries, ownerOrder, ownerColor, ownerName, palette.grid, palette.neutral]);
 
+  // "Still on the Board": how many roster slots are left in each league
+  // (roster_limits × number of owners, minus how many have already sold
+  // this session) and, on hover, which unsold teams are the most
+  // valuable by the same modeled default_value used in the scatter chart
+  // above -- i.e. what's still worth grabbing. A league whose owner
+  // count can't be read yet (spending not loaded) or whose rules/teams
+  // haven't loaded returns nothing rather than a misleading partial bar.
+  const openingsChart = useMemo(() => {
+    if (!spending || !rules) return { leagues: [], slotsRemaining: [], hovertext: [] };
+    const numOwners = spending.facets.filter((f) => f.owner_id != null).length;
+    const soldIds = new Set(rosterEntries.map((e) => e.team.id));
+    const slotsRemaining: number[] = [];
+    const hovertext: string[] = [];
+    for (const lg of spending.leagues) {
+      const limit = rules.roster_limits[lg] ?? 0;
+      const soldCount = rosterEntries.filter((e) => e.team.league === lg).length;
+      const remaining = Math.max(0, limit * numOwners - soldCount);
+      slotsRemaining.push(remaining);
+
+      const topAvailable = teams
+        .filter((t) => t.league === lg && !soldIds.has(t.id) && t.default_value != null)
+        .sort((a, b) => (b.default_value as number) - (a.default_value as number))
+        .slice(0, 3);
+      const lines = [`${lg}: ${remaining} slot${remaining === 1 ? "" : "s"} open`];
+      if (topAvailable.length > 0) {
+        lines.push(...topAvailable.map((t, i) => `${i + 1}. ${t.name} — $${t.default_value}`));
+      } else {
+        lines.push("No unsold teams with a modeled value");
+      }
+      hovertext.push(lines.join("<br>"));
+    }
+    return { leagues: spending.leagues, slotsRemaining, hovertext };
+  }, [spending, rules, rosterEntries, teams]);
+
   return (
     <div className="page page-wide">
       <h1>Auction Analytics</h1>
@@ -347,60 +400,110 @@ export default function Analytics() {
           </section>
 
           <section>
-            <h2>Price Paid vs. Predicted Value</h2>
-            <div className="analytics-scatter-chart">
-              <Plot
-                data={valueVsPriceChart.traces}
-                layout={{
-                  autosize: true,
-                  height: 500,
-                  margin: { l: 64, r: 16, t: 8, b: 48 },
-                  paper_bgcolor: "transparent",
-                  plot_bgcolor: "transparent",
-                  font: { size: 12, color: palette.text },
-                  xaxis: {
-                    title: { text: "Predicted value ($)" },
-                    range: [0, valueVsPriceChart.maxVal],
-                    tickprefix: "$",
-                    gridcolor: palette.grid,
-                    linecolor: palette.grid,
-                    zeroline: false,
-                    // Without this, satisfying yaxis's 1:1 scaleanchor
-                    // below stretches THIS axis's range to fill the
-                    // container's actual (wide, not square) pixel
-                    // dimensions instead -- "domain" tells Plotly to pad
-                    // the plot area with whitespace instead, keeping the
-                    // range exactly [0, maxVal] as set here.
-                    constrain: "domain",
-                  },
-                  yaxis: {
-                    title: { text: "Actual price paid ($)" },
-                    range: [0, valueVsPriceChart.maxVal],
-                    tickprefix: "$",
-                    gridcolor: palette.grid,
-                    linecolor: palette.grid,
-                    zeroline: false,
-                    // Locks a true 1:1 aspect ratio to the x-axis, so the
-                    // dashed reference line always reads as an honest 45°
-                    // diagonal (points above it overpaid relative to the
-                    // model, below it underpaid) regardless of the
-                    // container's own width/height.
-                    scaleanchor: "x",
-                    scaleratio: 1,
-                    constrain: "domain",
-                  },
-                  legend: {
-                    orientation: "h",
-                    x: 0,
-                    y: 1.1,
-                    xanchor: "left",
-                    font: { size: 12, color: palette.text },
-                  },
-                }}
-                config={{ displayModeBar: false, responsive: true }}
-                style={{ width: "100%", height: 500 }}
-                useResizeHandler
-              />
+            <div className="analytics-two-col">
+              <div>
+                <h2>Price Paid vs. Predicted Value</h2>
+                <div className="analytics-scatter-chart">
+                  <Plot
+                    data={valueVsPriceChart.traces}
+                    layout={{
+                      autosize: true,
+                      height: 460,
+                      margin: { l: 60, r: 16, t: 8, b: 48 },
+                      paper_bgcolor: "transparent",
+                      plot_bgcolor: "transparent",
+                      font: { size: 12, color: palette.text },
+                      xaxis: {
+                        title: { text: "Predicted value ($)" },
+                        range: [0, valueVsPriceChart.maxVal],
+                        tickprefix: "$",
+                        gridcolor: palette.grid,
+                        linecolor: palette.grid,
+                        zeroline: false,
+                        // Without this, satisfying yaxis's 1:1 scaleanchor
+                        // below stretches THIS axis's range to fill the
+                        // container's actual (wide, not square) pixel
+                        // dimensions instead -- "domain" tells Plotly to pad
+                        // the plot area with whitespace instead, keeping the
+                        // range exactly [0, maxVal] as set here.
+                        constrain: "domain",
+                      },
+                      yaxis: {
+                        title: { text: "Actual price paid ($)" },
+                        range: [0, valueVsPriceChart.maxVal],
+                        tickprefix: "$",
+                        gridcolor: palette.grid,
+                        linecolor: palette.grid,
+                        zeroline: false,
+                        // Locks a true 1:1 aspect ratio to the x-axis, so the
+                        // dashed reference line always reads as an honest 45°
+                        // diagonal (points above it overpaid relative to the
+                        // model, below it underpaid) regardless of the
+                        // container's own width/height.
+                        scaleanchor: "x",
+                        scaleratio: 1,
+                        constrain: "domain",
+                      },
+                      legend: {
+                        orientation: "h",
+                        x: 0,
+                        y: 1.12,
+                        xanchor: "left",
+                        font: { size: 12, color: palette.text },
+                      },
+                    }}
+                    config={{ displayModeBar: false, responsive: true }}
+                    style={{ width: "100%", height: 460 }}
+                    useResizeHandler
+                  />
+                </div>
+              </div>
+
+              <div>
+                <h2>Still on the Board</h2>
+                <p className="analytics-facet-meta">
+                  Open roster slots per league, plus the highest-valued unsold teams on hover
+                </p>
+                <div className="analytics-openings-chart">
+                  <Plot
+                    data={[
+                      {
+                        type: "bar",
+                        orientation: "h",
+                        y: openingsChart.leagues,
+                        x: openingsChart.slotsRemaining,
+                        hovertext: openingsChart.hovertext,
+                        hovertemplate: "%{hovertext}<extra></extra>",
+                        marker: { color: palette.neutral },
+                      },
+                    ]}
+                    layout={{
+                      autosize: true,
+                      height: 460,
+                      margin: { l: 56, r: 16, t: 8, b: 40 },
+                      paper_bgcolor: "transparent",
+                      plot_bgcolor: "transparent",
+                      font: { size: 12, color: palette.text },
+                      xaxis: {
+                        title: { text: "Open roster slots" },
+                        gridcolor: palette.grid,
+                        linecolor: palette.grid,
+                        zeroline: false,
+                      },
+                      yaxis: {
+                        categoryorder: "array",
+                        categoryarray: openingsChart.leagues,
+                        autorange: "reversed",
+                        gridcolor: palette.grid,
+                        linecolor: palette.grid,
+                      },
+                    }}
+                    config={{ displayModeBar: false, responsive: true }}
+                    style={{ width: "100%", height: 460 }}
+                    useResizeHandler
+                  />
+                </div>
+              </div>
             </div>
           </section>
         </>
