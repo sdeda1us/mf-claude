@@ -390,7 +390,10 @@ export default function Analytics() {
                   height: 460,
                   barmode: "stack",
                   margin: stackedChartNarrow
-                    ? { l: 72, r: 16, t: 8, b: 40 }
+                    // The horizontal legend wraps to 2-3 rows at this
+                    // width (6 owners, not enough room for one row) --
+                    // needs real top margin or it overlaps the first bar.
+                    ? { l: 72, r: 16, t: 76, b: 40 }
                     : { l: 56, r: 16, t: 8, b: 40 },
                   paper_bgcolor: "transparent",
                   plot_bgcolor: "transparent",
