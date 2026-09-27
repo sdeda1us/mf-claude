@@ -47,6 +47,26 @@ function useAnalyticsPalette() {
   return palette;
 }
 
+// True on narrow (roughly phone-width) viewports. Used to flip the
+// "Where the Money Went" stacked chart to horizontal bars there -- with
+// 9-11 league categories, a vertical layout leaves so little width per
+// bar on a phone that Plotly auto-rotates the labels diagonally (exactly
+// the "please don't make me read at an angle" mistake the rest of this
+// page's styling deliberately avoids). Horizontal bars sidestep it
+// entirely, the same fix already used for "Still on the Board".
+function useIsNarrow(breakpointPx: number): boolean {
+  const [isNarrow, setIsNarrow] = useState(
+    () => window.matchMedia(`(max-width: ${breakpointPx}px)`).matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpointPx}px)`);
+    const update = () => setIsNarrow(mq.matches);
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, [breakpointPx]);
+  return isNarrow;
+}
+
 function auctionLabel(a: AuctionSummary): string {
   const sessionLabel = a.session === "fall" ? "Fall" : "Spring";
   const statusLabel =
@@ -63,6 +83,7 @@ export default function Analytics() {
   const [rules, setRules] = useState<LeagueRules | null>(null);
   const [loading, setLoading] = useState(false);
   const palette = useAnalyticsPalette();
+  const stackedChartNarrow = useIsNarrow(700);
 
   // Static reference data for the "Still on the Board" chart -- the full
   // team catalog (to find what's unsold) and roster limits (to know how
@@ -167,8 +188,9 @@ export default function Analytics() {
         seenOwner.add(e.user_id);
         return {
           type: "bar" as const,
-          x: [e.team.league],
-          y: [e.price_paid],
+          orientation: stackedChartNarrow ? ("h" as const) : ("v" as const),
+          x: stackedChartNarrow ? [e.price_paid] : [e.team.league],
+          y: stackedChartNarrow ? [e.team.league] : [e.price_paid],
           name,
           legendgroup: String(e.user_id),
           showlegend: isFirst,
@@ -183,7 +205,7 @@ export default function Analytics() {
           hovertemplate: `${e.team.name} — ${name}<br>$${Number(e.price_paid).toFixed(0)}<extra></extra>`,
         };
       });
-  }, [spending, rosterEntries, ownerOrder, ownerColor, ownerName, palette.neutral]);
+  }, [spending, rosterEntries, ownerOrder, ownerColor, ownerName, palette.neutral, stackedChartNarrow]);
 
   // Actual price paid vs. Team.default_value (the league-wide modeled
   // valuation shown everywhere else in the app, e.g. the team board's
@@ -367,23 +389,35 @@ export default function Analytics() {
                   autosize: true,
                   height: 460,
                   barmode: "stack",
-                  margin: { l: 56, r: 16, t: 8, b: 40 },
+                  margin: stackedChartNarrow
+                    ? { l: 72, r: 16, t: 8, b: 40 }
+                    : { l: 56, r: 16, t: 8, b: 40 },
                   paper_bgcolor: "transparent",
                   plot_bgcolor: "transparent",
                   font: { size: 12, color: palette.text },
                   bargap: 0.25,
-                  xaxis: {
-                    categoryorder: "array",
-                    categoryarray: spending.leagues,
-                    gridcolor: palette.grid,
-                    linecolor: palette.grid,
-                  },
-                  yaxis: {
-                    gridcolor: palette.grid,
-                    linecolor: palette.grid,
-                    zeroline: false,
-                    tickprefix: "$",
-                  },
+                  // Same category axis, different position -- narrow
+                  // viewports flip to horizontal bars (see stackedTraces),
+                  // so the league labels land on y instead of x, sidestepping
+                  // the "not enough width per category" diagonal-label
+                  // problem entirely rather than fighting it with tickangle.
+                  xaxis: stackedChartNarrow
+                    ? { gridcolor: palette.grid, linecolor: palette.grid, zeroline: false, tickprefix: "$" }
+                    : {
+                        categoryorder: "array",
+                        categoryarray: spending.leagues,
+                        gridcolor: palette.grid,
+                        linecolor: palette.grid,
+                      },
+                  yaxis: stackedChartNarrow
+                    ? {
+                        categoryorder: "array",
+                        categoryarray: spending.leagues,
+                        autorange: "reversed",
+                        gridcolor: palette.grid,
+                        linecolor: palette.grid,
+                      }
+                    : { gridcolor: palette.grid, linecolor: palette.grid, zeroline: false, tickprefix: "$" },
                   legend: {
                     orientation: "h",
                     x: 0,
