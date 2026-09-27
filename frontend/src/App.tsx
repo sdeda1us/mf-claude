@@ -96,13 +96,12 @@ export default function App() {
                 Admin
               </NavLink>
             )}
+            <Link to="/settings" className="nav-identity">
+              <Avatar name={user.display_name} src={user.avatar_data_url} size={24} />
+              {user.display_name}
+            </Link>
+            <button onClick={logout}>Log out</button>
           </nav>
-          <span className="spacer" />
-          <Link to="/settings" className="nav-identity">
-            <Avatar name={user.display_name} src={user.avatar_data_url} size={24} />
-            {user.display_name}
-          </Link>
-          <button onClick={logout}>Log out</button>
         </header>
       )}
       <Routes>

@@ -309,6 +309,7 @@ h2 {
 
 .titlebar-nav {
   display: flex;
+  align-items: center;
   gap: 18px;
   flex-wrap: wrap;
 }
@@ -334,12 +335,14 @@ h2 {
   border-color: var(--sky);
 }
 
-.titlebar .spacer {
-  flex: 1;
-}
-
 .titlebar .nav-identity {
   color: var(--stock-hi);
+  /* Now a child of .titlebar-nav (moved there so it collapses into the
+     mobile menu instead of fighting the hamburger button for space in
+     the header bar) -- auto margin pushes it (and Log out after it) to
+     the far right of the row on desktop, replacing what a separate
+     .spacer sibling used to do at the .titlebar level. */
+  margin-left: auto;
 }
 
 .titlebar .nav-identity:hover {
@@ -357,6 +360,12 @@ h2 {
   background: transparent;
   border: none;
   box-shadow: none;
+  /* An empty button has no content forcing a minimum width, so without
+     this the .titlebar flex row (avatar name + Log out competing for
+     space at phone widths) shrinks it all the way to 0 -- present in
+     the DOM, "visible", just rendered at zero size -- rather than
+     honoring the width above. */
+  flex-shrink: 0;
 }
 
 .mobile-nav-toggle span {
@@ -390,14 +399,35 @@ h2 {
     padding: 8px 0;
   }
 
-  .titlebar-nav.mobile-open a {
+  .titlebar-nav.mobile-open a,
+  .titlebar-nav.mobile-open button {
     color: var(--ink);
     padding: 10px 20px;
     border-bottom: none;
+    /* .nav-identity's margin-left: auto is a horizontal (cross-axis)
+       push in this column layout, not "far right of the row" like it
+       is on desktop -- reset so it stacks flush like every other item. */
+    margin-left: 0;
   }
 
   .titlebar-nav.mobile-open a.current {
     background: var(--pill-bg);
+  }
+
+  /* The "Log out" button carries this app's normal boxed-button chrome
+     (background, border, shadow) by default -- reset it to look like
+     just another row in this menu, matching the links around it. */
+  .titlebar-nav.mobile-open button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    box-shadow: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
   }
 }
 
