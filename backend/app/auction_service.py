@@ -381,23 +381,26 @@ def auto_pass_capped_users(db: Session, auction: Auction, item: AuctionItem) -> 
 def auto_pass_over_budget_users(db: Session, auction: Auction, item: AuctionItem) -> None:
     """Anyone whose max safe bid (roster_status_by_user's max_bid --
     budget remaining after reserving $1 for every other still-open
-    roster spot this session) is already below the current high bid
-    literally can't afford this team without shorting a future spot, so
-    they're auto-passed the same way auto_pass_capped_users handles a
-    roster-cap ineligibility -- not just "can't legally bid higher" but
-    "can't legally win it at this price at all". Call this right
-    alongside that function, after any bid is placed, before
-    resolve_reserve_bids (so an over-budget user's own reserve is
-    correctly excluded from cascading rather than auto-bidding past what
-    they can actually afford)."""
-    current_high = current_high_bid(item)
+    roster spot this session) can't even cover the next legal bid is
+    auto-passed the same way auto_pass_capped_users handles a
+    roster-cap ineligibility -- the question isn't "does the current
+    price already exceed their max" (someone sitting exactly AT the
+    current high bid could still win it there if nobody else acts), it's
+    "can they ever legally raise it further" -- i.e. compared against
+    next_amount, the same current_high + 1 resolve_reserve_bids already
+    uses for its own budget-ceiling check, not current_high itself. Call
+    this right alongside auto_pass_capped_users, after any bid is
+    placed, before resolve_reserve_bids (so an over-budget user's own
+    reserve is correctly excluded from cascading rather than auto-
+    bidding past what they can actually afford)."""
+    next_amount = current_high_bid(item) + 1
     winner_id = high_bidder_user_id(item)
     passed = set(item.passed_user_ids)
     changed = False
     for user_id, status in roster_status_by_user(db, auction.season, auction.session).items():
         if user_id == winner_id or user_id in passed:
             continue
-        if current_high > status.max_bid:
+        if next_amount > status.max_bid:
             passed.add(user_id)
             changed = True
     if changed:
