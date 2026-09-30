@@ -7,6 +7,7 @@ from app.auction_service import (
     all_non_high_bidders_passed,
     apply_queue_reserves,
     auto_pass_capped_users,
+    auto_pass_over_budget_users,
     count_user_league_teams,
     count_user_minor_conference_teams,
     current_turn_user_id,
@@ -161,6 +162,8 @@ async def schedule_turn_timer(auction_id: int) -> None:
         # everyone else is already passed, the team sells outright rather
         # than sitting open with a countdown nobody left can act on.
         auto_pass_capped_users(db, auction, item)
+        # Same idea for anyone the opening bid already priced out.
+        auto_pass_over_budget_users(db, auction, item)
         reserve_bids_placed = resolve_reserve_bids(
             db,
             auction,

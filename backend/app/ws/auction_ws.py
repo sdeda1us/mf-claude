@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from app.auction_service import (
     all_non_high_bidders_passed,
     auto_pass_capped_users,
+    auto_pass_over_budget_users,
     build_state,
     count_user_league_teams,
     count_user_minor_conference_teams,
@@ -307,6 +308,9 @@ async def auction_room(websocket: WebSocket, auction_id: int):
             # again, so they're auto-passed rather than left to click Pass
             # on a team they're no longer eligible to win.
             auto_pass_capped_users(db, auction, item)
+            # Same idea for anyone the current high bid has priced out --
+            # can't afford this team without shorting a future roster spot.
+            auto_pass_over_budget_users(db, auction, item)
             # Anyone with an active reserve below the new high bid auto-tops
             # it by $1 (possibly cascading against a rival reserve) before
             # this settles — a locked reserve should react the same way a
