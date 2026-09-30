@@ -6,6 +6,8 @@ from sqlalchemy.orm import Session
 
 from app.auction_service import (
     apply_queue_reserves,
+    auto_pass_capped_users,
+    auto_pass_over_budget_users,
     build_state,
     count_user_league_teams,
     count_user_minor_conference_teams,
@@ -146,6 +148,15 @@ async def nominate(
     auction.status = AuctionStatus.live
     db.add(item)
     db.flush()
+    # Anyone already capped out (roster limit, minor-conference sub-cap,
+    # or priced out of their safe max spend) for this league is marked
+    # passed from the instant the item opens, not just once the first bid
+    # lands -- auto_pass_capped_users/auto_pass_over_budget_users are
+    # otherwise only triggered by a bid event, which left a real window
+    # where an already-ineligible player's bid button showed enabled with
+    # no indication they'd already been excluded.
+    auto_pass_capped_users(db, auction, item)
+    auto_pass_over_budget_users(db, auction, item)
     # Anyone -- not just this nominator -- who has this team queued with a
     # reserve price gets it applied as their standing reserve bid right now.
     # No bid exists on the item yet (the nominator's own opening bid arrives
