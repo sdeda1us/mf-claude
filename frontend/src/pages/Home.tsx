@@ -183,8 +183,9 @@ export default function Home() {
                       .map((lg) => `${lg} ${scoringSummary.season_label_by_league[lg] ?? "—"}`)
                       .join(" · ")}{" "}
                     — every team in these two leagues is drafted, so this is a full standings
-                    preview. Scored from last season's real-world results (no live in-season feed
-                    yet), so it's a stand-in for how the picks compare, not a live points race.
+                    preview. Scored from the current season's real-world table, refreshed by hand
+                    from time to time rather than auto-updating live, so treat it as "as of the
+                    last refresh," not up-to-the-minute.
                   </p>
                   <table className="sortable-table">
                     <thead>

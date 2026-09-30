@@ -41,13 +41,15 @@ def scoring_summary(
     season_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
 ):
     """Per-owner points for the leagues in SCORING_SUMMARY_LEAGUES, from
-    each drafted team's most recent TeamSeasonResult. There's no live
-    in-season stats feed in this app yet, so this is always last
-    season's real-world results standing in as the best available signal
-    for "how are my picks doing" -- not a live points race. A team with
-    no TeamSeasonResult row at all (e.g. newly promoted into a league,
-    with no prior-season row under its new league) silently contributes
-    0 rather than erroring, same spirit as /leagues/example-scores."""
+    each drafted team's most recent TeamSeasonResult (whichever
+    season_label sorts latest, per team -- see results_by_team below).
+    For EPL/URC that's the current, in-progress 2026-27 season, kept
+    current by re-running app/update_live_standings.py against a fresh
+    table lookup (there's no live sports-data feed wired into this app,
+    so nothing updates these rows on its own). A team with no
+    TeamSeasonResult row at all (e.g. newly promoted into a league, with
+    no row yet under its new league) silently contributes 0 rather than
+    erroring, same spirit as /leagues/example-scores."""
     if db.get(Season, season_id) is None:
         raise HTTPException(status_code=404, detail="Season not found")
 
@@ -57,11 +59,16 @@ def scoring_summary(
         .filter(RosterEntry.season_id == season_id, Team.league.in_(SCORING_SUMMARY_LEAGUES))
         .all()
     )
+    # Ordered oldest-label-first so that when a team has more than one
+    # season's row (e.g. "2025-26" and "2026-27"), the later one wins this
+    # dict's last-write-wins overwrite -- season labels sort chronologically
+    # as plain strings ("2026-27" > "2025-26"), so no separate date field
+    # is needed to know which is newer.
     results_by_team = {
         r.team_id: r
-        for r in db.query(TeamSeasonResult).filter(
-            TeamSeasonResult.league.in_(SCORING_SUMMARY_LEAGUES)
-        )
+        for r in db.query(TeamSeasonResult)
+        .filter(TeamSeasonResult.league.in_(SCORING_SUMMARY_LEAGUES))
+        .order_by(TeamSeasonResult.season_label.asc())
     }
 
     season_label_by_league: dict[str, str] = {}

@@ -15,8 +15,8 @@ from app.auction_service import (
     finalize_active_item,
     get_active_item,
     high_bidder_user_id,
-    remaining_budget_by_user,
     resolve_reserve_bids,
+    roster_status_by_user,
 )
 from app.auction_timer import (
     naive_utc,
@@ -264,9 +264,15 @@ async def auction_room(websocket: WebSocket, auction_id: int):
                 await manager.send_error(websocket, f"Bid must exceed current high bid of {high_bid}")
                 continue
 
-            remaining = remaining_budget_by_user(db, auction.season, auction.session).get(user.id, 0)
-            if amount > remaining:
-                await manager.send_error(websocket, f"Bid exceeds your remaining budget of {remaining}")
+            # max_bid, not raw remaining budget -- the same "leave $1 for
+            # every other still-open roster spot" ceiling
+            # auto_pass_over_budget_users and resolve_reserve_bids already
+            # enforce, so a player can't manually place the exact bid
+            # those two would have auto-passed/blocked them for anyway.
+            status = roster_status_by_user(db, auction.season, auction.session).get(user.id)
+            max_bid = status.max_bid if status is not None else 0
+            if amount > max_bid:
+                await manager.send_error(websocket, f"Bid exceeds your safe max bid of {max_bid}")
                 continue
 
             league = item.team.league
