@@ -248,7 +248,7 @@ def resolve_reserve_bids(
             .order_by(ReserveBid.max_amount.desc(), ReserveBid.created_at.asc())
             .all()
         )
-        budgets = remaining_budget_by_user(db, auction.season, auction.session)
+        statuses = roster_status_by_user(db, auction.season, auction.session)
 
         passed = set(item.passed_user_ids)
         newly_passed = False
@@ -262,7 +262,17 @@ def resolve_reserve_bids(
                     r.active = False
                     newly_passed = True
                 continue
-            if next_amount > budgets.get(r.user_id, 0):
+            status = statuses.get(r.user_id)
+            if status is not None and next_amount > status.max_bid:
+                # Unlike r.max_amount above (their own chosen ceiling,
+                # opt-in to auto-pass on), this is the hard "can't afford
+                # it without shorting a future roster spot" limit --
+                # same unconditional pass auto_pass_over_budget_users
+                # gives a manual (non-reserve) bidder in the same spot,
+                # not gated behind auto_pass_if_exceeded.
+                passed.add(r.user_id)
+                r.active = False
+                newly_passed = True
                 continue
             if limit is not None and count_user_league_teams(db, auction.season_id, r.user_id, league) >= limit:
                 continue
