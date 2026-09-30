@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../components/Avatar";
-import { api, type LeagueRules, type RosterEntry, type Season, type Team, type User } from "../lib/api";
+import {
+  api,
+  type LeagueRules,
+  type RosterEntry,
+  type ScoringSummary,
+  type Season,
+  type Team,
+  type User,
+} from "../lib/api";
 
 interface SeasonSnapshot {
   season: Season;
   rows: { user: User; spent: number; teamsDrafted: number }[];
+  scoringSummary: ScoringSummary;
 }
 
 export default function Home() {
@@ -31,7 +40,10 @@ export default function Home() {
     }
     Promise.all(
       activeSeasons.map((season) =>
-        api.get<RosterEntry[]>(`/seasons/${season.id}/roster`).then((entries) => {
+        Promise.all([
+          api.get<RosterEntry[]>(`/seasons/${season.id}/roster`),
+          api.get<ScoringSummary>(`/seasons/${season.id}/scoring-summary`),
+        ]).then(([entries, scoringSummary]) => {
           const byUser = new Map<number, { spent: number; teamsDrafted: number }>();
           for (const e of entries) {
             const cur = byUser.get(e.user_id) ?? { spent: 0, teamsDrafted: 0 };
@@ -46,7 +58,7 @@ export default function Home() {
               teamsDrafted: byUser.get(user.id)?.teamsDrafted ?? 0,
             }))
             .sort((a, b) => b.spent - a.spent || b.teamsDrafted - a.teamsDrafted);
-          return { season, rows };
+          return { season, rows, scoringSummary };
         })
       )
     ).then(setSnapshots);
@@ -113,7 +125,7 @@ export default function Home() {
             No season is currently active. <Link to="/seasons">See all seasons →</Link>
           </p>
         ) : (
-          snapshots.map(({ season, rows }) => (
+          snapshots.map(({ season, rows, scoringSummary }) => (
             <div key={season.id} className="rules-card">
               <div className="ribbon">{season.name}</div>
               <div className="hero-cta-row">
@@ -160,6 +172,58 @@ export default function Home() {
                 scoring for the active season isn't wired up yet. Once it is, this table will
                 rank by points instead.
               </p>
+
+              {scoringSummary.owners.length > 0 && (
+                <>
+                  <h3 className="scoring-summary-heading">
+                    {scoringSummary.leagues.join(" & ")} Scoring Summary
+                  </h3>
+                  <p className="crib-value-note">
+                    {scoringSummary.leagues
+                      .map((lg) => `${lg} ${scoringSummary.season_label_by_league[lg] ?? "—"}`)
+                      .join(" · ")}{" "}
+                    — every team in these two leagues is drafted, so this is a full standings
+                    preview. Scored from last season's real-world results (no live in-season feed
+                    yet), so it's a stand-in for how the picks compare, not a live points race.
+                  </p>
+                  <table className="sortable-table">
+                    <thead>
+                      <tr>
+                        <th>Player</th>
+                        {scoringSummary.leagues.map((lg) => (
+                          <th key={lg}>{lg}</th>
+                        ))}
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {scoringSummary.owners.map((o) => (
+                        <tr key={o.user_id}>
+                          <td>
+                            <span className="player-link">
+                              <Avatar
+                                name={o.display_name}
+                                src={users.find((u) => u.id === o.user_id)?.avatar_data_url}
+                                size={22}
+                              />
+                              {o.display_name}
+                            </span>
+                          </td>
+                          {scoringSummary.leagues.map((lg) => (
+                            <td key={lg} className="points-cell">
+                              {o.by_league[lg]?.toFixed(0) ?? 0}
+                            </td>
+                          ))}
+                          <td className="points-cell">
+                            <strong>{o.total.toFixed(0)}</strong>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </>
+              )}
+
               <p className="inline-form">
                 <Link to={`/seasons/${season.id}/roster`}>View full roster →</Link>
                 <Link to={`/seasons/${season.id}/auction/spring`}>Go to spring auction →</Link>

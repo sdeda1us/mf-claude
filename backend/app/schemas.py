@@ -227,6 +227,22 @@ class ExampleScoreOut(BaseModel):
     breakdown: list[ScoringRuleLine]
 
 
+class ScoringSummaryOwnerOut(BaseModel):
+    user_id: int
+    display_name: str
+    by_league: dict[str, float]
+    total: float
+
+
+class ScoringSummaryOut(BaseModel):
+    leagues: list[str]
+    # Which real-world season's results the score for each league is
+    # computed from — currently always last season's, since this app has
+    # no live in-season stats feed yet (see the scoring_summary endpoint).
+    season_label_by_league: dict[str, str]
+    owners: list[ScoringSummaryOwnerOut]
+
+
 class QueueEntryOut(BaseModel):
     id: int
     user_id: int

@@ -857,6 +857,14 @@ button:disabled {
   border-bottom: 1px solid var(--rule);
 }
 
+.scoring-summary-heading {
+  font-family: var(--display-font);
+  font-size: 18px;
+  font-weight: 800;
+  font-style: italic;
+  margin: 20px 0 4px;
+}
+
 .roster-row-empty td {
   color: var(--ink-soft);
   font-style: italic;

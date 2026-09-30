@@ -168,6 +168,19 @@ export interface ScoringRuleLine {
   points: number;
 }
 
+export interface ScoringSummaryOwner {
+  user_id: number;
+  display_name: string;
+  by_league: Record<string, number>;
+  total: number;
+}
+
+export interface ScoringSummary {
+  leagues: string[];
+  season_label_by_league: Record<string, string>;
+  owners: ScoringSummaryOwner[];
+}
+
 export interface LeagueRules {
   roster_limits: Record<string, number>;
   scoring_rules: Record<string, ScoringRuleLine[]>;

@@ -1,8 +1,11 @@
+from collections import defaultdict
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.deps import get_current_commissioner, get_current_user
+from app.league_rules import compute_score
 from app.models import (
     Auction,
     AuctionItem,
@@ -12,16 +15,81 @@ from app.models import (
     RosterEntry,
     Season,
     SeasonStatus,
+    Team,
+    TeamSeasonResult,
     User,
 )
-from app.schemas import SeasonCreateIn, SeasonOut
+from app.schemas import ScoringSummaryOut, ScoringSummaryOwnerOut, SeasonCreateIn, SeasonOut
 
 router = APIRouter(prefix="/seasons", tags=["seasons"])
+
+# The only two leagues every team in the pool has actually been drafted
+# for so far -- a per-owner scoring summary is only meaningful once
+# nobody's missing from the picture. Extend this list by hand as other
+# leagues finish their own auctions; not worth auto-detecting "fully
+# drafted" for what's currently just two leagues.
+SCORING_SUMMARY_LEAGUES = ["EPL", "URC"]
 
 
 @router.get("", response_model=list[SeasonOut])
 def list_seasons(db: Session = Depends(get_db), _: User = Depends(get_current_user)):
     return db.query(Season).order_by(Season.created_at.desc()).all()
+
+
+@router.get("/{season_id}/scoring-summary", response_model=ScoringSummaryOut)
+def scoring_summary(
+    season_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """Per-owner points for the leagues in SCORING_SUMMARY_LEAGUES, from
+    each drafted team's most recent TeamSeasonResult. There's no live
+    in-season stats feed in this app yet, so this is always last
+    season's real-world results standing in as the best available signal
+    for "how are my picks doing" -- not a live points race. A team with
+    no TeamSeasonResult row at all (e.g. newly promoted into a league,
+    with no prior-season row under its new league) silently contributes
+    0 rather than erroring, same spirit as /leagues/example-scores."""
+    if db.get(Season, season_id) is None:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+    entries = (
+        db.query(RosterEntry)
+        .join(Team, RosterEntry.team_id == Team.id)
+        .filter(RosterEntry.season_id == season_id, Team.league.in_(SCORING_SUMMARY_LEAGUES))
+        .all()
+    )
+    results_by_team = {
+        r.team_id: r
+        for r in db.query(TeamSeasonResult).filter(
+            TeamSeasonResult.league.in_(SCORING_SUMMARY_LEAGUES)
+        )
+    }
+
+    season_label_by_league: dict[str, str] = {}
+    totals: dict[int, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for entry in entries:
+        result = results_by_team.get(entry.team_id)
+        if result is None:
+            continue
+        league = entry.team.league
+        season_label_by_league.setdefault(league, result.season_label)
+        totals[entry.user_id][league] += compute_score(league, result.stats)
+
+    owners = [
+        ScoringSummaryOwnerOut(
+            user_id=u.id,
+            display_name=u.display_name,
+            by_league={lg: totals[u.id].get(lg, 0.0) for lg in SCORING_SUMMARY_LEAGUES},
+            total=sum(totals[u.id].values()),
+        )
+        for u in db.query(User).all()
+    ]
+    owners.sort(key=lambda o: o.total, reverse=True)
+
+    return ScoringSummaryOut(
+        leagues=SCORING_SUMMARY_LEAGUES,
+        season_label_by_league=season_label_by_league,
+        owners=owners,
+    )
 
 
 @router.post("", response_model=SeasonOut, status_code=201)
