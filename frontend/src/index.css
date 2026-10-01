@@ -865,6 +865,20 @@ button:disabled {
   margin: 20px 0 4px;
 }
 
+.scoring-summary-table-wrap {
+  overflow-x: auto;
+}
+
+.scoring-summary-table-wrap table {
+  font-size: 13px;
+}
+
+.scoring-summary-table-wrap th,
+.scoring-summary-table-wrap td {
+  white-space: nowrap;
+  padding-right: 10px;
+}
+
 .roster-row-empty td {
   color: var(--ink-soft);
   font-style: italic;

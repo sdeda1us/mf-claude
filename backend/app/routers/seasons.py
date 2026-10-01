@@ -23,12 +23,17 @@ from app.schemas import ScoringSummaryOut, ScoringSummaryOwnerOut, SeasonCreateI
 
 router = APIRouter(prefix="/seasons", tags=["seasons"])
 
-# The only two leagues every team in the pool has actually been drafted
-# for so far -- a per-owner scoring summary is only meaningful once
-# nobody's missing from the picture. Extend this list by hand as other
-# leagues finish their own auctions; not worth auto-detecting "fully
-# drafted" for what's currently just two leagues.
-SCORING_SUMMARY_LEAGUES = ["EPL", "URC"]
+# Every league in the fall auction session (see LEAGUE_SESSION) except
+# NCAAMB/NCAAWB, which are deliberately left out -- their pools are ~360
+# teams each and their 2026-27 season hasn't even started yet, so there's
+# no way to source that scale of data reliably. Unlike EPL/URC (every
+# team in those two IS drafted, so their column is a full standings
+# preview), most of these leagues still have plenty of undrafted teams
+# sitting in the auction pool -- update_live_standings.py only seeds
+# whichever teams actually appear on a roster right now, by design, so a
+# league's column here only ever reflects the teams someone's actually
+# drafted, not the whole league.
+SCORING_SUMMARY_LEAGUES = ["NFL", "NBA", "NHL", "EPL", "UCL", "URC", "NCAAF", "ATP", "WTA"]
 
 
 @router.get("", response_model=list[SeasonOut])
@@ -42,14 +47,16 @@ def scoring_summary(
 ):
     """Per-owner points for the leagues in SCORING_SUMMARY_LEAGUES, from
     each drafted team's most recent TeamSeasonResult (whichever
-    season_label sorts latest, per team -- see results_by_team below).
-    For EPL/URC that's the current, in-progress 2026-27 season, kept
+    season_label sorts latest, per team -- see results_by_team below) --
+    the current, in-progress 2026-27 season for every league here, kept
     current by re-running app/update_live_standings.py against a fresh
     table lookup (there's no live sports-data feed wired into this app,
     so nothing updates these rows on its own). A team with no
-    TeamSeasonResult row at all (e.g. newly promoted into a league, with
-    no row yet under its new league) silently contributes 0 rather than
-    erroring, same spirit as /leagues/example-scores."""
+    TeamSeasonResult row at all (undrafted, or drafted but not yet
+    scored) silently contributes 0 rather than erroring, same spirit as
+    /leagues/example-scores -- this is deliberate for most of these
+    leagues, where update_live_standings.py only ever seeds rows for
+    teams someone's actually drafted, not the whole league."""
     if db.get(Season, season_id) is None:
         raise HTTPException(status_code=404, detail="Season not found")
 

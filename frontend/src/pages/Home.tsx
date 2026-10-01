@@ -175,18 +175,19 @@ export default function Home() {
 
               {scoringSummary.owners.length > 0 && (
                 <>
-                  <h3 className="scoring-summary-heading">
-                    {scoringSummary.leagues.join(" & ")} Scoring Summary
-                  </h3>
+                  <h3 className="scoring-summary-heading">Fall Scoring Summary</h3>
                   <p className="crib-value-note">
                     {scoringSummary.leagues
                       .map((lg) => `${lg} ${scoringSummary.season_label_by_league[lg] ?? "—"}`)
                       .join(" · ")}{" "}
-                    — every team in these two leagues is drafted, so this is a full standings
-                    preview. Scored from the current season's real-world table, refreshed by hand
-                    from time to time rather than auto-updating live, so treat it as "as of the
-                    last refresh," not up-to-the-minute.
+                    — EPL and URC are fully drafted, so those two columns are a complete
+                    standings preview; every other column here only reflects whichever teams
+                    have actually been drafted so far, not the full league. Scored from each
+                    league's current real-world table, refreshed by hand from time to time
+                    rather than auto-updating live, so treat it as "as of the last refresh," not
+                    up-to-the-minute.
                   </p>
+                  <div className="scoring-summary-table-wrap">
                   <table className="sortable-table">
                     <thead>
                       <tr>
@@ -222,6 +223,7 @@ export default function Home() {
                       ))}
                     </tbody>
                   </table>
+                  </div>
                 </>
               )}
 
