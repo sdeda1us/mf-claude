@@ -430,6 +430,38 @@ def finalize_active_item(db: Session, auction: Auction, item: AuctionItem) -> No
             QueueEntry.season_id == auction.season_id, QueueEntry.team_id == item.team_id
         ).delete()
     auction.turn_started_at = utcnow()
+    skip_full_players_turn(db, auction)
+
+
+def skip_full_players_turn(db: Session, auction: Auction) -> None:
+    """After a turn concludes and the next nomination slot is determined by
+    the plain `nomination_order[len(items) % len(order)]` math
+    current_turn_user_id relies on, nudge that slot off of anyone whose
+    roster for this session is already completely full -- they have
+    nothing left to nominate for. Mirrors force_turn's own swap mechanism:
+    swap them with the next player later in the order who still has an
+    open spot, so nomination_order stays a permutation (nobody's future
+    turn is lost, it's just deferred) and the simple modulo indexing keeps
+    working unmodified. A roster never un-fills once full, so a swapped-out
+    player is correctly reconsidered again next lap; if literally everyone
+    is full there's nothing to swap into and this is a no-op (the draft for
+    this session is effectively done)."""
+    order = auction.nomination_order
+    if not order:
+        return
+    idx = len(auction.items) % len(order)
+    statuses = roster_status_by_user(db, auction.season, auction.session)
+    current_status = statuses.get(order[idx])
+    if current_status is None or current_status.spots_remaining > 0:
+        return
+    for offset in range(1, len(order)):
+        j = (idx + offset) % len(order)
+        other_status = statuses.get(order[j])
+        if other_status is None or other_status.spots_remaining > 0:
+            new_order = list(order)
+            new_order[idx], new_order[j] = new_order[j], new_order[idx]
+            auction.nomination_order = new_order
+            return
 
 
 def count_user_league_teams(db: Session, season_id: int, user_id: int, league: str) -> int:
