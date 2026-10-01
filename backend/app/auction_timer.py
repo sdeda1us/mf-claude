@@ -15,6 +15,7 @@ from app.auction_service import (
     get_active_item,
     remaining_budget_by_user,
     resolve_reserve_bids,
+    skip_full_players_turn,
 )
 from app.auction_timing import (
     BID_EXTENSION_SECONDS,
@@ -98,6 +99,11 @@ async def schedule_turn_timer(auction_id: int) -> None:
             return
         if len(auction.items) != items_at_schedule_time:
             return
+        # Self-heal before trusting current_turn_user_id below -- catches a
+        # roster that filled up during the sleep (or a stale pre-existing
+        # gap), so this never auto-nominates on behalf of someone who's
+        # actually full now.
+        skip_full_players_turn(db, auction)
         if current_turn_user_id(db, auction) != turn_user_id:
             return
         if auction.is_paused:

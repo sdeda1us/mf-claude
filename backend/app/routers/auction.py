@@ -14,6 +14,7 @@ from app.auction_service import (
     current_turn_user_id,
     finalize_active_item,
     get_active_item,
+    skip_full_players_turn,
 )
 from app.auction_timer import (
     naive_utc,
@@ -105,6 +106,11 @@ async def nominate(
         raise HTTPException(status_code=409, detail="Auction is paused")
     if get_active_item(db, auction_id) is not None:
         raise HTTPException(status_code=400, detail="An item is already active")
+    # Self-heals nomination_order before trusting it for the permission
+    # check below -- covers the gap between a roster filling up and the
+    # next turn actually concluding (build_state does the same, but that's
+    # read-only unless this request's own commit later persists it).
+    skip_full_players_turn(db, auction)
     if not user.is_commissioner and user.id != current_turn_user_id(db, auction):
         raise HTTPException(status_code=403, detail="It's not your turn to nominate")
     team = db.get(Team, payload.team_id)

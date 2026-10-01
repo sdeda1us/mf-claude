@@ -130,6 +130,12 @@ def current_turn_user_id(db: Session, auction: Auction) -> int | None:
 
 
 def build_state(db: Session, auction: Auction, viewer_user_id: int) -> AuctionStateOut:
+    # Self-heals a stale nomination_order left over from before
+    # skip_full_players_turn existed (or from any other gap where nobody's
+    # turn concluded since someone's roster filled up) -- idempotent and
+    # cheap when there's nothing to fix, so safe to run on every read, not
+    # just right after a turn concludes.
+    skip_full_players_turn(db, auction)
     active_item = get_active_item(db, auction.id)
     active_item_out = AuctionItemOut.model_validate(active_item) if active_item else None
     if active_item_out is not None:
