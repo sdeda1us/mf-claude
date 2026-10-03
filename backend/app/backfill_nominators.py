@@ -27,34 +27,34 @@ existed at all, so they can't have been swapped -- the plain formula with
 the PRE-swap order [6, 3, 7, 2, 5, 4] is correct for those.
 
 The filled-spot count at that same anchor point can't be reconstructed
-purely by replaying AuctionItem winners from order 0 -- two manual
-roster corrections (a RosterEntry added for one user, another deleted for
-another, both made in the same conversation turn as the manual swap, i.e.
-at essentially this exact anchor point) aren't tied to any AuctionItem at
-all. So instead of replaying from zero, the filled count at the anchor is
-derived backwards from each user's REAL, current roster_status_by_user
-spots_filled, minus whatever items 229+ will themselves re-contribute as
-the replay below processes them -- which nets out to the correct
-as-of-the-anchor count regardless of those two untracked manual edits.
+purely by replaying AuctionItem winners from order 0 -- two manual roster
+corrections made in the same conversation turn as the manual swap (one
+RosterEntry added, one deleted) aren't tied to any AuctionItem at all.
+Instead it's counted directly: every season-2/fall-session RosterEntry
+row with id <= 322 (the last row that exists as of that same moment --
+confirmed against the roster_status_by_user print captured right after
+the manual swap, which matches this count exactly: Sean K 31, John R 40,
+Steve 43, Wolverines! 43, Phil 30, Liam 42).
 """
 
-from app.auction_service import roster_status_by_user
 from app.database import SessionLocal
 from app.league_rules import LEAGUE_SESSION, ROSTER_LIMITS
-from app.models import Auction, AuctionItem, Season
+from app.models import Auction, AuctionItem, RosterEntry, Team
 
 SESSION_ROSTER_SLOTS = {
     session: sum(limit for league, limit in ROSTER_LIMITS.items() if LEAGUE_SESSION.get(league) == session)
     for session in ("fall", "spring")
 }
 
-# auction_id -> (pre_swap_order, anchor_item_order, post_swap_order).
-# Items before anchor_item_order use pre_swap_order via the plain formula
-# (no fullness tracking needed -- nothing could have swapped them yet).
-# Items from anchor_item_order onward are replayed forward starting from
-# post_swap_order, with filled-spot counts seeded as described above.
-ANCHORS: dict[int, tuple[list[int], int, list[int]]] = {
-    3: ([6, 3, 7, 2, 5, 4], 229, [6, 2, 7, 3, 5, 4]),
+# auction_id -> (pre_swap_order, anchor_item_order, post_swap_order,
+# anchor_roster_entry_id). Items before anchor_item_order use
+# pre_swap_order via the plain formula (no fullness tracking needed --
+# nothing could have swapped them yet). Items from anchor_item_order
+# onward are replayed forward starting from post_swap_order, with
+# filled-spot counts seeded by counting real RosterEntry rows up through
+# anchor_roster_entry_id.
+ANCHORS: dict[int, tuple[list[int], int, list[int], int]] = {
+    3: ([6, 3, 7, 2, 5, 4], 229, [6, 2, 7, 3, 5, 4], 322),
 }
 
 
@@ -79,29 +79,28 @@ def backfill_auction(db, auction: Auction) -> None:
         filled: dict[int, int] = {}
         replay_items = items
     else:
-        pre_swap_order, transition, post_swap_order = anchor
+        pre_swap_order, transition, post_swap_order, anchor_entry_id = anchor
         for item in items:
             if item.order >= transition:
                 break
             if item.nominated_by_user_id is None:
                 item.nominated_by_user_id = pre_swap_order[item.order % len(pre_swap_order)]
 
-        season = db.get(Season, auction.season_id)
-        real_filled = {
-            uid: status.spots_filled
-            for uid, status in roster_status_by_user(db, season, auction.session).items()
-        }
+        fall_leagues = {lg for lg, s in LEAGUE_SESSION.items() if s == auction.session}
+        rows = (
+            db.query(RosterEntry)
+            .join(Team, RosterEntry.team_id == Team.id)
+            .filter(
+                RosterEntry.season_id == auction.season_id,
+                RosterEntry.id <= anchor_entry_id,
+                Team.league.in_(fall_leagues),
+            )
+            .all()
+        )
+        filled: dict[int, int] = {}
+        for r in rows:
+            filled[r.user_id] = filled.get(r.user_id, 0) + 1
         replay_items = [i for i in items if i.order >= transition]
-        contributed_in_window: dict[int, int] = {}
-        for item in replay_items:
-            if item.winning_user_id is not None:
-                contributed_in_window[item.winning_user_id] = (
-                    contributed_in_window.get(item.winning_user_id, 0) + 1
-                )
-        filled = {
-            uid: real_filled.get(uid, 0) - contributed_in_window.get(uid, 0)
-            for uid in real_filled
-        }
         order = list(post_swap_order)
 
     for item in replay_items:
