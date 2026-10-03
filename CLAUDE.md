@@ -441,8 +441,11 @@ way some other leagues do it).
 June 19, 2026 (Leinster beat the Bulls 36-7 at Croke Park, Dublin — an
 exact repeat of the 2025 final — for a 2nd straight title and a record
 10th overall).
-**2026-27 season (next):** Not yet officially scheduled — historically
-opens in late September.
+**2026-27 season (in progress):** Underway — every club was 1 match in as
+of early October 2026 (table_points/points_difference per
+`backend/app/update_live_standings.py`'s URC_TABLE). Full fixture-list
+dates not re-confirmed here; update this note with the real season-opener
+date once sourced.
 
 ### UCL (UEFA Champions League) — 36 teams
 

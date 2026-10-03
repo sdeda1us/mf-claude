@@ -12,7 +12,19 @@ from app.backup import nightly_backup_loop
 from app.config import settings
 from app.database import SessionLocal
 from app.models import Auction, AuctionStatus
-from app.routers import analytics, auction, auth, crib_sheet, leagues, queue, roster, seasons, teams, users
+from app.routers import (
+    analytics,
+    auction,
+    auth,
+    crib_sheet,
+    leagues,
+    queue,
+    roster,
+    scoring_sync,
+    seasons,
+    teams,
+    users,
+)
 from app.ws import auction_ws
 from app.ws.connection_manager import manager
 
@@ -65,6 +77,7 @@ app.include_router(queue.router, prefix="/api")
 app.include_router(crib_sheet.router, prefix="/api")
 app.include_router(leagues.router, prefix="/api")
 app.include_router(analytics.router, prefix="/api")
+app.include_router(scoring_sync.router, prefix="/api")
 app.include_router(auction_ws.router, prefix="/api")
 
 

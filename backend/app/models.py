@@ -1,7 +1,7 @@
 import enum
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
-from sqlalchemy import JSON, Enum, ForeignKey, Numeric, String, Text, UniqueConstraint
+from sqlalchemy import JSON, Date, Enum, ForeignKey, Numeric, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
@@ -99,6 +99,42 @@ class TeamSeasonResult(Base):
 
     __table_args__ = (
         UniqueConstraint("team_id", "season_label", name="uq_team_season_result"),
+    )
+
+
+class TeamDailyScore(Base):
+    """One append-only row per team per real-world day -- unlike
+    TeamSeasonResult (overwritten in place), this is never mutated once
+    written except for the same day's row being refreshed by a same-day
+    resync. See app/daily_score_sync.py for how rows get here, including
+    the "first-ever row for this team+season is backdated to yesterday"
+    rule for seasons that already had games played before this started
+    tracking them.
+
+    A team dropped from a roster (see routers/roster.py's delete) simply
+    stops getting new rows here going forward -- its history up to that
+    point is left in place, same precedent as TeamSeasonResult surviving
+    delete_season."""
+
+    __tablename__ = "team_daily_scores"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    team_id: Mapped[int] = mapped_column(ForeignKey("teams.id"))
+    league: Mapped[str] = mapped_column(String(50))
+    season_label: Mapped[str] = mapped_column(String(20))
+    as_of_date: Mapped[date] = mapped_column(Date)
+    stats: Mapped[dict] = mapped_column(JSON)  # same shape league_rules.compute_score expects
+    # compute_score(league, stats) at write time, stored so history reads
+    # don't need to re-run the formula (and stay correct if the formula
+    # itself is later tweaked for future scoring, same as any other
+    # point-in-time snapshot).
+    score: Mapped[float] = mapped_column(Numeric(10, 2))
+    created_at: Mapped[datetime] = mapped_column(default=utcnow)
+
+    team: Mapped["Team"] = relationship()
+
+    __table_args__ = (
+        UniqueConstraint("team_id", "season_label", "as_of_date", name="uq_team_daily_score"),
     )
 
 

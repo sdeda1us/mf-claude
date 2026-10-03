@@ -1,4 +1,10 @@
-"""Updates TeamSeasonResult with the CURRENT, in-progress 2026-27 standings
+"""RETIRED -- replaced by app/daily_score_sync.py (fed daily by a scheduled
+Claude Code cloud routine instead of a manual rerun). Do not run this
+again: its hardcoded SEASON_LABEL = "2026-27" is wrong for NFL/NCAAF/ATP/
+WTA (see app/fix_season_labels.py, which corrects the rows this script
+already created) and rerunning it would recreate that exact bug.
+
+Updates TeamSeasonResult with the CURRENT, in-progress 2026-27 standings
 for every league in routers.seasons.SCORING_SUMMARY_LEAGUES -- unlike
 seed_historical_results.py (a one-time load of a season that's already
 fully over), this is meant to be re-run periodically as the real season

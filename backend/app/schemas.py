@@ -259,6 +259,31 @@ class AuctionHistoryItemOut(BaseModel):
     default_value: float | None
 
 
+class DailySyncEntryIn(BaseModel):
+    """One team's current real-world stats, in the same shape
+    league_rules.compute_score expects for that league -- see
+    docs/wiki/game-rules-*.md for each league's keys."""
+
+    league: str
+    team: str
+    stats: dict
+
+
+class DailySyncBatchIn(BaseModel):
+    entries: list[DailySyncEntryIn]
+
+
+class DailySyncSkipOut(BaseModel):
+    league: str
+    team: str
+    reason: str
+
+
+class DailySyncBatchResultOut(BaseModel):
+    synced: int
+    skipped: list[DailySyncSkipOut]
+
+
 class QueueEntryOut(BaseModel):
     id: int
     user_id: int

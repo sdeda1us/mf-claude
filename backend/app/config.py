@@ -19,6 +19,14 @@ class Settings(BaseSettings):
     # configured (a Railway env var, never committed to the repo).
     slack_webhook_url: str | None = None
 
+    # Shared-secret bearer token checked by POST /scoring-sync/batch -- the
+    # daily scheduled cloud routine authenticates with this instead of a
+    # per-user session cookie, since no human logs in for that call.
+    # Unset by default: the endpoint 503s until this is configured (a
+    # Railway env var, never committed to the repo) and the routine's own
+    # secret store is updated to match.
+    daily_sync_token: str | None = None
+
     # Public base URL used to build magic-link URLs sent in email
     app_base_url: str = "http://localhost:5173"
     # Where the API is served from (used by the /auth/verify redirect target)
