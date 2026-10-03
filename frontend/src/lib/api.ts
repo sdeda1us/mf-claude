@@ -154,6 +154,15 @@ export interface AuctionState {
   nomination_deadline: string | null;
 }
 
+export interface AuctionHistoryItem {
+  order: number;
+  team: Team;
+  nominated_by_user_id: number | null;
+  winning_user_id: number | null;
+  winning_bid: number | null;
+  default_value: number | null;
+}
+
 export interface RosterEntry {
   id: number;
   user_id: number;

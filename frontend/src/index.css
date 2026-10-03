@@ -857,6 +857,37 @@ button:disabled {
   border-bottom: 1px solid var(--rule);
 }
 
+.auction-complete-section {
+  text-align: center;
+  padding: 40px 20px;
+  border: 2px solid var(--rule);
+  border-radius: 8px;
+  background: var(--stock-hi);
+  margin-bottom: 20px;
+}
+
+.auction-complete-heading {
+  font-family: var(--display-font);
+  font-size: 48px;
+  font-weight: 800;
+  font-style: italic;
+  margin: 0 0 12px;
+}
+
+.auction-complete-section .crib-value-note {
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+
+.auction-complete-section .scoring-summary-table-wrap {
+  text-align: left;
+}
+
+.auction-history-table th,
+.auction-history-table td {
+  white-space: nowrap;
+}
+
 .scoring-summary-heading {
   font-family: var(--display-font);
   font-size: 18px;

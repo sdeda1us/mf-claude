@@ -120,6 +120,7 @@ async def schedule_turn_timer(auction_id: int) -> None:
             order=len(auction.items),
             status=AuctionItemStatus.active,
             bid_deadline=bid_window_deadline(datetime.utcnow(), BID_TIMEOUT_SECONDS, BID_TIMEOUT_EXTENDED_SECONDS),
+            nominated_by_user_id=turn_user_id,
         )
         db.add(item)
         db.flush()

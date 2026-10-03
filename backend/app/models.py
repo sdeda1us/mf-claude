@@ -154,6 +154,12 @@ class AuctionItem(Base):
     )
     winning_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), nullable=True)
     winning_bid: Mapped[float | None] = mapped_column(Numeric(10, 2), nullable=True)
+    # Who actually nominated this team -- set once, at creation (nominate()
+    # or the auto-nominate-on-timeout path), so it stays correct even if
+    # nomination_order later gets permuted by skip_full_players_turn.
+    # Nullable only because items created before this column existed were
+    # backfilled from nomination_order rather than recorded live.
+    nominated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), nullable=True)
     # Bidding on this item closes when this passes — BID_TIMEOUT_SECONDS
     # from nomination normally, or BID_TIMEOUT_EXTENDED_SECONDS instead if
     # that base window would touch the 9 PM-9 AM Eastern quiet hours (see

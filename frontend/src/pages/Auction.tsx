@@ -6,6 +6,7 @@ import { useAuth } from "../auth/AuthContext";
 import {
   api,
   type Auction,
+  type AuctionHistoryItem,
   type CribSheetEntry,
   type ExampleScoreRow,
   type LeagueRules,
@@ -136,6 +137,20 @@ export default function AuctionRoom() {
   const { state, error, connected, sendBid, sendPass, sendReserve, sendReserveAutoPass } =
     useAuctionSocket(auction?.id ?? null);
   const chartTheme = useChartTheme();
+  const [history, setHistory] = useState<AuctionHistoryItem[]>([]);
+
+  // Every player's roster for this session is completely full -- nothing
+  // left to nominate or bid on, so the page switches from the live auction
+  // room to a read-only history view once this flips true.
+  const auctionComplete = (() => {
+    const statuses = Object.values(state?.roster_status_by_user ?? {});
+    return statuses.length > 0 && statuses.every((s) => s.spots_remaining === 0);
+  })();
+
+  useEffect(() => {
+    if (!auction || !auctionComplete) return;
+    api.get<AuctionHistoryItem[]>(`/auctions/${auction.id}/history`).then(setHistory);
+  }, [auction?.id, auctionComplete]);
 
   // Refetch the roster whenever the active item changes (a new nomination,
   // or a sale closing) — that's the authoritative source of which teams are
@@ -688,7 +703,55 @@ export default function AuctionRoom() {
 
       <div className="auction-layout">
       <div className="auction-main">
-        {item ? (
+        {auctionComplete ? (
+          <div className="auction-complete-section">
+            <h1 className="auction-complete-heading">Auction Complete</h1>
+            <p className="crib-value-note">
+              Every roster spot is filled — nothing left to nominate or bid on. Here's every team
+              that changed hands this {sessionLabel.toLowerCase()}, in the order it was nominated.
+            </p>
+            <div className="scoring-summary-table-wrap">
+              <table className="sortable-table auction-history-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>League</th>
+                    <th>Nominated by</th>
+                    <th>Won by</th>
+                    <th>Price paid</th>
+                    <th>Crib sheet default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {history.map((h) => (
+                    <tr key={h.order}>
+                      <td className="points-cell">{h.order + 1}</td>
+                      <td>
+                        <TeamLink teamId={h.team.id} league={h.team.league} name={h.team.name} />
+                      </td>
+                      <td>
+                        <span className="pill">{h.team.league}</span>
+                      </td>
+                      <td>
+                        {h.nominated_by_user_id != null
+                          ? (usersById.get(h.nominated_by_user_id)?.display_name ?? `User #${h.nominated_by_user_id}`)
+                          : "—"}
+                      </td>
+                      <td>
+                        {h.winning_user_id != null
+                          ? (usersById.get(h.winning_user_id)?.display_name ?? `User #${h.winning_user_id}`)
+                          : "—"}
+                      </td>
+                      <td className="points-cell">{h.winning_bid != null ? `$${h.winning_bid}` : "—"}</td>
+                      <td className="points-cell">{h.default_value != null ? `$${h.default_value}` : "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ) : item ? (
           <div className="on-the-clock has-item">
             <div className="ribbon">Live · Up For Bid</div>
             <div className="badge">{item.team.league}</div>
@@ -858,6 +921,8 @@ export default function AuctionRoom() {
           </div>
         )}
 
+        {!auctionComplete && (
+        <>
         <div className="queue-panel">
           <h2>Your Queue</h2>
           {queue.length === 0 ? (
@@ -1050,6 +1115,8 @@ export default function AuctionRoom() {
               </tbody>
             </table>
           </>
+        )}
+        </>
         )}
       </div>
 

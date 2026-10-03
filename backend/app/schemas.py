@@ -243,6 +243,22 @@ class ScoringSummaryOut(BaseModel):
     owners: list[ScoringSummaryOwnerOut]
 
 
+class AuctionHistoryItemOut(BaseModel):
+    """One sold item, for the full nomination-to-sale history table shown
+    once every roster spot in an auction is filled -- see
+    GET /auctions/{id}/history."""
+
+    order: int
+    team: TeamOut
+    nominated_by_user_id: int | None
+    winning_user_id: int | None
+    winning_bid: float | None
+    # Team.default_value at request time, not a snapshot from when the
+    # item sold -- the EV model doesn't change after the fact, so this is
+    # effectively the same number either way.
+    default_value: float | None
+
+
 class QueueEntryOut(BaseModel):
     id: int
     user_id: int

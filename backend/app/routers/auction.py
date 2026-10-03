@@ -37,7 +37,7 @@ from app.models import (
     utcnow,
 )
 from app.quiet_hours import bid_window_deadline
-from app.schemas import AuctionOut, AuctionStateOut, ForceTurnIn, NominateIn
+from app.schemas import AuctionHistoryItemOut, AuctionOut, AuctionStateOut, ForceTurnIn, NominateIn
 from app.slack_notify import notify_nomination, notify_sold
 from app.ws.connection_manager import manager
 
@@ -90,6 +90,37 @@ def get_state(
     if auction is None:
         raise HTTPException(status_code=404, detail="Auction not found")
     return build_state(db, auction, viewer_user_id=user.id)
+
+
+@router.get("/{auction_id}/history", response_model=list[AuctionHistoryItemOut])
+def get_history(
+    auction_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """Every sold item in this auction, in nomination order -- the table
+    shown once every roster spot is filled (see Auction.tsx). Items with
+    no winner (shouldn't normally happen once an auction's actually
+    complete, but possible for an auction abandoned mid-draft) are left
+    out rather than shown with a blank winner/price."""
+    auction = db.get(Auction, auction_id)
+    if auction is None:
+        raise HTTPException(status_code=404, detail="Auction not found")
+    items = (
+        db.query(AuctionItem)
+        .filter(AuctionItem.auction_id == auction_id, AuctionItem.winning_user_id.isnot(None))
+        .order_by(AuctionItem.order.asc())
+        .all()
+    )
+    return [
+        AuctionHistoryItemOut(
+            order=item.order,
+            team=item.team,
+            nominated_by_user_id=item.nominated_by_user_id,
+            winning_user_id=item.winning_user_id,
+            winning_bid=item.winning_bid,
+            default_value=item.team.default_value,
+        )
+        for item in items
+    ]
 
 
 @router.post("/{auction_id}/nominate", response_model=AuctionStateOut)
@@ -150,6 +181,7 @@ async def nominate(
         order=next_order,
         status=AuctionItemStatus.active,
         bid_deadline=bid_window_deadline(utcnow(), BID_TIMEOUT_SECONDS, BID_TIMEOUT_EXTENDED_SECONDS),
+        nominated_by_user_id=user.id,
     )
     auction.status = AuctionStatus.live
     db.add(item)
