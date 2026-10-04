@@ -30,7 +30,8 @@ from zoneinfo import ZoneInfo
 
 from app.database import SessionLocal
 from app.league_rules import compute_score
-from app.models import Team, TeamDailyScore, TeamSeasonResult
+from app.models import RosterEntry, Season, SeasonStatus, Team, TeamDailyScore, TeamSeasonResult
+from app.schemas import DailySyncBatchResultOut, DailySyncEntryIn, DailySyncSkipOut
 from app.season_labels import CURRENT_SEASON
 
 EASTERN = ZoneInfo("America/New_York")  # matches backup.py / quiet_hours.py
@@ -41,6 +42,10 @@ class TeamNotFoundError(Exception):
 
 
 class UnsupportedLeagueError(Exception):
+    pass
+
+
+class NoActiveSeasonError(Exception):
     pass
 
 
@@ -120,6 +125,45 @@ def sync_team_stats(
     db.add(row)
     db.flush()
     return row
+
+
+def apply_daily_sync_batch(db, entries: list[DailySyncEntryIn]) -> DailySyncBatchResultOut:
+    """Shared by POST /api/scoring-sync/batch (routers/scoring_sync.py) and
+    app/daily_sync_pull.py's GitHub-pulled batch -- only teams actually
+    rostered under the active Season are synced, same "only drafted
+    teams" behavior app/update_live_standings.py had, just enforced here
+    instead of by hand-curating which teams appear in a dict literal.
+    Does not commit -- the caller owns the transaction."""
+    active_season = db.query(Season).filter(Season.status == SeasonStatus.active).first()
+    if active_season is None:
+        raise NoActiveSeasonError()
+
+    synced = 0
+    skipped: list[DailySyncSkipOut] = []
+    for entry in entries:
+        team = db.query(Team).filter(Team.league == entry.league, Team.name == entry.team).first()
+        if team is None:
+            skipped.append(DailySyncSkipOut(league=entry.league, team=entry.team, reason="no Team row"))
+            continue
+        rostered = (
+            db.query(RosterEntry)
+            .filter(RosterEntry.season_id == active_season.id, RosterEntry.team_id == team.id)
+            .first()
+        )
+        if rostered is None:
+            skipped.append(DailySyncSkipOut(league=entry.league, team=entry.team, reason="not rostered"))
+            continue
+        try:
+            sync_team_stats(db, entry.league, entry.team, entry.stats)
+            synced += 1
+        except UnsupportedLeagueError:
+            skipped.append(
+                DailySyncSkipOut(league=entry.league, team=entry.team, reason="unsupported league")
+            )
+        except TeamNotFoundError:
+            skipped.append(DailySyncSkipOut(league=entry.league, team=entry.team, reason="no Team row"))
+
+    return DailySyncBatchResultOut(synced=synced, skipped=skipped)
 
 
 if __name__ == "__main__":
