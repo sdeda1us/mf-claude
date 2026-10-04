@@ -190,11 +190,22 @@ export interface ScoringSummary {
   owners: ScoringSummaryOwner[];
 }
 
+export interface LeagueTeamScore {
+  user_id: number;
+  display_name: string;
+  team_id: number;
+  team_name: string;
+  points: number;
+}
+
 export interface LeagueRules {
   roster_limits: Record<string, number>;
   scoring_rules: Record<string, ScoringRuleLine[]>;
   league_session: Record<string, "fall" | "spring">;
   minor_conference_teams: Record<string, string[]>;
+  // Leagues with a score update in the last couple of days -- i.e.
+  // actually being scored right now, not just in the daily sync's scope.
+  active_leagues: string[];
 }
 
 export interface ScoreBreakdownItem {

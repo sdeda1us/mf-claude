@@ -19,7 +19,13 @@ from app.models import (
     TeamSeasonResult,
     User,
 )
-from app.schemas import ScoringSummaryOut, ScoringSummaryOwnerOut, SeasonCreateIn, SeasonOut
+from app.schemas import (
+    LeagueTeamScoreOut,
+    ScoringSummaryOut,
+    ScoringSummaryOwnerOut,
+    SeasonCreateIn,
+    SeasonOut,
+)
 
 router = APIRouter(prefix="/seasons", tags=["seasons"])
 
@@ -104,6 +110,48 @@ def scoring_summary(
         season_label_by_league=season_label_by_league,
         owners=owners,
     )
+
+
+@router.get("/{season_id}/leagues/{league}/team-scores", response_model=list[LeagueTeamScoreOut])
+def league_team_scores(
+    season_id: int, league: str, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """Per-team points within a single league -- the breakdown behind one
+    cell of scoring_summary's by_league total, used by the Seasons page's
+    stacked-bar chart (one segment per team a player owns in that
+    league)."""
+    if db.get(Season, season_id) is None:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+    entries = (
+        db.query(RosterEntry)
+        .join(Team, RosterEntry.team_id == Team.id)
+        .filter(RosterEntry.season_id == season_id, Team.league == league)
+        .all()
+    )
+    # Same "most recent by season_label" resolution as scoring_summary.
+    results_by_team = {
+        r.team_id: r
+        for r in db.query(TeamSeasonResult)
+        .filter(TeamSeasonResult.league == league)
+        .order_by(TeamSeasonResult.season_label.asc())
+    }
+    users_by_id = {u.id: u for u in db.query(User).all()}
+
+    return [
+        LeagueTeamScoreOut(
+            user_id=e.user_id,
+            display_name=users_by_id[e.user_id].display_name
+            if e.user_id in users_by_id
+            else f"User #{e.user_id}",
+            team_id=e.team_id,
+            team_name=e.team.name,
+            points=compute_score(league, results_by_team[e.team_id].stats)
+            if e.team_id in results_by_team
+            else 0.0,
+        )
+        for e in entries
+    ]
 
 
 @router.post("", response_model=SeasonOut, status_code=201)

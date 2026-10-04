@@ -56,7 +56,19 @@ export default function PlayerRosterPanel({ seasonId, userId }: PlayerRosterPane
 
   const leagueGroups = useMemo(() => {
     if (!rules) return [];
-    return Object.entries(rules.roster_limits).map(([league, limit]) => {
+    const activeSet = new Set(rules.active_leagues);
+    // Active leagues (actually being scored right now) first, inactive
+    // ones after -- stable within each group, preserving roster_limits'
+    // original order.
+    const orderedLeagues = Object.keys(rules.roster_limits)
+      .map((league, index) => ({ league, index }))
+      .sort(
+        (a, b) => Number(activeSet.has(b.league)) - Number(activeSet.has(a.league)) || a.index - b.index
+      )
+      .map(({ league }) => league);
+
+    return orderedLeagues.map((league) => {
+      const limit = rules.roster_limits[league];
       const owned: FilledSlot[] = ownedTeams
         .filter((e) => e.team.league === league)
         .map((entry) => ({ kind: "filled", entry, points: scoreByTeamId.get(entry.team.id) ?? null }));

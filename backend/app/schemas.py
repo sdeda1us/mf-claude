@@ -216,6 +216,10 @@ class LeagueRulesOut(BaseModel):
     # populated for NCAAF/NCAAMB/NCAAWB) — hidden by default on the crib
     # sheet given how many of them there are, searchable to add back.
     minor_conference_teams: dict[str, list[str]]
+    # Leagues with a TeamDailyScore row in the last couple of days -- i.e.
+    # actually being scored by the daily sync right now, not just
+    # in-scope for it (see routers/leagues.py's get_rules).
+    active_leagues: list[str]
 
 
 class ExampleScoreOut(BaseModel):
@@ -232,6 +236,19 @@ class ScoringSummaryOwnerOut(BaseModel):
     display_name: str
     by_league: dict[str, float]
     total: float
+
+
+class LeagueTeamScoreOut(BaseModel):
+    """One rostered team's current points in a single league -- the
+    per-team breakdown behind ScoringSummaryOwnerOut.by_league[league],
+    used by the Seasons page's stacked-bar chart (one stack segment per
+    team) rather than just each owner's league total."""
+
+    user_id: int
+    display_name: str
+    team_id: int
+    team_name: str
+    points: float
 
 
 class ScoringSummaryOut(BaseModel):

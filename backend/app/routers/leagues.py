@@ -1,6 +1,9 @@
+from datetime import timedelta
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from app.daily_score_sync import today_eastern
 from app.database import get_db
 from app.deps import get_current_user
 from app.league_rules import (
@@ -12,10 +15,18 @@ from app.league_rules import (
     compute_score_breakdown,
     is_minor_conference_team,
 )
-from app.models import Team, TeamSeasonResult, User
+from app.models import Team, TeamDailyScore, TeamSeasonResult, User
 from app.schemas import ExampleScoreOut, LeagueRulesOut
 
 router = APIRouter(prefix="/leagues", tags=["leagues"])
+
+# A league counts as "active" (actively being scored right now, as
+# opposed to merely in the daily sync's 9-league scope) if it has a
+# TeamDailyScore row dated within this many days -- covers the gap
+# between the routine researching a day's stats and the backend's own
+# pull picking them up (see app/daily_sync_pull.py) without needing any
+# hardcoded real-world season date ranges.
+ACTIVE_LEAGUE_LOOKBACK_DAYS = 2
 
 
 @router.get("/rules", response_model=LeagueRulesOut)
@@ -27,11 +38,24 @@ def get_rules(db: Session = Depends(get_db), _: User = Depends(get_current_user)
             for t in db.query(Team).filter(Team.league == league).all()
             if is_minor_conference_team(league, t.name)
         ]
+
+    cutoff = today_eastern() - timedelta(days=ACTIVE_LEAGUE_LOOKBACK_DAYS)
+    active_leagues = sorted(
+        {
+            row[0]
+            for row in db.query(TeamDailyScore.league)
+            .filter(TeamDailyScore.as_of_date >= cutoff)
+            .distinct()
+            .all()
+        }
+    )
+
     return LeagueRulesOut(
         roster_limits=ROSTER_LIMITS,
         scoring_rules=SCORING_RULES,
         league_session=LEAGUE_SESSION,
         minor_conference_teams=minor_conference_teams,
+        active_leagues=active_leagues,
     )
 
 

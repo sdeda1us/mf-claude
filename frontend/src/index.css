@@ -1458,6 +1458,11 @@ button:disabled {
   }
 }
 
+.season-league-chart {
+  width: 100%;
+  margin-top: 8px;
+}
+
 .league-sidebar {
   background: var(--stock-hi);
   border: 3px solid var(--ink);

@@ -7,45 +7,8 @@ import {
   type RosterEntry,
   type Team,
 } from "../lib/api";
+import { useChartPalette } from "../lib/chartPalette";
 import Plot from "../lib/plotly";
-
-// Reads the analytics chart palette from CSS custom properties so it stays
-// in sync with light/dark mode -- Plotly renders into its own SVG and
-// won't pick up var(--x) the way regular CSS does, so the concrete color
-// has to be resolved in JS (same approach as the auction page's teams-sold
-// chart). --chart-* variables are a categorical palette distinct from the
-// site's UI accents (--sky, --grass, etc.) -- see index.css's :root for
-// why (bumped saturation, validated with dataviz's validate_palette.js).
-function readAnalyticsPalette() {
-  const style = getComputedStyle(document.documentElement);
-  const read = (name: string, fallback: string) => style.getPropertyValue(name).trim() || fallback;
-  return {
-    // "Whole League" isn't a person, so it gets a neutral ink tone rather
-    // than competing for one of the six owner hues.
-    neutral: read("--ink-soft", "#58513f"),
-    owners: [
-      read("--chart-red", "#c8372e"),
-      read("--chart-sky", "#2f7ba8"),
-      read("--chart-gold", "#d9a73b"),
-      read("--chart-teal", "#0d9488"),
-      read("--chart-violet", "#7a5ea8"),
-      read("--chart-grass", "#1f8a4a"),
-    ],
-    grid: read("--rule", "#e0d3ab"),
-    text: read("--ink-soft", "#58513f"),
-  };
-}
-
-function useAnalyticsPalette() {
-  const [palette, setPalette] = useState(readAnalyticsPalette);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const update = () => setPalette(readAnalyticsPalette());
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-  return palette;
-}
 
 // True on narrow (roughly phone-width) viewports. Used to flip the
 // "Where the Money Went" stacked chart to horizontal bars there -- with
@@ -82,7 +45,7 @@ export default function Analytics() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [rules, setRules] = useState<LeagueRules | null>(null);
   const [loading, setLoading] = useState(false);
-  const palette = useAnalyticsPalette();
+  const palette = useChartPalette();
   const stackedChartNarrow = useIsNarrow(700);
 
   // Static reference data for the "Still on the Board" chart -- the full
