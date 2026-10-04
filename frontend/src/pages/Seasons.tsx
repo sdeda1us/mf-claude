@@ -8,10 +8,13 @@ import {
   api,
   type LeagueRules,
   type LeagueTeamScore,
+  type LeagueWeeklyGain,
   type ScoringSummary,
   type Season,
   type User,
 } from "../lib/api";
+
+const TOP_WEEKLY_GAINERS = 5;
 
 const STATUS_LABEL: Record<Season["status"], string> = {
   setup: "Setup",
@@ -30,6 +33,7 @@ export default function Seasons() {
   const [selectedLeague, setSelectedLeague] = useState("");
   const [scoringSummary, setScoringSummary] = useState<ScoringSummary | null>(null);
   const [leagueTeamScores, setLeagueTeamScores] = useState<LeagueTeamScore[]>([]);
+  const [weeklyGains, setWeeklyGains] = useState<LeagueWeeklyGain[]>([]);
 
   useEffect(() => {
     api.get<Season[]>("/seasons").then(setSeasons);
@@ -106,6 +110,16 @@ export default function Seasons() {
       .then(setLeagueTeamScores);
   }, [selectedSeasonId, selectedLeague]);
 
+  useEffect(() => {
+    if (!selectedSeasonId || !selectedLeague) {
+      setWeeklyGains([]);
+      return;
+    }
+    api
+      .get<LeagueWeeklyGain[]>(`/seasons/${selectedSeasonId}/leagues/${selectedLeague}/weekly-gains`)
+      .then(setWeeklyGains);
+  }, [selectedSeasonId, selectedLeague]);
+
   // One color per owner, assigned in standings order, so an owner's color
   // means the same thing here as anywhere else on this page.
   const ownerColor = useMemo(() => {
@@ -170,6 +184,30 @@ export default function Seasons() {
   }, [leagueTeamScores, ownerColor, palette.neutral, palette.text]);
 
   const chartHeight = Math.max(220, leagueChart.categoryArray.length * 56);
+
+  // Top N teams by points gained over their last 7 days of history (not
+  // top N by season total -- a team can rank here on a hot week alone).
+  // One bar per team, colored by owner for visual consistency with the
+  // stacked chart above.
+  const weeklyGainChart = useMemo(() => {
+    const top = weeklyGains.slice(0, TOP_WEEKLY_GAINERS);
+    return {
+      teamNames: top.map((r) => r.team_name),
+      trace: {
+        type: "bar" as const,
+        x: top.map((r) => r.team_name),
+        y: top.map((r) => r.gain),
+        marker: { color: top.map((r) => ownerColor[r.user_id] ?? palette.neutral) },
+        hovertemplate: top.map(
+          (r) =>
+            `${r.team_name} — ${r.display_name}<br>+%{y:.0f} pts over the last ${r.days_tracked} day${
+              r.days_tracked === 1 ? "" : "s"
+            }<br>${r.latest_score.toFixed(0)} pts total<extra></extra>`
+        ),
+      },
+      maxGain: top.length > 0 ? Math.max(...top.map((r) => r.gain)) : 1,
+    };
+  }, [weeklyGains, ownerColor, palette.neutral]);
 
   return (
     <div className="page page-wide">
@@ -248,6 +286,45 @@ export default function Seasons() {
                   </div>
                 ) : (
                   <p className="crib-value-note">No teams drafted in {selectedLeague} yet.</p>
+                )}
+
+                <h3 className="scoring-summary-heading">Hot This Week</h3>
+                {weeklyGainChart.teamNames.length > 0 ? (
+                  <div className="season-league-chart">
+                    <Plot
+                      data={[weeklyGainChart.trace]}
+                      layout={{
+                        autosize: true,
+                        height: 320,
+                        showlegend: false,
+                        margin: { l: 56, r: 16, t: 8, b: 90 },
+                        paper_bgcolor: "transparent",
+                        plot_bgcolor: "transparent",
+                        font: { size: 12, color: palette.text },
+                        xaxis: {
+                          categoryorder: "array",
+                          categoryarray: weeklyGainChart.teamNames,
+                          tickangle: -30,
+                          gridcolor: palette.grid,
+                          linecolor: palette.grid,
+                        },
+                        yaxis: {
+                          title: { text: "Points gained (last 7 days)" },
+                          range: [0, weeklyGainChart.maxGain * 1.15],
+                          gridcolor: palette.grid,
+                          linecolor: palette.grid,
+                          zeroline: false,
+                        },
+                      }}
+                      config={{ displayModeBar: false, responsive: true }}
+                      style={{ width: "100%", height: 320 }}
+                      useResizeHandler
+                    />
+                  </div>
+                ) : (
+                  <p className="crib-value-note">
+                    No day-over-day history for {selectedLeague} yet.
+                  </p>
                 )}
               </>
             )}

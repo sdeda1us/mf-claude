@@ -252,6 +252,22 @@ class LeagueTeamScoreOut(BaseModel):
     points: float
 
 
+class LeagueWeeklyGainOut(BaseModel):
+    """One team's point change over its last 7 days of TeamDailyScore
+    history in a single league -- the "who's hot this week" leaderboard
+    below the Seasons page's standings chart. days_tracked is how much
+    history the gain is actually based on (could be less than 7 if the
+    team hasn't been synced that long yet)."""
+
+    team_id: int
+    team_name: str
+    user_id: int
+    display_name: str
+    gain: float
+    latest_score: float
+    days_tracked: int
+
+
 class ScoringSummaryOut(BaseModel):
     leagues: list[str]
     # Which real-world season's results the score for each league is

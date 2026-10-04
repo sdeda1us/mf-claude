@@ -1,4 +1,5 @@
 from collections import defaultdict
+from datetime import timedelta
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -16,16 +17,19 @@ from app.models import (
     Season,
     SeasonStatus,
     Team,
+    TeamDailyScore,
     TeamSeasonResult,
     User,
 )
 from app.schemas import (
     LeagueTeamScoreOut,
+    LeagueWeeklyGainOut,
     ScoringSummaryOut,
     ScoringSummaryOwnerOut,
     SeasonCreateIn,
     SeasonOut,
 )
+from app.season_labels import CURRENT_SEASON
 
 router = APIRouter(prefix="/seasons", tags=["seasons"])
 
@@ -153,6 +157,63 @@ def league_team_scores(
         )
         for e in entries
     ]
+
+
+@router.get("/{season_id}/leagues/{league}/weekly-gains", response_model=list[LeagueWeeklyGainOut])
+def league_weekly_gains(
+    season_id: int, league: str, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """How much each rostered team's score has moved over its last 7 days
+    of TeamDailyScore history -- the "who's hot this week" chart below the
+    Seasons page's standings chart. Sorted highest gain first; a team with
+    no daily-score history yet (never synced) is left out rather than
+    shown with a meaningless 0. days_tracked can be less than 7 for a team
+    whose history doesn't go back that far yet."""
+    if db.get(Season, season_id) is None:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+    season_label = CURRENT_SEASON.get(league)
+    if season_label is None:
+        return []
+
+    entries = (
+        db.query(RosterEntry)
+        .join(Team, RosterEntry.team_id == Team.id)
+        .filter(RosterEntry.season_id == season_id, Team.league == league)
+        .all()
+    )
+    users_by_id = {u.id: u for u in db.query(User).all()}
+
+    results: list[LeagueWeeklyGainOut] = []
+    for e in entries:
+        daily_rows = (
+            db.query(TeamDailyScore)
+            .filter(TeamDailyScore.team_id == e.team_id, TeamDailyScore.season_label == season_label)
+            .order_by(TeamDailyScore.as_of_date.asc())
+            .all()
+        )
+        if not daily_rows:
+            continue
+        latest = daily_rows[-1]
+        cutoff = latest.as_of_date - timedelta(days=6)
+        window = [r for r in daily_rows if r.as_of_date >= cutoff]
+        baseline = window[0]
+        results.append(
+            LeagueWeeklyGainOut(
+                team_id=e.team_id,
+                team_name=e.team.name,
+                user_id=e.user_id,
+                display_name=users_by_id[e.user_id].display_name
+                if e.user_id in users_by_id
+                else f"User #{e.user_id}",
+                gain=float(latest.score) - float(baseline.score),
+                latest_score=float(latest.score),
+                days_tracked=(latest.as_of_date - baseline.as_of_date).days + 1,
+            )
+        )
+
+    results.sort(key=lambda r: r.gain, reverse=True)
+    return results
 
 
 @router.post("", response_model=SeasonOut, status_code=201)

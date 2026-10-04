@@ -199,6 +199,16 @@ export interface LeagueTeamScore {
   points: number;
 }
 
+export interface LeagueWeeklyGain {
+  team_id: number;
+  team_name: string;
+  user_id: number;
+  display_name: string;
+  gain: number;
+  latest_score: number;
+  days_tracked: number;
+}
+
 export interface LeagueRules {
   roster_limits: Record<string, number>;
   scoring_rules: Record<string, ScoringRuleLine[]>;
