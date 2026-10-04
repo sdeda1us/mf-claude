@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../components/Avatar";
+import ScoringSummaryTable from "../components/ScoringSummaryTable";
 import {
   api,
   type LeagueRules,
@@ -187,43 +188,7 @@ export default function Home() {
                     rather than auto-updating live, so treat it as "as of the last refresh," not
                     up-to-the-minute.
                   </p>
-                  <div className="scoring-summary-table-wrap">
-                  <table className="sortable-table">
-                    <thead>
-                      <tr>
-                        <th>Player</th>
-                        {scoringSummary.leagues.map((lg) => (
-                          <th key={lg}>{lg}</th>
-                        ))}
-                        <th>Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {scoringSummary.owners.map((o) => (
-                        <tr key={o.user_id}>
-                          <td>
-                            <span className="player-link">
-                              <Avatar
-                                name={o.display_name}
-                                src={users.find((u) => u.id === o.user_id)?.avatar_data_url}
-                                size={22}
-                              />
-                              {o.display_name}
-                            </span>
-                          </td>
-                          {scoringSummary.leagues.map((lg) => (
-                            <td key={lg} className="points-cell">
-                              {o.by_league[lg]?.toFixed(0) ?? 0}
-                            </td>
-                          ))}
-                          <td className="points-cell">
-                            <strong>{o.total.toFixed(0)}</strong>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                  </div>
+                  <ScoringSummaryTable scoringSummary={scoringSummary} users={users} />
                 </>
               )}
 

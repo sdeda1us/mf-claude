@@ -1436,6 +1436,28 @@ button:disabled {
   }
 }
 
+.season-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+
+.season-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .season-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 .league-sidebar {
   background: var(--stock-hi);
   border: 3px solid var(--ink);

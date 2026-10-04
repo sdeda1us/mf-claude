@@ -18,6 +18,7 @@ export default function Admin() {
   const [message, setMessage] = useState<string | null>(null);
   const [seasonMessage, setSeasonMessage] = useState<string | null>(null);
   const [seasonActionId, setSeasonActionId] = useState<number | null>(null);
+  const [newSeasonName, setNewSeasonName] = useState("");
 
   const loadSeasons = () => {
     api.get<Season[]>("/seasons").then(setSeasons);
@@ -44,6 +45,13 @@ export default function Admin() {
     } catch {
       setMessage("Failed to add roster entry.");
     }
+  };
+
+  const createSeason = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await api.post("/seasons", { name: newSeasonName });
+    setNewSeasonName("");
+    loadSeasons();
   };
 
   const activateSeason = async (season: Season) => {
@@ -87,6 +95,15 @@ export default function Admin() {
 
       <h2>Seasons</h2>
       <div className="crib-add-panel">
+        <form onSubmit={createSeason} className="inline-form">
+          <input
+            placeholder="New season name"
+            value={newSeasonName}
+            onChange={(e) => setNewSeasonName(e.target.value)}
+            required
+          />
+          <button type="submit">Create season</button>
+        </form>
         {seasons.length === 0 ? (
           <p className="queue-empty">No seasons yet.</p>
         ) : (
