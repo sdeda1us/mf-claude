@@ -1,3 +1,2228 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "league": "NFL",
+      "team": "Buffalo Bills",
+      "stats": {
+        "wins": 3,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Miami Dolphins",
+      "stats": {
+        "wins": 0,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "New England Patriots",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "New York Jets",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Baltimore Ravens",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Cincinnati Bengals",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Cleveland Browns",
+      "stats": {
+        "wins": 3,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Pittsburgh Steelers",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Houston Texans",
+      "stats": {
+        "wins": 0,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Indianapolis Colts",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Jacksonville Jaguars",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Tennessee Titans",
+      "stats": {
+        "wins": 0,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Denver Broncos",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Kansas City Chiefs",
+      "stats": {
+        "wins": 3,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Las Vegas Raiders",
+      "stats": {
+        "wins": 3,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Los Angeles Chargers",
+      "stats": {
+        "wins": 0,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Dallas Cowboys",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "New York Giants",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Philadelphia Eagles",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Washington Commanders",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Chicago Bears",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Detroit Lions",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Green Bay Packers",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Minnesota Vikings",
+      "stats": {
+        "wins": 3,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Atlanta Falcons",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Carolina Panthers",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "New Orleans Saints",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Tampa Bay Buccaneers",
+      "stats": {
+        "wins": 0,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Arizona Cardinals",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Los Angeles Rams",
+      "stats": {
+        "wins": 1,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "San Francisco 49ers",
+      "stats": {
+        "wins": 3,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Seattle Seahawks",
+      "stats": {
+        "wins": 2,
+        "ties": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Boston Bruins",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Buffalo Sabres",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Detroit Red Wings",
+      "stats": {
+        "wins": 0,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Florida Panthers",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 0,
+        "ot_losses": 1
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Montreal Canadiens",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 0,
+        "ot_losses": 1
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Ottawa Senators",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 0,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Tampa Bay Lightning",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Toronto Maple Leafs",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 2,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Carolina Hurricanes",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 1
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Columbus Blue Jackets",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "New Jersey Devils",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "New York Islanders",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "New York Rangers",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Philadelphia Flyers",
+      "stats": {
+        "wins": 0,
+        "reg_losses": 1,
+        "ot_losses": 2
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Pittsburgh Penguins",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 0,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Washington Capitals",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Chicago Blackhawks",
+      "stats": {
+        "wins": 0,
+        "reg_losses": 3,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Colorado Avalanche",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 0,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Dallas Stars",
+      "stats": {
+        "wins": 0,
+        "reg_losses": 2,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Minnesota Wild",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 0,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Nashville Predators",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "St. Louis Blues",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Utah Mammoth",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 0,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Winnipeg Jets",
+      "stats": {
+        "wins": 0,
+        "reg_losses": 0,
+        "ot_losses": 1
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Anaheim Ducks",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 0,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Calgary Flames",
+      "stats": {
+        "wins": 0,
+        "reg_losses": 2,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Edmonton Oilers",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 0,
+        "ot_losses": 1
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Los Angeles Kings",
+      "stats": {
+        "wins": 0,
+        "reg_losses": 1,
+        "ot_losses": 1
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "San Jose Sharks",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 0,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Seattle Kraken",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Vancouver Canucks",
+      "stats": {
+        "wins": 2,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Vegas Golden Knights",
+      "stats": {
+        "wins": 1,
+        "reg_losses": 1,
+        "ot_losses": 0
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Arsenal",
+      "stats": {
+        "standings_points": 12,
+        "goal_differential": 4
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Aston Villa",
+      "stats": {
+        "standings_points": 4,
+        "goal_differential": -5
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Bournemouth",
+      "stats": {
+        "standings_points": 3,
+        "goal_differential": -2
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Brentford",
+      "stats": {
+        "standings_points": 9,
+        "goal_differential": 6
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Brighton & Hove Albion",
+      "stats": {
+        "standings_points": 10,
+        "goal_differential": 11
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Chelsea",
+      "stats": {
+        "standings_points": 7,
+        "goal_differential": -2
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Coventry City",
+      "stats": {
+        "standings_points": 3,
+        "goal_differential": -9
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Crystal Palace",
+      "stats": {
+        "standings_points": 4,
+        "goal_differential": -5
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Everton",
+      "stats": {
+        "standings_points": 9,
+        "goal_differential": 3
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Fulham",
+      "stats": {
+        "standings_points": 2,
+        "goal_differential": -3
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Hull City",
+      "stats": {
+        "standings_points": 8,
+        "goal_differential": 2
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Ipswich Town",
+      "stats": {
+        "standings_points": 6,
+        "goal_differential": -4
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Leeds United",
+      "stats": {
+        "standings_points": 9,
+        "goal_differential": 4
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Liverpool",
+      "stats": {
+        "standings_points": 9,
+        "goal_differential": 3
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Manchester City",
+      "stats": {
+        "standings_points": 15,
+        "goal_differential": 8
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Manchester United",
+      "stats": {
+        "standings_points": 5,
+        "goal_differential": 0
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Newcastle United",
+      "stats": {
+        "standings_points": 8,
+        "goal_differential": 0
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Nottingham Forest",
+      "stats": {
+        "standings_points": 5,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Sunderland",
+      "stats": {
+        "standings_points": 4,
+        "goal_differential": -4
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Tottenham Hotspur",
+      "stats": {
+        "standings_points": 2,
+        "goal_differential": -6
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Paris Saint-Germain",
+      "stats": {
+        "points": 3,
+        "goal_differential": 5
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Bayern Munich",
+      "stats": {
+        "points": 3,
+        "goal_differential": 5
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Real Madrid",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Liverpool",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Inter Milan",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Manchester City",
+      "stats": {
+        "points": 3,
+        "goal_differential": 2
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Arsenal",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Barcelona",
+      "stats": {
+        "points": 3,
+        "goal_differential": 4
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Atl\u00e9tico Madrid",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Borussia Dortmund",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Roma",
+      "stats": {
+        "points": 1,
+        "goal_differential": 0
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Sporting CP",
+      "stats": {
+        "points": 3,
+        "goal_differential": 2
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Aston Villa",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Porto",
+      "stats": {
+        "points": 0,
+        "goal_differential": -2
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Manchester United",
+      "stats": {
+        "points": 3,
+        "goal_differential": 4
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Club Brugge",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Real Betis",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "PSV",
+      "stats": {
+        "points": 1,
+        "goal_differential": 0
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Feyenoord",
+      "stats": {
+        "points": 0,
+        "goal_differential": -4
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Lille",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Bod\u00f8/Glimt",
+      "stats": {
+        "points": 0,
+        "goal_differential": -5
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Napoli",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "RB Leipzig",
+      "stats": {
+        "points": 0,
+        "goal_differential": -3
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Villarreal",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Shakhtar Donetsk",
+      "stats": {
+        "points": 1,
+        "goal_differential": 0
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Galatasaray",
+      "stats": {
+        "points": 0,
+        "goal_differential": -2
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Fenerbah\u00e7e",
+      "stats": {
+        "points": 1,
+        "goal_differential": 0
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Slavia Prague",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Slovan Bratislava",
+      "stats": {
+        "points": 0,
+        "goal_differential": -5
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "VfB Stuttgart",
+      "stats": {
+        "points": 3,
+        "goal_differential": 2
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "LASK",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Como",
+      "stats": {
+        "points": 3,
+        "goal_differential": 3
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Lens",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Sabah FK",
+      "stats": {
+        "points": 0,
+        "goal_differential": -4
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Viking",
+      "stats": {
+        "points": 0,
+        "goal_differential": -2
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "AEK Athens",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Leinster",
+      "stats": {
+        "table_points": 3,
+        "points_difference": -7
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Munster",
+      "stats": {
+        "table_points": 6,
+        "points_difference": -2
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Connacht",
+      "stats": {
+        "table_points": 5,
+        "points_difference": -11
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Ulster",
+      "stats": {
+        "table_points": 5,
+        "points_difference": -5
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Cardiff",
+      "stats": {
+        "table_points": 9,
+        "points_difference": 19
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Ospreys",
+      "stats": {
+        "table_points": 1,
+        "points_difference": -33
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Scarlets",
+      "stats": {
+        "table_points": 2,
+        "points_difference": -18
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Dragons",
+      "stats": {
+        "table_points": 7,
+        "points_difference": 12
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Bulls",
+      "stats": {
+        "table_points": 5,
+        "points_difference": 34
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Lions",
+      "stats": {
+        "table_points": 9,
+        "points_difference": 17
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Sharks",
+      "stats": {
+        "table_points": 10,
+        "points_difference": 23
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Stormers",
+      "stats": {
+        "table_points": 6,
+        "points_difference": 10
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Edinburgh",
+      "stats": {
+        "table_points": 9,
+        "points_difference": 9
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Glasgow Warriors",
+      "stats": {
+        "table_points": 8,
+        "points_difference": 6
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Benetton",
+      "stats": {
+        "table_points": 3,
+        "points_difference": -3
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Zebre Parma",
+      "stats": {
+        "table_points": 1,
+        "points_difference": -47
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Alabama Crimson Tide",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Arkansas Razorbacks",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Auburn Tigers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Florida Gators",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Georgia Bulldogs",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Kentucky Wildcats",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "LSU Tigers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Mississippi State Bulldogs",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Missouri Tigers",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Oklahoma Sooners",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Ole Miss Rebels",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "South Carolina Gamecocks",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Tennessee Volunteers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Texas Longhorns",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Texas A&M Aggies",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Vanderbilt Commodores",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Illinois Fighting Illini",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Indiana Hoosiers",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Iowa Hawkeyes",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Maryland Terrapins",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Michigan Wolverines",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Michigan State Spartans",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Minnesota Golden Gophers",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Nebraska Cornhuskers",
+      "stats": {
+        "wins": 5,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Northwestern Wildcats",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Ohio State Buckeyes",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Oregon Ducks",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Penn State Nittany Lions",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Purdue Boilermakers",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Rutgers Scarlet Knights",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "UCLA Bruins",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "USC Trojans",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Washington Huskies",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Wisconsin Badgers",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Boston College Eagles",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "California Golden Bears",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Clemson Tigers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Duke Blue Devils",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Florida State Seminoles",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Georgia Tech Yellow Jackets",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Louisville Cardinals",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Miami (FL) Hurricanes",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "NC State Wolfpack",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "North Carolina Tar Heels",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Pittsburgh Panthers",
+      "stats": {
+        "wins": 5,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "SMU Mustangs",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Stanford Cardinal",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Syracuse Orange",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Virginia Cavaliers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Virginia Tech Hokies",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Wake Forest Demon Deacons",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Arizona Wildcats",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Arizona State Sun Devils",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Baylor Bears",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "BYU Cougars",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Cincinnati Bearcats",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Colorado Buffaloes",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Houston Cougars",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Iowa State Cyclones",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Kansas Jayhawks",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Kansas State Wildcats",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Oklahoma State Cowboys",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "TCU Horned Frogs",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Texas Tech Red Raiders",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "UCF Knights",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Utah Utes",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "West Virginia Mountaineers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Boise State Broncos",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Colorado State Rams",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Fresno State Bulldogs",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Oregon State Beavers",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "San Diego State Aztecs",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Texas State Bobcats",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Utah State Aggies",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Washington State Cougars",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Air Force Falcons",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Hawaii Rainbow Warriors",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Nevada Wolf Pack",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "New Mexico Lobos",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "North Dakota State Bison",
+      "stats": {
+        "wins": 5,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Northern Illinois Huskies",
+      "stats": {
+        "wins": 0,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "San Jose State Spartans",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "UNLV Rebels",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "UTEP Miners",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Wyoming Cowboys",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Army Black Knights",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Charlotte 49ers",
+      "stats": {
+        "wins": 0,
+        "reg_season_losses": 4
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "East Carolina Pirates",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Florida Atlantic Owls",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Memphis Tigers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Navy Midshipmen",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "North Texas Mean Green",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Rice Owls",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "South Florida Bulls",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Temple Owls",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Tulane Green Wave",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Tulsa Golden Hurricane",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "UAB Blazers",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "UTSA Roadrunners",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Appalachian State Mountaineers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Arkansas State Red Wolves",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Coastal Carolina Chanticleers",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Georgia Southern Eagles",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Georgia State Panthers",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "James Madison Dukes",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Louisiana Ragin' Cajuns",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Louisiana-Monroe Warhawks",
+      "stats": {
+        "wins": 0,
+        "reg_season_losses": 4
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Louisiana Tech Bulldogs",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Marshall Thundering Herd",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Old Dominion Monarchs",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "South Alabama Jaguars",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Southern Miss Golden Eagles",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Troy Trojans",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Akron Zips",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 4
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Ball State Cardinals",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 4
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Bowling Green Falcons",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 4
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Buffalo Bulls",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Central Michigan Chippewas",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Eastern Michigan Eagles",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Kent State Golden Flashes",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Miami (OH) RedHawks",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Ohio Bobcats",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Sacramento State Hornets",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 4
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Toledo Rockets",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "UMass Minutemen",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Western Michigan Broncos",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Delaware Blue Hens",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "FIU Panthers",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Jacksonville State Gamecocks",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Kennesaw State Owls",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Liberty Flames",
+      "stats": {
+        "wins": 3,
+        "reg_season_losses": 1
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Middle Tennessee Blue Raiders",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Missouri State Bears",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "New Mexico State Aggies",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Sam Houston Bearkats",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 3
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Western Kentucky Hilltoppers",
+      "stats": {
+        "wins": 1,
+        "reg_season_losses": 4
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "Notre Dame Fighting Irish",
+      "stats": {
+        "wins": 4,
+        "reg_season_losses": 0
+      }
+    },
+    {
+      "league": "NCAAF",
+      "team": "UConn Huskies",
+      "stats": {
+        "wins": 2,
+        "reg_season_losses": 2
+      }
+    }
+  ]
 }
