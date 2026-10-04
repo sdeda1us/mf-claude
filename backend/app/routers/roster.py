@@ -5,6 +5,7 @@ from app.database import get_db
 from app.deps import get_current_commissioner, get_current_user
 from app.models import Auction, RosterEntry, RosterSource, Season, Team, User
 from app.schemas import RosterCorrectionIn, RosterEntryOut
+from app.season_labels import ensure_current_season_placeholder
 from app.ws.connection_manager import manager
 
 router = APIRouter(prefix="/seasons/{season_id}/roster", tags=["roster"])
@@ -44,7 +45,8 @@ def correct_roster(
 ):
     if db.get(Season, season_id) is None:
         raise HTTPException(status_code=404, detail="Season not found")
-    if db.get(Team, payload.team_id) is None:
+    team = db.get(Team, payload.team_id)
+    if team is None:
         raise HTTPException(status_code=404, detail="Team not found")
     if db.get(User, payload.user_id) is None:
         raise HTTPException(status_code=404, detail="User not found")
@@ -57,6 +59,7 @@ def correct_roster(
         source=RosterSource.commissioner_correction,
     )
     db.add(entry)
+    ensure_current_season_placeholder(db, team)
     db.commit()
     db.refresh(entry)
     return entry

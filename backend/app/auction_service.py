@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.auction_timing import NOMINATION_TIMEOUT_SECONDS
 from app.league_rules import LEAGUE_SESSION, MINOR_CONFERENCE_CAPS, ROSTER_LIMITS, is_minor_conference_team
+from app.season_labels import ensure_current_season_placeholder
 from app.models import (
     Auction,
     AuctionItem,
@@ -432,6 +433,7 @@ def finalize_active_item(db: Session, auction: Auction, item: AuctionItem) -> No
                 source=RosterSource.auction,
             )
         )
+        ensure_current_season_placeholder(db, item.team)
         db.query(QueueEntry).filter(
             QueueEntry.season_id == auction.season_id, QueueEntry.team_id == item.team_id
         ).delete()
