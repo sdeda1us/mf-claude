@@ -259,9 +259,10 @@ SCORING_RULES: dict[str, list[dict]] = {
         {"label": "Win NBA Championship", "points": 30},
     ],
     "NHL": [
-        {"label": "Win (regulation, overtime, or shootout)", "points": 3},
+        {"label": "Regulation win", "points": 3},
         {"label": "Regulation loss", "points": -1},
-        {"label": "Overtime/shootout loss", "points": 2},
+        {"label": "Overtime/shootout win", "points": 2},
+        {"label": "Overtime/shootout loss", "points": 0},
         {"label": "Qualify for playoffs", "points": 10},
         {"label": "Win Round 1", "points": 10},
         {"label": "Win Round 2 (Conf. Semis)", "points": 15},
@@ -408,10 +409,17 @@ def compute_score(league: str, stats: dict) -> float:
             + (30 if stats.get("won_nba_champ") else 0)
         )
     if league == "NHL":
+        # reg_wins/ot_so_wins read via .get() rather than direct indexing,
+        # unlike reg_losses -- those two keys are new as of the
+        # regulation/OT-win split (previously just one combined "wins"),
+        # so any TeamSeasonResult/TeamDailyScore row not yet re-synced
+        # under the new shape would otherwise KeyError and 500 the whole
+        # scoring_summary page instead of just reading as 0 until its next
+        # sync. ot_so_losses isn't referenced at all -- worth 0 either way.
         return (
-            3 * stats["wins"]
+            3 * stats.get("reg_wins", 0)
             - 1 * stats["reg_losses"]
-            + 2 * stats["ot_losses"]
+            + 2 * stats.get("ot_so_wins", 0)
             + (10 if stats.get("made_playoffs") else 0)
             + (10 if stats.get("won_round1") else 0)
             + (15 if stats.get("won_round2") else 0)
@@ -604,9 +612,9 @@ def compute_score_breakdown(league: str, stats: dict) -> list[dict]:
         ])
     if league == "NHL":
         return _nonzero([
-            {"label": f"Wins ({stats['wins']})", "points": 3 * stats["wins"]},
+            {"label": f"Regulation wins ({stats.get('reg_wins', 0)})", "points": 3 * stats.get("reg_wins", 0)},
             {"label": f"Regulation losses ({stats['reg_losses']})", "points": -1 * stats["reg_losses"]},
-            {"label": f"OT/shootout losses ({stats['ot_losses']})", "points": 2 * stats["ot_losses"]},
+            {"label": f"OT/shootout wins ({stats.get('ot_so_wins', 0)})", "points": 2 * stats.get("ot_so_wins", 0)},
             {"label": "Qualified for playoffs", "points": 10 if stats.get("made_playoffs") else 0},
             {"label": "Won Round 1", "points": 10 if stats.get("won_round1") else 0},
             {"label": "Won Round 2 (Conf. Semis)", "points": 15 if stats.get("won_round2") else 0},

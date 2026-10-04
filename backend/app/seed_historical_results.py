@@ -198,10 +198,14 @@ NHL_CUP_WINNER = "Carolina Hurricanes"
 
 def nhl_stats(name: str) -> dict:
     wins, losses, otl = NHL_RECORDS[name]
+    # NHL_RECORDS doesn't distinguish which wins came in regulation vs.
+    # OT/shootout, so (same placeholder used elsewhere for this exact
+    # data gap) all wins are counted as regulation wins.
     return {
-        "wins": wins,
+        "reg_wins": wins,
         "reg_losses": losses,
-        "ot_losses": otl,
+        "ot_so_wins": 0,
+        "ot_so_losses": otl,
         "made_playoffs": name in NHL_MADE_PLAYOFFS,
         "won_round1": name in NHL_ROUND1_WINNERS,
         "won_round2": name in NHL_ROUND2_WINNERS,
