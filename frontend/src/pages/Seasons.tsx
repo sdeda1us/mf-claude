@@ -147,7 +147,7 @@ export default function Seasons() {
         // by the same player would fuse into one solid, unreadable block.
         line: { color: "#000000", width: 1 },
       },
-      hovertemplate: `${row.team_name}<br>%{x:.0f} pts<extra></extra>`,
+      hovertemplate: `${row.team_name}<br>%{x:.0f} pts<br>$${row.price_paid.toFixed(0)} paid<extra></extra>`,
     }));
 
     const annotations = players.map((p) => ({

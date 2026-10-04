@@ -146,6 +146,7 @@ def league_team_scores(
             else f"User #{e.user_id}",
             team_id=e.team_id,
             team_name=e.team.name,
+            price_paid=e.price_paid,
             points=compute_score(league, results_by_team[e.team_id].stats)
             if e.team_id in results_by_team
             else 0.0,

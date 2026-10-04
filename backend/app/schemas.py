@@ -248,6 +248,7 @@ class LeagueTeamScoreOut(BaseModel):
     display_name: str
     team_id: int
     team_name: str
+    price_paid: float
     points: float
 
 

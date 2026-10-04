@@ -195,6 +195,7 @@ export interface LeagueTeamScore {
   display_name: string;
   team_id: number;
   team_name: string;
+  price_paid: number;
   points: number;
 }
 
