@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../components/Avatar";
 import ScoringSummaryTable from "../components/ScoringSummaryTable";
+import TodaysGamesCard from "../components/TodaysGamesCard";
 import {
   api,
   type LeagueRules,
@@ -9,6 +10,7 @@ import {
   type ScoringSummary,
   type Season,
   type Team,
+  type TodaysGame,
   type User,
 } from "../lib/api";
 
@@ -16,6 +18,7 @@ interface SeasonSnapshot {
   season: Season;
   rows: { user: User; spent: number; teamsDrafted: number }[];
   scoringSummary: ScoringSummary;
+  todaysGames: TodaysGame[];
 }
 
 export default function Home() {
@@ -44,7 +47,8 @@ export default function Home() {
         Promise.all([
           api.get<RosterEntry[]>(`/seasons/${season.id}/roster`),
           api.get<ScoringSummary>(`/seasons/${season.id}/scoring-summary`),
-        ]).then(([entries, scoringSummary]) => {
+          api.get<TodaysGame[]>(`/seasons/${season.id}/todays-games`),
+        ]).then(([entries, scoringSummary, todaysGames]) => {
           const byUser = new Map<number, { spent: number; teamsDrafted: number }>();
           for (const e of entries) {
             const cur = byUser.get(e.user_id) ?? { spent: 0, teamsDrafted: 0 };
@@ -59,7 +63,7 @@ export default function Home() {
               teamsDrafted: byUser.get(user.id)?.teamsDrafted ?? 0,
             }))
             .sort((a, b) => b.spent - a.spent || b.teamsDrafted - a.teamsDrafted);
-          return { season, rows, scoringSummary };
+          return { season, rows, scoringSummary, todaysGames };
         })
       )
     ).then(setSnapshots);
@@ -126,9 +130,10 @@ export default function Home() {
             No season is currently active. <Link to="/seasons">See all seasons →</Link>
           </p>
         ) : (
-          snapshots.map(({ season, rows, scoringSummary }) => (
+          snapshots.map(({ season, rows, scoringSummary, todaysGames }) => (
             <div key={season.id} className="rules-card">
               <div className="ribbon">{season.name}</div>
+              <TodaysGamesCard games={todaysGames} />
               <div className="hero-cta-row">
                 <Link to={`/seasons/${season.id}/auction/fall`} className="fall-auction-cta">
                   🔨 Go to fall auction →

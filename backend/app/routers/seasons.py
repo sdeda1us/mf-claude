@@ -15,6 +15,7 @@ from app.models import (
     QueueEntry,
     ReserveBid,
     RosterEntry,
+    ScheduledGame,
     Season,
     SeasonStatus,
     Team,
@@ -30,6 +31,7 @@ from app.schemas import (
     ScoringSummaryOwnerOut,
     SeasonCreateIn,
     SeasonOut,
+    TodaysGameOut,
 )
 from app.scoring_events import diff_team_events
 from app.season_labels import CURRENT_SEASON, ZERO_STATS
@@ -47,6 +49,11 @@ router = APIRouter(prefix="/seasons", tags=["seasons"])
 # league's column here only ever reflects the teams someone's actually
 # drafted, not the whole league.
 SCORING_SUMMARY_LEAGUES = ["NFL", "NBA", "NHL", "EPL", "UCL", "URC", "NCAAF", "ATP", "WTA"]
+
+# Same 7 leagues as SCORING_SUMMARY_LEAGUES minus ATP/WTA -- those two are
+# country/individual-match aggregates with no single "team vs team" game
+# to show in a schedule widget.
+TODAYS_GAMES_LEAGUES = [lg for lg in SCORING_SUMMARY_LEAGUES if lg not in ("ATP", "WTA")]
 
 
 @router.get("", response_model=list[SeasonOut])
@@ -139,6 +146,64 @@ def scoring_summary(
         season_label_by_league=season_label_by_league,
         owners=owners,
     )
+
+
+@router.get("/{season_id}/todays-games", response_model=list[TodaysGameOut])
+def todays_games(
+    season_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """Today's real-world schedule across TODAYS_GAMES_LEAGUES, with the
+    owning player (if any, for this season) attached to each side -- the
+    Home page's "Today's Games" widget. A team with no matching Team row
+    (daily_games_sync.sync_games_for_date couldn't resolve it) or no
+    RosterEntry for this season shows up with owner=None rather than
+    erroring or being dropped -- the game itself is still worth showing."""
+    if db.get(Season, season_id) is None:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+    games = (
+        db.query(ScheduledGame)
+        .filter(
+            ScheduledGame.game_date == today_eastern(),
+            ScheduledGame.league.in_(TODAYS_GAMES_LEAGUES),
+        )
+        .all()
+    )
+
+    team_ids = {g.home_team_id for g in games if g.home_team_id} | {
+        g.away_team_id for g in games if g.away_team_id
+    }
+    owner_by_team_id: dict[int, str] = {}
+    if team_ids:
+        users_by_id = {u.id: u for u in db.query(User).all()}
+        for e in (
+            db.query(RosterEntry)
+            .filter(RosterEntry.season_id == season_id, RosterEntry.team_id.in_(team_ids))
+            .all()
+        ):
+            owner_by_team_id[e.team_id] = (
+                users_by_id[e.user_id].display_name
+                if e.user_id in users_by_id
+                else f"User #{e.user_id}"
+            )
+
+    league_order = {lg: i for i, lg in enumerate(TODAYS_GAMES_LEAGUES)}
+    games.sort(key=lambda g: (league_order.get(g.league, len(TODAYS_GAMES_LEAGUES)), g.home_team_name))
+
+    return [
+        TodaysGameOut(
+            league=g.league,
+            home_team_id=g.home_team_id,
+            home_team_name=g.home_team_name,
+            home_owner=owner_by_team_id.get(g.home_team_id) if g.home_team_id else None,
+            away_team_id=g.away_team_id,
+            away_team_name=g.away_team_name,
+            away_owner=owner_by_team_id.get(g.away_team_id) if g.away_team_id else None,
+            venue=g.venue,
+            time_label=g.time_label,
+        )
+        for g in games
+    ]
 
 
 @router.get("/{season_id}/leagues/{league}/team-scores", response_model=list[LeagueTeamScoreOut])

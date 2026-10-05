@@ -138,6 +138,46 @@ class TeamDailyScore(Base):
     )
 
 
+class ScheduledGame(Base):
+    """One real-world game on a given calendar day, for the Home page's
+    "Today's Games" widget -- sourced the same way as TeamDailyScore (see
+    app/daily_games_sync.py / app/daily_sync_pull.py), not a live
+    sports-schedule API. home_team_name/away_team_name are the raw
+    free-text names from that source and are always what the UI displays;
+    home_team_id/away_team_id are a best-effort match against
+    Team(league, name) and are nullable since the source's free-text name
+    might not exactly match a seeded Team row -- an unmatched team still
+    shows up by name, just with no owner attached.
+
+    Ingestion is a full delete-then-reinsert per (league, game_date) each
+    day (see daily_games_sync.sync_games_for_date), not an upsert -- the
+    UniqueConstraint below only guards against double-inserts within one
+    ingestion run."""
+
+    __tablename__ = "scheduled_games"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    league: Mapped[str] = mapped_column(String(50))
+    game_date: Mapped[date] = mapped_column(Date)
+    home_team_id: Mapped[int | None] = mapped_column(ForeignKey("teams.id"), nullable=True)
+    home_team_name: Mapped[str] = mapped_column(String(100))
+    away_team_id: Mapped[int | None] = mapped_column(ForeignKey("teams.id"), nullable=True)
+    away_team_name: Mapped[str] = mapped_column(String(100))
+    venue: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    time_label: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(default=utcnow)
+
+    home_team: Mapped["Team | None"] = relationship(foreign_keys=[home_team_id])
+    away_team: Mapped["Team | None"] = relationship(foreign_keys=[away_team_id])
+
+    __table_args__ = (
+        UniqueConstraint(
+            "league", "game_date", "home_team_name", "away_team_name",
+            name="uq_scheduled_game_league_date_teams",
+        ),
+    )
+
+
 class Auction(Base):
     __tablename__ = "auctions"
 

@@ -220,6 +220,18 @@ export interface LeagueEvent {
   points: number;
 }
 
+export interface TodaysGame {
+  league: string;
+  home_team_id: number | null;
+  home_team_name: string;
+  home_owner: string | null;
+  away_team_id: number | null;
+  away_team_name: string;
+  away_owner: string | null;
+  venue: string | null;
+  time_label: string | null;
+}
+
 export interface LeagueRules {
   roster_limits: Record<string, number>;
   scoring_rules: Record<string, ScoringRuleLine[]>;

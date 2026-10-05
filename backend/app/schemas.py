@@ -339,6 +339,29 @@ class DailySyncBatchResultOut(BaseModel):
     skipped: list[DailySyncSkipOut]
 
 
+class DailyGameEntryIn(BaseModel):
+    """One scheduled game for a given day, in the shape the games-sync
+    routine commits -- see data/daily-games/README.md."""
+
+    league: str
+    home_team: str
+    away_team: str
+    venue: str | None = None
+    time_label: str | None = None
+
+
+class TodaysGameOut(BaseModel):
+    league: str
+    home_team_id: int | None
+    home_team_name: str
+    home_owner: str | None
+    away_team_id: int | None
+    away_team_name: str
+    away_owner: str | None
+    venue: str | None
+    time_label: str | None
+
+
 class QueueEntryOut(BaseModel):
     id: int
     user_id: int
