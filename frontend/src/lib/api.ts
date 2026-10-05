@@ -182,6 +182,7 @@ export interface ScoringSummaryOwner {
   display_name: string;
   by_league: Record<string, number>;
   total: number;
+  ppd: number;
 }
 
 export interface ScoringSummary {

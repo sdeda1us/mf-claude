@@ -236,6 +236,12 @@ class ScoringSummaryOwnerOut(BaseModel):
     display_name: str
     by_league: dict[str, float]
     total: float
+    # Points Per Dollar: total / the price_paid of only the rostered teams
+    # that have actually started scoring (a TeamDailyScore row exists for
+    # the team's current season -- see scoring_summary's dollars_counted).
+    # 0 if none of this owner's teams have started yet, rather than
+    # dividing by zero.
+    ppd: float
 
 
 class LeagueTeamScoreOut(BaseModel):

@@ -90,9 +90,28 @@ def scoring_summary(
         .filter(TeamSeasonResult.league.in_(SCORING_SUMMARY_LEAGUES))
         .order_by(TeamSeasonResult.season_label.asc())
     }
+    # A team has "started playing and counting towards scoring" once the
+    # daily sync has written at least one TeamDailyScore row for its
+    # current real-world season -- same proxy league_weekly_gains/
+    # league_events use to skip never-synced teams, rather than a
+    # dedicated started/not-started flag (there isn't one in the schema).
+    team_ids = {e.team_id for e in entries}
+    started_team_ids = {
+        row.team_id
+        for row in db.query(
+            TeamDailyScore.team_id, TeamDailyScore.league, TeamDailyScore.season_label
+        )
+        .filter(
+            TeamDailyScore.team_id.in_(team_ids),
+            TeamDailyScore.league.in_(SCORING_SUMMARY_LEAGUES),
+        )
+        .all()
+        if row.season_label == CURRENT_SEASON.get(row.league)
+    }
 
     season_label_by_league: dict[str, str] = {}
     totals: dict[int, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    dollars_counted: dict[int, float] = defaultdict(float)
     for entry in entries:
         result = results_by_team.get(entry.team_id)
         if result is None:
@@ -100,6 +119,8 @@ def scoring_summary(
         league = entry.team.league
         season_label_by_league.setdefault(league, result.season_label)
         totals[entry.user_id][league] += compute_score(league, result.stats)
+        if entry.team_id in started_team_ids:
+            dollars_counted[entry.user_id] += float(entry.price_paid)
 
     owners = [
         ScoringSummaryOwnerOut(
@@ -107,6 +128,7 @@ def scoring_summary(
             display_name=u.display_name,
             by_league={lg: totals[u.id].get(lg, 0.0) for lg in SCORING_SUMMARY_LEAGUES},
             total=sum(totals[u.id].values()),
+            ppd=(sum(totals[u.id].values()) / dollars_counted[u.id]) if dollars_counted.get(u.id) else 0.0,
         )
         for u in db.query(User).all()
     ]

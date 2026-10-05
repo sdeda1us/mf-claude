@@ -19,6 +19,7 @@ export default function ScoringSummaryTable({ scoringSummary, users }: ScoringSu
               <th key={lg}>{lg}</th>
             ))}
             <th>Total</th>
+            <th>PPD</th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@ export default function ScoringSummaryTable({ scoringSummary, users }: ScoringSu
               <td className="points-cell">
                 <strong>{o.total.toFixed(0)}</strong>
               </td>
+              <td className="points-cell">{o.ppd.toFixed(2)}</td>
             </tr>
           ))}
         </tbody>
