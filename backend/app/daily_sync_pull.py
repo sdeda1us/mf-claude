@@ -56,6 +56,12 @@ def _seconds_until_next_run(now: datetime | None = None) -> float:
     return (target - now_et).total_seconds()
 
 
+def _todays_run_already_passed(now: datetime | None = None) -> bool:
+    now_et = (now or datetime.now(EASTERN)).astimezone(EASTERN)
+    todays_target = now_et.replace(hour=PULL_HOUR_ET, minute=0, second=0, microsecond=0)
+    return now_et >= todays_target
+
+
 def pull_and_sync() -> dict:
     response = requests.get(RAW_URL, timeout=30)
     response.raise_for_status()
@@ -71,26 +77,46 @@ def pull_and_sync() -> dict:
     return {"synced": result.synced, "skipped": [s.model_dump() for s in result.skipped]}
 
 
+async def _run_pull_and_report(context: str) -> None:
+    try:
+        result = await asyncio.to_thread(pull_and_sync)
+        logger.info("Daily sync pull (%s): %s", context, result)
+        if result["skipped"]:
+            notify_slack_sync(
+                f"📊 Daily score sync ({context}): {result['synced']} synced, "
+                f"{len(result['skipped'])} skipped -- check logs for details."
+            )
+    except NoActiveSeasonError:
+        logger.warning("Daily sync pull (%s): no active season, skipping", context)
+    except Exception:
+        logger.exception("Daily sync pull (%s) failed", context)
+        notify_slack_sync(f"📊 Daily score sync ({context}) FAILED -- check the backend logs.")
+
+
 async def daily_sync_pull_loop() -> None:
     """Runs forever: sleeps until the next 9 AM Eastern, pulls and ingests,
-    repeats. Spawned once from main.py's lifespan. A failed attempt is
-    logged and reported to Slack but never crashes the loop -- there's
-    always a next day to try again."""
+    repeats. Spawned once from main.py's lifespan.
+
+    Also catches up immediately on startup if today's 9 AM Eastern slot has
+    already passed -- otherwise today gets silently skipped entirely, since
+    the sleep loop below would just compute "next run = tomorrow" with no
+    record today was ever missed. This happened for real on 2026-10-04: the
+    first deploy that day landed at 11:49am ET, well past the 9am pull
+    hour, and nothing caught it up until the following day's scheduled run
+    -- the whole day has zero TeamDailyScore rows as a result. Re-pulling a
+    day that already got its scheduled sync is harmless (idempotent per
+    real-world day, see module docstring), so this runs unconditionally
+    whenever we're past today's hour rather than first checking whether
+    today's scheduled pull actually happened.
+
+    A failed attempt is logged and reported to Slack but never crashes the
+    loop -- there's always a next day to try again."""
+    if _todays_run_already_passed():
+        await _run_pull_and_report("startup catch-up")
+
     while True:
         await asyncio.sleep(_seconds_until_next_run())
-        try:
-            result = await asyncio.to_thread(pull_and_sync)
-            logger.info("Daily sync pull: %s", result)
-            if result["skipped"]:
-                notify_slack_sync(
-                    f"📊 Daily score sync: {result['synced']} synced, "
-                    f"{len(result['skipped'])} skipped -- check logs for details."
-                )
-        except NoActiveSeasonError:
-            logger.warning("Daily sync pull: no active season, skipping")
-        except Exception:
-            logger.exception("Daily sync pull failed")
-            notify_slack_sync("📊 Daily score sync FAILED -- check the backend logs.")
+        await _run_pull_and_report("scheduled")
 
 
 if __name__ == "__main__":
