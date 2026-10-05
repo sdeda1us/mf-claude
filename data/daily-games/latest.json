@@ -1,4 +1,40 @@
 {
-  "date": null,
-  "games": []
+  "date": "2026-10-05",
+  "games": [
+    {
+      "league": "NFL",
+      "home_team": "New Orleans Saints",
+      "away_team": "Atlanta Falcons",
+      "venue": "Caesars Superdome",
+      "time_label": "8:15 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Tampa Bay Lightning",
+      "away_team": "Philadelphia Flyers",
+      "venue": "Benchmark International Arena",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Boston Bruins",
+      "away_team": "Ottawa Senators",
+      "venue": "TD Garden",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Pittsburgh Penguins",
+      "away_team": "Winnipeg Jets",
+      "venue": "PPG Paints Arena",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Dallas Stars",
+      "away_team": "San Jose Sharks",
+      "venue": "American Airlines Center",
+      "time_label": "8:00 PM ET"
+    }
+  ]
 }
