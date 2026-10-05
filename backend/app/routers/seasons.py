@@ -4,6 +4,7 @@ from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from app.daily_score_sync import today_eastern
 from app.database import get_db
 from app.deps import get_current_commissioner, get_current_user
 from app.league_rules import compute_score
@@ -22,6 +23,7 @@ from app.models import (
     User,
 )
 from app.schemas import (
+    LeagueEventOut,
     LeagueTeamScoreOut,
     LeagueWeeklyGainOut,
     ScoringSummaryOut,
@@ -29,7 +31,8 @@ from app.schemas import (
     SeasonCreateIn,
     SeasonOut,
 )
-from app.season_labels import CURRENT_SEASON
+from app.scoring_events import diff_team_events
+from app.season_labels import CURRENT_SEASON, ZERO_STATS
 
 router = APIRouter(prefix="/seasons", tags=["seasons"])
 
@@ -213,6 +216,67 @@ def league_weekly_gains(
         )
 
     results.sort(key=lambda r: r.gain, reverse=True)
+    return results
+
+
+@router.get("/{season_id}/leagues/{league}/events", response_model=list[LeagueEventOut])
+def league_events(
+    season_id: int, league: str, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """What each rostered team picked up (or lost) points for, and on
+    which day -- the Seasons page's "Recent Activity" feed. Diffs each
+    team's consecutive TeamDailyScore rows (see scoring_events.
+    diff_team_events); a team's first-ever row is diffed against an
+    all-zero baseline so day one's cumulative state shows up too. Limited
+    to the last 7 days, newest first -- same window as weekly-gains
+    above."""
+    if db.get(Season, season_id) is None:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+    season_label = CURRENT_SEASON.get(league)
+    if season_label is None:
+        return []
+
+    entries = (
+        db.query(RosterEntry)
+        .join(Team, RosterEntry.team_id == Team.id)
+        .filter(RosterEntry.season_id == season_id, Team.league == league)
+        .all()
+    )
+    users_by_id = {u.id: u for u in db.query(User).all()}
+    cutoff = today_eastern() - timedelta(days=6)
+
+    results: list[LeagueEventOut] = []
+    for e in entries:
+        daily_rows = (
+            db.query(TeamDailyScore)
+            .filter(TeamDailyScore.team_id == e.team_id, TeamDailyScore.season_label == season_label)
+            .order_by(TeamDailyScore.as_of_date.asc())
+            .all()
+        )
+        if not daily_rows:
+            continue
+        display_name = (
+            users_by_id[e.user_id].display_name if e.user_id in users_by_id else f"User #{e.user_id}"
+        )
+        prev_stats = ZERO_STATS.get(league, {})
+        for row in daily_rows:
+            if row.as_of_date >= cutoff:
+                for event in diff_team_events(league, prev_stats, row.stats):
+                    results.append(
+                        LeagueEventOut(
+                            as_of_date=row.as_of_date.isoformat(),
+                            team_id=e.team_id,
+                            team_name=e.team.name,
+                            user_id=e.user_id,
+                            display_name=display_name,
+                            label=event["label"],
+                            points=event["points"],
+                        )
+                    )
+            prev_stats = row.stats
+
+    results.sort(key=lambda r: r.as_of_date, reverse=True)
     return results
 
 

@@ -268,6 +268,21 @@ class LeagueWeeklyGainOut(BaseModel):
     days_tracked: int
 
 
+class LeagueEventOut(BaseModel):
+    """One labeled, point-valued thing that changed for one team between
+    two consecutive days of TeamDailyScore history -- see
+    scoring_events.diff_team_events. The Seasons page's "Recent Activity"
+    feed."""
+
+    as_of_date: str
+    team_id: int
+    team_name: str
+    user_id: int
+    display_name: str
+    label: str
+    points: float
+
+
 class ScoringSummaryOut(BaseModel):
     leagues: list[str]
     # Which real-world season's results the score for each league is

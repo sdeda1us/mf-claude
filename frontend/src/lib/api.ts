@@ -209,6 +209,16 @@ export interface LeagueWeeklyGain {
   days_tracked: number;
 }
 
+export interface LeagueEvent {
+  as_of_date: string;
+  team_id: number;
+  team_name: string;
+  user_id: number;
+  display_name: string;
+  label: string;
+  points: number;
+}
+
 export interface LeagueRules {
   roster_limits: Record<string, number>;
   scoring_rules: Record<string, ScoringRuleLine[]>;

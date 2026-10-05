@@ -6,6 +6,7 @@ import { useChartPalette } from "../lib/chartPalette";
 import Plot from "../lib/plotly";
 import {
   api,
+  type LeagueEvent,
   type LeagueRules,
   type LeagueTeamScore,
   type LeagueWeeklyGain,
@@ -22,6 +23,16 @@ const STATUS_LABEL: Record<Season["status"], string> = {
   complete: "Complete",
 };
 
+// as_of_date arrives as a plain "YYYY-MM-DD" string -- appending a local
+// (not UTC) time avoids the classic off-by-one where the browser's
+// timezone shifts the parsed date back a day.
+function formatEventDate(isoDate: string): string {
+  return new Date(`${isoDate}T00:00:00`).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+}
+
 export default function Seasons() {
   const { user: viewer } = useAuth();
   const palette = useChartPalette();
@@ -34,6 +45,7 @@ export default function Seasons() {
   const [scoringSummary, setScoringSummary] = useState<ScoringSummary | null>(null);
   const [leagueTeamScores, setLeagueTeamScores] = useState<LeagueTeamScore[]>([]);
   const [weeklyGains, setWeeklyGains] = useState<LeagueWeeklyGain[]>([]);
+  const [leagueEvents, setLeagueEvents] = useState<LeagueEvent[]>([]);
 
   useEffect(() => {
     api.get<Season[]>("/seasons").then(setSeasons);
@@ -118,6 +130,16 @@ export default function Seasons() {
     api
       .get<LeagueWeeklyGain[]>(`/seasons/${selectedSeasonId}/leagues/${selectedLeague}/weekly-gains`)
       .then(setWeeklyGains);
+  }, [selectedSeasonId, selectedLeague]);
+
+  useEffect(() => {
+    if (!selectedSeasonId || !selectedLeague) {
+      setLeagueEvents([]);
+      return;
+    }
+    api
+      .get<LeagueEvent[]>(`/seasons/${selectedSeasonId}/leagues/${selectedLeague}/events`)
+      .then(setLeagueEvents);
   }, [selectedSeasonId, selectedLeague]);
 
   // One color per owner, assigned in standings order, so an owner's color
@@ -324,6 +346,28 @@ export default function Seasons() {
                 ) : (
                   <p className="crib-value-note">
                     No day-over-day history for {selectedLeague} yet.
+                  </p>
+                )}
+
+                <h3 className="scoring-summary-heading">Recent Activity</h3>
+                {leagueEvents.length > 0 ? (
+                  <ul className="season-list">
+                    {leagueEvents.map((e, i) => (
+                      <li key={i}>
+                        <span className="pill">{formatEventDate(e.as_of_date)}</span>
+                        <span>
+                          <strong>{e.team_name}</strong> ({e.display_name}): {e.label}
+                        </span>
+                        <span className="points-cell">
+                          {e.points >= 0 ? "+" : ""}
+                          {e.points.toFixed(0)} pts
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="crib-value-note">
+                    No scoring activity in {selectedLeague} in the last 7 days.
                   </p>
                 )}
               </>
