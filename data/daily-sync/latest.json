@@ -14,18 +14,6 @@
     },
     {
       "league": "NFL",
-      "team": "Miami Dolphins",
-      "stats": {
-        "wins": 0,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
       "team": "New England Patriots",
       "stats": {
         "wins": 2,
@@ -50,7 +38,31 @@
     },
     {
       "league": "NFL",
+      "team": "Miami Dolphins",
+      "stats": {
+        "wins": 0,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
+      "league": "NFL",
       "team": "Baltimore Ravens",
+      "stats": {
+        "wins": 3,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Cleveland Browns",
       "stats": {
         "wins": 3,
         "ties": 0,
@@ -74,43 +86,7 @@
     },
     {
       "league": "NFL",
-      "team": "Cleveland Browns",
-      "stats": {
-        "wins": 3,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
       "team": "Pittsburgh Steelers",
-      "stats": {
-        "wins": 2,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
-      "team": "Houston Texans",
-      "stats": {
-        "wins": 0,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
-      "team": "Indianapolis Colts",
       "stats": {
         "wins": 2,
         "ties": 0,
@@ -134,7 +110,19 @@
     },
     {
       "league": "NFL",
-      "team": "Tennessee Titans",
+      "team": "Indianapolis Colts",
+      "stats": {
+        "wins": 2,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Houston Texans",
       "stats": {
         "wins": 0,
         "ties": 0,
@@ -146,9 +134,9 @@
     },
     {
       "league": "NFL",
-      "team": "Denver Broncos",
+      "team": "Tennessee Titans",
       "stats": {
-        "wins": 2,
+        "wins": 0,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -182,9 +170,9 @@
     },
     {
       "league": "NFL",
-      "team": "Los Angeles Chargers",
+      "team": "Denver Broncos",
       "stats": {
-        "wins": 0,
+        "wins": 2,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -194,9 +182,9 @@
     },
     {
       "league": "NFL",
-      "team": "Dallas Cowboys",
+      "team": "Los Angeles Chargers",
       "stats": {
-        "wins": 2,
+        "wins": 0,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -230,9 +218,33 @@
     },
     {
       "league": "NFL",
+      "team": "Dallas Cowboys",
+      "stats": {
+        "wins": 2,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
+      "league": "NFL",
       "team": "Washington Commanders",
       "stats": {
         "wins": 1,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Minnesota Vikings",
+      "stats": {
+        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -278,9 +290,9 @@
     },
     {
       "league": "NFL",
-      "team": "Minnesota Vikings",
+      "team": "Carolina Panthers",
       "stats": {
-        "wins": 4,
+        "wins": 2,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -291,18 +303,6 @@
     {
       "league": "NFL",
       "team": "Atlanta Falcons",
-      "stats": {
-        "wins": 1,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
-      "team": "Carolina Panthers",
       "stats": {
         "wins": 2,
         "ties": 0,
@@ -338,30 +338,6 @@
     },
     {
       "league": "NFL",
-      "team": "Arizona Cardinals",
-      "stats": {
-        "wins": 1,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
-      "team": "Los Angeles Rams",
-      "stats": {
-        "wins": 2,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
       "team": "San Francisco 49ers",
       "stats": {
         "wins": 4,
@@ -385,40 +361,35 @@
       }
     },
     {
+      "league": "NFL",
+      "team": "Los Angeles Rams",
+      "stats": {
+        "wins": 2,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
+      "league": "NFL",
+      "team": "Arizona Cardinals",
+      "stats": {
+        "wins": 1,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
       "league": "NHL",
       "team": "Boston Bruins",
       "stats": {
-        "reg_wins": 1,
+        "reg_wins": 2,
         "reg_losses": 1,
-        "ot_so_wins": 1,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "Buffalo Sabres",
-      "stats": {
-        "reg_wins": 1,
-        "reg_losses": 1,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "Detroit Red Wings",
-      "stats": {
-        "reg_wins": 0,
-        "reg_losses": 2,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -430,9 +401,8 @@
       "league": "NHL",
       "team": "Florida Panthers",
       "stats": {
-        "reg_wins": 0,
+        "reg_wins": 1,
         "reg_losses": 0,
-        "ot_so_wins": 1,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -446,7 +416,6 @@
       "stats": {
         "reg_wins": 1,
         "reg_losses": 0,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -460,7 +429,19 @@
       "stats": {
         "reg_wins": 1,
         "reg_losses": 0,
-        "ot_so_wins": 0,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Buffalo Sabres",
+      "stats": {
+        "reg_wins": 1,
+        "reg_losses": 1,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -474,7 +455,6 @@
       "stats": {
         "reg_wins": 1,
         "reg_losses": 1,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -488,7 +468,6 @@
       "stats": {
         "reg_wins": 1,
         "reg_losses": 2,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -498,81 +477,10 @@
     },
     {
       "league": "NHL",
-      "team": "Carolina Hurricanes",
+      "team": "Detroit Red Wings",
       "stats": {
         "reg_wins": 0,
-        "reg_losses": 1,
-        "ot_so_wins": 1,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "Columbus Blue Jackets",
-      "stats": {
-        "reg_wins": 1,
-        "reg_losses": 1,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "New Jersey Devils",
-      "stats": {
-        "reg_wins": 0,
-        "reg_losses": 1,
-        "ot_so_wins": 1,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "New York Islanders",
-      "stats": {
-        "reg_wins": 1,
-        "reg_losses": 1,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "New York Rangers",
-      "stats": {
-        "reg_wins": 3,
-        "reg_losses": 1,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "Philadelphia Flyers",
-      "stats": {
-        "reg_wins": 0,
-        "reg_losses": 1,
-        "ot_so_wins": 0,
+        "reg_losses": 2,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -586,7 +494,84 @@
       "stats": {
         "reg_wins": 1,
         "reg_losses": 0,
-        "ot_so_wins": 1,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Columbus Blue Jackets",
+      "stats": {
+        "reg_wins": 1,
+        "reg_losses": 0,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "New Jersey Devils",
+      "stats": {
+        "reg_wins": 1,
+        "reg_losses": 0,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "New York Rangers",
+      "stats": {
+        "reg_wins": 1,
+        "reg_losses": 1,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Carolina Hurricanes",
+      "stats": {
+        "reg_wins": 0,
+        "reg_losses": 0,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Philadelphia Flyers",
+      "stats": {
+        "reg_wins": 0,
+        "reg_losses": 1,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "New York Islanders",
+      "stats": {
+        "reg_wins": 0,
+        "reg_losses": 1,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -598,23 +583,8 @@
       "league": "NHL",
       "team": "Washington Capitals",
       "stats": {
-        "reg_wins": 1,
-        "reg_losses": 1,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "Chicago Blackhawks",
-      "stats": {
         "reg_wins": 0,
-        "reg_losses": 3,
-        "ot_so_wins": 0,
+        "reg_losses": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -628,21 +598,6 @@
       "stats": {
         "reg_wins": 2,
         "reg_losses": 0,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "Dallas Stars",
-      "stats": {
-        "reg_wins": 0,
-        "reg_losses": 2,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -656,35 +611,6 @@
       "stats": {
         "reg_wins": 2,
         "reg_losses": 0,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "Nashville Predators",
-      "stats": {
-        "reg_wins": 1,
-        "reg_losses": 1,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "St. Louis Blues",
-      "stats": {
-        "reg_wins": 1,
-        "reg_losses": 1,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -698,7 +624,6 @@
       "stats": {
         "reg_wins": 2,
         "reg_losses": 1,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -712,7 +637,6 @@
       "stats": {
         "reg_wins": 1,
         "reg_losses": 0,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -722,11 +646,10 @@
     },
     {
       "league": "NHL",
-      "team": "Anaheim Ducks",
+      "team": "St. Louis Blues",
       "stats": {
         "reg_wins": 1,
-        "reg_losses": 0,
-        "ot_so_wins": 1,
+        "reg_losses": 1,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -736,11 +659,36 @@
     },
     {
       "league": "NHL",
-      "team": "Calgary Flames",
+      "team": "Nashville Predators",
+      "stats": {
+        "reg_wins": 1,
+        "reg_losses": 1,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Dallas Stars",
+      "stats": {
+        "reg_wins": 0,
+        "reg_losses": 2,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Chicago Blackhawks",
       "stats": {
         "reg_wins": 0,
         "reg_losses": 3,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -754,7 +702,6 @@
       "stats": {
         "reg_wins": 2,
         "reg_losses": 0,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -764,11 +711,10 @@
     },
     {
       "league": "NHL",
-      "team": "Los Angeles Kings",
+      "team": "Anaheim Ducks",
       "stats": {
-        "reg_wins": 0,
+        "reg_wins": 2,
         "reg_losses": 0,
-        "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -780,9 +726,8 @@
       "league": "NHL",
       "team": "San Jose Sharks",
       "stats": {
-        "reg_wins": 0,
+        "reg_wins": 2,
         "reg_losses": 0,
-        "ot_so_wins": 2,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -796,21 +741,6 @@
       "stats": {
         "reg_wins": 2,
         "reg_losses": 1,
-        "ot_so_wins": 0,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_cup": false
-      }
-    },
-    {
-      "league": "NHL",
-      "team": "Vancouver Canucks",
-      "stats": {
-        "reg_wins": 1,
-        "reg_losses": 2,
-        "ot_so_wins": 1,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -824,7 +754,45 @@
       "stats": {
         "reg_wins": 2,
         "reg_losses": 1,
-        "ot_so_wins": 0,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Vancouver Canucks",
+      "stats": {
+        "reg_wins": 2,
+        "reg_losses": 2,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Los Angeles Kings",
+      "stats": {
+        "reg_wins": 0,
+        "reg_losses": 1,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_cup": false
+      }
+    },
+    {
+      "league": "NHL",
+      "team": "Calgary Flames",
+      "stats": {
+        "reg_wins": 0,
+        "reg_losses": 3,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -853,7 +821,7 @@
       "team": "Bournemouth",
       "stats": {
         "standings_points": 3,
-        "goal_differential": -2
+        "goal_differential": 0
       }
     },
     {
@@ -981,7 +949,7 @@
       "team": "Sunderland",
       "stats": {
         "standings_points": 4,
-        "goal_differential": -4
+        "goal_differential": -3
       }
     },
     {
@@ -1022,76 +990,6 @@
     },
     {
       "league": "UCL",
-      "team": "Real Madrid",
-      "stats": {
-        "points": 3,
-        "goal_differential": 1,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Liverpool",
-      "stats": {
-        "points": 3,
-        "goal_differential": 1,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Inter Milan",
-      "stats": {
-        "points": 0,
-        "goal_differential": -1,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Manchester City",
-      "stats": {
-        "points": 3,
-        "goal_differential": 2,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Arsenal",
-      "stats": {
-        "points": 3,
-        "goal_differential": 1,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
       "team": "Barcelona",
       "stats": {
         "points": 3,
@@ -1106,24 +1004,10 @@
     },
     {
       "league": "UCL",
-      "team": "Atlético Madrid",
-      "stats": {
-        "points": 0,
-        "goal_differential": -1,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Borussia Dortmund",
+      "team": "Manchester United",
       "stats": {
         "points": 3,
-        "goal_differential": 1,
+        "goal_differential": 4,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1134,10 +1018,10 @@
     },
     {
       "league": "UCL",
-      "team": "Roma",
+      "team": "Como",
       "stats": {
-        "points": 1,
-        "goal_differential": 0,
+        "points": 3,
+        "goal_differential": 3,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1149,6 +1033,34 @@
     {
       "league": "UCL",
       "team": "Sporting CP",
+      "stats": {
+        "points": 3,
+        "goal_differential": 2,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "VfB Stuttgart",
+      "stats": {
+        "points": 3,
+        "goal_differential": 2,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Manchester City",
       "stats": {
         "points": 3,
         "goal_differential": 2,
@@ -1176,38 +1088,10 @@
     },
     {
       "league": "UCL",
-      "team": "Porto",
-      "stats": {
-        "points": 0,
-        "goal_differential": -2,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Manchester United",
+      "team": "Lens",
       "stats": {
         "points": 3,
-        "goal_differential": 4,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Club Brugge",
-      "stats": {
-        "points": 0,
-        "goal_differential": -1,
+        "goal_differential": 1,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1232,94 +1116,80 @@
     },
     {
       "league": "UCL",
-      "team": "PSV",
+      "team": "Borussia Dortmund",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Liverpool",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Real Madrid",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Arsenal",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "AEK Athens",
+      "stats": {
+        "points": 3,
+        "goal_differential": 1,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Roma",
       "stats": {
         "points": 1,
         "goal_differential": 0,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Feyenoord",
-      "stats": {
-        "points": 0,
-        "goal_differential": -4,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Lille",
-      "stats": {
-        "points": 0,
-        "goal_differential": -1,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Bodø/Glimt",
-      "stats": {
-        "points": 0,
-        "goal_differential": -5,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Napoli",
-      "stats": {
-        "points": 0,
-        "goal_differential": -1,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "RB Leipzig",
-      "stats": {
-        "points": 0,
-        "goal_differential": -3,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Villarreal",
-      "stats": {
-        "points": 0,
-        "goal_differential": -1,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1344,10 +1214,10 @@
     },
     {
       "league": "UCL",
-      "team": "Galatasaray",
+      "team": "Fenerbah\u00e7e",
       "stats": {
-        "points": 0,
-        "goal_differential": -2,
+        "points": 1,
+        "goal_differential": 0,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1358,10 +1228,66 @@
     },
     {
       "league": "UCL",
-      "team": "Fenerbahçe",
+      "team": "PSV",
       "stats": {
         "points": 1,
         "goal_differential": 0,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "RB Leipzig",
+      "stats": {
+        "points": 1,
+        "goal_differential": 0,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Villarreal",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Club Brugge",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Lille",
+      "stats": {
+        "points": 0,
+        "goal_differential": -1,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1386,10 +1312,10 @@
     },
     {
       "league": "UCL",
-      "team": "Slovan Bratislava",
+      "team": "Atl\u00e9tico Madrid",
       "stats": {
         "points": 0,
-        "goal_differential": -5,
+        "goal_differential": -1,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1400,10 +1326,10 @@
     },
     {
       "league": "UCL",
-      "team": "VfB Stuttgart",
+      "team": "Inter Milan",
       "stats": {
-        "points": 3,
-        "goal_differential": 2,
+        "points": 0,
+        "goal_differential": -1,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1428,38 +1354,24 @@
     },
     {
       "league": "UCL",
-      "team": "Como",
-      "stats": {
-        "points": 3,
-        "goal_differential": 3,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Lens",
-      "stats": {
-        "points": 3,
-        "goal_differential": 1,
-        "made_final_24": false,
-        "made_final_16": false,
-        "made_final_8": false,
-        "made_final_4": false,
-        "made_final_2": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "UCL",
-      "team": "Sabah FK",
+      "team": "Napoli",
       "stats": {
         "points": 0,
-        "goal_differential": -4,
+        "goal_differential": -1,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Galatasaray",
+      "stats": {
+        "points": 0,
+        "goal_differential": -2,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1484,10 +1396,66 @@
     },
     {
       "league": "UCL",
-      "team": "AEK Athens",
+      "team": "Porto",
       "stats": {
-        "points": 3,
-        "goal_differential": 1,
+        "points": 0,
+        "goal_differential": -2,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Feyenoord",
+      "stats": {
+        "points": 0,
+        "goal_differential": -4,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Sabah FK",
+      "stats": {
+        "points": 0,
+        "goal_differential": -4,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Slovan Bratislava",
+      "stats": {
+        "points": 0,
+        "goal_differential": -5,
+        "made_final_24": false,
+        "made_final_16": false,
+        "made_final_8": false,
+        "made_final_4": false,
+        "made_final_2": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "UCL",
+      "team": "Bod\u00f8/Glimt",
+      "stats": {
+        "points": 0,
+        "goal_differential": -5,
         "made_final_24": false,
         "made_final_16": false,
         "made_final_8": false,
@@ -1498,10 +1466,94 @@
     },
     {
       "league": "URC",
-      "team": "Leinster",
+      "team": "Sharks",
       "stats": {
-        "table_points": 3,
-        "points_difference": -7,
+        "table_points": 10,
+        "points_difference": 23,
+        "made_playoffs": false,
+        "won_quarterfinal": false,
+        "won_semifinal": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Cardiff",
+      "stats": {
+        "table_points": 9,
+        "points_difference": 19,
+        "made_playoffs": false,
+        "won_quarterfinal": false,
+        "won_semifinal": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Lions",
+      "stats": {
+        "table_points": 9,
+        "points_difference": 17,
+        "made_playoffs": false,
+        "won_quarterfinal": false,
+        "won_semifinal": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Edinburgh",
+      "stats": {
+        "table_points": 9,
+        "points_difference": 9,
+        "made_playoffs": false,
+        "won_quarterfinal": false,
+        "won_semifinal": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Glasgow Warriors",
+      "stats": {
+        "table_points": 8,
+        "points_difference": 6,
+        "made_playoffs": false,
+        "won_quarterfinal": false,
+        "won_semifinal": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Dragons",
+      "stats": {
+        "table_points": 7,
+        "points_difference": 12,
+        "made_playoffs": false,
+        "won_quarterfinal": false,
+        "won_semifinal": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Bulls",
+      "stats": {
+        "table_points": 6,
+        "points_difference": 30,
+        "made_playoffs": false,
+        "won_quarterfinal": false,
+        "won_semifinal": false,
+        "won_final": false
+      }
+    },
+    {
+      "league": "URC",
+      "team": "Stormers",
+      "stats": {
+        "table_points": 6,
+        "points_difference": 10,
         "made_playoffs": false,
         "won_quarterfinal": false,
         "won_semifinal": false,
@@ -1546,10 +1598,10 @@
     },
     {
       "league": "URC",
-      "team": "Cardiff",
+      "team": "Benetton",
       "stats": {
-        "table_points": 9,
-        "points_difference": 19,
+        "table_points": 3,
+        "points_difference": -3,
         "made_playoffs": false,
         "won_quarterfinal": false,
         "won_semifinal": false,
@@ -1558,10 +1610,10 @@
     },
     {
       "league": "URC",
-      "team": "Ospreys",
+      "team": "Leinster",
       "stats": {
-        "table_points": 1,
-        "points_difference": -33,
+        "table_points": 3,
+        "points_difference": -7,
         "made_playoffs": false,
         "won_quarterfinal": false,
         "won_semifinal": false,
@@ -1582,94 +1634,10 @@
     },
     {
       "league": "URC",
-      "team": "Dragons",
+      "team": "Ospreys",
       "stats": {
-        "table_points": 7,
-        "points_difference": 12,
-        "made_playoffs": false,
-        "won_quarterfinal": false,
-        "won_semifinal": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "URC",
-      "team": "Bulls",
-      "stats": {
-        "table_points": 6,
-        "points_difference": 30,
-        "made_playoffs": false,
-        "won_quarterfinal": false,
-        "won_semifinal": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "URC",
-      "team": "Lions",
-      "stats": {
-        "table_points": 9,
-        "points_difference": 17,
-        "made_playoffs": false,
-        "won_quarterfinal": false,
-        "won_semifinal": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "URC",
-      "team": "Sharks",
-      "stats": {
-        "table_points": 10,
-        "points_difference": 23,
-        "made_playoffs": false,
-        "won_quarterfinal": false,
-        "won_semifinal": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "URC",
-      "team": "Stormers",
-      "stats": {
-        "table_points": 6,
-        "points_difference": 10,
-        "made_playoffs": false,
-        "won_quarterfinal": false,
-        "won_semifinal": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "URC",
-      "team": "Edinburgh",
-      "stats": {
-        "table_points": 9,
-        "points_difference": 9,
-        "made_playoffs": false,
-        "won_quarterfinal": false,
-        "won_semifinal": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "URC",
-      "team": "Glasgow Warriors",
-      "stats": {
-        "table_points": 8,
-        "points_difference": 6,
-        "made_playoffs": false,
-        "won_quarterfinal": false,
-        "won_semifinal": false,
-        "won_final": false
-      }
-    },
-    {
-      "league": "URC",
-      "team": "Benetton",
-      "stats": {
-        "table_points": 3,
-        "points_difference": -3,
+        "table_points": 1,
+        "points_difference": -33,
         "made_playoffs": false,
         "won_quarterfinal": false,
         "won_semifinal": false,
@@ -1913,7 +1881,7 @@
       "league": "NCAAF",
       "team": "Indiana Hoosiers",
       "stats": {
-        "wins": 5,
+        "wins": 4,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2070,7 +2038,7 @@
       "team": "Rutgers Scarlet Knights",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 4,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2095,7 +2063,7 @@
       "league": "NCAAF",
       "team": "USC Trojans",
       "stats": {
-        "wins": 5,
+        "wins": 4,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2109,7 +2077,7 @@
       "team": "Washington Huskies",
       "stats": {
         "wins": 3,
-        "reg_season_losses": 2,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2135,7 +2103,7 @@
       "team": "Boston College Eagles",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 3,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2148,7 +2116,7 @@
       "team": "California Golden Bears",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 3,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2161,7 +2129,7 @@
       "team": "Clemson Tigers",
       "stats": {
         "wins": 3,
-        "reg_season_losses": 2,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2173,7 +2141,7 @@
       "league": "NCAAF",
       "team": "Duke Blue Devils",
       "stats": {
-        "wins": 4,
+        "wins": 3,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2186,7 +2154,7 @@
       "league": "NCAAF",
       "team": "Florida State Seminoles",
       "stats": {
-        "wins": 3,
+        "wins": 2,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2200,7 +2168,7 @@
       "team": "Georgia Tech Yellow Jackets",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 3,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2213,7 +2181,7 @@
       "team": "Louisville Cardinals",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 3,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2225,7 +2193,7 @@
       "league": "NCAAF",
       "team": "Miami (FL) Hurricanes",
       "stats": {
-        "wins": 5,
+        "wins": 3,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2238,7 +2206,7 @@
       "league": "NCAAF",
       "team": "NC State Wolfpack",
       "stats": {
-        "wins": 3,
+        "wins": 1,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2252,7 +2220,7 @@
       "team": "North Carolina Tar Heels",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 2,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2264,7 +2232,7 @@
       "league": "NCAAF",
       "team": "Pittsburgh Panthers",
       "stats": {
-        "wins": 5,
+        "wins": 4,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2277,7 +2245,7 @@
       "league": "NCAAF",
       "team": "SMU Mustangs",
       "stats": {
-        "wins": 4,
+        "wins": 2,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2290,8 +2258,8 @@
       "league": "NCAAF",
       "team": "Stanford Cardinal",
       "stats": {
-        "wins": 2,
-        "reg_season_losses": 3,
+        "wins": 1,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2303,7 +2271,7 @@
       "league": "NCAAF",
       "team": "Syracuse Orange",
       "stats": {
-        "wins": 2,
+        "wins": 1,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2316,8 +2284,8 @@
       "league": "NCAAF",
       "team": "Virginia Cavaliers",
       "stats": {
-        "wins": 3,
-        "reg_season_losses": 2,
+        "wins": 2,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2330,7 +2298,7 @@
       "team": "Virginia Tech Hokies",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 1,
+        "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2342,7 +2310,7 @@
       "league": "NCAAF",
       "team": "Wake Forest Demon Deacons",
       "stats": {
-        "wins": 4,
+        "wins": 3,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2355,7 +2323,7 @@
       "league": "NCAAF",
       "team": "Arizona Wildcats",
       "stats": {
-        "wins": 4,
+        "wins": 3,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2369,7 +2337,7 @@
       "team": "Arizona State Sun Devils",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 2,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2381,7 +2349,7 @@
       "league": "NCAAF",
       "team": "Baylor Bears",
       "stats": {
-        "wins": 4,
+        "wins": 3,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2394,7 +2362,7 @@
       "league": "NCAAF",
       "team": "BYU Cougars",
       "stats": {
-        "wins": 4,
+        "wins": 3,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2408,7 +2376,7 @@
       "team": "Cincinnati Bearcats",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 1,
+        "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2421,7 +2389,7 @@
       "team": "Colorado Buffaloes",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 3,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2433,7 +2401,7 @@
       "league": "NCAAF",
       "team": "Houston Cougars",
       "stats": {
-        "wins": 4,
+        "wins": 3,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2446,7 +2414,7 @@
       "league": "NCAAF",
       "team": "Iowa State Cyclones",
       "stats": {
-        "wins": 3,
+        "wins": 2,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2459,7 +2427,7 @@
       "league": "NCAAF",
       "team": "Kansas Jayhawks",
       "stats": {
-        "wins": 2,
+        "wins": 1,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2499,7 +2467,7 @@
       "team": "TCU Horned Frogs",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 3,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2511,7 +2479,7 @@
       "league": "NCAAF",
       "team": "Texas Tech Red Raiders",
       "stats": {
-        "wins": 5,
+        "wins": 4,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2525,7 +2493,7 @@
       "team": "UCF Knights",
       "stats": {
         "wins": 3,
-        "reg_season_losses": 2,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2551,7 +2519,7 @@
       "team": "West Virginia Mountaineers",
       "stats": {
         "wins": 3,
-        "reg_season_losses": 2,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2615,7 +2583,7 @@
       "league": "NCAAF",
       "team": "San Diego State Aztecs",
       "stats": {
-        "wins": 2,
+        "wins": 1,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2642,7 +2610,7 @@
       "team": "Utah State Aggies",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 4,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2654,8 +2622,8 @@
       "league": "NCAAF",
       "team": "Washington State Cougars",
       "stats": {
-        "wins": 1,
-        "reg_season_losses": 4,
+        "wins": 3,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2811,7 +2779,7 @@
       "team": "Charlotte 49ers",
       "stats": {
         "wins": 0,
-        "reg_season_losses": 4,
+        "reg_season_losses": 5,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2863,7 +2831,7 @@
       "team": "Navy Midshipmen",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2889,7 +2857,7 @@
       "team": "Rice Owls",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2941,7 +2909,7 @@
       "team": "Tulsa Golden Hurricane",
       "stats": {
         "wins": 3,
-        "reg_season_losses": 1,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2993,7 +2961,7 @@
       "team": "Arkansas State Red Wolves",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3006,7 +2974,7 @@
       "team": "Coastal Carolina Chanticleers",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3057,7 +3025,7 @@
       "league": "NCAAF",
       "team": "Louisiana Ragin' Cajuns",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3071,7 +3039,7 @@
       "team": "Louisiana-Monroe Warhawks",
       "stats": {
         "wins": 0,
-        "reg_season_losses": 3,
+        "reg_season_losses": 5,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3122,7 +3090,7 @@
       "league": "NCAAF",
       "team": "South Alabama Jaguars",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3331,7 +3299,7 @@
       "team": "Delaware Blue Hens",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 3,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3382,7 +3350,7 @@
       "league": "NCAAF",
       "team": "Liberty Flames",
       "stats": {
-        "wins": 4,
+        "wins": 3,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3435,7 +3403,7 @@
       "team": "Sam Houston Bearkats",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3474,7 +3442,7 @@
       "team": "UConn Huskies",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 3,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
