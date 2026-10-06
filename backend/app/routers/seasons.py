@@ -154,10 +154,12 @@ def todays_games(
 ):
     """Today's real-world schedule across TODAYS_GAMES_LEAGUES, with the
     owning player (if any, for this season) attached to each side -- the
-    Home page's "Today's Games" widget. A team with no matching Team row
-    (daily_games_sync.sync_games_for_date couldn't resolve it) or no
-    RosterEntry for this season shows up with owner=None rather than
-    erroring or being dropped -- the game itself is still worth showing."""
+    Home page's "Today's Games" widget. A game where NEITHER side is
+    rostered this season is dropped entirely (nobody's fantasy score
+    depends on it); a game where at least one side is rostered still
+    shows, with owner=None on whichever side is undrafted or unmatched
+    (daily_games_sync.sync_games_for_date couldn't resolve that team's
+    name to a Team row)."""
     if db.get(Season, season_id) is None:
         raise HTTPException(status_code=404, detail="Season not found")
 
@@ -186,6 +188,10 @@ def todays_games(
                 if e.user_id in users_by_id
                 else f"User #{e.user_id}"
             )
+
+    # Drop games where neither side is drafted -- a fantasy player only
+    # cares about a game if it's scoring points for someone's roster.
+    games = [g for g in games if g.home_team_id in owner_by_team_id or g.away_team_id in owner_by_team_id]
 
     league_order = {lg: i for i, lg in enumerate(TODAYS_GAMES_LEAGUES)}
     games.sort(key=lambda g: (league_order.get(g.league, len(TODAYS_GAMES_LEAGUES)), g.home_team_name))
