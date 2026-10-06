@@ -79,7 +79,7 @@ BACKUP_MODELS = [
 def _serialize(value):
     if isinstance(value, Decimal):
         return float(value)
-    if isinstance(value, datetime):
+    if isinstance(value, (datetime, date)):
         return value.isoformat()
     return value
 
