@@ -152,7 +152,13 @@ class ScheduledGame(Base):
     Ingestion is a full delete-then-reinsert per (league, game_date) each
     day (see daily_games_sync.sync_games_for_date), not an upsert -- the
     UniqueConstraint below only guards against double-inserts within one
-    ingestion run."""
+    ingestion run.
+
+    home_score/away_score are filled in separately, a day later, by
+    app/daily_results_sync.py -- an in-place UPDATE matched on the same
+    (league, game_date, home_team_name, away_team_name) tuple, not part
+    of the delete-then-reinsert above, since the schedule row already
+    exists by the time a result is known."""
 
     __tablename__ = "scheduled_games"
 
@@ -165,6 +171,11 @@ class ScheduledGame(Base):
     away_team_name: Mapped[str] = mapped_column(String(100))
     venue: Mapped[str | None] = mapped_column(String(200), nullable=True)
     time_label: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    # Final score, filled in the day after by the same routine/pull as
+    # everything else here -- null until app/daily_results_sync.py
+    # resolves it (see "Yesterday's Results" on the Home page).
+    home_score: Mapped[int | None] = mapped_column(nullable=True)
+    away_score: Mapped[int | None] = mapped_column(nullable=True)
     created_at: Mapped[datetime] = mapped_column(default=utcnow)
 
     home_team: Mapped["Team | None"] = relationship(foreign_keys=[home_team_id])

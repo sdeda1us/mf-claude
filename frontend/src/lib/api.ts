@@ -232,6 +232,20 @@ export interface TodaysGame {
   time_label: string | null;
 }
 
+export interface YesterdaysResult {
+  league: string;
+  home_team_id: number | null;
+  home_team_name: string;
+  home_owner: string | null;
+  home_score: number;
+  home_point_change: number | null;
+  away_team_id: number | null;
+  away_team_name: string;
+  away_owner: string | null;
+  away_score: number;
+  away_point_change: number | null;
+}
+
 export interface LeagueRules {
   roster_limits: Record<string, number>;
   scoring_rules: Record<string, ScoringRuleLine[]>;

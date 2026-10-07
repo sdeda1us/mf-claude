@@ -34,9 +34,10 @@ from zoneinfo import ZoneInfo
 import requests
 
 from app.daily_games_sync import sync_games_for_date
+from app.daily_results_sync import sync_results_for_date
 from app.daily_score_sync import NoActiveSeasonError, apply_daily_sync_batch
 from app.database import SessionLocal
-from app.schemas import DailyGameEntryIn, DailySyncEntryIn
+from app.schemas import DailyGameEntryIn, DailyResultEntryIn, DailySyncEntryIn
 from app.slack_notify import notify_slack_sync
 
 logger = logging.getLogger("megafantasy.daily_sync_pull")
@@ -48,6 +49,7 @@ PULL_HOUR_ET = 9
 
 RAW_URL = "https://raw.githubusercontent.com/sdeda1us/mf-claude/main/data/daily-sync/latest.json"
 GAMES_RAW_URL = "https://raw.githubusercontent.com/sdeda1us/mf-claude/main/data/daily-games/latest.json"
+RESULTS_RAW_URL = "https://raw.githubusercontent.com/sdeda1us/mf-claude/main/data/daily-results/latest.json"
 
 
 def _seconds_until_next_run(now: datetime | None = None) -> float:
@@ -102,6 +104,28 @@ def pull_and_sync_games() -> dict:
     return {"synced": count, "date": payload["date"]}
 
 
+def pull_and_sync_results() -> dict:
+    """Same pull-from-GitHub pattern as pull_and_sync_games, for the Home
+    page's "Yesterday's Results" card. A null `date` (no routine run has
+    populated this file yet, or yesterday had nothing to report) is a
+    harmless no-op, not an error."""
+    response = requests.get(RESULTS_RAW_URL, timeout=30)
+    response.raise_for_status()
+    payload = response.json()
+    if not payload.get("date"):
+        return {"updated": 0, "date": None}
+    result_date = date.fromisoformat(payload["date"])
+    entries = [DailyResultEntryIn(**r) for r in payload.get("results", [])]
+
+    db = SessionLocal()
+    try:
+        result = sync_results_for_date(db, result_date, entries)
+        db.commit()
+    finally:
+        db.close()
+    return {"updated": result["updated"], "skipped": result["skipped"], "date": payload["date"]}
+
+
 async def _run_score_pull_and_report(context: str) -> None:
     try:
         result = await asyncio.to_thread(pull_and_sync)
@@ -131,9 +155,28 @@ async def _run_games_pull_and_report(context: str) -> None:
         notify_slack_sync(f"🗓️ Daily games sync ({context}) failed -- check the backend logs.")
 
 
+async def _run_results_pull_and_report(context: str) -> None:
+    """Separate from the other two pulls for the same isolation reason
+    _run_games_pull_and_report is -- a results-pull failure (including a
+    missing/malformed file before the routine is updated to produce one)
+    never blocks or gets conflated with the score pull's own reporting."""
+    try:
+        result = await asyncio.to_thread(pull_and_sync_results)
+        logger.info("Daily results pull (%s): %s", context, result)
+        if result.get("skipped"):
+            notify_slack_sync(
+                f"🏁 Daily results sync ({context}): {result['updated']} updated, "
+                f"{len(result['skipped'])} had no matching scheduled game -- check logs."
+            )
+    except Exception:
+        logger.exception("Daily results pull (%s) failed", context)
+        notify_slack_sync(f"🏁 Daily results sync ({context}) failed -- check the backend logs.")
+
+
 async def _run_pull_and_report(context: str) -> None:
     await _run_score_pull_and_report(context)
     await _run_games_pull_and_report(context)
+    await _run_results_pull_and_report(context)
 
 
 async def daily_sync_pull_loop() -> None:
@@ -165,3 +208,4 @@ async def daily_sync_pull_loop() -> None:
 if __name__ == "__main__":
     print(pull_and_sync())
     print(pull_and_sync_games())
+    print(pull_and_sync_results())

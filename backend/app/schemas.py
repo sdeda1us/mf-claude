@@ -362,6 +362,40 @@ class TodaysGameOut(BaseModel):
     time_label: str | None
 
 
+class DailyResultEntryIn(BaseModel):
+    """One concluded game's final score, in the shape the results-sync
+    routine commits -- see data/daily-results/README.md. Matched against
+    an existing ScheduledGame row by (league, home_team, away_team) for
+    the batch's date; a game with no matching row is skipped rather than
+    inserted, since a result with no schedule row means the schedule
+    guess and the result lookup disagreed on team names or date."""
+
+    league: str
+    home_team: str
+    away_team: str
+    home_score: int
+    away_score: int
+
+
+class YesterdaysResultOut(BaseModel):
+    league: str
+    home_team_id: int | None
+    home_team_name: str
+    home_owner: str | None
+    home_score: int
+    # This team's own fantasy-score change for the day, i.e. what it added
+    # to home_owner's total -- see routers/seasons.py's yesterdays_results
+    # for how this is derived from TeamDailyScore. None if there's no
+    # prior TeamDailyScore row to diff against yet (e.g. the team's
+    # first-ever tracked day).
+    home_point_change: float | None
+    away_team_id: int | None
+    away_team_name: str
+    away_owner: str | None
+    away_score: int
+    away_point_change: float | None
+
+
 class QueueEntryOut(BaseModel):
     id: int
     user_id: int

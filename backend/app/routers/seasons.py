@@ -32,6 +32,7 @@ from app.schemas import (
     SeasonCreateIn,
     SeasonOut,
     TodaysGameOut,
+    YesterdaysResultOut,
 )
 from app.scoring_events import diff_team_events
 from app.season_labels import CURRENT_SEASON, ZERO_STATS
@@ -207,6 +208,108 @@ def todays_games(
             away_owner=owner_by_team_id.get(g.away_team_id) if g.away_team_id else None,
             venue=g.venue,
             time_label=g.time_label,
+        )
+        for g in games
+    ]
+
+
+def _team_point_change(db: Session, team_id: int, league: str, as_of_date) -> float | None:
+    """This team's TeamDailyScore delta for as_of_date vs. its most recent
+    earlier row -- i.e. what that day's result added to (or cost) its
+    owner's total. None if as_of_date has no row yet, or has no earlier
+    row to diff against (the team's first-ever tracked day, which is
+    backdated and not a real delta -- see daily_score_sync's module
+    docstring)."""
+    season_label = CURRENT_SEASON.get(league)
+    if season_label is None:
+        return None
+    rows = (
+        db.query(TeamDailyScore)
+        .filter(
+            TeamDailyScore.team_id == team_id,
+            TeamDailyScore.season_label == season_label,
+            TeamDailyScore.as_of_date <= as_of_date,
+        )
+        .order_by(TeamDailyScore.as_of_date.desc())
+        .limit(2)
+        .all()
+    )
+    if len(rows) < 2 or rows[0].as_of_date != as_of_date:
+        return None
+    return float(rows[0].score - rows[1].score)
+
+
+@router.get("/{season_id}/yesterdays-results", response_model=list[YesterdaysResultOut])
+def yesterdays_results(
+    season_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """Yesterday's concluded games across TODAYS_GAMES_LEAGUES, with final
+    score, owning player (if any), and each owned side's fantasy-point
+    change for the day -- the Home page's "Yesterday's Results" card,
+    sitting next to "Today's Games". Same "drop it if nobody owns either
+    side" rule as todays_games, and additionally only shows games whose
+    result is actually known yet (home_score/away_score populated by
+    app/daily_results_sync.py -- see that module and
+    data/daily-results/README.md for how/when that happens)."""
+    if db.get(Season, season_id) is None:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+    yesterday = today_eastern() - timedelta(days=1)
+    games = (
+        db.query(ScheduledGame)
+        .filter(
+            ScheduledGame.game_date == yesterday,
+            ScheduledGame.league.in_(TODAYS_GAMES_LEAGUES),
+            ScheduledGame.home_score.is_not(None),
+            ScheduledGame.away_score.is_not(None),
+        )
+        .all()
+    )
+
+    team_ids = {g.home_team_id for g in games if g.home_team_id} | {
+        g.away_team_id for g in games if g.away_team_id
+    }
+    owner_by_team_id: dict[int, str] = {}
+    if team_ids:
+        users_by_id = {u.id: u for u in db.query(User).all()}
+        for e in (
+            db.query(RosterEntry)
+            .filter(RosterEntry.season_id == season_id, RosterEntry.team_id.in_(team_ids))
+            .all()
+        ):
+            owner_by_team_id[e.team_id] = (
+                users_by_id[e.user_id].display_name
+                if e.user_id in users_by_id
+                else f"User #{e.user_id}"
+            )
+
+    # Same "drop it if nobody owns either side" rule as todays_games.
+    games = [g for g in games if g.home_team_id in owner_by_team_id or g.away_team_id in owner_by_team_id]
+
+    league_order = {lg: i for i, lg in enumerate(TODAYS_GAMES_LEAGUES)}
+    games.sort(key=lambda g: (league_order.get(g.league, len(TODAYS_GAMES_LEAGUES)), g.home_team_name))
+
+    return [
+        YesterdaysResultOut(
+            league=g.league,
+            home_team_id=g.home_team_id,
+            home_team_name=g.home_team_name,
+            home_owner=owner_by_team_id.get(g.home_team_id) if g.home_team_id else None,
+            home_score=g.home_score,
+            home_point_change=(
+                _team_point_change(db, g.home_team_id, g.league, yesterday)
+                if g.home_team_id in owner_by_team_id
+                else None
+            ),
+            away_team_id=g.away_team_id,
+            away_team_name=g.away_team_name,
+            away_owner=owner_by_team_id.get(g.away_team_id) if g.away_team_id else None,
+            away_score=g.away_score,
+            away_point_change=(
+                _team_point_change(db, g.away_team_id, g.league, yesterday)
+                if g.away_team_id in owner_by_team_id
+                else None
+            ),
         )
         for g in games
     ]
