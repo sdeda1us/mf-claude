@@ -28,6 +28,13 @@
       "away_team": "New Mexico State Aggies",
       "venue": "Pitbull Stadium",
       "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Kennesaw State Owls",
+      "away_team": "Jacksonville State Gamecocks",
+      "venue": "Fifth Third Stadium",
+      "time_label": "7:00 PM ET"
     }
   ]
 }
