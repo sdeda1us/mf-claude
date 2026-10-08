@@ -43,9 +43,13 @@ from app.slack_notify import notify_slack_sync
 logger = logging.getLogger("megafantasy.daily_sync_pull")
 
 EASTERN = ZoneInfo("America/New_York")
-# An hour after the routine's 7am Central (8am Eastern) run, to leave it
-# room to finish researching and pushing before this pulls.
-PULL_HOUR_ET = 9
+# 30 minutes after the routine's 4:30am Central (5:30am Eastern) run --
+# tight (the routine itself typically takes ~15-20 min), but intentional:
+# showing fresh data sooner was worth the risk of an occasional slow run
+# getting picked up a day late instead of same-day. A day-late pickup is
+# still harmless/idempotent (see daily_sync_pull_loop's docstring below),
+# just not what today's visitors will see.
+PULL_HOUR_ET = 6
 
 RAW_URL = "https://raw.githubusercontent.com/sdeda1us/mf-claude/main/data/daily-sync/latest.json"
 GAMES_RAW_URL = "https://raw.githubusercontent.com/sdeda1us/mf-claude/main/data/daily-games/latest.json"
@@ -180,15 +184,16 @@ async def _run_pull_and_report(context: str) -> None:
 
 
 async def daily_sync_pull_loop() -> None:
-    """Runs forever: sleeps until the next 9 AM Eastern, pulls and ingests,
-    repeats. Spawned once from main.py's lifespan.
+    """Runs forever: sleeps until the next PULL_HOUR_ET (Eastern), pulls and
+    ingests, repeats. Spawned once from main.py's lifespan.
 
-    Also catches up immediately on startup if today's 9 AM Eastern slot has
-    already passed -- otherwise today gets silently skipped entirely, since
-    the sleep loop below would just compute "next run = tomorrow" with no
-    record today was ever missed. This happened for real on 2026-10-04: the
-    first deploy that day landed at 11:49am ET, well past the 9am pull
-    hour, and nothing caught it up until the following day's scheduled run
+    Also catches up immediately on startup if today's pull hour has already
+    passed -- otherwise today gets silently skipped entirely, since the
+    sleep loop below would just compute "next run = tomorrow" with no
+    record today was ever missed. This happened for real on 2026-10-04
+    (back when PULL_HOUR_ET was 9): the first deploy that day landed at
+    11:49am ET, well past that day's pull hour, and nothing caught it up
+    until the following day's scheduled run
     -- the whole day has zero TeamDailyScore rows as a result. Re-pulling a
     day that already got its scheduled sync is harmless (idempotent per
     real-world day, see module docstring), so this runs unconditionally
