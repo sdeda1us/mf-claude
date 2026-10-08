@@ -386,122 +386,10 @@
     },
     {
       "league": "EPL",
-      "team": "Manchester City",
-      "stats": {
-        "standings_points": 15,
-        "goal_differential": 8
-      }
-    },
-    {
-      "league": "EPL",
       "team": "Arsenal",
       "stats": {
         "standings_points": 12,
         "goal_differential": 4
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Brighton & Hove Albion",
-      "stats": {
-        "standings_points": 10,
-        "goal_differential": 11
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Brentford",
-      "stats": {
-        "standings_points": 9,
-        "goal_differential": 6
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Leeds United",
-      "stats": {
-        "standings_points": 9,
-        "goal_differential": 4
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Liverpool",
-      "stats": {
-        "standings_points": 9,
-        "goal_differential": 3
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Everton",
-      "stats": {
-        "standings_points": 9,
-        "goal_differential": 3
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Hull City",
-      "stats": {
-        "standings_points": 8,
-        "goal_differential": 2
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Newcastle United",
-      "stats": {
-        "standings_points": 8,
-        "goal_differential": 0
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Chelsea",
-      "stats": {
-        "standings_points": 7,
-        "goal_differential": -2
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Ipswich Town",
-      "stats": {
-        "standings_points": 6,
-        "goal_differential": -4
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Manchester United",
-      "stats": {
-        "standings_points": 5,
-        "goal_differential": 0
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Nottingham Forest",
-      "stats": {
-        "standings_points": 5,
-        "goal_differential": -1
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Sunderland",
-      "stats": {
-        "standings_points": 4,
-        "goal_differential": -4
-      }
-    },
-    {
-      "league": "EPL",
-      "team": "Crystal Palace",
-      "stats": {
-        "standings_points": 4,
-        "goal_differential": -5
       }
     },
     {
@@ -522,6 +410,30 @@
     },
     {
       "league": "EPL",
+      "team": "Brentford",
+      "stats": {
+        "standings_points": 9,
+        "goal_differential": 6
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Brighton & Hove Albion",
+      "stats": {
+        "standings_points": 10,
+        "goal_differential": 11
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Chelsea",
+      "stats": {
+        "standings_points": 7,
+        "goal_differential": -2
+      }
+    },
+    {
+      "league": "EPL",
       "team": "Coventry City",
       "stats": {
         "standings_points": 3,
@@ -530,10 +442,98 @@
     },
     {
       "league": "EPL",
+      "team": "Crystal Palace",
+      "stats": {
+        "standings_points": 4,
+        "goal_differential": -5
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Everton",
+      "stats": {
+        "standings_points": 9,
+        "goal_differential": 3
+      }
+    },
+    {
+      "league": "EPL",
       "team": "Fulham",
       "stats": {
         "standings_points": 2,
         "goal_differential": -3
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Hull City",
+      "stats": {
+        "standings_points": 8,
+        "goal_differential": 2
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Ipswich Town",
+      "stats": {
+        "standings_points": 6,
+        "goal_differential": -4
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Leeds United",
+      "stats": {
+        "standings_points": 9,
+        "goal_differential": 4
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Liverpool",
+      "stats": {
+        "standings_points": 9,
+        "goal_differential": 3
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Manchester City",
+      "stats": {
+        "standings_points": 15,
+        "goal_differential": 8
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Manchester United",
+      "stats": {
+        "standings_points": 5,
+        "goal_differential": 0
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Newcastle United",
+      "stats": {
+        "standings_points": 8,
+        "goal_differential": 0
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Nottingham Forest",
+      "stats": {
+        "standings_points": 5,
+        "goal_differential": -1
+      }
+    },
+    {
+      "league": "EPL",
+      "team": "Sunderland",
+      "stats": {
+        "standings_points": 4,
+        "goal_differential": -4
       }
     },
     {
@@ -658,7 +658,7 @@
     },
     {
       "league": "UCL",
-      "team": "Atlético Madrid",
+      "team": "Atl\u00e9tico Madrid",
       "stats": {
         "points": 0,
         "goal_differential": -1,
@@ -826,7 +826,7 @@
     },
     {
       "league": "UCL",
-      "team": "Bodø/Glimt",
+      "team": "Bod\u00f8/Glimt",
       "stats": {
         "points": 0,
         "goal_differential": -5,
@@ -910,7 +910,7 @@
     },
     {
       "league": "UCL",
-      "team": "Fenerbahçe",
+      "team": "Fenerbah\u00e7e",
       "stats": {
         "points": 1,
         "goal_differential": 0,
@@ -2427,7 +2427,7 @@
       "league": "NCAAF",
       "team": "North Texas Mean Green",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2635,7 +2635,7 @@
       "league": "NCAAF",
       "team": "Louisiana Tech Bulldogs",
       "stats": {
-        "wins": 3,
+        "wins": 2,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2895,7 +2895,7 @@
       "league": "NCAAF",
       "team": "FIU Panthers",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2908,7 +2908,7 @@
       "league": "NCAAF",
       "team": "Jacksonville State Gamecocks",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2922,7 +2922,7 @@
       "team": "Kennesaw State Owls",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2974,7 +2974,7 @@
       "team": "New Mexico State Aggies",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,

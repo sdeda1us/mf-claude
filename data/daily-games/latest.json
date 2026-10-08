@@ -1,40 +1,108 @@
 {
-  "date": "2026-10-07",
+  "date": "2026-10-08",
   "games": [
     {
-      "league": "NHL",
-      "home_team": "Washington Capitals",
-      "away_team": "Pittsburgh Penguins",
-      "venue": "Capital One Arena",
-      "time_label": "7:30 PM ET"
+      "league": "NFL",
+      "home_team": "Dallas Cowboys",
+      "away_team": "Tampa Bay Buccaneers",
+      "venue": "AT&T Stadium",
+      "time_label": "8:15 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Winnipeg Jets",
-      "away_team": "Colorado Avalanche",
-      "venue": "Canada Life Centre",
-      "time_label": "7:30 PM ET"
+      "home_team": "Boston Bruins",
+      "away_team": "Utah Mammoth",
+      "time_label": "7:00 PM ET",
+      "venue": "TD Garden"
     },
     {
       "league": "NHL",
-      "home_team": "Anaheim Ducks",
-      "away_team": "Edmonton Oilers",
-      "venue": "Honda Center",
-      "time_label": "10:00 PM ET"
+      "home_team": "Montreal Canadiens",
+      "away_team": "Nashville Predators",
+      "time_label": "7:00 PM ET",
+      "venue": "Bell Centre"
     },
     {
-      "league": "NCAAF",
-      "home_team": "FIU Panthers",
-      "away_team": "New Mexico State Aggies",
-      "venue": "Pitbull Stadium",
-      "time_label": "7:30 PM ET"
+      "league": "NHL",
+      "home_team": "Buffalo Sabres",
+      "away_team": "Dallas Stars",
+      "time_label": "7:00 PM ET",
+      "venue": "KeyBank Center"
     },
     {
-      "league": "NCAAF",
-      "home_team": "Kennesaw State Owls",
-      "away_team": "Jacksonville State Gamecocks",
-      "venue": "Fifth Third Stadium",
+      "league": "NHL",
+      "home_team": "Ottawa Senators",
+      "away_team": "Philadelphia Flyers",
+      "time_label": "7:00 PM ET",
+      "venue": "Canadian Tire Centre"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Carolina Hurricanes",
+      "away_team": "Vancouver Canucks",
       "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Tampa Bay Lightning",
+      "away_team": "Minnesota Wild",
+      "time_label": "7:00 PM ET",
+      "venue": "Amalie Arena"
+    },
+    {
+      "league": "NHL",
+      "home_team": "New York Islanders",
+      "away_team": "Chicago Blackhawks",
+      "time_label": "7:30 PM ET",
+      "venue": "UBS Arena"
+    },
+    {
+      "league": "NHL",
+      "home_team": "St. Louis Blues",
+      "away_team": "San Jose Sharks",
+      "time_label": "8:00 PM ET",
+      "venue": "Enterprise Center"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Calgary Flames",
+      "away_team": "Colorado Avalanche",
+      "time_label": "9:00 PM ET",
+      "venue": "Scotiabank Saddledome"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Vegas Golden Knights",
+      "away_team": "Toronto Maple Leafs",
+      "time_label": "10:00 PM ET",
+      "venue": "T-Mobile Arena"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Liberty Flames",
+      "away_team": "Sam Houston Bearkats",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Western Kentucky Hilltoppers",
+      "away_team": "Missouri State Bears",
+      "time_label": "7:00 PM ET",
+      "venue": "Houchens Industries\u2013L.T. Smith Stadium"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "UTSA Roadrunners",
+      "away_team": "South Florida Bulls",
+      "time_label": "7:30 PM ET",
+      "venue": "Alamodome"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Arkansas State Red Wolves",
+      "away_team": "South Alabama Jaguars",
+      "time_label": "7:30 PM ET",
+      "venue": "Centennial Bank Stadium"
     }
   ]
 }
