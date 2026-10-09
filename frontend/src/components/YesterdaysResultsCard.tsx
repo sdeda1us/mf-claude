@@ -49,13 +49,13 @@ export default function YesterdaysResultsCard({ results }: YesterdaysResultsCard
                   <div className="yesterdays-results-changes">
                     {r.home_owner && (
                       <span className={changeClass(r.home_point_change)}>
-                        {r.home_owner}: {r.home_point_change === null ? "first tracked day" : formatChange(r.home_point_change)}
+                        {r.home_owner}: {r.home_point_change === null ? "pending" : formatChange(r.home_point_change)}
                       </span>
                     )}
                     {r.home_owner && r.away_owner && <span className="yesterdays-results-sep">·</span>}
                     {r.away_owner && (
                       <span className={changeClass(r.away_point_change)}>
-                        {r.away_owner}: {r.away_point_change === null ? "first tracked day" : formatChange(r.away_point_change)}
+                        {r.away_owner}: {r.away_point_change === null ? "pending" : formatChange(r.away_point_change)}
                       </span>
                     )}
                   </div>

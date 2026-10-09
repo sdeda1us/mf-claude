@@ -385,8 +385,10 @@ class YesterdaysResultOut(BaseModel):
     home_score: int
     # This team's own fantasy-score change for the day, i.e. what it added
     # to home_owner's total -- see routers/seasons.py's yesterdays_results
-    # for how this is derived from TeamDailyScore. None if there's no
-    # prior TeamDailyScore row to diff against yet (e.g. the team's
+    # for how this is derived from TeamDailyScore. None if today's sync
+    # hasn't yet written the row that captures this game (every sync
+    # stamps its row with the day it ran, one day after the games it
+    # reflects), or if the team has no earlier row to diff against (its
     # first-ever tracked day).
     home_point_change: float | None
     away_team_id: int | None

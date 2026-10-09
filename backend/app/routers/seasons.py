@@ -215,11 +215,19 @@ def todays_games(
 
 def _team_point_change(db: Session, team_id: int, league: str, as_of_date) -> float | None:
     """This team's TeamDailyScore delta for as_of_date vs. its most recent
-    earlier row -- i.e. what that day's result added to (or cost) its
-    owner's total. None if as_of_date has no row yet, or has no earlier
-    row to diff against (the team's first-ever tracked day, which is
-    backdated and not a real delta -- see daily_score_sync's module
-    docstring)."""
+    earlier row -- i.e. what that result added to (or cost) its owner's
+    total. None if as_of_date has no row yet, or has no earlier row to
+    diff against (the team's first-ever tracked day, which is backdated
+    and not a real delta -- see daily_score_sync's module docstring).
+
+    Callers attributing a GAME played on day D must pass today_eastern()
+    here, not D itself: every sync (daily_score_sync, nhl_standings_sync)
+    stamps its row with the date it RAN, which is always the morning
+    after the games it reflects -- a game played the night of day D shows
+    up in the row dated D+1, since the row for D itself was already
+    written that morning, before D's games happened. Passing D would
+    silently diff two rows that both predate the game and always return
+    0.0 instead of the real change (see yesterdays_results below)."""
     season_label = CURRENT_SEASON.get(league)
     if season_label is None:
         return None
@@ -254,7 +262,8 @@ def yesterdays_results(
     if db.get(Season, season_id) is None:
         raise HTTPException(status_code=404, detail="Season not found")
 
-    yesterday = today_eastern() - timedelta(days=1)
+    today = today_eastern()
+    yesterday = today - timedelta(days=1)
     games = (
         db.query(ScheduledGame)
         .filter(
@@ -297,7 +306,7 @@ def yesterdays_results(
             home_owner=owner_by_team_id.get(g.home_team_id) if g.home_team_id else None,
             home_score=g.home_score,
             home_point_change=(
-                _team_point_change(db, g.home_team_id, g.league, yesterday)
+                _team_point_change(db, g.home_team_id, g.league, today)
                 if g.home_team_id in owner_by_team_id
                 else None
             ),
@@ -306,7 +315,7 @@ def yesterdays_results(
             away_owner=owner_by_team_id.get(g.away_team_id) if g.away_team_id else None,
             away_score=g.away_score,
             away_point_change=(
-                _team_point_change(db, g.away_team_id, g.league, yesterday)
+                _team_point_change(db, g.away_team_id, g.league, today)
                 if g.away_team_id in owner_by_team_id
                 else None
             ),
