@@ -37,6 +37,7 @@ from app.daily_games_sync import sync_games_for_date
 from app.daily_results_sync import sync_results_for_date
 from app.daily_score_sync import NoActiveSeasonError, apply_daily_sync_batch
 from app.database import SessionLocal
+from app.nhl_standings_sync import sync_nhl_standings
 from app.schemas import DailyGameEntryIn, DailyResultEntryIn, DailySyncEntryIn
 from app.slack_notify import notify_slack_sync
 
@@ -177,8 +178,31 @@ async def _run_results_pull_and_report(context: str) -> None:
         notify_slack_sync(f"🏁 Daily results sync ({context}) failed -- check the backend logs.")
 
 
+async def _run_nhl_standings_and_report(context: str) -> None:
+    """NHL standings come straight from the NHL's own API (see
+    nhl_standings_sync.py's module docstring for why this bypasses the
+    routine entirely) rather than from the routine's GitHub files, so this
+    is a fetch, not a pull -- same isolation reasoning as the other
+    _run_*_and_report wrappers, so a failure here never blocks or gets
+    conflated with the others' reporting."""
+    try:
+        result = await asyncio.to_thread(sync_nhl_standings)
+        logger.info("NHL standings sync (%s): %s", context, result)
+        if result["skipped"]:
+            notify_slack_sync(
+                f"🏒 NHL standings sync ({context}): {result['synced']} synced, "
+                f"{len(result['skipped'])} skipped -- check logs for details."
+            )
+    except NoActiveSeasonError:
+        logger.warning("NHL standings sync (%s): no active season, skipping", context)
+    except Exception:
+        logger.exception("NHL standings sync (%s) failed", context)
+        notify_slack_sync(f"🏒 NHL standings sync ({context}) FAILED -- check the backend logs.")
+
+
 async def _run_pull_and_report(context: str) -> None:
     await _run_score_pull_and_report(context)
+    await _run_nhl_standings_and_report(context)
     await _run_games_pull_and_report(context)
     await _run_results_pull_and_report(context)
 
@@ -212,5 +236,6 @@ async def daily_sync_pull_loop() -> None:
 
 if __name__ == "__main__":
     print(pull_and_sync())
+    print(sync_nhl_standings())
     print(pull_and_sync_games())
     print(pull_and_sync_results())
