@@ -1,110 +1,89 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "games": [
     {
+      "league": "NBA",
+      "home_team": "Dallas Mavericks",
+      "away_team": "Houston Rockets",
+      "venue": "The Venetian Arena, The Venetian Macao",
+      "time_label": "7:30 PM local (Macao) \u2014 NBA China Games preseason"
+    },
+    {
       "league": "NHL",
-      "home_team": "Buffalo Sabres",
-      "away_team": "Dallas Stars",
-      "venue": "KeyBank Center",
+      "home_team": "Washington Capitals",
+      "away_team": "New York Rangers",
+      "venue": "Capital One Arena",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Ottawa Senators",
-      "away_team": "Philadelphia Flyers",
-      "venue": "Canadian Tire Centre",
+      "home_team": "Columbus Blue Jackets",
+      "away_team": "Pittsburgh Penguins",
+      "venue": "Nationwide Arena",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Tampa Bay Lightning",
-      "away_team": "Minnesota Wild",
-      "venue": "Benchmark International Arena",
+      "home_team": "Detroit Red Wings",
+      "away_team": "Seattle Kraken",
+      "venue": "Little Caesars Arena",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Montreal Canadiens",
-      "away_team": "Nashville Predators",
-      "venue": "Bell Centre",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Boston Bruins",
-      "away_team": "Utah Mammoth",
-      "venue": "TD Garden",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Carolina Hurricanes",
-      "away_team": "Vancouver Canucks",
-      "venue": "Lenovo Center",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "New York Islanders",
-      "away_team": "Chicago Blackhawks",
-      "venue": "UBS Arena",
-      "time_label": "7:30 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "St. Louis Blues",
-      "away_team": "San Jose Sharks",
-      "venue": "Enterprise Center",
+      "home_team": "Winnipeg Jets",
+      "away_team": "Anaheim Ducks",
+      "venue": "Canada Life Centre",
       "time_label": "8:00 PM ET"
     },
     {
-      "league": "NHL",
-      "home_team": "Calgary Flames",
-      "away_team": "Colorado Avalanche",
-      "venue": "Scotiabank Saddledome",
+      "league": "URC",
+      "home_team": "Glasgow Warriors",
+      "away_team": "Connacht",
+      "venue": "Scotstoun Stadium",
+      "time_label": "7:45 PM UK/Irish time"
+    },
+    {
+      "league": "URC",
+      "home_team": "Dragons",
+      "away_team": "Ospreys",
+      "venue": "Rodney Parade",
+      "time_label": "7:45 PM UK time"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Louisville Cardinals",
+      "away_team": "Florida State Seminoles",
+      "venue": "L&N Federal Credit Union Stadium",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "San Jose State Spartans",
+      "away_team": "Wyoming Cowboys",
+      "venue": "CEFCU Stadium",
       "time_label": "9:00 PM ET"
     },
     {
-      "league": "NHL",
-      "home_team": "Vegas Golden Knights",
-      "away_team": "Toronto Maple Leafs",
-      "venue": "T-Mobile Arena",
-      "time_label": "10:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Dallas Cowboys",
-      "away_team": "Tampa Bay Buccaneers",
-      "venue": "AT&T Stadium",
-      "time_label": "8:15 PM ET"
+      "league": "NCAAF",
+      "home_team": "Washington Huskies",
+      "away_team": "Iowa Hawkeyes",
+      "venue": "Alaska Airlines Field at Husky Stadium",
+      "time_label": "9:00 PM ET"
     },
     {
       "league": "NCAAF",
-      "home_team": "UTSA Roadrunners",
-      "away_team": "South Florida Bulls",
-      "venue": "Alamodome",
-      "time_label": "7:30 PM ET"
+      "home_team": "Utah State Aggies",
+      "away_team": "Washington State Cougars",
+      "venue": "Maverik Stadium",
+      "time_label": "9:00 PM ET"
     },
     {
       "league": "NCAAF",
-      "home_team": "Liberty Flames",
-      "away_team": "Sam Houston Bearkats",
-      "venue": "Williams Stadium",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NCAAF",
-      "home_team": "Western Kentucky Hilltoppers",
-      "away_team": "Missouri State Bears",
-      "venue": "Houchens Industries–L.T. Smith Stadium",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NCAAF",
-      "home_team": "Arkansas State Red Wolves",
-      "away_team": "South Alabama Jaguars",
-      "venue": "Centennial Bank Stadium",
-      "time_label": "7:30 PM ET"
+      "home_team": "BYU Cougars",
+      "away_team": "Iowa State Cyclones",
+      "venue": "LaVell Edwards Stadium",
+      "time_label": "10:15 PM ET"
     }
   ]
 }

@@ -1,4 +1,110 @@
 {
   "date": "2026-10-08",
-  "results": []
+  "results": [
+    {
+      "league": "NHL",
+      "home_team": "Buffalo Sabres",
+      "away_team": "Dallas Stars",
+      "home_score": 0,
+      "away_score": 4
+    },
+    {
+      "league": "NHL",
+      "home_team": "Ottawa Senators",
+      "away_team": "Philadelphia Flyers",
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Tampa Bay Lightning",
+      "away_team": "Minnesota Wild",
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "league": "NHL",
+      "home_team": "Montreal Canadiens",
+      "away_team": "Nashville Predators",
+      "home_score": 2,
+      "away_score": 5
+    },
+    {
+      "league": "NHL",
+      "home_team": "Boston Bruins",
+      "away_team": "Utah Mammoth",
+      "home_score": 6,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Carolina Hurricanes",
+      "away_team": "Vancouver Canucks",
+      "home_score": 7,
+      "away_score": 2
+    },
+    {
+      "league": "NHL",
+      "home_team": "New York Islanders",
+      "away_team": "Chicago Blackhawks",
+      "home_score": 5,
+      "away_score": 4
+    },
+    {
+      "league": "NHL",
+      "home_team": "St. Louis Blues",
+      "away_team": "San Jose Sharks",
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "league": "NHL",
+      "home_team": "Calgary Flames",
+      "away_team": "Colorado Avalanche",
+      "home_score": 3,
+      "away_score": 7
+    },
+    {
+      "league": "NHL",
+      "home_team": "Vegas Golden Knights",
+      "away_team": "Toronto Maple Leafs",
+      "home_score": 4,
+      "away_score": 3
+    },
+    {
+      "league": "NFL",
+      "home_team": "Dallas Cowboys",
+      "away_team": "Tampa Bay Buccaneers",
+      "home_score": 16,
+      "away_score": 24
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "UTSA Roadrunners",
+      "away_team": "South Florida Bulls",
+      "home_score": 31,
+      "away_score": 24
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Liberty Flames",
+      "away_team": "Sam Houston Bearkats",
+      "home_score": 35,
+      "away_score": 3
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Western Kentucky Hilltoppers",
+      "away_team": "Missouri State Bears",
+      "home_score": 34,
+      "away_score": 13
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Arkansas State Red Wolves",
+      "away_team": "South Alabama Jaguars",
+      "home_score": 49,
+      "away_score": 56
+    }
+  ]
 }
