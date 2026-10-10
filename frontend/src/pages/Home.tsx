@@ -24,7 +24,15 @@ interface SeasonSnapshot {
   yesterdaysResults: YesterdaysResult[];
 }
 
+const HERO_GALLERY_IMAGES = [
+  { src: "/images/nfl.webp", alt: "NFL running back breaking a tackle", label: "NFL" },
+  { src: "/images/wnba.webp", alt: "WNBA guard driving past a defender", label: "WNBA" },
+  { src: "/images/tennis.webp", alt: "Tennis player stretching for a backhand", label: "Tennis" },
+  { src: "/images/rugby.webp", alt: "Rugby scrum", label: "URC" },
+];
+
 export default function Home() {
+  const [mobileHeroIndex] = useState(() => Math.floor(Math.random() * HERO_GALLERY_IMAGES.length));
   const [seasons, setSeasons] = useState<Season[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [rules, setRules] = useState<LeagueRules | null>(null);
@@ -108,22 +116,19 @@ export default function Home() {
         </div>
 
         <div className="hero-gallery">
-          <div className="hero-gallery-item">
-            <img src="/images/nfl.webp" alt="NFL running back breaking a tackle" />
-            <span className="pill hero-gallery-label">NFL</span>
-          </div>
-          <div className="hero-gallery-item">
-            <img src="/images/wnba.webp" alt="WNBA guard driving past a defender" />
-            <span className="pill hero-gallery-label">WNBA</span>
-          </div>
-          <div className="hero-gallery-item">
-            <img src="/images/tennis.webp" alt="Tennis player stretching for a backhand" />
-            <span className="pill hero-gallery-label">Tennis</span>
-          </div>
-          <div className="hero-gallery-item">
-            <img src="/images/rugby.webp" alt="Rugby scrum" />
-            <span className="pill hero-gallery-label">URC</span>
-          </div>
+          {HERO_GALLERY_IMAGES.map((img, i) => (
+            <div
+              key={img.src}
+              className={
+                i === mobileHeroIndex
+                  ? "hero-gallery-item hero-gallery-item-mobile-pick"
+                  : "hero-gallery-item"
+              }
+            >
+              <img src={img.src} alt={img.alt} />
+              <span className="pill hero-gallery-label">{img.label}</span>
+            </div>
+          ))}
         </div>
       </section>
 

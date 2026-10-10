@@ -194,6 +194,20 @@ h2 {
   border-color: var(--ink);
 }
 
+@media (max-width: 760px) {
+  .hero-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-gallery-item {
+    display: none;
+  }
+
+  .hero-gallery-item-mobile-pick {
+    display: block;
+  }
+}
+
 .login-gallery {
   display: flex;
   gap: 10px;
