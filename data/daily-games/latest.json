@@ -1,89 +1,348 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "games": [
     {
-      "league": "NBA",
-      "home_team": "Dallas Mavericks",
-      "away_team": "Houston Rockets",
-      "venue": "The Venetian Arena, The Venetian Macao",
-      "time_label": "7:30 PM local (Macao) \u2014 NBA China Games preseason"
+      "league": "NHL",
+      "home_team": "Boston Bruins",
+      "away_team": "Philadelphia Flyers",
+      "venue": "TD Garden",
+      "time_label": "1:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Washington Capitals",
-      "away_team": "New York Rangers",
-      "venue": "Capital One Arena",
+      "home_team": "New Jersey Devils",
+      "away_team": "Vancouver Canucks",
+      "time_label": "3:30 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "San Jose Sharks",
+      "away_team": "Edmonton Oilers",
+      "time_label": "4:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Florida Panthers",
+      "away_team": "Minnesota Wild",
+      "time_label": "6:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "St. Louis Blues",
+      "away_team": "Columbus Blue Jackets",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Columbus Blue Jackets",
-      "away_team": "Pittsburgh Penguins",
-      "venue": "Nationwide Arena",
+      "home_team": "Montreal Canadiens",
+      "away_team": "Detroit Red Wings",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Detroit Red Wings",
-      "away_team": "Seattle Kraken",
-      "venue": "Little Caesars Arena",
+      "home_team": "Ottawa Senators",
+      "away_team": "Nashville Predators",
+      "venue": "Canadian Tire Centre",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Winnipeg Jets",
+      "home_team": "Colorado Avalanche",
+      "away_team": "Toronto Maple Leafs",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Pittsburgh Penguins",
+      "away_team": "Dallas Stars",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Chicago Blackhawks",
+      "away_team": "Carolina Hurricanes",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Buffalo Sabres",
+      "away_team": "Utah Mammoth",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "New York Islanders",
+      "away_team": "Tampa Bay Lightning",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Calgary Flames",
       "away_team": "Anaheim Ducks",
-      "venue": "Canada Life Centre",
-      "time_label": "8:00 PM ET"
+      "time_label": "10:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Vegas Golden Knights",
+      "away_team": "Los Angeles Kings",
+      "time_label": "10:00 PM ET"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Arsenal",
+      "away_team": "Leeds United",
+      "venue": "Emirates Stadium",
+      "time_label": "12:30 PM UK / 7:30 AM ET"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Aston Villa",
+      "away_team": "Brentford",
+      "venue": "Villa Park",
+      "time_label": "3:00 PM UK / 10:00 AM ET"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Chelsea",
+      "away_team": "Bournemouth",
+      "venue": "Stamford Bridge",
+      "time_label": "3:00 PM UK / 10:00 AM ET"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Ipswich Town",
+      "away_team": "Fulham",
+      "venue": "Portman Road",
+      "time_label": "3:00 PM UK / 10:00 AM ET"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Sunderland",
+      "away_team": "Brighton & Hove Albion",
+      "venue": "Stadium of Light",
+      "time_label": "3:00 PM UK / 10:00 AM ET"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Manchester United",
+      "away_team": "Tottenham Hotspur",
+      "venue": "Old Trafford",
+      "time_label": "5:30 PM UK / 12:30 PM ET"
     },
     {
       "league": "URC",
-      "home_team": "Glasgow Warriors",
-      "away_team": "Connacht",
-      "venue": "Scotstoun Stadium",
-      "time_label": "7:45 PM UK/Irish time"
+      "home_team": "Ulster",
+      "away_team": "Munster",
+      "venue": "Affidea Stadium (Ravenhill), Belfast",
+      "time_label": "~4:30 PM local / ~11:30 AM ET"
     },
     {
       "league": "URC",
-      "home_team": "Dragons",
-      "away_team": "Ospreys",
-      "venue": "Rodney Parade",
-      "time_label": "7:45 PM UK time"
+      "home_team": "Bulls",
+      "away_team": "Lions",
+      "venue": "Loftus Versfeld, Pretoria",
+      "time_label": "11:30 AM local (SA) / ~5:30 AM ET"
+    },
+    {
+      "league": "URC",
+      "home_team": "Stormers",
+      "away_team": "Sharks",
+      "venue": "DHL Stadium, Cape Town",
+      "time_label": "2:00 PM local (SA) / ~8:00 AM ET"
+    },
+    {
+      "league": "URC",
+      "home_team": "Zebre Parma",
+      "away_team": "Edinburgh",
+      "venue": "Stadio Sergio Lanfranchi, Parma",
+      "time_label": "2:00 PM local (CEST) / ~8:00 AM ET"
     },
     {
       "league": "NCAAF",
-      "home_team": "Louisville Cardinals",
-      "away_team": "Florida State Seminoles",
-      "venue": "L&N Federal Credit Union Stadium",
-      "time_label": "7:00 PM ET"
+      "home_team": "Army Black Knights",
+      "away_team": "Tulane Green Wave",
+      "time_label": "Noon ET, CBS Sports Network"
     },
     {
       "league": "NCAAF",
-      "home_team": "San Jose State Spartans",
-      "away_team": "Wyoming Cowboys",
-      "venue": "CEFCU Stadium",
-      "time_label": "9:00 PM ET"
+      "home_team": "Bowling Green Falcons",
+      "away_team": "Sacramento State Hornets",
+      "time_label": "Noon ET, ESPN+"
     },
     {
       "league": "NCAAF",
-      "home_team": "Washington Huskies",
-      "away_team": "Iowa Hawkeyes",
-      "venue": "Alaska Airlines Field at Husky Stadium",
-      "time_label": "9:00 PM ET"
+      "home_team": "Oklahoma State Cowboys",
+      "away_team": "UCF Knights",
+      "time_label": "Noon ET"
     },
     {
       "league": "NCAAF",
-      "home_team": "Utah State Aggies",
-      "away_team": "Washington State Cougars",
-      "venue": "Maverik Stadium",
-      "time_label": "9:00 PM ET"
+      "home_team": "West Virginia Mountaineers",
+      "away_team": "Arizona Wildcats",
+      "time_label": "Noon ET"
     },
     {
       "league": "NCAAF",
-      "home_team": "BYU Cougars",
-      "away_team": "Iowa State Cyclones",
-      "venue": "LaVell Edwards Stadium",
-      "time_label": "10:15 PM ET"
+      "home_team": "Missouri Tigers",
+      "away_team": "Texas A&M Aggies",
+      "time_label": "Noon ET, ABC"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Indiana Hoosiers",
+      "time_label": "Noon ET, FOX"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Pittsburgh Panthers",
+      "away_team": "North Carolina Tar Heels",
+      "time_label": "Noon ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Northwestern Wildcats",
+      "away_team": "Ball State Cardinals",
+      "time_label": "12:30 PM ET, Big Ten Network"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "NC State Wolfpack",
+      "away_team": "Wake Forest Demon Deacons",
+      "time_label": "12:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Florida Gators",
+      "away_team": "South Carolina Gamecocks",
+      "time_label": "12:45 PM ET, SEC Network"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Appalachian State Mountaineers",
+      "away_team": "Old Dominion Monarchs",
+      "time_label": "1:00 PM ET, ESPN+"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "East Carolina Pirates",
+      "away_team": "Rice Owls",
+      "time_label": "1:00 PM ET, ESPN+"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "UMass Minutemen",
+      "away_team": "Miami (OH) RedHawks",
+      "time_label": "2:00 PM ET, ESPN+"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Navy Midshipmen",
+      "away_team": "Tulsa Golden Hurricane",
+      "time_label": "~3:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Notre Dame Fighting Irish",
+      "away_team": "Stanford Cardinal",
+      "time_label": "3:30 PM ET, NBC/Peacock"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Georgia Tech Yellow Jackets",
+      "away_team": "Duke Blue Devils",
+      "time_label": "3:30 PM ET, ESPN2"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "California Golden Bears",
+      "away_team": "Virginia Tech Hokies",
+      "time_label": "3:30 PM ET, ACC Network"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Texas Longhorns",
+      "away_team": "Oklahoma Sooners",
+      "venue": "Cotton Bowl, Dallas (neutral site — Red River Rivalry)",
+      "time_label": "~3:30 PM ET, ABC"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Vanderbilt Commodores",
+      "away_team": "Ole Miss Rebels",
+      "time_label": "3:30 PM ET, ESPN"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Oregon Ducks",
+      "away_team": "UCLA Bruins",
+      "time_label": "3:30 PM ET, CBS"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Michigan State Spartans",
+      "away_team": "Illinois Fighting Illini",
+      "time_label": "3:30 PM ET, FS1"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Kansas State Wildcats",
+      "away_team": "Houston Cougars",
+      "time_label": "3:30 PM ET, FOX"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Ohio State Buckeyes",
+      "away_team": "Maryland Terrapins",
+      "time_label": "4:15 PM ET, Big Ten Network"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Arkansas Razorbacks",
+      "away_team": "Tennessee Volunteers",
+      "time_label": "4:15 PM ET, SEC Network"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Penn State Nittany Lions",
+      "away_team": "USC Trojans",
+      "time_label": "7:30 PM ET, NBC"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Kentucky Wildcats",
+      "away_team": "LSU Tigers",
+      "time_label": "7:00 PM ET, ESPN"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Virginia Cavaliers",
+      "away_team": "Syracuse Orange",
+      "time_label": "7:30 PM ET, ACC Network"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Alabama Crimson Tide",
+      "away_team": "Georgia Bulldogs",
+      "time_label": "7:30 PM ET, ABC"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Utah Utes",
+      "away_team": "Kansas Jayhawks",
+      "time_label": "10:15 PM ET, ESPN"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Arizona State Sun Devils",
+      "away_team": "Hawaii Rainbow Warriors",
+      "time_label": "10:30 PM ET, FS1"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Fresno State Bulldogs",
+      "away_team": "Boise State Broncos",
+      "time_label": "10:30 PM ET, The CW"
     }
   ]
 }
