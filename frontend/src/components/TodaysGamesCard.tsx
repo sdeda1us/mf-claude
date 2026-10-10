@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { type TodaysGame } from "../lib/api";
+import { useIsNarrow } from "../lib/useIsNarrow";
 
 interface TodaysGamesCardProps {
   games: TodaysGame[];
@@ -16,13 +17,13 @@ function groupByLeague(games: TodaysGame[]): [string, TodaysGame[]][] {
 }
 
 export default function TodaysGamesCard({ games }: TodaysGamesCardProps) {
-  const [collapsedLeagues, setCollapsedLeagues] = useState<Set<string>>(new Set());
+  const isNarrow = useIsNarrow(760);
+  const [expandedOverrides, setExpandedOverrides] = useState<Map<string, boolean>>(new Map());
 
-  const toggleLeague = (league: string) => {
-    setCollapsedLeagues((prev) => {
-      const next = new Set(prev);
-      if (next.has(league)) next.delete(league);
-      else next.add(league);
+  const toggleLeague = (league: string, currentlyExpanded: boolean) => {
+    setExpandedOverrides((prev) => {
+      const next = new Map(prev);
+      next.set(league, !currentlyExpanded);
       return next;
     });
   };
@@ -36,13 +37,13 @@ export default function TodaysGamesCard({ games }: TodaysGamesCardProps) {
         <p className="crib-value-note">No games scheduled today.</p>
       ) : (
         leagues.map(([league, leagueGames]) => {
-          const expanded = !collapsedLeagues.has(league);
+          const expanded = expandedOverrides.get(league) ?? !isNarrow;
           return (
             <div key={league} className="league-block">
               <button
                 type="button"
                 className="league-caret"
-                onClick={() => toggleLeague(league)}
+                onClick={() => toggleLeague(league, expanded)}
                 aria-expanded={expanded}
                 title={expanded ? "Collapse" : "Expand"}
               >

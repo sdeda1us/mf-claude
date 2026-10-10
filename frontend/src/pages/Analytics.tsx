@@ -8,27 +8,8 @@ import {
   type Team,
 } from "../lib/api";
 import { useChartPalette } from "../lib/chartPalette";
+import { useIsNarrow } from "../lib/useIsNarrow";
 import Plot from "../lib/plotly";
-
-// True on narrow (roughly phone-width) viewports. Used to flip the
-// "Where the Money Went" stacked chart to horizontal bars there -- with
-// 9-11 league categories, a vertical layout leaves so little width per
-// bar on a phone that Plotly auto-rotates the labels diagonally (exactly
-// the "please don't make me read at an angle" mistake the rest of this
-// page's styling deliberately avoids). Horizontal bars sidestep it
-// entirely, the same fix already used for "Still on the Board".
-function useIsNarrow(breakpointPx: number): boolean {
-  const [isNarrow, setIsNarrow] = useState(
-    () => window.matchMedia(`(max-width: ${breakpointPx}px)`).matches
-  );
-  useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${breakpointPx}px)`);
-    const update = () => setIsNarrow(mq.matches);
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, [breakpointPx]);
-  return isNarrow;
-}
 
 function auctionLabel(a: AuctionSummary): string {
   const sessionLabel = a.session === "fall" ? "Fall" : "Spring";
