@@ -1,135 +1,51 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "games": [
     {
       "league": "NFL",
-      "home_team": "Jacksonville Jaguars",
-      "away_team": "Philadelphia Eagles",
-      "venue": "Wembley Stadium, London",
-      "time_label": "9:30 AM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Miami Dolphins",
-      "away_team": "Cincinnati Bengals",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "New Orleans Saints",
-      "away_team": "Minnesota Vikings",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Washington Commanders",
-      "away_team": "New York Giants",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "New England Patriots",
-      "away_team": "Las Vegas Raiders",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "New York Jets",
-      "away_team": "Cleveland Browns",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Tennessee Titans",
-      "away_team": "Houston Texans",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Pittsburgh Steelers",
-      "away_team": "Indianapolis Colts",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Green Bay Packers",
-      "away_team": "Chicago Bears",
-      "time_label": "1:00 PM ET (unconfirmed; possibly flexed to 4:25 PM ET)"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Los Angeles Chargers",
-      "away_team": "Denver Broncos",
-      "time_label": "4:05 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Arizona Cardinals",
-      "away_team": "Detroit Lions",
-      "time_label": "4:25 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Seattle Seahawks",
-      "away_team": "San Francisco 49ers",
-      "time_label": "4:25 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Atlanta Falcons",
-      "away_team": "Baltimore Ravens",
-      "time_label": "8:20 PM ET (Sunday Night Football)"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Cleveland Cavaliers",
-      "away_team": "Orlando Magic",
-      "time_label": "6:30 PM ET (preseason)"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Denver Nuggets",
-      "away_team": "Chicago Bulls",
-      "time_label": "9:00 PM ET (preseason)"
+      "home_team": "Los Angeles Rams",
+      "away_team": "Buffalo Bills",
+      "venue": "SoFi Stadium",
+      "time_label": "8:15 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Washington Capitals",
-      "away_team": "Seattle Kraken",
-      "time_label": "5:00 PM ET"
+      "home_team": "Buffalo Sabres",
+      "away_team": "Florida Panthers",
+      "time_label": "1:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "New York Rangers",
-      "away_team": "Vancouver Canucks",
-      "time_label": "6:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Philadelphia Flyers",
-      "away_team": "Carolina Hurricanes",
+      "home_team": "New Jersey Devils",
+      "away_team": "Ottawa Senators",
       "time_label": "7:00 PM ET"
     },
     {
-      "league": "EPL",
-      "home_team": "Crystal Palace",
-      "away_team": "Nottingham Forest",
-      "venue": "Selhurst Park",
-      "time_label": "2:00 PM UK / 9:00 AM ET"
+      "league": "NHL",
+      "home_team": "Minnesota Wild",
+      "away_team": "Vegas Golden Knights",
+      "time_label": "8:00 PM ET"
     },
     {
       "league": "EPL",
-      "home_team": "Hull City",
-      "away_team": "Everton",
-      "venue": "MKM Stadium",
-      "time_label": "2:00 PM UK / 9:00 AM ET"
+      "home_team": "Coventry City",
+      "away_team": "Newcastle United",
+      "venue": "Coventry Building Society Arena",
+      "time_label": "8:00 PM BST / 3:00 PM ET"
     },
     {
-      "league": "EPL",
-      "home_team": "Liverpool",
-      "away_team": "Manchester City",
-      "venue": "Anfield",
-      "time_label": "4:30 PM UK / 11:30 AM ET"
+      "league": "NBA",
+      "home_team": "Atlanta Hawks",
+      "away_team": "Oklahoma City Thunder",
+      "venue": "State Farm Arena",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Utah Jazz",
+      "away_team": "San Antonio Spurs",
+      "venue": "Delta Center",
+      "time_label": "9:00 PM ET"
     }
   ]
 }
