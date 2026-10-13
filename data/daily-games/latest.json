@@ -1,51 +1,142 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "games": [
     {
-      "league": "NFL",
-      "home_team": "Los Angeles Rams",
-      "away_team": "Buffalo Bills",
-      "venue": "SoFi Stadium",
-      "time_label": "8:15 PM ET"
+      "league": "NBA",
+      "home_team": "Orlando Magic",
+      "away_team": "Cleveland Cavaliers",
+      "venue": "Kia Center",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Los Angeles Lakers",
+      "away_team": "Golden State Warriors",
+      "venue": "T-Mobile Arena"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Toronto Raptors",
+      "away_team": "New York Knicks",
+      "venue": "Scotiabank Arena"
     },
     {
       "league": "NHL",
-      "home_team": "Buffalo Sabres",
+      "home_team": "Detroit Red Wings",
+      "away_team": "New Jersey Devils",
+      "time_label": "6:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Columbus Blue Jackets",
       "away_team": "Florida Panthers",
-      "time_label": "1:00 PM ET"
+      "time_label": "6:15 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "New Jersey Devils",
-      "away_team": "Ottawa Senators",
+      "home_team": "Carolina Hurricanes",
+      "away_team": "Washington Capitals"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Anaheim Ducks",
+      "away_team": "Calgary Flames",
+      "time_label": "6:45 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Dallas Stars",
+      "away_team": "Colorado Avalanche",
+      "time_label": "8:30 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Los Angeles Kings",
+      "away_team": "Edmonton Oilers",
+      "time_label": "10:30 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "San Jose Sharks",
+      "away_team": "Boston Bruins",
+      "time_label": "11:00 PM ET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Lens",
+      "away_team": "Sporting CP",
+      "venue": "Stade Bollaert-Delelis",
+      "time_label": "18:45 CET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Sabah FK",
+      "away_team": "Slavia Prague",
+      "venue": "Dalga Arena",
+      "time_label": "18:45 CET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Arsenal",
+      "away_team": "Lille",
+      "venue": "Emirates Stadium",
+      "time_label": "21:00 CET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Atl\u00e9tico Madrid",
+      "away_team": "Manchester United",
+      "venue": "Estadio Civitas Metropolitano",
+      "time_label": "21:00 CET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Inter Milan",
+      "away_team": "Club Brugge",
+      "venue": "San Siro",
+      "time_label": "21:00 CET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Galatasaray",
+      "away_team": "Barcelona",
+      "venue": "Rams Park",
+      "time_label": "21:00 CET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "RB Leipzig",
+      "away_team": "PSV",
+      "venue": "Red Bull Arena",
+      "time_label": "21:00 CET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Viking",
+      "away_team": "Bayern Munich",
+      "venue": "SR-Bank Arena",
+      "time_label": "21:00 CET"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Villarreal",
+      "away_team": "Napoli",
+      "venue": "Estadio de la Cer\u00e1mica",
+      "time_label": "21:00 CET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Middle Tennessee Blue Raiders",
+      "away_team": "Delaware Blue Hens",
+      "venue": "Johnny \"Red\" Floyd Stadium",
       "time_label": "7:00 PM ET"
     },
     {
-      "league": "NHL",
-      "home_team": "Minnesota Wild",
-      "away_team": "Vegas Golden Knights",
+      "league": "NCAAF",
+      "home_team": "Jacksonville State Gamecocks",
+      "away_team": "FIU Panthers",
+      "venue": "AmFirst Stadium",
       "time_label": "8:00 PM ET"
-    },
-    {
-      "league": "EPL",
-      "home_team": "Coventry City",
-      "away_team": "Newcastle United",
-      "venue": "Coventry Building Society Arena",
-      "time_label": "8:00 PM BST / 3:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Atlanta Hawks",
-      "away_team": "Oklahoma City Thunder",
-      "venue": "State Farm Arena",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Utah Jazz",
-      "away_team": "San Antonio Spurs",
-      "venue": "Delta Center",
-      "time_label": "9:00 PM ET"
     }
   ]
 }

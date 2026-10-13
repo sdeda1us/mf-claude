@@ -1,152 +1,54 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "results": [
     {
       "league": "NFL",
-      "home_team": "Jacksonville Jaguars",
-      "away_team": "Philadelphia Eagles",
-      "home_score": 19,
-      "away_score": 17
-    },
-    {
-      "league": "NFL",
-      "home_team": "Miami Dolphins",
-      "away_team": "Cincinnati Bengals",
-      "home_score": 24,
-      "away_score": 31
-    },
-    {
-      "league": "NFL",
-      "home_team": "New Orleans Saints",
-      "away_team": "Minnesota Vikings",
-      "home_score": 13,
-      "away_score": 23
-    },
-    {
-      "league": "NFL",
-      "home_team": "Washington Commanders",
-      "away_team": "New York Giants",
-      "home_score": 27,
-      "away_score": 27
-    },
-    {
-      "league": "NFL",
-      "home_team": "New England Patriots",
-      "away_team": "Las Vegas Raiders",
-      "home_score": 45,
-      "away_score": 17
-    },
-    {
-      "league": "NFL",
-      "home_team": "New York Jets",
-      "away_team": "Cleveland Browns",
-      "home_score": 17,
-      "away_score": 12
-    },
-    {
-      "league": "NFL",
-      "home_team": "Tennessee Titans",
-      "away_team": "Houston Texans",
-      "home_score": 3,
-      "away_score": 26
-    },
-    {
-      "league": "NFL",
-      "home_team": "Pittsburgh Steelers",
-      "away_team": "Indianapolis Colts",
+      "home_team": "Los Angeles Rams",
+      "away_team": "Buffalo Bills",
       "home_score": 34,
-      "away_score": 22
-    },
-    {
-      "league": "NFL",
-      "home_team": "Green Bay Packers",
-      "away_team": "Chicago Bears",
-      "home_score": 31,
-      "away_score": 7
-    },
-    {
-      "league": "NFL",
-      "home_team": "Los Angeles Chargers",
-      "away_team": "Denver Broncos",
-      "home_score": 17,
-      "away_score": 23
-    },
-    {
-      "league": "NFL",
-      "home_team": "Arizona Cardinals",
-      "away_team": "Detroit Lions",
-      "home_score": 21,
-      "away_score": 45
-    },
-    {
-      "league": "NFL",
-      "home_team": "Seattle Seahawks",
-      "away_team": "San Francisco 49ers",
-      "home_score": 29,
-      "away_score": 32
-    },
-    {
-      "league": "NFL",
-      "home_team": "Atlanta Falcons",
-      "away_team": "Baltimore Ravens",
-      "home_score": 23,
-      "away_score": 30
-    },
-    {
-      "league": "NBA",
-      "home_team": "Cleveland Cavaliers",
-      "away_team": "Orlando Magic",
-      "home_score": 119,
-      "away_score": 105
-    },
-    {
-      "league": "NBA",
-      "home_team": "Denver Nuggets",
-      "away_team": "Chicago Bulls",
-      "home_score": 133,
-      "away_score": 128
+      "away_score": 37
     },
     {
       "league": "NHL",
-      "home_team": "Washington Capitals",
-      "away_team": "Seattle Kraken",
-      "home_score": 3,
-      "away_score": 5
+      "home_team": "Buffalo Sabres",
+      "away_team": "Florida Panthers",
+      "home_score": 5,
+      "away_score": 3
     },
     {
       "league": "NHL",
-      "home_team": "New York Rangers",
-      "away_team": "Vancouver Canucks",
-      "home_score": 6,
-      "away_score": 2
-    },
-    {
-      "league": "NHL",
-      "home_team": "Philadelphia Flyers",
-      "away_team": "Carolina Hurricanes",
+      "home_team": "New Jersey Devils",
+      "away_team": "Ottawa Senators",
       "home_score": 1,
       "away_score": 4
     },
     {
-      "league": "EPL",
-      "home_team": "Crystal Palace",
-      "away_team": "Nottingham Forest",
-      "home_score": 3,
-      "away_score": 1
-    },
-    {
-      "league": "EPL",
-      "home_team": "Hull City",
-      "away_team": "Everton",
-      "home_score": 2,
+      "league": "NHL",
+      "home_team": "Minnesota Wild",
+      "away_team": "Vegas Golden Knights",
+      "home_score": 4,
       "away_score": 2
     },
     {
       "league": "EPL",
-      "home_team": "Liverpool",
-      "away_team": "Manchester City",
-      "home_score": 0,
-      "away_score": 3
+      "home_team": "Coventry City",
+      "away_team": "Newcastle United",
+      "home_score": 4,
+      "away_score": 1
+    },
+    {
+      "league": "NBA",
+      "home_team": "Atlanta Hawks",
+      "away_team": "Oklahoma City Thunder",
+      "home_score": 113,
+      "away_score": 110
+    },
+    {
+      "league": "NBA",
+      "home_team": "Utah Jazz",
+      "away_team": "San Antonio Spurs",
+      "home_score": 119,
+      "away_score": 109
     }
   ]
 }
