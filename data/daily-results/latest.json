@@ -1,54 +1,152 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "results": [
     {
-      "league": "NFL",
-      "home_team": "Los Angeles Rams",
-      "away_team": "Buffalo Bills",
-      "home_score": 34,
-      "away_score": 37
+      "league": "NBA",
+      "home_team": "Orlando Magic",
+      "away_team": "Cleveland Cavaliers",
+      "home_score": 132,
+      "away_score": 116
+    },
+    {
+      "league": "NBA",
+      "home_team": "Los Angeles Lakers",
+      "away_team": "Golden State Warriors",
+      "home_score": 89,
+      "away_score": 101
+    },
+    {
+      "league": "NBA",
+      "home_team": "Toronto Raptors",
+      "away_team": "New York Knicks",
+      "home_score": 148,
+      "away_score": 98
     },
     {
       "league": "NHL",
-      "home_team": "Buffalo Sabres",
+      "home_team": "Detroit Red Wings",
+      "away_team": "New Jersey Devils",
+      "home_score": 4,
+      "away_score": 5
+    },
+    {
+      "league": "NHL",
+      "home_team": "Columbus Blue Jackets",
       "away_team": "Florida Panthers",
-      "home_score": 5,
+      "home_score": 3,
+      "away_score": 7
+    },
+    {
+      "league": "NHL",
+      "home_team": "Carolina Hurricanes",
+      "away_team": "Washington Capitals",
+      "home_score": 4,
+      "away_score": 2
+    },
+    {
+      "league": "NHL",
+      "home_team": "Anaheim Ducks",
+      "away_team": "Calgary Flames",
+      "home_score": 2,
+      "away_score": 4
+    },
+    {
+      "league": "NHL",
+      "home_team": "Dallas Stars",
+      "away_team": "Colorado Avalanche",
+      "home_score": 2,
       "away_score": 3
     },
     {
       "league": "NHL",
-      "home_team": "New Jersey Devils",
-      "away_team": "Ottawa Senators",
+      "home_team": "Los Angeles Kings",
+      "away_team": "Edmonton Oilers",
       "home_score": 1,
       "away_score": 4
     },
     {
       "league": "NHL",
-      "home_team": "Minnesota Wild",
-      "away_team": "Vegas Golden Knights",
-      "home_score": 4,
+      "home_team": "San Jose Sharks",
+      "away_team": "Boston Bruins",
+      "home_score": 3,
+      "away_score": 6
+    },
+    {
+      "league": "UCL",
+      "home_team": "Lens",
+      "away_team": "Sporting CP",
+      "home_score": 0,
       "away_score": 2
     },
     {
-      "league": "EPL",
-      "home_team": "Coventry City",
-      "away_team": "Newcastle United",
-      "home_score": 4,
+      "league": "UCL",
+      "home_team": "Sabah FK",
+      "away_team": "Slavia Prague",
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "league": "UCL",
+      "home_team": "Arsenal",
+      "away_team": "Lille",
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "league": "UCL",
+      "home_team": "Atl\u00e9tico Madrid",
+      "away_team": "Manchester United",
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "league": "UCL",
+      "home_team": "Inter Milan",
+      "away_team": "Club Brugge",
+      "home_score": 3,
+      "away_score": 4
+    },
+    {
+      "league": "UCL",
+      "home_team": "Galatasaray",
+      "away_team": "Barcelona",
+      "home_score": 1,
+      "away_score": 4
+    },
+    {
+      "league": "UCL",
+      "home_team": "RB Leipzig",
+      "away_team": "PSV",
+      "home_score": 1,
+      "away_score": 0
+    },
+    {
+      "league": "UCL",
+      "home_team": "Viking",
+      "away_team": "Bayern Munich",
+      "home_score": 3,
+      "away_score": 3
+    },
+    {
+      "league": "UCL",
+      "home_team": "Villarreal",
+      "away_team": "Napoli",
+      "home_score": 3,
       "away_score": 1
     },
     {
-      "league": "NBA",
-      "home_team": "Atlanta Hawks",
-      "away_team": "Oklahoma City Thunder",
-      "home_score": 113,
-      "away_score": 110
+      "league": "NCAAF",
+      "home_team": "Middle Tennessee Blue Raiders",
+      "away_team": "Delaware Blue Hens",
+      "home_score": 33,
+      "away_score": 30
     },
     {
-      "league": "NBA",
-      "home_team": "Utah Jazz",
-      "away_team": "San Antonio Spurs",
-      "home_score": 119,
-      "away_score": 109
+      "league": "NCAAF",
+      "home_team": "Jacksonville State Gamecocks",
+      "away_team": "FIU Panthers",
+      "home_score": 27,
+      "away_score": 24
     }
   ]
 }
