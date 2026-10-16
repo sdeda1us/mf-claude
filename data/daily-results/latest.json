@@ -1,131 +1,110 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "results": [
     {
+      "league": "NFL",
+      "home_team": "Denver Broncos",
+      "away_team": "Seattle Seahawks",
+      "home_score": 17,
+      "away_score": 14
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "UAB Blazers",
+      "away_team": "East Carolina Pirates",
+      "home_score": 30,
+      "away_score": 17
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Old Dominion Monarchs",
+      "away_team": "Georgia Southern Eagles",
+      "home_score": 15,
+      "away_score": 23
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Texas State Bobcats",
+      "away_team": "Colorado State Rams",
+      "home_score": 66,
+      "away_score": 27
+    },
+    {
       "league": "NHL",
-      "home_team": "Washington Capitals",
-      "away_team": "Montreal Canadiens",
+      "home_team": "New Jersey Devils",
+      "away_team": "New York Rangers",
+      "home_score": 7,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Toronto Maple Leafs",
+      "away_team": "Buffalo Sabres",
+      "home_score": 4,
+      "away_score": 5
+    },
+    {
+      "league": "NHL",
+      "home_team": "Ottawa Senators",
+      "away_team": "New York Islanders",
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Detroit Red Wings",
+      "away_team": "Philadelphia Flyers",
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Tampa Bay Lightning",
+      "away_team": "Seattle Kraken",
+      "home_score": 4,
+      "away_score": 3
+    },
+    {
+      "league": "NHL",
+      "home_team": "Florida Panthers",
+      "away_team": "Vancouver Canucks",
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "league": "NHL",
+      "home_team": "Chicago Blackhawks",
+      "away_team": "Winnipeg Jets",
+      "home_score": 4,
+      "away_score": 3
+    },
+    {
+      "league": "NHL",
+      "home_team": "Nashville Predators",
+      "away_team": "San Jose Sharks",
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "league": "NHL",
+      "home_team": "Minnesota Wild",
+      "away_team": "St. Louis Blues",
       "home_score": 5,
       "away_score": 4
     },
     {
       "league": "NHL",
-      "home_team": "Colorado Avalanche",
-      "away_team": "Dallas Stars",
+      "home_team": "Edmonton Oilers",
+      "away_team": "Utah Mammoth",
       "home_score": 2,
-      "away_score": 3
-    },
-    {
-      "league": "NBA",
-      "home_team": "Miami Heat",
-      "away_team": "Brooklyn Nets",
-      "home_score": 144,
-      "away_score": 128
-    },
-    {
-      "league": "NBA",
-      "home_team": "Boston Celtics",
-      "away_team": "Charlotte Hornets",
-      "home_score": 114,
-      "away_score": 93
-    },
-    {
-      "league": "NBA",
-      "home_team": "San Antonio Spurs",
-      "away_team": "Phoenix Suns",
-      "home_score": 123,
-      "away_score": 103
-    },
-    {
-      "league": "NBA",
-      "home_team": "Dallas Mavericks",
-      "away_team": "New Orleans Pelicans",
-      "home_score": 97,
-      "away_score": 101
-    },
-    {
-      "league": "NBA",
-      "home_team": "Milwaukee Bucks",
-      "away_team": "Chicago Bulls",
-      "home_score": 104,
-      "away_score": 125
-    },
-    {
-      "league": "NBA",
-      "home_team": "Minnesota Timberwolves",
-      "away_team": "Detroit Pistons",
-      "home_score": 106,
-      "away_score": 128
-    },
-    {
-      "league": "NBA",
-      "home_team": "Los Angeles Clippers",
-      "away_team": "Denver Nuggets",
-      "home_score": 122,
-      "away_score": 110
-    },
-    {
-      "league": "UCL",
-      "home_team": "Feyenoord",
-      "away_team": "Como",
-      "home_score": 3,
-      "away_score": 2
-    },
-    {
-      "league": "UCL",
-      "home_team": "LASK",
-      "away_team": "Liverpool",
-      "home_score": 3,
-      "away_score": 6
-    },
-    {
-      "league": "UCL",
-      "home_team": "Roma",
-      "away_team": "Real Madrid",
-      "home_score": 3,
       "away_score": 4
     },
     {
-      "league": "UCL",
-      "home_team": "Aston Villa",
-      "away_team": "Fenerbah\u00e7e",
+      "league": "NHL",
+      "home_team": "Vegas Golden Knights",
+      "away_team": "Calgary Flames",
       "home_score": 6,
-      "away_score": 0
-    },
-    {
-      "league": "UCL",
-      "home_team": "Shakhtar Donetsk",
-      "away_team": "AEK Athens",
-      "home_score": 3,
-      "away_score": 1
-    },
-    {
-      "league": "UCL",
-      "home_team": "Bod\u00f8/Glimt",
-      "away_team": "Borussia Dortmund",
-      "home_score": 1,
-      "away_score": 0
-    },
-    {
-      "league": "UCL",
-      "home_team": "Manchester City",
-      "away_team": "Paris Saint-Germain",
-      "home_score": 2,
-      "away_score": 4
-    },
-    {
-      "league": "UCL",
-      "home_team": "Real Betis",
-      "away_team": "Porto",
-      "home_score": 3,
       "away_score": 2
-    },
-    {
-      "league": "UCL",
-      "home_team": "Slovan Bratislava",
-      "away_team": "VfB Stuttgart",
-      "home_score": 0,
-      "away_score": 3
     }
   ]
 }
