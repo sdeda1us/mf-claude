@@ -14,6 +14,24 @@
       "away_team": "Anaheim Ducks",
       "venue": "Madison Square Garden",
       "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Philadelphia Flyers",
+      "away_team": "Colorado Avalanche",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Toronto Maple Leafs",
+      "away_team": "San Jose Sharks",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Utah Mammoth",
+      "away_team": "Pittsburgh Penguins",
+      "time_label": "7:00 PM ET"
     }
   ]
 }
