@@ -4,7 +4,7 @@
       "league": "NFL",
       "team": "Buffalo Bills",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -28,7 +28,7 @@
       "league": "NFL",
       "team": "New England Patriots",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -76,7 +76,7 @@
       "league": "NFL",
       "team": "Cleveland Browns",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -88,7 +88,7 @@
       "league": "NFL",
       "team": "Pittsburgh Steelers",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -100,7 +100,7 @@
       "league": "NFL",
       "team": "Houston Texans",
       "stats": {
-        "wins": 1,
+        "wins": 2,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -136,7 +136,7 @@
       "league": "NFL",
       "team": "Tennessee Titans",
       "stats": {
-        "wins": 0,
+        "wins": 1,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -160,7 +160,7 @@
       "league": "NFL",
       "team": "Kansas City Chiefs",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -244,7 +244,7 @@
       "league": "NFL",
       "team": "Chicago Bears",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -268,7 +268,7 @@
       "league": "NFL",
       "team": "Green Bay Packers",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -304,7 +304,7 @@
       "league": "NFL",
       "team": "Carolina Panthers",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -316,7 +316,7 @@
       "league": "NFL",
       "team": "New Orleans Saints",
       "stats": {
-        "wins": 1,
+        "wins": 2,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -340,7 +340,7 @@
       "league": "NFL",
       "team": "Arizona Cardinals",
       "stats": {
-        "wins": 1,
+        "wins": 2,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -501,7 +501,7 @@
       "team": "Carolina Hurricanes",
       "stats": {
         "reg_wins": 6,
-        "reg_losses": 1,
+        "reg_losses": 2,
         "ot_so_wins": 1,
         "made_playoffs": false,
         "won_round1": false,
@@ -515,7 +515,7 @@
       "team": "Columbus Blue Jackets",
       "stats": {
         "reg_wins": 2,
-        "reg_losses": 3,
+        "reg_losses": 4,
         "ot_so_wins": 1,
         "made_playoffs": false,
         "won_round1": false,
@@ -654,7 +654,7 @@
       "league": "NHL",
       "team": "Minnesota Wild",
       "stats": {
-        "reg_wins": 4,
+        "reg_wins": 5,
         "reg_losses": 2,
         "ot_so_wins": 1,
         "made_playoffs": false,
@@ -738,7 +738,7 @@
       "league": "NHL",
       "team": "Calgary Flames",
       "stats": {
-        "reg_wins": 1,
+        "reg_wins": 2,
         "reg_losses": 6,
         "ot_so_wins": 0,
         "made_playoffs": false,
@@ -932,7 +932,7 @@
       "league": "EPL",
       "team": "Leeds United",
       "stats": {
-        "standings_points": 9,
+        "standings_points": 10,
         "goal_differential": 3
       }
     },
@@ -956,7 +956,7 @@
       "league": "EPL",
       "team": "Manchester United",
       "stats": {
-        "standings_points": 6,
+        "standings_points": 7,
         "goal_differential": 0
       }
     },
