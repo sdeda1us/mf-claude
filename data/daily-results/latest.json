@@ -1,20 +1,40 @@
 {
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "results": [
-    {"league": "NFL", "home_team": "Jacksonville Jaguars", "away_team": "Houston Texans", "home_score": 31, "away_score": 34},
-    {"league": "NFL", "home_team": "Cleveland Browns", "away_team": "Baltimore Ravens", "home_score": 13, "away_score": 10},
-    {"league": "NFL", "home_team": "Atlanta Falcons", "away_team": "Chicago Bears", "home_score": 23, "away_score": 31},
-    {"league": "NFL", "home_team": "New York Giants", "away_team": "New Orleans Saints", "home_score": 27, "away_score": 34},
-    {"league": "NFL", "home_team": "Indianapolis Colts", "away_team": "Tennessee Titans", "home_score": 20, "away_score": 26},
-    {"league": "NFL", "home_team": "New England Patriots", "away_team": "New York Jets", "home_score": 26, "away_score": 19},
-    {"league": "NFL", "home_team": "Philadelphia Eagles", "away_team": "Carolina Panthers", "home_score": 14, "away_score": 25},
-    {"league": "NFL", "home_team": "Tampa Bay Buccaneers", "away_team": "Pittsburgh Steelers", "home_score": 19, "away_score": 26},
-    {"league": "NFL", "home_team": "Los Angeles Rams", "away_team": "Arizona Cardinals", "home_score": 16, "away_score": 18},
-    {"league": "NFL", "home_team": "Kansas City Chiefs", "away_team": "Los Angeles Chargers", "home_score": 22, "away_score": 6},
-    {"league": "NFL", "home_team": "Las Vegas Raiders", "away_team": "Buffalo Bills", "home_score": 30, "away_score": 33},
-    {"league": "NFL", "home_team": "Green Bay Packers", "away_team": "Dallas Cowboys", "home_score": 23, "away_score": 13},
-    {"league": "NHL", "home_team": "Minnesota Wild", "away_team": "Columbus Blue Jackets", "home_score": 2, "away_score": 1},
-    {"league": "NHL", "home_team": "Calgary Flames", "away_team": "Carolina Hurricanes", "home_score": 3, "away_score": 2},
-    {"league": "EPL", "home_team": "Leeds United", "away_team": "Manchester United", "home_score": 1, "away_score": 1}
+    {
+      "league": "NFL",
+      "home_team": "San Francisco 49ers",
+      "away_team": "Washington Commanders",
+      "home_score": 23,
+      "away_score": 17
+    },
+    {
+      "league": "NHL",
+      "home_team": "New York Rangers",
+      "away_team": "Anaheim Ducks",
+      "home_score": 5,
+      "away_score": 2
+    },
+    {
+      "league": "NHL",
+      "home_team": "Philadelphia Flyers",
+      "away_team": "Colorado Avalanche",
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "league": "NHL",
+      "home_team": "Toronto Maple Leafs",
+      "away_team": "San Jose Sharks",
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Utah Mammoth",
+      "away_team": "Pittsburgh Penguins",
+      "home_score": 5,
+      "away_score": 4
+    }
   ]
 }
