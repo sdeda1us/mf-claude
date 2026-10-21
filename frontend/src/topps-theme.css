@@ -389,6 +389,19 @@
   box-shadow: 0 3px 6px -2px var(--shadow);
   text-align: center;
 }
+.topps-games-row {
+  margin-bottom: 18px;
+}
+.topps-games-row > div {
+  background: var(--stock-hi);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  padding: 12px 14px 14px;
+}
+.topps-games-row .scoring-summary-heading {
+  margin-top: 0;
+}
+
 .topps-budget-row {
   display: flex;
   flex-wrap: wrap;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../components/Avatar";
+import TodaysGamesCard from "../components/TodaysGamesCard";
+import YesterdaysResultsCard from "../components/YesterdaysResultsCard";
 import "../topps-theme.css";
 import {
   api,
@@ -9,13 +11,17 @@ import {
   type ScoringSummary,
   type Season,
   type Team,
+  type TodaysGame,
   type User,
+  type YesterdaysResult,
 } from "../lib/api";
 
 interface SeasonSnapshot {
   season: Season;
   rows: { user: User; spent: number; teamsDrafted: number }[];
   scoringSummary: ScoringSummary;
+  todaysGames: TodaysGame[];
+  yesterdaysResults: YesterdaysResult[];
 }
 
 export default function HomeTopps() {
@@ -43,7 +49,9 @@ export default function HomeTopps() {
         Promise.all([
           api.get<RosterEntry[]>(`/seasons/${season.id}/roster`),
           api.get<ScoringSummary>(`/seasons/${season.id}/scoring-summary`),
-        ]).then(([entries, scoringSummary]) => {
+          api.get<TodaysGame[]>(`/seasons/${season.id}/todays-games`),
+          api.get<YesterdaysResult[]>(`/seasons/${season.id}/yesterdays-results`),
+        ]).then(([entries, scoringSummary, todaysGames, yesterdaysResults]) => {
           const byUser = new Map<number, { spent: number; teamsDrafted: number }>();
           for (const e of entries) {
             const cur = byUser.get(e.user_id) ?? { spent: 0, teamsDrafted: 0 };
@@ -58,7 +66,7 @@ export default function HomeTopps() {
               teamsDrafted: byUser.get(user.id)?.teamsDrafted ?? 0,
             }))
             .sort((a, b) => b.spent - a.spent || b.teamsDrafted - a.teamsDrafted);
-          return { season, rows, scoringSummary };
+          return { season, rows, scoringSummary, todaysGames, yesterdaysResults };
         })
       )
     ).then(setSnapshots);
@@ -163,11 +171,16 @@ export default function HomeTopps() {
               </p>
             </div>
           ) : (
-            snapshots.map(({ season, rows, scoringSummary }, i) => (
+            snapshots.map(({ season, rows, scoringSummary, todaysGames, yesterdaysResults }, i) => (
               <div className="topps-back" key={season.id}>
                 <div className="topps-card-no">№ {i + 1}</div>
                 <h2>{season.name}</h2>
                 <p className="topps-season-name">Active Season Record</p>
+
+                <div className="todays-and-yesterday-row topps-games-row">
+                  <TodaysGamesCard games={todaysGames} />
+                  <YesterdaysResultsCard results={yesterdaysResults} />
+                </div>
 
                 <div className="topps-cta-row">
                   <Link className="topps-cta-primary" to={`/seasons/${season.id}/auction/fall`}>
