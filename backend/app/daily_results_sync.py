@@ -19,20 +19,52 @@ Run manually with:
 where the fixture is {"date": "YYYY-MM-DD", "results": [{"league",
 "home_team", "away_team", "home_score", "away_score"}, ...]}.
 """
-from datetime import date
+from datetime import date, timedelta
 
 from app.models import ScheduledGame
 from app.schemas import DailyResultEntryIn
+from app.season_labels import SEASON_START_DATE
+
+# How far back to look for an unresolved (home_score IS NULL) ScheduledGame
+# row when a result's exact (game_date, league, home_team, away_team)
+# tuple has no match. Covers a fixture whose games-sync guessed the wrong
+# date -- a rescheduled kickoff (e.g. the Premier League bumping a match
+# to a different day for TV) or a postponement -- which otherwise never
+# gets its result attached: the schedule row sits under the wrong date
+# forever, and the correctly-dated result has nothing to match against.
+# A week comfortably covers any such slip without reaching back far enough
+# to risk matching an unrelated earlier fixture between the same two teams.
+RESULT_MATCH_LOOKBACK_DAYS = 7
 
 
 def sync_results_for_date(db, game_date: date, entries: list[DailyResultEntryIn]) -> dict:
     """Updates home_score/away_score on each matching ScheduledGame row.
     Returns {"updated": int, "skipped": [{"league", "home_team",
     "away_team"}, ...]} for rows with no schedule match. Does not commit
-    -- caller owns the transaction."""
+    -- caller owns the transaction.
+
+    An entry for a league whose real-world regular season hadn't started
+    yet as of game_date (SEASON_START_DATE) is a preseason/exhibition
+    result -- skipped the same as an unmatched game, since it shouldn't
+    appear on "Yesterday's Results" or count toward fantasy scoring. In
+    practice sync_games_for_date already keeps these out of the schedule,
+    so this mostly guards against a result reported with no matching
+    games-sync entry.
+
+    A result with no EXACT (game_date, league, teams) match falls back to
+    the most recent still-unresolved ScheduledGame for that league/team
+    pair within RESULT_MATCH_LOOKBACK_DAYS, and corrects its game_date to
+    game_date -- see RESULT_MATCH_LOOKBACK_DAYS above for why. Only a
+    truly orphaned result (no schedule row at all, under any recent date)
+    is skipped."""
     updated = 0
     skipped: list[dict] = []
     for entry in entries:
+        if game_date < SEASON_START_DATE.get(entry.league, date.min):
+            skipped.append(
+                {"league": entry.league, "home_team": entry.home_team, "away_team": entry.away_team}
+            )
+            continue
         game = (
             db.query(ScheduledGame)
             .filter(
@@ -43,6 +75,22 @@ def sync_results_for_date(db, game_date: date, entries: list[DailyResultEntryIn]
             )
             .first()
         )
+        if game is None:
+            game = (
+                db.query(ScheduledGame)
+                .filter(
+                    ScheduledGame.game_date >= game_date - timedelta(days=RESULT_MATCH_LOOKBACK_DAYS),
+                    ScheduledGame.game_date < game_date,
+                    ScheduledGame.league == entry.league,
+                    ScheduledGame.home_team_name == entry.home_team,
+                    ScheduledGame.away_team_name == entry.away_team,
+                    ScheduledGame.home_score.is_(None),
+                )
+                .order_by(ScheduledGame.game_date.desc())
+                .first()
+            )
+            if game is not None:
+                game.game_date = game_date
         if game is None:
             skipped.append(
                 {"league": entry.league, "home_team": entry.home_team, "away_team": entry.away_team}

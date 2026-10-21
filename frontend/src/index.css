@@ -687,32 +687,6 @@ button:disabled {
   }
 }
 
-/* The "urgent" announcement button next to it — gold/caution-taped rather
-   than matching the fall-auction red, so the two don't blur into one
-   button, and no pulse (one pulsing element per page is plenty). */
-.announcement-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--display-font);
-  font-weight: 800;
-  font-style: italic;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  font-size: 14px;
-  padding: 16px 22px;
-  border: 3px solid var(--ink);
-  border-radius: 2px;
-  background: var(--gold);
-  color: var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
-}
-
-.announcement-cta:hover:not(:disabled) {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--ink);
-}
-
 .season-list {
   list-style: none;
   padding: 0;
@@ -970,6 +944,11 @@ button:disabled {
 
 .yesterdays-results-loss {
   color: var(--red);
+}
+
+.yesterdays-results-pending {
+  color: var(--ink-soft);
+  font-style: italic;
 }
 
 .todays-games-list {

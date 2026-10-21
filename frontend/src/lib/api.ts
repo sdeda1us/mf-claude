@@ -237,12 +237,14 @@ export interface YesterdaysResult {
   home_team_id: number | null;
   home_team_name: string;
   home_owner: string | null;
-  home_score: number;
+  // null means this game is still pending, not a 0-0 final -- see
+  // routers/seasons.py's yesterdays_results.
+  home_score: number | null;
   home_point_change: number | null;
   away_team_id: number | null;
   away_team_name: string;
   away_owner: string | null;
-  away_score: number;
+  away_score: number | null;
   away_point_change: number | null;
 }
 

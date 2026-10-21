@@ -382,7 +382,12 @@ class YesterdaysResultOut(BaseModel):
     home_team_id: int | None
     home_team_name: str
     home_owner: str | None
-    home_score: int
+    # None means this game is still PENDING, not yesterday's final score --
+    # see routers/seasons.py's yesterdays_results. Surfaced (instead of
+    # silently omitted) so a game whose games-sync guessed the wrong date
+    # stays visible as unresolved rather than disappearing once "yesterday"
+    # moves on, with no trace it was ever scheduled.
+    home_score: int | None
     # This team's own fantasy-score change for the day, i.e. what it added
     # to home_owner's total -- see routers/seasons.py's yesterdays_results
     # for how this is derived from TeamDailyScore. None if today's sync
@@ -394,7 +399,7 @@ class YesterdaysResultOut(BaseModel):
     away_team_id: int | None
     away_team_name: str
     away_owner: str | None
-    away_score: int
+    away_score: int | None
     away_point_change: float | None
 
 

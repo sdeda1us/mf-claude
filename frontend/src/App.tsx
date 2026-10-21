@@ -3,7 +3,10 @@ import { Navigate, Route, Routes, Link, NavLink, useLocation, useParams } from "
 import Avatar from "./components/Avatar";
 import { useAuth } from "./auth/AuthContext";
 import Login from "./pages/Login";
-import Home from "./pages/Home";
+// To revert the "/" route to the original design: change this import back
+// to `import Home from "./pages/Home";` and swap <HomeTopps /> for <Home />
+// below. Home.tsx itself was left untouched, so it's ready to go.
+import HomeTopps from "./pages/HomeTopps";
 import Analytics from "./pages/Analytics";
 import Seasons from "./pages/Seasons";
 import Roster from "./pages/Roster";
@@ -110,7 +113,7 @@ export default function App() {
           path="/"
           element={
             <RequireAuth>
-              <Home />
+              <HomeTopps />
             </RequireAuth>
           }
         />

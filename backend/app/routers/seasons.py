@@ -2,8 +2,10 @@ from collections import defaultdict
 from datetime import timedelta
 
 from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy import and_, or_
 from sqlalchemy.orm import Session
 
+from app.daily_results_sync import RESULT_MATCH_LOOKBACK_DAYS
 from app.daily_score_sync import today_eastern
 from app.database import get_db
 from app.deps import get_current_commissioner, get_current_user
@@ -255,10 +257,21 @@ def yesterdays_results(
     score, owning player (if any), and each owned side's fantasy-point
     change for the day -- the Home page's "Yesterday's Results" card,
     sitting next to "Today's Games". Same "drop it if nobody owns either
-    side" rule as todays_games, and additionally only shows games whose
-    result is actually known yet (home_score/away_score populated by
-    app/daily_results_sync.py -- see that module and
-    data/daily-results/README.md for how/when that happens)."""
+    side" rule as todays_games.
+
+    Also includes any STILL-UNRESOLVED game (home_score/away_score null)
+    from the last RESULT_MATCH_LOOKBACK_DAYS, not just exactly yesterday's
+    -- with those fields None in the response, i.e. "pending" rather than
+    a final score. Without this, a game whose games-sync guessed the
+    wrong date (a rescheduled kickoff, a postponement) would otherwise
+    vanish the moment "yesterday" moves past its date, with nothing in
+    the UI to show it was ever scheduled or that it's still awaiting a
+    result. Once daily_results_sync's own lookback fallback (see
+    RESULT_MATCH_LOOKBACK_DAYS there) finally attaches that game's real
+    result, it corrects the row's game_date to match -- which is always
+    "yesterday" from the pull that processes it -- so a since-resolved
+    game surfaces through the normal exactly-yesterday branch below
+    rather than needing special handling here too."""
     if db.get(Season, season_id) is None:
         raise HTTPException(status_code=404, detail="Season not found")
 
@@ -267,10 +280,17 @@ def yesterdays_results(
     games = (
         db.query(ScheduledGame)
         .filter(
-            ScheduledGame.game_date == yesterday,
             ScheduledGame.league.in_(TODAYS_GAMES_LEAGUES),
-            ScheduledGame.home_score.is_not(None),
-            ScheduledGame.away_score.is_not(None),
+            ScheduledGame.game_date <= yesterday,
+            ScheduledGame.game_date > yesterday - timedelta(days=RESULT_MATCH_LOOKBACK_DAYS),
+            or_(
+                and_(
+                    ScheduledGame.game_date == yesterday,
+                    ScheduledGame.home_score.is_not(None),
+                    ScheduledGame.away_score.is_not(None),
+                ),
+                ScheduledGame.home_score.is_(None),
+            ),
         )
         .all()
     )

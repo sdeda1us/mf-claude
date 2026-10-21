@@ -12,6 +12,8 @@ Update this dict once a year as each league's season rolls over -- see
 CLAUDE.md's "Sports Leagues" section for real-world season windows.
 """
 
+from datetime import date
+
 from sqlalchemy.orm import Session
 
 from app.models import Team, TeamSeasonResult
@@ -26,6 +28,29 @@ CURRENT_SEASON: dict[str, str] = {
     "EPL": "2026-27",
     "UCL": "2026-27",
     "URC": "2026-27",
+}
+
+# First real-world date each league's CURRENT_SEASON regular season counts
+# games -- i.e. the cutoff before which any reported game/result/stat must
+# be preseason or exhibition, not a real one. Dates come straight from
+# CLAUDE.md's "Sports Leagues" section (regular-season/Week 0/league-phase
+# openers, not Opening Night/preview exhibitions). Used by
+# daily_games_sync/daily_results_sync to drop preseason games from the
+# schedule, and by daily_score_sync to refuse syncing a league's stats
+# before its season has actually started.
+#
+# URC is deliberately omitted -- CLAUDE.md itself doesn't have a confirmed
+# 2026-27 opener date yet ("update this note... once sourced"), and the
+# season was already in progress by the time this dict was written, so
+# there's no safe cutoff to gate on. Add it here once CLAUDE.md is updated
+# with a real date.
+SEASON_START_DATE: dict[str, date] = {
+    "NFL": date(2026, 9, 9),
+    "NCAAF": date(2026, 8, 27),
+    "NBA": date(2026, 10, 20),
+    "NHL": date(2026, 9, 29),
+    "EPL": date(2026, 8, 21),
+    "UCL": date(2026, 9, 8),
 }
 
 # All-zero stats, shaped exactly as league_rules.compute_score expects for

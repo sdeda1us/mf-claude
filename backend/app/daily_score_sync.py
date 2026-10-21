@@ -32,7 +32,7 @@ from app.database import SessionLocal
 from app.league_rules import compute_score
 from app.models import RosterEntry, Season, SeasonStatus, Team, TeamDailyScore, TeamSeasonResult
 from app.schemas import DailySyncBatchResultOut, DailySyncEntryIn, DailySyncSkipOut
-from app.season_labels import CURRENT_SEASON
+from app.season_labels import CURRENT_SEASON, SEASON_START_DATE
 
 EASTERN = ZoneInfo("America/New_York")  # matches backup.py / quiet_hours.py
 
@@ -42,6 +42,15 @@ class TeamNotFoundError(Exception):
 
 
 class UnsupportedLeagueError(Exception):
+    pass
+
+
+class SeasonNotStartedError(Exception):
+    """Raised when a league's real-world regular season (SEASON_START_DATE)
+    hasn't begun yet -- any "stats" reported for it this early can only be
+    preseason/exhibition results, which shouldn't count toward fantasy
+    scoring."""
+
     pass
 
 
@@ -67,6 +76,8 @@ def sync_team_stats(
     normal daily-sync path)."""
     if league not in CURRENT_SEASON:
         raise UnsupportedLeagueError(league)
+    if (as_of_date or today_eastern()) < SEASON_START_DATE.get(league, date.min):
+        raise SeasonNotStartedError(league)
     team = db.query(Team).filter(Team.league == league, Team.name == team_name).first()
     if team is None:
         raise TeamNotFoundError(f"{league} {team_name}")
@@ -162,6 +173,10 @@ def apply_daily_sync_batch(db, entries: list[DailySyncEntryIn]) -> DailySyncBatc
             )
         except TeamNotFoundError:
             skipped.append(DailySyncSkipOut(league=entry.league, team=entry.team, reason="no Team row"))
+        except SeasonNotStartedError:
+            skipped.append(
+                DailySyncSkipOut(league=entry.league, team=entry.team, reason="season not started")
+            )
 
     return DailySyncBatchResultOut(synced=synced, skipped=skipped)
 
@@ -183,7 +198,7 @@ if __name__ == "__main__":
             try:
                 sync_team_stats(db, entry["league"], entry["team"], entry["stats"])
                 synced += 1
-            except (TeamNotFoundError, UnsupportedLeagueError) as exc:
+            except (TeamNotFoundError, UnsupportedLeagueError, SeasonNotStartedError) as exc:
                 skipped.append(str(exc))
         db.commit()
         print(f"Synced {synced} team(s).")

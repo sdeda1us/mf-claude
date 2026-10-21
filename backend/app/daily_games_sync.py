@@ -29,17 +29,27 @@ from datetime import date
 
 from app.models import ScheduledGame, Team
 from app.schemas import DailyGameEntryIn
+from app.season_labels import SEASON_START_DATE
 
 
 def sync_games_for_date(db, game_date: date, entries: list[DailyGameEntryIn]) -> int:
     """Deletes all existing ScheduledGame rows for game_date whose league
     appears in `entries`, then inserts one fresh row per entry. Returns
-    the number of rows inserted."""
+    the number of rows inserted.
+
+    Entries for a league whose real-world regular season hasn't started
+    yet as of game_date (SEASON_START_DATE) are dropped first -- these
+    are preseason/exhibition games, which the Home page's "Today's Games"
+    widget shouldn't show since they don't affect fantasy scoring."""
     leagues = {e.league for e in entries}
     if leagues:
         db.query(ScheduledGame).filter(
             ScheduledGame.game_date == game_date, ScheduledGame.league.in_(leagues)
         ).delete(synchronize_session=False)
+
+    entries = [
+        e for e in entries if game_date >= SEASON_START_DATE.get(e.league, date.min)
+    ]
 
     def _find_team_id(league: str, name: str) -> int | None:
         team = db.query(Team).filter(Team.league == league, Team.name == name).first()

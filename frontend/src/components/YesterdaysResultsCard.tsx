@@ -65,8 +65,9 @@ export default function YesterdaysResultsCard({ results }: YesterdaysResultsCard
               {expanded && (
                 <ul className="yesterdays-results-list">
                   {leagueResults.map((r, i) => {
-                    const homeWon = r.home_score > r.away_score;
-                    const awayWon = r.away_score > r.home_score;
+                    const pending = r.home_score === null || r.away_score === null;
+                    const homeWon = !pending && r.home_score! > r.away_score!;
+                    const awayWon = !pending && r.away_score! > r.home_score!;
                     return (
                       <li key={i} className="yesterdays-results-row">
                         <div className="todays-games-row yesterdays-results-matchup">
@@ -76,13 +77,20 @@ export default function YesterdaysResultsCard({ results }: YesterdaysResultsCard
                             </strong>
                             {r.home_owner && <span className="todays-games-owner"> ({r.home_owner})</span>}
                             {" "}
-                            {r.home_score}
-                            {" – "}
-                            {r.away_score}{" "}
+                            {pending ? (
+                              <span className="yesterdays-results-pending">vs.</span>
+                            ) : (
+                              <>
+                                {r.home_score}
+                                {" – "}
+                                {r.away_score}
+                              </>
+                            )}{" "}
                             <strong className={awayWon ? "yesterdays-results-winner" : undefined}>
                               {r.away_team_name}
                             </strong>
                             {r.away_owner && <span className="todays-games-owner"> ({r.away_owner})</span>}
+                            {pending && <span className="yesterdays-results-pending"> (pending)</span>}
                           </span>
                         </div>
                         {(r.home_owner || r.away_owner) && (
