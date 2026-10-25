@@ -1,3 +1,4 @@
+import logging
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -28,6 +29,13 @@ from app.routers import (
 )
 from app.ws import auction_ws
 from app.ws.connection_manager import manager
+
+# Without this, every module's `logging.getLogger("megafantasy.x")` has no
+# handler anywhere up its chain, so logger.info/exception calls (the daily
+# sync loop's, in particular) silently vanish instead of reaching Railway's
+# log stream -- confirmed the hard way, needing a railway ssh exec into the
+# running container just to find out whether a sync had actually run.
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
 
 @asynccontextmanager
