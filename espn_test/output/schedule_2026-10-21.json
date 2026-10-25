@@ -1,0 +1,235 @@
+{
+  "date": "2026-10-21",
+  "games": [
+    {
+      "league": "NBA",
+      "home_team": "Orlando Magic",
+      "away_team": "Atlanta Hawks",
+      "venue": "Kia Center",
+      "time_label": "2026-10-21T23:00Z",
+      "home_score": 125,
+      "away_score": 132,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Washington Wizards",
+      "away_team": "Milwaukee Bucks",
+      "venue": "Capital One Arena",
+      "time_label": "2026-10-21T23:00Z",
+      "home_score": 128,
+      "away_score": 116,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Miami Heat",
+      "away_team": "Minnesota Timberwolves",
+      "venue": "Kaseya Center",
+      "time_label": "2026-10-21T23:30Z",
+      "home_score": 106,
+      "away_score": 131,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Brooklyn Nets",
+      "away_team": "Charlotte Hornets",
+      "venue": "Barclays Center",
+      "time_label": "2026-10-21T23:30Z",
+      "home_score": 103,
+      "away_score": 110,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Toronto Raptors",
+      "away_team": "Chicago Bulls",
+      "venue": "Scotiabank Arena",
+      "time_label": "2026-10-21T23:30Z",
+      "home_score": 135,
+      "away_score": 92,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Memphis Grizzlies",
+      "away_team": "Utah Jazz",
+      "venue": "FedExForum",
+      "time_label": "2026-10-22T00:00Z",
+      "home_score": 123,
+      "away_score": 103,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "New Orleans Pelicans",
+      "away_team": "Indiana Pacers",
+      "venue": "Smoothie King Center",
+      "time_label": "2026-10-22T00:00Z",
+      "home_score": 120,
+      "away_score": 123,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Houston Rockets",
+      "away_team": "Dallas Mavericks",
+      "venue": "Toyota Center (Houston)",
+      "time_label": "2026-10-22T00:30Z",
+      "home_score": 128,
+      "away_score": 110,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Los Angeles Lakers",
+      "away_team": "Golden State Warriors",
+      "venue": "crypto.com Arena",
+      "time_label": "2026-10-22T02:00Z",
+      "home_score": 127,
+      "away_score": 105,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Portland Trail Blazers",
+      "away_team": "Phoenix Suns",
+      "venue": "Moda Center",
+      "time_label": "2026-10-22T02:00Z",
+      "home_score": 124,
+      "away_score": 83,
+      "status": "Final"
+    },
+    {
+      "league": "NBA",
+      "home_team": "LA Clippers",
+      "away_team": "Sacramento Kings",
+      "venue": "Intuit Dome",
+      "time_label": "2026-10-22T02:30Z",
+      "home_score": 121,
+      "away_score": 96,
+      "status": "Final"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Buffalo Sabres",
+      "away_team": "Philadelphia Flyers",
+      "venue": "KeyBank Center",
+      "time_label": "2026-10-21T23:30Z",
+      "home_score": 1,
+      "away_score": 3,
+      "status": "Final"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Ottawa Senators",
+      "away_team": "Florida Panthers",
+      "venue": "Canadian Tire Centre",
+      "time_label": "2026-10-21T23:30Z",
+      "home_score": 5,
+      "away_score": 1,
+      "status": "Final"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Como",
+      "away_team": "Manchester United",
+      "venue": "Giuseppe Sinigaglia",
+      "time_label": "2026-10-21T16:45Z",
+      "home_score": 4,
+      "away_score": 1,
+      "status": "Full Time"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Lille",
+      "away_team": "Galatasaray",
+      "venue": "Decathlon Arena - Stade Pierre-Mauroy",
+      "time_label": "2026-10-21T16:45Z",
+      "home_score": 2,
+      "away_score": 4,
+      "status": "Full Time"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Aston Villa",
+      "away_team": "Viking FK",
+      "venue": "Villa Park",
+      "time_label": "2026-10-21T19:00Z",
+      "home_score": 3,
+      "away_score": 1,
+      "status": "Full Time"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Bayern Munich",
+      "away_team": "Arsenal",
+      "venue": "Allianz Arena",
+      "time_label": "2026-10-21T19:00Z",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "Full Time"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Club Brugge",
+      "away_team": "Lens",
+      "venue": "Jan Breydel Stadium",
+      "time_label": "2026-10-21T19:00Z",
+      "home_score": 3,
+      "away_score": 0,
+      "status": "Full Time"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Internazionale",
+      "away_team": "Shakhtar Donetsk",
+      "venue": "San Siro",
+      "time_label": "2026-10-21T19:00Z",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "Full Time"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Real Betis",
+      "away_team": "Feyenoord Rotterdam",
+      "venue": "Estadio La Cartuja",
+      "time_label": "2026-10-21T19:00Z",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "Full Time"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Real Madrid",
+      "away_team": "RB Leipzig",
+      "venue": "Santiago Bernab\u00e9u",
+      "time_label": "2026-10-21T19:00Z",
+      "home_score": 4,
+      "away_score": 1,
+      "status": "Full Time"
+    },
+    {
+      "league": "UCL",
+      "home_team": "Sporting CP",
+      "away_team": "LASK Linz",
+      "venue": "Est\u00e1dio Jos\u00e9 Alvalade",
+      "time_label": "2026-10-21T19:00Z",
+      "home_score": 2,
+      "away_score": 3,
+      "status": "Full Time"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Sam Houston Bearkats",
+      "away_team": "New Mexico State Aggies",
+      "venue": "Elliott T. Bowers Stadium",
+      "time_label": "2026-10-22T00:00Z",
+      "home_score": 24,
+      "away_score": 30,
+      "status": "Final"
+    }
+  ]
+}

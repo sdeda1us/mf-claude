@@ -1,43 +1,16 @@
-# Daily games data drop
+# Daily games data drop (retired)
 
-`latest.json` is written by the "Megafantasy Daily Score Sync" scheduled
-Claude Code routine (claude.ai/code/routines) once a day, alongside its
-existing `data/daily-sync/latest.json` commit, then read and ingested by
-the backend's `daily_sync_pull_loop`
-(`backend/app/daily_sync_pull.py`'s `pull_and_sync_games`).
+This file is no longer read by anything. Today's schedule for the Home
+page's "Today's Games" widget now syncs directly from ESPN's API,
+backend-side -- see `backend/app/espn_games_sync.py` and
+`backend/app/espn_client.py`'s module docstring for why (same reasoning
+as `backend/app/nhl_standings_sync.py` bypassing the routine for NHL
+standings: the routine's sandboxed egress can't reach ESPN at all, while
+this backend has normal unrestricted outbound internet access and can
+just fetch it directly -- with far better completeness than the
+routine's old web-search step had).
 
-Same sandboxed-egress reasoning as `../daily-sync/README.md` -- the
-routine commits here instead of POSTing directly, since it can push to
-GitHub but can't reach `megafantasy.win`.
-
-Shape:
-```json
-{
-  "date": "2026-10-05",
-  "games": [
-    {
-      "league": "NFL",
-      "home_team": "Kansas City Chiefs",
-      "away_team": "Las Vegas Raiders",
-      "venue": "GEHA Field at Arrowhead Stadium",
-      "time_label": "8:15 PM ET"
-    }
-  ]
-}
-```
-
-Scoped to the 7 leagues in `backend/app/routers/seasons.py`'s
-`TODAYS_GAMES_LEAGUES` (NFL, NBA, NHL, EPL, UCL, URC, NCAAF) -- ATP/WTA
-are deliberately excluded, since those are country/individual-match
-aggregates with no single "team vs team" game to report. `venue` and
-`time_label` are optional, best-effort free text -- `time_label` is
-never parsed or validated by the backend, just displayed as-is.
-
-`date` is `null` and `games` is `[]` until the routine is updated to
-populate this file for real -- the backend treats that as "no games
-today" rather than an error, so the Home page's widget just shows its
-empty state in the meantime.
-
-This is pure data, not something to hand-edit -- it's expected to be
-overwritten by the next routine run. Nothing reads any content other
-than the current `main` HEAD, so history here isn't meaningful either.
+The "Megafantasy Daily Score Sync" scheduled Claude Code routine no
+longer needs to populate `latest.json` here. This folder (and this
+README) are kept around as a historical note rather than deleted
+outright; nothing breaks if `latest.json` is stale, missing, or removed.

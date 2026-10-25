@@ -30,6 +30,7 @@ from datetime import date
 from app.models import ScheduledGame, Team
 from app.schemas import DailyGameEntryIn
 from app.season_labels import SEASON_START_DATE
+from app.team_name_aliases import canonicalize_team_name
 
 
 def sync_games_for_date(db, game_date: date, entries: list[DailyGameEntryIn]) -> int:
@@ -57,14 +58,16 @@ def sync_games_for_date(db, game_date: date, entries: list[DailyGameEntryIn]) ->
 
     count = 0
     for entry in entries:
+        home_team = canonicalize_team_name(entry.league, entry.home_team)
+        away_team = canonicalize_team_name(entry.league, entry.away_team)
         db.add(
             ScheduledGame(
                 league=entry.league,
                 game_date=game_date,
-                home_team_id=_find_team_id(entry.league, entry.home_team),
-                home_team_name=entry.home_team,
-                away_team_id=_find_team_id(entry.league, entry.away_team),
-                away_team_name=entry.away_team,
+                home_team_id=_find_team_id(entry.league, home_team),
+                home_team_name=home_team,
+                away_team_id=_find_team_id(entry.league, away_team),
+                away_team_name=away_team,
                 venue=entry.venue,
                 time_label=entry.time_label,
             )

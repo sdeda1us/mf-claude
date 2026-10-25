@@ -24,6 +24,7 @@ from datetime import date, timedelta
 from app.models import ScheduledGame
 from app.schemas import DailyResultEntryIn
 from app.season_labels import SEASON_START_DATE
+from app.team_name_aliases import canonicalize_team_name
 
 # How far back to look for an unresolved (home_score IS NULL) ScheduledGame
 # row when a result's exact (game_date, league, home_team, away_team)
@@ -65,13 +66,15 @@ def sync_results_for_date(db, game_date: date, entries: list[DailyResultEntryIn]
                 {"league": entry.league, "home_team": entry.home_team, "away_team": entry.away_team}
             )
             continue
+        home_team = canonicalize_team_name(entry.league, entry.home_team)
+        away_team = canonicalize_team_name(entry.league, entry.away_team)
         game = (
             db.query(ScheduledGame)
             .filter(
                 ScheduledGame.game_date == game_date,
                 ScheduledGame.league == entry.league,
-                ScheduledGame.home_team_name == entry.home_team,
-                ScheduledGame.away_team_name == entry.away_team,
+                ScheduledGame.home_team_name == home_team,
+                ScheduledGame.away_team_name == away_team,
             )
             .first()
         )
@@ -82,8 +85,8 @@ def sync_results_for_date(db, game_date: date, entries: list[DailyResultEntryIn]
                     ScheduledGame.game_date >= game_date - timedelta(days=RESULT_MATCH_LOOKBACK_DAYS),
                     ScheduledGame.game_date < game_date,
                     ScheduledGame.league == entry.league,
-                    ScheduledGame.home_team_name == entry.home_team,
-                    ScheduledGame.away_team_name == entry.away_team,
+                    ScheduledGame.home_team_name == home_team,
+                    ScheduledGame.away_team_name == away_team,
                     ScheduledGame.home_score.is_(None),
                 )
                 .order_by(ScheduledGame.game_date.desc())
