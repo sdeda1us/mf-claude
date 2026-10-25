@@ -1,5 +1,5 @@
 from collections import defaultdict
-from datetime import timedelta
+from datetime import date, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import and_, or_
@@ -29,6 +29,9 @@ from app.schemas import (
     LeagueEventOut,
     LeagueTeamScoreOut,
     LeagueWeeklyGainOut,
+    OwnerScoreHistoryOut,
+    ScoreHistoryOut,
+    ScoreHistoryPointOut,
     ScoringSummaryOut,
     ScoringSummaryOwnerOut,
     SeasonCreateIn,
@@ -149,6 +152,90 @@ def scoring_summary(
         season_label_by_league=season_label_by_league,
         owners=owners,
     )
+
+
+@router.get("/{season_id}/score-history", response_model=ScoreHistoryOut)
+def score_history(
+    season_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """Each owner's cumulative SCORING_SUMMARY_LEAGUES total for every
+    real-world day any of their rostered teams has TeamDailyScore history
+    -- the Home page's score-over-time chart, sitting right below the Fall
+    Scoring Summary table. A team contributes 0 for days before its first
+    tracked row and is forward-filled at its last known score between
+    rows (most days won't have a fresh sync for every team), same
+    precedent as _team_point_change's day-to-day diffing. daily_change is
+    what that day added to the owner's running total -- for a team's
+    first-ever tracked day (backdated, see TeamDailyScore's docstring)
+    that's the same as its cumulative score, since there's nothing earlier
+    to diff against."""
+    if db.get(Season, season_id) is None:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+    entries = (
+        db.query(RosterEntry)
+        .join(Team, RosterEntry.team_id == Team.id)
+        .filter(RosterEntry.season_id == season_id, Team.league.in_(SCORING_SUMMARY_LEAGUES))
+        .all()
+    )
+    user_by_team: dict[int, int] = {e.team_id: e.user_id for e in entries}
+    if not user_by_team:
+        return ScoreHistoryOut(owners=[])
+
+    rows = (
+        db.query(TeamDailyScore)
+        .filter(
+            TeamDailyScore.team_id.in_(user_by_team.keys()),
+            TeamDailyScore.league.in_(SCORING_SUMMARY_LEAGUES),
+        )
+        .order_by(TeamDailyScore.as_of_date.asc())
+        .all()
+    )
+    # Only this team's CURRENT real-world season -- same guard as
+    # scoring_summary's started_team_ids, so a stale prior season's rows
+    # (if any ever existed) can't leak into this chart.
+    rows = [r for r in rows if r.season_label == CURRENT_SEASON.get(r.league)]
+    if not rows:
+        return ScoreHistoryOut(owners=[])
+
+    rows_by_team: dict[int, list[TeamDailyScore]] = defaultdict(list)
+    for r in rows:
+        rows_by_team[r.team_id].append(r)
+
+    all_dates = sorted({r.as_of_date for r in rows})
+
+    cumulative_by_user: dict[int, dict[date, float]] = defaultdict(lambda: defaultdict(float))
+    for team_id, team_rows in rows_by_team.items():
+        owner_id = user_by_team.get(team_id)
+        if owner_id is None:
+            continue
+        by_date = {r.as_of_date: float(r.score) for r in team_rows}
+        first_date = team_rows[0].as_of_date
+        last_known = 0.0
+        for d in all_dates:
+            if d < first_date:
+                continue
+            if d in by_date:
+                last_known = by_date[d]
+            cumulative_by_user[owner_id][d] += last_known
+
+    users_by_id = {u.id: u for u in db.query(User).all()}
+    owners = []
+    for user_id, by_date in cumulative_by_user.items():
+        user = users_by_id.get(user_id)
+        if user is None:
+            continue
+        prev = 0.0
+        points = []
+        for d in all_dates:
+            cum = by_date.get(d, 0.0)
+            points.append(ScoreHistoryPointOut(date=d.isoformat(), cumulative=cum, daily_change=cum - prev))
+            prev = cum
+        owners.append(OwnerScoreHistoryOut(user_id=user_id, display_name=user.display_name, points=points))
+
+    owners.sort(key=lambda o: o.points[-1].cumulative if o.points else 0.0, reverse=True)
+
+    return ScoreHistoryOut(owners=owners)
 
 
 @router.get("/{season_id}/todays-games", response_model=list[TodaysGameOut])

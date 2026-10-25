@@ -298,6 +298,26 @@ class ScoringSummaryOut(BaseModel):
     owners: list[ScoringSummaryOwnerOut]
 
 
+class ScoreHistoryPointOut(BaseModel):
+    """One owner's cumulative SCORING_SUMMARY_LEAGUES total as of one
+    real-world day, plus that day's own contribution -- see the
+    score_history endpoint."""
+
+    date: str
+    cumulative: float
+    daily_change: float
+
+
+class OwnerScoreHistoryOut(BaseModel):
+    user_id: int
+    display_name: str
+    points: list[ScoreHistoryPointOut]
+
+
+class ScoreHistoryOut(BaseModel):
+    owners: list[OwnerScoreHistoryOut]
+
+
 class AuctionHistoryItemOut(BaseModel):
     """One sold item, for the full nomination-to-sale history table shown
     once every roster spot in an auction is filled -- see

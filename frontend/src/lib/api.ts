@@ -220,6 +220,22 @@ export interface LeagueEvent {
   points: number;
 }
 
+export interface ScoreHistoryPoint {
+  date: string;
+  cumulative: number;
+  daily_change: number;
+}
+
+export interface OwnerScoreHistory {
+  user_id: number;
+  display_name: string;
+  points: ScoreHistoryPoint[];
+}
+
+export interface ScoreHistory {
+  owners: OwnerScoreHistory[];
+}
+
 export interface TodaysGame {
   league: string;
   home_team_id: number | null;
