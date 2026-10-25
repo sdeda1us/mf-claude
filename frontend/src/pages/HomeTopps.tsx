@@ -277,9 +277,9 @@ export default function HomeTopps() {
                       </div>
                     )}
 
-                    <div className="todays-and-yesterday-row topps-games-row">
-                      <TodaysGamesCard games={todaysGames} />
+                    <div className="todays-and-yesterday-row topps-games-row topps-games-stacked">
                       <YesterdaysResultsCard results={yesterdaysResults} />
+                      <TodaysGamesCard games={todaysGames} />
                     </div>
 
                     <div className="topps-cta-row">

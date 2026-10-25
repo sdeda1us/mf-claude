@@ -401,6 +401,18 @@
 .topps-games-row .scoring-summary-heading {
   margin-top: 0;
 }
+/* Overrides .todays-and-yesterday-row's default side-by-side flex layout
+   (see index.css) so Yesterday's Results and Today's Games stack as their
+   own full-width rows here instead of sitting next to each other. Combined
+   selectors (rather than .topps-games-stacked alone) to out-specificity
+   index.css's rules regardless of stylesheet import order. */
+.todays-and-yesterday-row.topps-games-stacked {
+  flex-direction: column;
+}
+.todays-and-yesterday-row.topps-games-stacked > * {
+  flex-basis: auto;
+  width: 100%;
+}
 
 .topps-budget-row {
   display: flex;
