@@ -18,7 +18,22 @@ from zoneinfo import ZoneInfo
 import requests
 
 BASE = "https://site.api.espn.com/apis/site/v2/sports"
+STANDINGS_BASE = "https://site.api.espn.com/apis/v2/sports"
 EASTERN = ZoneInfo("America/New_York")
+
+# Standings-capable leagues -> (sport path, extra query params), used by
+# the espn_*_standings_sync modules (NFL/NCAAF/UCL/URC -- NBA and EPL
+# hardcode their own URL in their own sync module since they predate this
+# shared helper; NHL comes from the NHL's own API, not ESPN, see
+# nhl_standings_sync.py). Same sport paths as LEAGUE_ENDPOINTS above, just
+# a different ESPN API surface (v2/.../standings instead of
+# site/v2/.../scoreboard).
+STANDINGS_ENDPOINTS = {
+    "NFL": ("football/nfl", {}),
+    "UCL": ("soccer/uefa.champions", {}),
+    "URC": ("rugby/270557", {}),
+    "NCAAF": ("football/college-football", {}),
+}
 
 # Megafantasy league code -> (ESPN scoreboard URL path, extra query params).
 # NCAAF: groups=80 scopes to FBS (matches CLAUDE.md's 138-team FBS-only
@@ -53,6 +68,34 @@ def fetch_scoreboard(league: str, game_date: date | None = None, timeout: int = 
     )
     resp.raise_for_status()
     return resp.json()
+
+
+def fetch_standings(league: str, timeout: int = 30) -> dict:
+    """Raw standings JSON for one league (current season, current state --
+    no historical-date parameter the way scoreboard has)."""
+    path, extra = STANDINGS_ENDPOINTS[league]
+    resp = requests.get(
+        f"{STANDINGS_BASE}/{path}/standings",
+        params=extra,
+        headers={"User-Agent": "Mozilla/5.0"},
+        timeout=timeout,
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+
+def flatten_standings_entries(node: dict) -> list[dict]:
+    """ESPN nests standings by conference/division to an inconsistent
+    depth -- most conferences carry entries directly, but at least one
+    (NCAAF's Sun Belt) nests an extra "children" level for divisions
+    instead. Recursing through every "children" list and collecting each
+    node's "standings.entries" handles both shapes (and however deep a
+    future league nests) without needing to special-case which leagues
+    have divisions."""
+    entries = list(node.get("standings", {}).get("entries", []))
+    for child in node.get("children", []):
+        entries.extend(flatten_standings_entries(child))
+    return entries
 
 
 def _format_time_label(iso_date: str) -> str:

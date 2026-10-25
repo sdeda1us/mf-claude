@@ -53,7 +53,11 @@ from app.database import SessionLocal
 from app.espn_epl_standings_sync import sync_epl_standings
 from app.espn_games_sync import sync_espn_games
 from app.espn_nba_standings_sync import sync_nba_standings
+from app.espn_ncaaf_standings_sync import sync_ncaaf_standings
+from app.espn_nfl_standings_sync import sync_nfl_standings
 from app.espn_results_sync import sync_espn_results
+from app.espn_ucl_standings_sync import sync_ucl_standings
+from app.espn_urc_standings_sync import sync_urc_standings
 from app.nhl_standings_sync import sync_nhl_standings
 from app.schemas import DailySyncEntryIn
 from app.slack_notify import notify_slack_sync
@@ -150,75 +154,39 @@ async def _run_espn_results_and_report(context: str) -> None:
         notify_slack_sync(f"🏁 ESPN results sync ({context}) failed -- check the backend logs.")
 
 
-async def _run_nhl_standings_and_report(context: str) -> None:
-    """NHL standings come straight from the NHL's own API (see
-    nhl_standings_sync.py's module docstring for why this bypasses the
-    routine entirely) rather than from the routine's GitHub files, so this
-    is a fetch, not a pull -- same isolation reasoning as the other
-    _run_*_and_report wrappers, so a failure here never blocks or gets
-    conflated with the others' reporting."""
+async def _run_standings_sync_and_report(context: str, log_label: str, emoji: str, sync_fn) -> None:
+    """Shared wrapper for every ESPN-direct standings sync (NHL, NBA,
+    NFL, NCAAF, EPL, UCL, URC -- each a {"synced": int, "skipped": [...]}
+    result, same shape pull_and_sync's GitHub-sourced batch returns).
+    Extracted once there were 7 near-identical copies of this -- see each
+    sync module's own docstring for why that league bypasses the routine.
+    Isolates one league's failure from the rest, same reasoning as the
+    other _run_*_and_report wrappers: a failure here never blocks or gets
+    conflated with another sync's reporting."""
     try:
-        result = await asyncio.to_thread(sync_nhl_standings)
-        logger.info("NHL standings sync (%s): %s", context, result)
+        result = await asyncio.to_thread(sync_fn)
+        logger.info("%s (%s): %s", log_label, context, result)
         if result["skipped"]:
             notify_slack_sync(
-                f"🏒 NHL standings sync ({context}): {result['synced']} synced, "
+                f"{emoji} {log_label} ({context}): {result['synced']} synced, "
                 f"{len(result['skipped'])} skipped -- check logs for details."
             )
     except NoActiveSeasonError:
-        logger.warning("NHL standings sync (%s): no active season, skipping", context)
+        logger.warning("%s (%s): no active season, skipping", log_label, context)
     except Exception:
-        logger.exception("NHL standings sync (%s) failed", context)
-        notify_slack_sync(f"🏒 NHL standings sync ({context}) FAILED -- check the backend logs.")
-
-
-async def _run_epl_standings_and_report(context: str) -> None:
-    """EPL standings (points + goal differential) come straight from
-    ESPN's table -- see espn_epl_standings_sync.py's module docstring for
-    why: the routine's daily-sync batch has had per-day coverage gaps
-    (missing a team some days) the same way its old games/results step
-    did. Same isolation reasoning as the other _run_*_and_report
-    wrappers."""
-    try:
-        result = await asyncio.to_thread(sync_epl_standings)
-        logger.info("EPL standings sync (%s): %s", context, result)
-        if result["skipped"]:
-            notify_slack_sync(
-                f"⚽ EPL standings sync ({context}): {result['synced']} synced, "
-                f"{len(result['skipped'])} skipped -- check logs for details."
-            )
-    except NoActiveSeasonError:
-        logger.warning("EPL standings sync (%s): no active season, skipping", context)
-    except Exception:
-        logger.exception("EPL standings sync (%s) failed", context)
-        notify_slack_sync(f"⚽ EPL standings sync ({context}) FAILED -- check the backend logs.")
-
-
-async def _run_nba_standings_and_report(context: str) -> None:
-    """NBA win/loss records come straight from ESPN's standings table --
-    see espn_nba_standings_sync.py's module docstring for why: the
-    routine's daily-sync batch had zero NBA entries at all some days.
-    Same isolation reasoning as the other _run_*_and_report wrappers."""
-    try:
-        result = await asyncio.to_thread(sync_nba_standings)
-        logger.info("NBA standings sync (%s): %s", context, result)
-        if result["skipped"]:
-            notify_slack_sync(
-                f"🏀 NBA standings sync ({context}): {result['synced']} synced, "
-                f"{len(result['skipped'])} skipped -- check logs for details."
-            )
-    except NoActiveSeasonError:
-        logger.warning("NBA standings sync (%s): no active season, skipping", context)
-    except Exception:
-        logger.exception("NBA standings sync (%s) failed", context)
-        notify_slack_sync(f"🏀 NBA standings sync ({context}) FAILED -- check the backend logs.")
+        logger.exception("%s (%s) failed", log_label, context)
+        notify_slack_sync(f"{emoji} {log_label} ({context}) FAILED -- check the backend logs.")
 
 
 async def _run_pull_and_report(context: str) -> None:
     await _run_score_pull_and_report(context)
-    await _run_nhl_standings_and_report(context)
-    await _run_nba_standings_and_report(context)
-    await _run_epl_standings_and_report(context)
+    await _run_standings_sync_and_report(context, "NHL standings sync", "🏒", sync_nhl_standings)
+    await _run_standings_sync_and_report(context, "NFL standings sync", "🏈", sync_nfl_standings)
+    await _run_standings_sync_and_report(context, "NBA standings sync", "🏀", sync_nba_standings)
+    await _run_standings_sync_and_report(context, "NCAAF standings sync", "🏈", sync_ncaaf_standings)
+    await _run_standings_sync_and_report(context, "EPL standings sync", "⚽", sync_epl_standings)
+    await _run_standings_sync_and_report(context, "UCL standings sync", "⚽", sync_ucl_standings)
+    await _run_standings_sync_and_report(context, "URC standings sync", "🏉", sync_urc_standings)
     await _run_espn_games_and_report(context)
     await _run_espn_results_and_report(context)
 
@@ -253,7 +221,11 @@ async def daily_sync_pull_loop() -> None:
 if __name__ == "__main__":
     print(pull_and_sync())
     print(sync_nhl_standings())
+    print(sync_nfl_standings())
     print(sync_nba_standings())
+    print(sync_ncaaf_standings())
     print(sync_epl_standings())
+    print(sync_ucl_standings())
+    print(sync_urc_standings())
     print(sync_espn_games())
     print(sync_espn_results())
