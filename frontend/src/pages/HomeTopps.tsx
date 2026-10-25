@@ -6,11 +6,9 @@ import YesterdaysResultsCard from "../components/YesterdaysResultsCard";
 import "../topps-theme.css";
 import {
   api,
-  type LeagueRules,
   type RosterEntry,
   type ScoringSummary,
   type Season,
-  type Team,
   type TodaysGame,
   type User,
   type YesterdaysResult,
@@ -27,15 +25,11 @@ interface SeasonSnapshot {
 export default function HomeTopps() {
   const [seasons, setSeasons] = useState<Season[]>([]);
   const [users, setUsers] = useState<User[]>([]);
-  const [rules, setRules] = useState<LeagueRules | null>(null);
-  const [teams, setTeams] = useState<Team[]>([]);
   const [snapshots, setSnapshots] = useState<SeasonSnapshot[]>([]);
 
   useEffect(() => {
     api.get<Season[]>("/seasons").then(setSeasons);
     api.get<User[]>("/users").then(setUsers);
-    api.get<LeagueRules>("/leagues/rules").then(setRules);
-    api.get<Team[]>("/teams").then(setTeams);
   }, []);
 
   useEffect(() => {
@@ -72,11 +66,6 @@ export default function HomeTopps() {
     ).then(setSnapshots);
   }, [seasons, users]);
 
-  const leagueCount = rules ? Object.keys(rules.roster_limits).length : null;
-  const totalRosterSlots = rules
-    ? Object.values(rules.roster_limits).reduce((a, b) => a + b, 0)
-    : null;
-
   return (
     <div className="topps-page">
       <div className="topps-deck">
@@ -93,44 +82,6 @@ export default function HomeTopps() {
             </div>
             <div className="topps-stripe">
               <span>Fantasy Auction League</span>
-            </div>
-            <div className="topps-band">
-              <div className="topps-band-tag">
-                <span>Est. 2024</span>
-              </div>
-              <div className="topps-band-main">
-                <p className="topps-sub">Welcome to</p>
-                <p className="topps-sub">Six owners &middot; one live auction</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="topps-intro">
-            <p>
-              MegaFantasy is a private auction fantasy league for the six of you. Instead of
-              drafting individual athletes, you bid real dollars in a live auction for entire
-              teams &mdash; across MLB, NFL, NBA, NHL, EPL, college football and basketball,
-              tennis, golf, F1, and more &mdash; and score points based on how those teams
-              actually perform in the real world.
-            </p>
-          </div>
-
-          <div className="topps-stats">
-            <div className="topps-stat">
-              <b>{leagueCount ?? "—"}</b>
-              <small>Sports leagues</small>
-            </div>
-            <div className="topps-stat">
-              <b>{teams.length || "—"}</b>
-              <small>Draftable teams</small>
-            </div>
-            <div className="topps-stat">
-              <b>{totalRosterSlots ?? "—"}</b>
-              <small>Roster slots / player</small>
-            </div>
-            <div className="topps-stat">
-              <b>{users.length || 6}</b>
-              <small>League members</small>
             </div>
           </div>
 
