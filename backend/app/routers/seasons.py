@@ -38,6 +38,8 @@ from app.schemas import (
     SeasonOut,
     TodaysGameOut,
     YesterdaysResultOut,
+    YesterdaysScoringByPlayerOut,
+    YesterdaysScoringByPlayerOwnerOut,
 )
 from app.scoring_events import diff_team_events
 from app.season_labels import CURRENT_SEASON, ZERO_STATS
@@ -429,6 +431,62 @@ def yesterdays_results(
         )
         for g in games
     ]
+
+
+@router.get(
+    "/{season_id}/yesterdays-scoring-by-player", response_model=YesterdaysScoringByPlayerOut
+)
+def yesterdays_scoring_by_player(
+    season_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)
+):
+    """Each owner's point change since the last daily sync, by league --
+    the table at the top of the Home page's Yesterday's Results column.
+
+    Deliberately NOT built from yesterdays_results' game list: that one
+    only attributes a point change to a team if it has a ScheduledGame row
+    dated exactly yesterday (or still pending), so a team whose matching
+    game is missing entirely (an ESPN games-sync miss) or dated further
+    back (a standings sync catching up several days at once) silently
+    drops out of it -- while its TeamDailyScore history (and so the Score
+    Over Time chart below, which has no such gating) still reflects the
+    real change. Using _team_point_change directly against every rostered
+    team here, the same way score_history does for its own latest day,
+    keeps this table's totals equal to the chart's daily_change for
+    today, closing that gap. TODAYS_GAMES_LEAGUES only (not the full
+    SCORING_SUMMARY_LEAGUES) -- ATP/WTA have no day-to-day sync to diff,
+    same reasoning as yesterdays_results/todays_games excluding them."""
+    if db.get(Season, season_id) is None:
+        raise HTTPException(status_code=404, detail="Season not found")
+
+    today = today_eastern()
+    entries = (
+        db.query(RosterEntry)
+        .join(Team, RosterEntry.team_id == Team.id)
+        .filter(RosterEntry.season_id == season_id, Team.league.in_(TODAYS_GAMES_LEAGUES))
+        .all()
+    )
+
+    totals: dict[int, dict[str, float]] = {}
+    for e in entries:
+        change = _team_point_change(db, e.team_id, e.team.league, today)
+        if change is None:
+            continue
+        user_totals = totals.setdefault(e.user_id, {})
+        user_totals[e.team.league] = user_totals.get(e.team.league, 0.0) + change
+
+    owners = [
+        YesterdaysScoringByPlayerOwnerOut(
+            user_id=u.id,
+            display_name=u.display_name,
+            by_league=totals[u.id],
+            total=sum(totals[u.id].values()),
+        )
+        for u in db.query(User).all()
+        if u.id in totals
+    ]
+    owners.sort(key=lambda o: o.total, reverse=True)
+
+    return YesterdaysScoringByPlayerOut(leagues=TODAYS_GAMES_LEAGUES, owners=owners)
 
 
 @router.get("/{season_id}/leagues/{league}/team-scores", response_model=list[LeagueTeamScoreOut])

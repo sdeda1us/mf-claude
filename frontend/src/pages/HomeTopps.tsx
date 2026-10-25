@@ -15,6 +15,7 @@ import {
   type TodaysGame,
   type User,
   type YesterdaysResult,
+  type YesterdaysScoringByPlayer,
 } from "../lib/api";
 
 interface SeasonSnapshot {
@@ -24,6 +25,7 @@ interface SeasonSnapshot {
   scoreHistory: ScoreHistory;
   todaysGames: TodaysGame[];
   yesterdaysResults: YesterdaysResult[];
+  yesterdaysScoringByPlayer: YesterdaysScoringByPlayer;
 }
 
 export default function HomeTopps() {
@@ -51,23 +53,41 @@ export default function HomeTopps() {
           api.get<ScoreHistory>(`/seasons/${season.id}/score-history`),
           api.get<TodaysGame[]>(`/seasons/${season.id}/todays-games`),
           api.get<YesterdaysResult[]>(`/seasons/${season.id}/yesterdays-results`),
-        ]).then(([entries, scoringSummary, scoreHistory, todaysGames, yesterdaysResults]) => {
-          const byUser = new Map<number, { spent: number; teamsDrafted: number }>();
-          for (const e of entries) {
-            const cur = byUser.get(e.user_id) ?? { spent: 0, teamsDrafted: 0 };
-            cur.spent += e.price_paid;
-            cur.teamsDrafted += 1;
-            byUser.set(e.user_id, cur);
+          api.get<YesterdaysScoringByPlayer>(`/seasons/${season.id}/yesterdays-scoring-by-player`),
+        ]).then(
+          ([
+            entries,
+            scoringSummary,
+            scoreHistory,
+            todaysGames,
+            yesterdaysResults,
+            yesterdaysScoringByPlayer,
+          ]) => {
+            const byUser = new Map<number, { spent: number; teamsDrafted: number }>();
+            for (const e of entries) {
+              const cur = byUser.get(e.user_id) ?? { spent: 0, teamsDrafted: 0 };
+              cur.spent += e.price_paid;
+              cur.teamsDrafted += 1;
+              byUser.set(e.user_id, cur);
+            }
+            const rows = users
+              .map((user) => ({
+                user,
+                spent: byUser.get(user.id)?.spent ?? 0,
+                teamsDrafted: byUser.get(user.id)?.teamsDrafted ?? 0,
+              }))
+              .sort((a, b) => b.spent - a.spent || b.teamsDrafted - a.teamsDrafted);
+            return {
+              season,
+              rows,
+              scoringSummary,
+              scoreHistory,
+              todaysGames,
+              yesterdaysResults,
+              yesterdaysScoringByPlayer,
+            };
           }
-          const rows = users
-            .map((user) => ({
-              user,
-              spent: byUser.get(user.id)?.spent ?? 0,
-              teamsDrafted: byUser.get(user.id)?.teamsDrafted ?? 0,
-            }))
-            .sort((a, b) => b.spent - a.spent || b.teamsDrafted - a.teamsDrafted);
-          return { season, rows, scoringSummary, scoreHistory, todaysGames, yesterdaysResults };
-        })
+        )
       )
     ).then(setSnapshots);
   }, [seasons, users]);
@@ -129,7 +149,18 @@ export default function HomeTopps() {
             </div>
           ) : (
             snapshots.map(
-              ({ season, rows, scoringSummary, scoreHistory, todaysGames, yesterdaysResults }, i) => {
+              (
+                {
+                  season,
+                  rows,
+                  scoringSummary,
+                  scoreHistory,
+                  todaysGames,
+                  yesterdaysResults,
+                  yesterdaysScoringByPlayer,
+                },
+                i
+              ) => {
                 // Same owner-color assignment as Seasons.tsx's charts, ranked
                 // in the same order as the Fall Scoring Summary table above
                 // (already sorted by total desc) so a player's line color
@@ -278,7 +309,10 @@ export default function HomeTopps() {
                     )}
 
                     <div className="todays-and-yesterday-row topps-games-row topps-games-stacked">
-                      <YesterdaysResultsCard results={yesterdaysResults} />
+                      <YesterdaysResultsCard
+                        results={yesterdaysResults}
+                        scoringByPlayer={yesterdaysScoringByPlayer}
+                      />
                       <TodaysGamesCard games={todaysGames} />
                     </div>
 

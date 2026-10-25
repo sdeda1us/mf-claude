@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { type YesterdaysResult } from "../lib/api";
+import { type YesterdaysResult, type YesterdaysScoringByPlayer } from "../lib/api";
 
 interface YesterdaysResultsCardProps {
   results: YesterdaysResult[];
+  scoringByPlayer: YesterdaysScoringByPlayer;
 }
 
 function formatChange(change: number | null): string {
@@ -26,45 +27,10 @@ function groupByLeague(results: YesterdaysResult[]): [string, YesterdaysResult[]
   return [...byLeague.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 }
 
-interface PlayerLeagueSummaryRow {
-  owner: string;
-  byLeague: Record<string, number>;
-  total: number;
-}
-
-// Each owned side of every result contributes its point_change to that
-// owner's league total -- a pending game (point_change still null, see
-// YesterdaysResult's docstring) simply doesn't contribute yet rather than
-// counting as a 0. A league a player had no owned side in at all is left
-// out of their byLeague map entirely, so the table can tell "didn't play
-// yesterday" (—) apart from "played, net zero change" (0.0).
-function buildPlayerLeagueSummary(results: YesterdaysResult[]): {
-  leagues: string[];
-  rows: PlayerLeagueSummaryRow[];
-} {
-  const leagues = [...new Set(results.map((r) => r.league))].sort((a, b) => a.localeCompare(b));
-  const byOwner = new Map<string, Record<string, number>>();
-  const addContribution = (owner: string | null, league: string, change: number | null) => {
-    if (!owner || change === null) return;
-    const row = byOwner.get(owner) ?? {};
-    row[league] = (row[league] ?? 0) + change;
-    byOwner.set(owner, row);
-  };
-  for (const r of results) {
-    addContribution(r.home_owner, r.league, r.home_point_change);
-    addContribution(r.away_owner, r.league, r.away_point_change);
-  }
-  const rows = [...byOwner.entries()]
-    .map(([owner, byLeague]) => ({
-      owner,
-      byLeague,
-      total: Object.values(byLeague).reduce((a, b) => a + b, 0),
-    }))
-    .sort((a, b) => b.total - a.total || a.owner.localeCompare(b.owner));
-  return { leagues, rows };
-}
-
-export default function YesterdaysResultsCard({ results }: YesterdaysResultsCardProps) {
+export default function YesterdaysResultsCard({
+  results,
+  scoringByPlayer,
+}: YesterdaysResultsCardProps) {
   const [expandedOverrides, setExpandedOverrides] = useState<Map<string, boolean>>(new Map());
 
   const toggleLeague = (league: string, currentlyExpanded: boolean) => {
@@ -76,11 +42,10 @@ export default function YesterdaysResultsCard({ results }: YesterdaysResultsCard
   };
 
   const leagues = groupByLeague(results);
-  const playerLeagueSummary = buildPlayerLeagueSummary(results);
 
   return (
     <div className="yesterdays-results">
-      {playerLeagueSummary.rows.length > 0 && (
+      {scoringByPlayer.owners.length > 0 && (
         <>
           <h3 className="scoring-summary-heading">Yesterday's Scoring by Player</h3>
           <div className="scoring-summary-table-wrap">
@@ -88,23 +53,23 @@ export default function YesterdaysResultsCard({ results }: YesterdaysResultsCard
               <thead>
                 <tr>
                   <th>Player</th>
-                  {playerLeagueSummary.leagues.map((lg) => (
+                  {scoringByPlayer.leagues.map((lg) => (
                     <th key={lg}>{lg}</th>
                   ))}
                   <th>Total</th>
                 </tr>
               </thead>
               <tbody>
-                {playerLeagueSummary.rows.map((row) => (
-                  <tr key={row.owner}>
-                    <td>{row.owner}</td>
-                    {playerLeagueSummary.leagues.map((lg) => (
-                      <td key={lg} className={`points-cell ${changeClass(row.byLeague[lg] ?? null)}`}>
-                        {lg in row.byLeague ? formatChange(row.byLeague[lg]) : "—"}
+                {scoringByPlayer.owners.map((o) => (
+                  <tr key={o.user_id}>
+                    <td>{o.display_name}</td>
+                    {scoringByPlayer.leagues.map((lg) => (
+                      <td key={lg} className={`points-cell ${changeClass(o.by_league[lg] ?? null)}`}>
+                        {lg in o.by_league ? formatChange(o.by_league[lg]) : "—"}
                       </td>
                     ))}
-                    <td className={`points-cell ${changeClass(row.total)}`}>
-                      <strong>{formatChange(row.total)}</strong>
+                    <td className={`points-cell ${changeClass(o.total)}`}>
+                      <strong>{formatChange(o.total)}</strong>
                     </td>
                   </tr>
                 ))}

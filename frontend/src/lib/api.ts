@@ -236,6 +236,18 @@ export interface ScoreHistory {
   owners: OwnerScoreHistory[];
 }
 
+export interface YesterdaysScoringByPlayerOwner {
+  user_id: number;
+  display_name: string;
+  by_league: Record<string, number>;
+  total: number;
+}
+
+export interface YesterdaysScoringByPlayer {
+  leagues: string[];
+  owners: YesterdaysScoringByPlayerOwner[];
+}
+
 export interface TodaysGame {
   league: string;
   home_team_id: number | null;

@@ -314,6 +314,26 @@ class OwnerScoreHistoryOut(BaseModel):
     points: list[ScoreHistoryPointOut]
 
 
+class YesterdaysScoringByPlayerOwnerOut(BaseModel):
+    """One owner's point change since the last daily sync, broken down by
+    league -- see the yesterdays_scoring_by_player endpoint. Unlike
+    YesterdaysResultOut's per-game point_change fields, every number here
+    is gated purely on TeamDailyScore history (same basis the Score Over
+    Time chart uses), not on finding a same-day ScheduledGame match, so it
+    stays consistent with that chart's numbers even when a game's
+    schedule match is missing or stale-dated."""
+
+    user_id: int
+    display_name: str
+    by_league: dict[str, float]
+    total: float
+
+
+class YesterdaysScoringByPlayerOut(BaseModel):
+    leagues: list[str]
+    owners: list[YesterdaysScoringByPlayerOwnerOut]
+
+
 class ScoreHistoryOut(BaseModel):
     owners: list[OwnerScoreHistoryOut]
 

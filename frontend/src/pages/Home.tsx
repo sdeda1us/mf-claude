@@ -14,6 +14,7 @@ import {
   type TodaysGame,
   type User,
   type YesterdaysResult,
+  type YesterdaysScoringByPlayer,
 } from "../lib/api";
 
 interface SeasonSnapshot {
@@ -22,6 +23,7 @@ interface SeasonSnapshot {
   scoringSummary: ScoringSummary;
   todaysGames: TodaysGame[];
   yesterdaysResults: YesterdaysResult[];
+  yesterdaysScoringByPlayer: YesterdaysScoringByPlayer;
 }
 
 const HERO_GALLERY_IMAGES = [
@@ -59,23 +61,33 @@ export default function Home() {
           api.get<ScoringSummary>(`/seasons/${season.id}/scoring-summary`),
           api.get<TodaysGame[]>(`/seasons/${season.id}/todays-games`),
           api.get<YesterdaysResult[]>(`/seasons/${season.id}/yesterdays-results`),
-        ]).then(([entries, scoringSummary, todaysGames, yesterdaysResults]) => {
-          const byUser = new Map<number, { spent: number; teamsDrafted: number }>();
-          for (const e of entries) {
-            const cur = byUser.get(e.user_id) ?? { spent: 0, teamsDrafted: 0 };
-            cur.spent += e.price_paid;
-            cur.teamsDrafted += 1;
-            byUser.set(e.user_id, cur);
+          api.get<YesterdaysScoringByPlayer>(`/seasons/${season.id}/yesterdays-scoring-by-player`),
+        ]).then(
+          ([entries, scoringSummary, todaysGames, yesterdaysResults, yesterdaysScoringByPlayer]) => {
+            const byUser = new Map<number, { spent: number; teamsDrafted: number }>();
+            for (const e of entries) {
+              const cur = byUser.get(e.user_id) ?? { spent: 0, teamsDrafted: 0 };
+              cur.spent += e.price_paid;
+              cur.teamsDrafted += 1;
+              byUser.set(e.user_id, cur);
+            }
+            const rows = users
+              .map((user) => ({
+                user,
+                spent: byUser.get(user.id)?.spent ?? 0,
+                teamsDrafted: byUser.get(user.id)?.teamsDrafted ?? 0,
+              }))
+              .sort((a, b) => b.spent - a.spent || b.teamsDrafted - a.teamsDrafted);
+            return {
+              season,
+              rows,
+              scoringSummary,
+              todaysGames,
+              yesterdaysResults,
+              yesterdaysScoringByPlayer,
+            };
           }
-          const rows = users
-            .map((user) => ({
-              user,
-              spent: byUser.get(user.id)?.spent ?? 0,
-              teamsDrafted: byUser.get(user.id)?.teamsDrafted ?? 0,
-            }))
-            .sort((a, b) => b.spent - a.spent || b.teamsDrafted - a.teamsDrafted);
-          return { season, rows, scoringSummary, todaysGames, yesterdaysResults };
-        })
+        )
       )
     ).then(setSnapshots);
   }, [seasons, users]);
@@ -138,12 +150,23 @@ export default function Home() {
             No season is currently active. <Link to="/seasons">See all seasons →</Link>
           </p>
         ) : (
-          snapshots.map(({ season, rows, scoringSummary, todaysGames, yesterdaysResults }) => (
+          snapshots.map(
+            ({
+              season,
+              rows,
+              scoringSummary,
+              todaysGames,
+              yesterdaysResults,
+              yesterdaysScoringByPlayer,
+            }) => (
             <div key={season.id} className="rules-card">
               <div className="ribbon">{season.name}</div>
               <div className="todays-and-yesterday-row">
                 <TodaysGamesCard games={todaysGames} />
-                <YesterdaysResultsCard results={yesterdaysResults} />
+                <YesterdaysResultsCard
+                  results={yesterdaysResults}
+                  scoringByPlayer={yesterdaysScoringByPlayer}
+                />
               </div>
               <div className="hero-cta-row">
                 <Link to={`/seasons/${season.id}/auction/fall`} className="fall-auction-cta">
