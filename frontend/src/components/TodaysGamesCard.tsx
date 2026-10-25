@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { type TodaysGame } from "../lib/api";
-import { useIsNarrow } from "../lib/useIsNarrow";
 
 interface TodaysGamesCardProps {
   games: TodaysGame[];
@@ -17,7 +16,6 @@ function groupByLeague(games: TodaysGame[]): [string, TodaysGame[]][] {
 }
 
 export default function TodaysGamesCard({ games }: TodaysGamesCardProps) {
-  const isNarrow = useIsNarrow(760);
   const [expandedOverrides, setExpandedOverrides] = useState<Map<string, boolean>>(new Map());
 
   const toggleLeague = (league: string, currentlyExpanded: boolean) => {
@@ -37,7 +35,7 @@ export default function TodaysGamesCard({ games }: TodaysGamesCardProps) {
         <p className="crib-value-note">No games scheduled today.</p>
       ) : (
         leagues.map(([league, leagueGames]) => {
-          const expanded = expandedOverrides.get(league) ?? !isNarrow;
+          const expanded = expandedOverrides.get(league) ?? false;
           return (
             <div key={league} className="league-block">
               <button

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { type YesterdaysResult } from "../lib/api";
-import { useIsNarrow } from "../lib/useIsNarrow";
 
 interface YesterdaysResultsCardProps {
   results: YesterdaysResult[];
@@ -28,7 +27,6 @@ function groupByLeague(results: YesterdaysResult[]): [string, YesterdaysResult[]
 }
 
 export default function YesterdaysResultsCard({ results }: YesterdaysResultsCardProps) {
-  const isNarrow = useIsNarrow(760);
   const [expandedOverrides, setExpandedOverrides] = useState<Map<string, boolean>>(new Map());
 
   const toggleLeague = (league: string, currentlyExpanded: boolean) => {
@@ -48,7 +46,7 @@ export default function YesterdaysResultsCard({ results }: YesterdaysResultsCard
         <p className="crib-value-note">No results to report yet.</p>
       ) : (
         leagues.map(([league, leagueResults]) => {
-          const expanded = expandedOverrides.get(league) ?? !isNarrow;
+          const expanded = expandedOverrides.get(league) ?? false;
           return (
             <div key={league} className="league-block">
               <button
