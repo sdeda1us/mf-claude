@@ -50,6 +50,7 @@ import requests
 
 from app.daily_score_sync import NoActiveSeasonError, apply_daily_sync_batch
 from app.database import SessionLocal
+from app.espn_epl_standings_sync import sync_epl_standings
 from app.espn_games_sync import sync_espn_games
 from app.espn_results_sync import sync_espn_results
 from app.nhl_standings_sync import sync_nhl_standings
@@ -170,9 +171,32 @@ async def _run_nhl_standings_and_report(context: str) -> None:
         notify_slack_sync(f"🏒 NHL standings sync ({context}) FAILED -- check the backend logs.")
 
 
+async def _run_epl_standings_and_report(context: str) -> None:
+    """EPL standings (points + goal differential) come straight from
+    ESPN's table -- see espn_epl_standings_sync.py's module docstring for
+    why: the routine's daily-sync batch has had per-day coverage gaps
+    (missing a team some days) the same way its old games/results step
+    did. Same isolation reasoning as the other _run_*_and_report
+    wrappers."""
+    try:
+        result = await asyncio.to_thread(sync_epl_standings)
+        logger.info("EPL standings sync (%s): %s", context, result)
+        if result["skipped"]:
+            notify_slack_sync(
+                f"⚽ EPL standings sync ({context}): {result['synced']} synced, "
+                f"{len(result['skipped'])} skipped -- check logs for details."
+            )
+    except NoActiveSeasonError:
+        logger.warning("EPL standings sync (%s): no active season, skipping", context)
+    except Exception:
+        logger.exception("EPL standings sync (%s) failed", context)
+        notify_slack_sync(f"⚽ EPL standings sync ({context}) FAILED -- check the backend logs.")
+
+
 async def _run_pull_and_report(context: str) -> None:
     await _run_score_pull_and_report(context)
     await _run_nhl_standings_and_report(context)
+    await _run_epl_standings_and_report(context)
     await _run_espn_games_and_report(context)
     await _run_espn_results_and_report(context)
 
@@ -207,5 +231,6 @@ async def daily_sync_pull_loop() -> None:
 if __name__ == "__main__":
     print(pull_and_sync())
     print(sync_nhl_standings())
+    print(sync_epl_standings())
     print(sync_espn_games())
     print(sync_espn_results())
