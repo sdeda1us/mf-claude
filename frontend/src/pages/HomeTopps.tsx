@@ -128,69 +128,6 @@ export default function HomeTopps() {
                 <h2>{season.name}</h2>
                 <p className="topps-season-name">Active Season Record</p>
 
-                <div className="todays-and-yesterday-row topps-games-row">
-                  <TodaysGamesCard games={todaysGames} />
-                  <YesterdaysResultsCard results={yesterdaysResults} />
-                </div>
-
-                <div className="topps-cta-row">
-                  <Link className="topps-cta-primary" to={`/seasons/${season.id}/auction/fall`}>
-                    <span className="topps-burst">
-                      LIVE
-                      <br />
-                      NOW
-                    </span>
-                    🔨 Go to fall auction →
-                  </Link>
-                </div>
-
-                <div className="topps-budget-row">
-                  <span className="topps-stamp">${season.fall_budget_per_user} fall budget</span>
-                  <span className="topps-stamp">
-                    ${season.spring_budget_per_user} spring budget
-                  </span>
-                </div>
-
-                <div className="topps-record-box">
-                  <div className="topps-record-title">Draft Activity &mdash; Teams &amp; Spend</div>
-                  <div className="topps-table-scroll">
-                    <table className="topps-record">
-                      <thead>
-                        <tr>
-                          <th>Player</th>
-                          <th className="topps-num">Teams drafted</th>
-                          <th className="topps-num">$ Spent</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {rows.map(({ user, spent, teamsDrafted }) => (
-                          <tr key={user.id}>
-                            <td>
-                              <span className="topps-who">
-                                <span className="topps-headshot">
-                                  <Avatar
-                                    name={user.display_name}
-                                    src={user.avatar_data_url}
-                                    size={22}
-                                  />
-                                </span>
-                                {user.display_name}
-                              </span>
-                            </td>
-                            <td className="topps-num">{teamsDrafted}</td>
-                            <td className="topps-num">${spent}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <p className="topps-note">
-                  This is a draft-activity snapshot, not performance-based standings &mdash;
-                  real-world scoring for the active season isn&rsquo;t wired up yet. Once it is,
-                  this table will rank by points instead.
-                </p>
-
                 {scoringSummary.owners.length > 0 && (
                   <div className="topps-highlights">
                     <h3>Fall Scoring Summary</h3>
@@ -256,6 +193,69 @@ export default function HomeTopps() {
                     </div>
                   </div>
                 )}
+
+                <div className="todays-and-yesterday-row topps-games-row">
+                  <TodaysGamesCard games={todaysGames} />
+                  <YesterdaysResultsCard results={yesterdaysResults} />
+                </div>
+
+                <div className="topps-cta-row">
+                  <Link className="topps-cta-primary" to={`/seasons/${season.id}/auction/fall`}>
+                    <span className="topps-burst">
+                      LIVE
+                      <br />
+                      NOW
+                    </span>
+                    🔨 Go to fall auction →
+                  </Link>
+                </div>
+
+                <div className="topps-budget-row">
+                  <span className="topps-stamp">${season.fall_budget_per_user} fall budget</span>
+                  <span className="topps-stamp">
+                    ${season.spring_budget_per_user} spring budget
+                  </span>
+                </div>
+
+                <div className="topps-record-box">
+                  <div className="topps-record-title">Draft Activity &mdash; Teams &amp; Spend</div>
+                  <div className="topps-table-scroll">
+                    <table className="topps-record">
+                      <thead>
+                        <tr>
+                          <th>Player</th>
+                          <th className="topps-num">Teams drafted</th>
+                          <th className="topps-num">$ Spent</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {rows.map(({ user, spent, teamsDrafted }) => (
+                          <tr key={user.id}>
+                            <td>
+                              <span className="topps-who">
+                                <span className="topps-headshot">
+                                  <Avatar
+                                    name={user.display_name}
+                                    src={user.avatar_data_url}
+                                    size={22}
+                                  />
+                                </span>
+                                {user.display_name}
+                              </span>
+                            </td>
+                            <td className="topps-num">{teamsDrafted}</td>
+                            <td className="topps-num">${spent}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <p className="topps-note">
+                  This is a draft-activity snapshot, not performance-based standings &mdash;
+                  real-world scoring for the active season isn&rsquo;t wired up yet. Once it is,
+                  this table will rank by points instead.
+                </p>
 
                 <div className="topps-links">
                   <h3>Set Checklist</h3>
