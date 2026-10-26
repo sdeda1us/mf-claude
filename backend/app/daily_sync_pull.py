@@ -60,7 +60,6 @@ from app.espn_ucl_standings_sync import sync_ucl_standings
 from app.espn_urc_standings_sync import sync_urc_standings
 from app.nhl_standings_sync import sync_nhl_standings
 from app.schemas import DailySyncEntryIn
-from app.slack_notify import notify_slack_sync
 
 logger = logging.getLogger("megafantasy.daily_sync_pull")
 
@@ -109,16 +108,10 @@ async def _run_score_pull_and_report(context: str) -> None:
     try:
         result = await asyncio.to_thread(pull_and_sync)
         logger.info("Daily sync pull (%s): %s", context, result)
-        if result["skipped"]:
-            notify_slack_sync(
-                f"📊 Daily score sync ({context}): {result['synced']} synced, "
-                f"{len(result['skipped'])} skipped -- check logs for details."
-            )
     except NoActiveSeasonError:
         logger.warning("Daily sync pull (%s): no active season, skipping", context)
     except Exception:
         logger.exception("Daily sync pull (%s) failed", context)
-        notify_slack_sync(f"📊 Daily score sync ({context}) FAILED -- check the backend logs.")
 
 
 async def _run_espn_games_and_report(context: str) -> None:
@@ -133,7 +126,6 @@ async def _run_espn_games_and_report(context: str) -> None:
         logger.info("ESPN games sync (%s): %s", context, result)
     except Exception:
         logger.exception("ESPN games sync (%s) failed", context)
-        notify_slack_sync(f"🗓️ ESPN games sync ({context}) failed -- check the backend logs.")
 
 
 async def _run_espn_results_and_report(context: str) -> None:
@@ -144,14 +136,8 @@ async def _run_espn_results_and_report(context: str) -> None:
     try:
         result = await asyncio.to_thread(sync_espn_results)
         logger.info("ESPN results sync (%s): %s", context, result)
-        if result.get("skipped"):
-            notify_slack_sync(
-                f"🏁 ESPN results sync ({context}): {result['updated']} updated, "
-                f"{len(result['skipped'])} had no matching scheduled game -- check logs."
-            )
     except Exception:
         logger.exception("ESPN results sync (%s) failed", context)
-        notify_slack_sync(f"🏁 ESPN results sync ({context}) failed -- check the backend logs.")
 
 
 async def _run_standings_sync_and_report(context: str, log_label: str, emoji: str, sync_fn) -> None:
@@ -166,16 +152,10 @@ async def _run_standings_sync_and_report(context: str, log_label: str, emoji: st
     try:
         result = await asyncio.to_thread(sync_fn)
         logger.info("%s (%s): %s", log_label, context, result)
-        if result["skipped"]:
-            notify_slack_sync(
-                f"{emoji} {log_label} ({context}): {result['synced']} synced, "
-                f"{len(result['skipped'])} skipped -- check logs for details."
-            )
     except NoActiveSeasonError:
         logger.warning("%s (%s): no active season, skipping", log_label, context)
     except Exception:
         logger.exception("%s (%s) failed", log_label, context)
-        notify_slack_sync(f"{emoji} {log_label} ({context}) FAILED -- check the backend logs.")
 
 
 async def _run_pull_and_report(context: str) -> None:
@@ -208,8 +188,9 @@ async def daily_sync_pull_loop() -> None:
     whenever we're past today's hour rather than first checking whether
     today's scheduled pull actually happened.
 
-    A failed attempt is logged and reported to Slack but never crashes the
-    loop -- there's always a next day to try again."""
+    A failed attempt is logged (Railway's log stream, not Slack -- see
+    _run_*_and_report above) but never crashes the loop -- there's always
+    a next day to try again."""
     if _todays_run_already_passed():
         await _run_pull_and_report("startup catch-up")
 
