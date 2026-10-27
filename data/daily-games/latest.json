@@ -1,89 +1,117 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "games": [
-    {
-      "league": "NFL",
-      "home_team": "Philadelphia Eagles",
-      "away_team": "Dallas Cowboys",
-      "venue": "Lincoln Financial Field",
-      "time_label": "8:15 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Charlotte Hornets",
-      "away_team": "Washington Wizards",
-      "venue": "Spectrum Center",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Cleveland Cavaliers",
-      "away_team": "Minnesota Timberwolves",
-      "venue": "Rocket Arena",
-      "time_label": "7:00 PM ET"
-    },
     {
       "league": "NBA",
       "home_team": "Boston Celtics",
-      "away_team": "Chicago Bulls",
+      "away_team": "Brooklyn Nets",
       "venue": "TD Garden",
       "time_label": "7:30 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Miami Heat",
-      "away_team": "Dallas Mavericks",
-      "venue": "Kaseya Center",
-      "time_label": "7:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Milwaukee Bucks",
-      "away_team": "Indiana Pacers",
-      "venue": "Fiserv Forum",
+      "home_team": "New York Knicks",
+      "away_team": "Detroit Pistons",
+      "venue": "Madison Square Garden",
       "time_label": "8:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Oklahoma City Thunder",
-      "away_team": "Phoenix Suns",
-      "venue": "Paycom Center",
+      "home_team": "San Antonio Spurs",
+      "away_team": "Sacramento Kings",
+      "venue": "Frost Bank Center",
       "time_label": "8:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Houston Rockets",
-      "away_team": "Atlanta Hawks",
-      "venue": "Toyota Center",
-      "time_label": "8:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Denver Nuggets",
-      "away_team": "Golden State Warriors",
-      "venue": "Ball Arena",
-      "time_label": "10:00 PM ET"
+      "home_team": "Los Angeles Lakers",
+      "away_team": "Portland Trail Blazers",
+      "venue": "Crypto.com Arena",
+      "time_label": "11:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "New York Rangers",
-      "away_team": "Los Angeles Kings",
-      "venue": "Madison Square Garden",
+      "home_team": "Philadelphia Flyers",
+      "away_team": "Columbus Blue Jackets",
+      "venue": "Wells Fargo Center",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Calgary Flames",
-      "away_team": "Toronto Maple Leafs",
-      "venue": "Scotiabank Saddledome",
-      "time_label": "8:30 PM ET"
+      "home_team": "Carolina Hurricanes",
+      "away_team": "Boston Bruins",
+      "venue": "Lenovo Center",
+      "time_label": "8:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Edmonton Oilers",
-      "away_team": "Detroit Red Wings",
-      "venue": "Rogers Place",
-      "time_label": "9:30 PM ET"
+      "home_team": "Chicago Blackhawks",
+      "away_team": "Los Angeles Kings",
+      "venue": "United Center",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Winnipeg Jets",
+      "away_team": "Florida Panthers",
+      "venue": "Canada Life Centre",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Nashville Predators",
+      "away_team": "New York Islanders",
+      "venue": "Bridgestone Arena",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Dallas Stars",
+      "away_team": "New Jersey Devils",
+      "venue": "American Airlines Center",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "St. Louis Blues",
+      "away_team": "Montreal Canadiens",
+      "venue": "Enterprise Center",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Utah Mammoth",
+      "away_team": "Minnesota Wild",
+      "venue": "Delta Center",
+      "time_label": "9:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Vegas Golden Knights",
+      "away_team": "Ottawa Senators",
+      "venue": "T-Mobile Arena",
+      "time_label": "10:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Anaheim Ducks",
+      "away_team": "Vancouver Canucks",
+      "venue": "Honda Center",
+      "time_label": "10:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "San Jose Sharks",
+      "away_team": "Buffalo Sabres",
+      "venue": "SAP Center at San Jose",
+      "time_label": "10:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Missouri State Bears",
+      "away_team": "Sam Houston Bearkats",
+      "venue": "Robert W. Plaster Stadium",
+      "time_label": "8:00 PM ET"
     }
   ]
 }
