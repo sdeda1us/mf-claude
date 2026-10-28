@@ -1,89 +1,117 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "results": [
     {
-      "league": "NFL",
-      "home_team": "Philadelphia Eagles",
-      "away_team": "Dallas Cowboys",
-      "home_score": 21,
-      "away_score": 38
+      "league": "NBA",
+      "home_team": "Boston Celtics",
+      "away_team": "Brooklyn Nets",
+      "home_score": 125,
+      "away_score": 124
     },
     {
       "league": "NBA",
-      "home_team": "Charlotte Hornets",
-      "away_team": "Washington Wizards",
-      "home_score": 110,
+      "home_team": "New York Knicks",
+      "away_team": "Detroit Pistons",
+      "home_score": 111,
+      "away_score": 97
+    },
+    {
+      "league": "NBA",
+      "home_team": "San Antonio Spurs",
+      "away_team": "Sacramento Kings",
+      "home_score": 130,
       "away_score": 103
     },
     {
       "league": "NBA",
-      "home_team": "Cleveland Cavaliers",
-      "away_team": "Minnesota Timberwolves",
-      "home_score": 127,
-      "away_score": 125
-    },
-    {
-      "league": "NBA",
-      "home_team": "Boston Celtics",
-      "away_team": "Chicago Bulls",
-      "home_score": 134,
-      "away_score": 99
-    },
-    {
-      "league": "NBA",
-      "home_team": "Miami Heat",
-      "away_team": "Dallas Mavericks",
-      "home_score": 109,
-      "away_score": 113
-    },
-    {
-      "league": "NBA",
-      "home_team": "Milwaukee Bucks",
-      "away_team": "Indiana Pacers",
-      "home_score": 110,
-      "away_score": 102
-    },
-    {
-      "league": "NBA",
-      "home_team": "Oklahoma City Thunder",
-      "away_team": "Phoenix Suns",
-      "home_score": 125,
-      "away_score": 114
-    },
-    {
-      "league": "NBA",
-      "home_team": "Houston Rockets",
-      "away_team": "Atlanta Hawks",
-      "home_score": 120,
-      "away_score": 110
-    },
-    {
-      "league": "NBA",
-      "home_team": "Denver Nuggets",
-      "away_team": "Golden State Warriors",
-      "home_score": 114,
-      "away_score": 134
+      "home_team": "Los Angeles Lakers",
+      "away_team": "Portland Trail Blazers",
+      "home_score": 129,
+      "away_score": 136
     },
     {
       "league": "NHL",
-      "home_team": "New York Rangers",
-      "away_team": "Los Angeles Kings",
+      "home_team": "Philadelphia Flyers",
+      "away_team": "Columbus Blue Jackets",
       "home_score": 3,
-      "away_score": 6
+      "away_score": 4
     },
     {
       "league": "NHL",
-      "home_team": "Calgary Flames",
-      "away_team": "Toronto Maple Leafs",
-      "home_score": 5,
+      "home_team": "Carolina Hurricanes",
+      "away_team": "Boston Bruins",
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Chicago Blackhawks",
+      "away_team": "Los Angeles Kings",
+      "home_score": 2,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Winnipeg Jets",
+      "away_team": "Florida Panthers",
+      "home_score": 1,
+      "away_score": 5
+    },
+    {
+      "league": "NHL",
+      "home_team": "Nashville Predators",
+      "away_team": "New York Islanders",
+      "home_score": 3,
+      "away_score": 4
+    },
+    {
+      "league": "NHL",
+      "home_team": "Dallas Stars",
+      "away_team": "New Jersey Devils",
+      "home_score": 1,
+      "away_score": 5
+    },
+    {
+      "league": "NHL",
+      "home_team": "St. Louis Blues",
+      "away_team": "Montreal Canadiens",
+      "home_score": 0,
       "away_score": 2
     },
     {
       "league": "NHL",
-      "home_team": "Edmonton Oilers",
-      "away_team": "Detroit Red Wings",
-      "home_score": 3,
-      "away_score": 4
+      "home_team": "Utah Mammoth",
+      "away_team": "Minnesota Wild",
+      "home_score": 1,
+      "away_score": 3
+    },
+    {
+      "league": "NHL",
+      "home_team": "Vegas Golden Knights",
+      "away_team": "Ottawa Senators",
+      "home_score": 4,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Anaheim Ducks",
+      "away_team": "Vancouver Canucks",
+      "home_score": 5,
+      "away_score": 6
+    },
+    {
+      "league": "NHL",
+      "home_team": "San Jose Sharks",
+      "away_team": "Buffalo Sabres",
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Missouri State Bears",
+      "away_team": "Sam Houston Bearkats",
+      "home_score": 24,
+      "away_score": 3
     }
   ]
 }
