@@ -1,117 +1,82 @@
 {
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "games": [
     {
-      "league": "NBA",
-      "home_team": "Cleveland Cavaliers",
-      "away_team": "Washington Wizards",
-      "venue": "Rocket Arena",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Indiana Pacers",
-      "away_team": "Philadelphia 76ers",
-      "venue": "Gainbridge Fieldhouse",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Detroit Pistons",
-      "away_team": "Charlotte Hornets",
-      "venue": "Little Caesars Arena",
-      "time_label": "7:00 PM ET"
+      "league": "NFL",
+      "home_team": "Green Bay Packers",
+      "away_team": "Carolina Panthers",
+      "venue": "Lambeau Field",
+      "time_label": "8:15 PM ET"
     },
     {
       "league": "NBA",
       "home_team": "Atlanta Hawks",
-      "away_team": "Miami Heat",
+      "away_team": "Cleveland Cavaliers",
       "venue": "State Farm Arena",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Toronto Raptors",
-      "away_team": "Orlando Magic",
-      "venue": "Scotiabank Arena",
-      "time_label": "7:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Milwaukee Bucks",
-      "away_team": "Houston Rockets",
-      "venue": "Fiserv Forum",
-      "time_label": "8:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Minnesota Timberwolves",
-      "away_team": "Golden State Warriors",
-      "venue": "Target Center",
-      "time_label": "8:00 PM ET"
+      "home_team": "Portland Trail Blazers",
+      "away_team": "Memphis Grizzlies",
+      "time_label": "10:00 PM ET"
     },
     {
       "league": "NBA",
       "home_team": "New Orleans Pelicans",
-      "away_team": "Denver Nuggets",
-      "venue": "Smoothie King Center",
+      "away_team": "Sacramento Kings",
       "time_label": "8:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Chicago Bulls",
-      "away_team": "New York Knicks",
-      "venue": "United Center",
-      "time_label": "8:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "San Antonio Spurs",
-      "away_team": "Utah Jazz",
-      "venue": "Frost Bank Center",
-      "time_label": "9:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Dallas Mavericks",
-      "away_team": "Oklahoma City Thunder",
-      "venue": "American Airlines Center",
-      "time_label": "9:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Los Angeles Clippers",
-      "away_team": "Los Angeles Lakers",
-      "venue": "Intuit Dome",
-      "time_label": "10:30 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Washington Capitals",
-      "away_team": "Philadelphia Flyers",
-      "venue": "Capital One Arena",
+      "home_team": "Detroit Red Wings",
+      "away_team": "Chicago Blackhawks",
+      "venue": "Little Caesars Arena",
       "time_label": "7:30 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Edmonton Oilers",
-      "away_team": "Calgary Flames",
-      "venue": "Rogers Place",
-      "time_label": "8:30 PM ET"
+      "home_team": "Tampa Bay Lightning",
+      "away_team": "Winnipeg Jets",
+      "venue": "Benchmark International Arena",
+      "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Colorado Avalanche",
-      "away_team": "New Jersey Devils",
-      "venue": "Ball Arena",
-      "time_label": "9:00 PM ET"
+      "home_team": "Pittsburgh Penguins",
+      "away_team": "Utah Mammoth",
+      "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Seattle Kraken",
-      "away_team": "Toronto Maple Leafs",
-      "venue": "Climate Pledge Arena",
+      "home_team": "Carolina Hurricanes",
+      "away_team": "Columbus Blue Jackets",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "St. Louis Blues",
+      "away_team": "Boston Bruins",
+      "time_label": "7:00 PM local"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Nashville Predators",
+      "away_team": "Washington Capitals",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Anaheim Ducks",
+      "away_team": "Buffalo Sabres",
       "time_label": "10:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "North Texas Mean Green",
+      "away_team": "Florida Atlantic Owls",
+      "venue": "DATCU Stadium, Denton, TX",
+      "time_label": "7:30 PM ET"
     }
   ]
 }
