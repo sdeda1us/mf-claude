@@ -268,7 +268,7 @@
       "league": "NFL",
       "team": "Green Bay Packers",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -467,7 +467,7 @@
       "team": "Cleveland Cavaliers",
       "stats": {
         "wins": 2,
-        "losses": 1,
+        "losses": 2,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -518,7 +518,7 @@
       "league": "NBA",
       "team": "Atlanta Hawks",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "losses": 2,
         "made_playoffs": false,
         "won_round1": false,
@@ -623,7 +623,7 @@
       "team": "Portland Trail Blazers",
       "stats": {
         "wins": 3,
-        "losses": 0,
+        "losses": 1,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -701,7 +701,7 @@
       "team": "Sacramento Kings",
       "stats": {
         "wins": 0,
-        "losses": 4,
+        "losses": 5,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -739,7 +739,7 @@
       "league": "NBA",
       "team": "Memphis Grizzlies",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "losses": 0,
         "made_playoffs": false,
         "won_round1": false,
@@ -752,7 +752,7 @@
       "league": "NBA",
       "team": "New Orleans Pelicans",
       "stats": {
-        "wins": 0,
+        "wins": 1,
         "losses": 4,
         "made_playoffs": false,
         "won_round1": false,
@@ -779,7 +779,7 @@
       "team": "Boston Bruins",
       "stats": {
         "reg_wins": 8,
-        "reg_losses": 3,
+        "reg_losses": 4,
         "ot_so_wins": 1,
         "made_playoffs": false,
         "won_round1": false,
@@ -792,7 +792,7 @@
       "league": "NHL",
       "team": "Buffalo Sabres",
       "stats": {
-        "reg_wins": 3,
+        "reg_wins": 4,
         "reg_losses": 4,
         "ot_so_wins": 2,
         "made_playoffs": false,
@@ -806,7 +806,7 @@
       "league": "NHL",
       "team": "Detroit Red Wings",
       "stats": {
-        "reg_wins": 3,
+        "reg_wins": 4,
         "reg_losses": 4,
         "ot_so_wins": 2,
         "made_playoffs": false,
@@ -862,7 +862,7 @@
       "league": "NHL",
       "team": "Tampa Bay Lightning",
       "stats": {
-        "reg_wins": 6,
+        "reg_wins": 7,
         "reg_losses": 3,
         "ot_so_wins": 1,
         "made_playoffs": false,
@@ -890,7 +890,7 @@
       "league": "NHL",
       "team": "Carolina Hurricanes",
       "stats": {
-        "reg_wins": 8,
+        "reg_wins": 9,
         "reg_losses": 2,
         "ot_so_wins": 1,
         "made_playoffs": false,
@@ -905,7 +905,7 @@
       "team": "Columbus Blue Jackets",
       "stats": {
         "reg_wins": 1,
-        "reg_losses": 5,
+        "reg_losses": 6,
         "ot_so_wins": 4,
         "made_playoffs": false,
         "won_round1": false,
@@ -988,7 +988,7 @@
       "league": "NHL",
       "team": "Washington Capitals",
       "stats": {
-        "reg_wins": 5,
+        "reg_wins": 6,
         "reg_losses": 4,
         "ot_so_wins": 1,
         "made_playoffs": false,
@@ -1003,7 +1003,7 @@
       "team": "Chicago Blackhawks",
       "stats": {
         "reg_wins": 4,
-        "reg_losses": 8,
+        "reg_losses": 9,
         "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
@@ -1059,7 +1059,7 @@
       "team": "Nashville Predators",
       "stats": {
         "reg_wins": 4,
-        "reg_losses": 3,
+        "reg_losses": 4,
         "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
@@ -1072,7 +1072,7 @@
       "league": "NHL",
       "team": "St. Louis Blues",
       "stats": {
-        "reg_wins": 5,
+        "reg_wins": 6,
         "reg_losses": 6,
         "ot_so_wins": 0,
         "made_playoffs": false,
@@ -1088,7 +1088,7 @@
       "stats": {
         "reg_wins": 7,
         "reg_losses": 5,
-        "ot_so_wins": 1,
+        "ot_so_wins": 2,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1101,7 +1101,7 @@
       "team": "Winnipeg Jets",
       "stats": {
         "reg_wins": 4,
-        "reg_losses": 5,
+        "reg_losses": 6,
         "ot_so_wins": 0,
         "made_playoffs": false,
         "won_round1": false,
@@ -1115,7 +1115,7 @@
       "team": "Anaheim Ducks",
       "stats": {
         "reg_wins": 4,
-        "reg_losses": 6,
+        "reg_losses": 7,
         "ot_so_wins": 1,
         "made_playoffs": false,
         "won_round1": false,
@@ -2371,7 +2371,7 @@
       "team": "Florida Atlantic Owls",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2409,7 +2409,7 @@
       "league": "NCAAF",
       "team": "North Texas Mean Green",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
