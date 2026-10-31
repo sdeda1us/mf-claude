@@ -1,20 +1,191 @@
 {
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "games": [
-    {"league": "NBA", "home_team": "Washington Wizards", "away_team": "Charlotte Hornets", "time_label": "7:00 PM ET"},
-    {"league": "NBA", "home_team": "Boston Celtics", "away_team": "Chicago Bulls", "time_label": "7:30 PM ET"},
-    {"league": "NBA", "home_team": "Brooklyn Nets", "away_team": "Detroit Pistons", "time_label": "7:30 PM ET"},
-    {"league": "NBA", "home_team": "Philadelphia 76ers", "away_team": "New York Knicks", "time_label": "7:30 PM ET"},
-    {"league": "NBA", "home_team": "Toronto Raptors", "away_team": "Orlando Magic", "time_label": "7:30 PM ET"},
-    {"league": "NBA", "home_team": "Miami Heat", "away_team": "Indiana Pacers", "time_label": "8:00 PM ET"},
-    {"league": "NBA", "home_team": "Dallas Mavericks", "away_team": "Houston Rockets", "time_label": "8:00 PM ET"},
-    {"league": "NBA", "home_team": "Minnesota Timberwolves", "away_team": "Los Angeles Clippers", "time_label": "8:00 PM ET"},
-    {"league": "NBA", "home_team": "Golden State Warriors", "away_team": "Los Angeles Lakers", "time_label": "10:00 PM ET"},
-    {"league": "NBA", "home_team": "Phoenix Suns", "away_team": "Denver Nuggets", "time_label": "10:00 PM ET"},
-    {"league": "NHL", "home_team": "Vegas Golden Knights", "away_team": "New Jersey Devils", "time_label": "6:00 PM ET"},
-    {"league": "NHL", "home_team": "Florida Panthers", "away_team": "Winnipeg Jets", "time_label": "7:00 PM ET"},
-    {"league": "NHL", "home_team": "Calgary Flames", "away_team": "Seattle Kraken", "time_label": "8:00 PM ET"},
-    {"league": "URC", "home_team": "Connacht", "away_team": "Leinster", "venue": "Galway", "time_label": "7:45 PM IRE/UK"},
-    {"league": "NCAAF", "home_team": "UCF Knights", "away_team": "Baylor Bears", "venue": "FBC Mortgage Stadium, Orlando, FL"}
+    {
+      "league": "NBA",
+      "home_team": "Utah Jazz",
+      "away_team": "Portland Trail Blazers",
+      "time_label": "3:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Charlotte Hornets",
+      "away_team": "Philadelphia 76ers",
+      "time_label": "6:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "New Orleans Pelicans",
+      "away_team": "Atlanta Hawks",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Memphis Grizzlies",
+      "away_team": "Sacramento Kings",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Nashville Predators",
+      "away_team": "Tampa Bay Lightning",
+      "time_label": "2:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "New York Islanders",
+      "away_team": "Edmonton Oilers",
+      "time_label": "2:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Boston Bruins",
+      "away_team": "Chicago Blackhawks"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Montreal Canadiens",
+      "away_team": "Pittsburgh Penguins",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "San Jose Sharks",
+      "away_team": "Ottawa Senators",
+      "time_label": "4:00 PM ET"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Los Angeles Kings",
+      "away_team": "Buffalo Sabres",
+      "time_label": "4:00 PM ET"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Chelsea",
+      "away_team": "Manchester United",
+      "time_label": "12:30 PM UK"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Liverpool",
+      "away_team": "Arsenal"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Bournemouth",
+      "away_team": "Leeds United",
+      "time_label": "3:00 PM UK"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Brentford",
+      "away_team": "Nottingham Forest",
+      "time_label": "3:00 PM UK"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Manchester City",
+      "away_team": "Brighton & Hove Albion",
+      "time_label": "3:00 PM UK"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Coventry City",
+      "away_team": "Sunderland",
+      "time_label": "3:00 PM UK"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Hull City",
+      "away_team": "Ipswich Town",
+      "time_label": "3:00 PM UK"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Newcastle United",
+      "away_team": "Everton",
+      "time_label": "3:00 PM UK"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Crystal Palace",
+      "time_label": "5:30 PM UK"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Aston Villa",
+      "away_team": "Fulham",
+      "time_label": "8:00 PM UK"
+    },
+    {
+      "league": "URC",
+      "home_team": "Ospreys",
+      "away_team": "Cardiff",
+      "venue": "St Helen's, Swansea",
+      "time_label": "7:45 PM UK"
+    },
+    {
+      "league": "URC",
+      "home_team": "Dragons",
+      "away_team": "Zebre Parma",
+      "time_label": "5:30 PM UK"
+    },
+    {
+      "league": "URC",
+      "home_team": "Stormers",
+      "away_team": "Ulster",
+      "venue": "DHL Stadium, Cape Town",
+      "time_label": "2:45 PM SA"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Syracuse Orange",
+      "away_team": "SMU Mustangs",
+      "venue": "JMA Wireless Dome",
+      "time_label": "12:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Texas Tech Red Raiders",
+      "away_team": "Arizona Wildcats",
+      "time_label": "12:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Colorado Buffaloes",
+      "away_team": "Kansas State Wildcats"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Florida State Seminoles",
+      "away_team": "Clemson Tigers",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "Miami (FL) Hurricanes",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Georgia Bulldogs",
+      "away_team": "Florida Gators",
+      "venue": "Mercedes-Benz Stadium, Atlanta, GA"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "USC Trojans",
+      "away_team": "Ohio State Buckeyes",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Notre Dame Fighting Irish",
+      "away_team": "Navy Midshipmen",
+      "time_label": "12:00 PM ET"
+    }
   ]
 }
