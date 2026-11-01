@@ -1,4 +1,208 @@
 {
-  "date": "2026-10-30",
-  "results": []
+  "date": "2026-10-31",
+  "results": [
+    {
+      "league": "NBA",
+      "home_team": "Utah Jazz",
+      "away_team": "Portland Trail Blazers",
+      "home_score": 90,
+      "away_score": 112
+    },
+    {
+      "league": "NBA",
+      "home_team": "Charlotte Hornets",
+      "away_team": "Philadelphia 76ers",
+      "home_score": 104,
+      "away_score": 109
+    },
+    {
+      "league": "NBA",
+      "home_team": "New Orleans Pelicans",
+      "away_team": "Atlanta Hawks",
+      "home_score": 121,
+      "away_score": 99
+    },
+    {
+      "league": "NBA",
+      "home_team": "Memphis Grizzlies",
+      "away_team": "Sacramento Kings",
+      "home_score": 136,
+      "away_score": 105
+    },
+    {
+      "league": "NHL",
+      "home_team": "Nashville Predators",
+      "away_team": "Tampa Bay Lightning",
+      "home_score": 5,
+      "away_score": 4
+    },
+    {
+      "league": "NHL",
+      "home_team": "New York Islanders",
+      "away_team": "Edmonton Oilers",
+      "home_score": 0,
+      "away_score": 4
+    },
+    {
+      "league": "NHL",
+      "home_team": "Boston Bruins",
+      "away_team": "Chicago Blackhawks",
+      "home_score": 5,
+      "away_score": 4
+    },
+    {
+      "league": "NHL",
+      "home_team": "Montreal Canadiens",
+      "away_team": "Pittsburgh Penguins",
+      "home_score": 5,
+      "away_score": 4
+    },
+    {
+      "league": "NHL",
+      "home_team": "San Jose Sharks",
+      "away_team": "Ottawa Senators",
+      "home_score": 1,
+      "away_score": 5
+    },
+    {
+      "league": "NHL",
+      "home_team": "Los Angeles Kings",
+      "away_team": "Buffalo Sabres",
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "league": "EPL",
+      "home_team": "Chelsea",
+      "away_team": "Manchester United",
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "league": "EPL",
+      "home_team": "Bournemouth",
+      "away_team": "Leeds United",
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "league": "EPL",
+      "home_team": "Brentford",
+      "away_team": "Nottingham Forest",
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "league": "EPL",
+      "home_team": "Manchester City",
+      "away_team": "Brighton & Hove Albion",
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "league": "EPL",
+      "home_team": "Coventry City",
+      "away_team": "Sunderland",
+      "home_score": 3,
+      "away_score": 1
+    },
+    {
+      "league": "EPL",
+      "home_team": "Hull City",
+      "away_team": "Ipswich Town",
+      "home_score": 2,
+      "away_score": 2
+    },
+    {
+      "league": "EPL",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Crystal Palace",
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "league": "EPL",
+      "home_team": "Aston Villa",
+      "away_team": "Fulham",
+      "home_score": 1,
+      "away_score": 1
+    },
+    {
+      "league": "URC",
+      "home_team": "Ospreys",
+      "away_team": "Cardiff",
+      "home_score": 0,
+      "away_score": 26
+    },
+    {
+      "league": "URC",
+      "home_team": "Dragons",
+      "away_team": "Zebre Parma",
+      "home_score": 35,
+      "away_score": 14
+    },
+    {
+      "league": "URC",
+      "home_team": "Stormers",
+      "away_team": "Ulster",
+      "home_score": 33,
+      "away_score": 7
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Syracuse Orange",
+      "away_team": "SMU Mustangs",
+      "home_score": 30,
+      "away_score": 27
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Texas Tech Red Raiders",
+      "away_team": "Arizona Wildcats",
+      "home_score": 34,
+      "away_score": 26
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Colorado Buffaloes",
+      "away_team": "Kansas State Wildcats",
+      "home_score": 27,
+      "away_score": 24
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Florida State Seminoles",
+      "away_team": "Clemson Tigers",
+      "home_score": 24,
+      "away_score": 36
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "Miami (FL) Hurricanes",
+      "home_score": 35,
+      "away_score": 38
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Georgia Bulldogs",
+      "away_team": "Florida Gators",
+      "home_score": 27,
+      "away_score": 8
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "USC Trojans",
+      "away_team": "Ohio State Buckeyes",
+      "home_score": 30,
+      "away_score": 18
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Notre Dame Fighting Irish",
+      "away_team": "Navy Midshipmen",
+      "home_score": 35,
+      "away_score": 13
+    }
+  ]
 }
