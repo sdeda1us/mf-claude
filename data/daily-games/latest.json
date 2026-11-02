@@ -1,137 +1,24 @@
 {
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "games": [
     {
       "league": "NFL",
-      "home_team": "Buffalo Bills",
-      "away_team": "Baltimore Ravens",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Cincinnati Bengals",
-      "away_team": "Tennessee Titans",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Dallas Cowboys",
-      "away_team": "Arizona Cardinals",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Detroit Lions",
-      "away_team": "Minnesota Vikings",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Jacksonville Jaguars",
-      "away_team": "Indianapolis Colts",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "New York Jets",
-      "away_team": "Las Vegas Raiders",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Pittsburgh Steelers",
-      "away_team": "Cleveland Browns",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Tampa Bay Buccaneers",
-      "away_team": "Atlanta Falcons",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Los Angeles Rams",
-      "away_team": "Los Angeles Chargers",
-      "time_label": "4:05 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Denver Broncos",
-      "away_team": "Kansas City Chiefs",
-      "time_label": "4:25 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Miami Dolphins",
-      "away_team": "New England Patriots",
-      "time_label": "4:25 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Washington Commanders",
-      "away_team": "Philadelphia Eagles",
-      "time_label": "8:20 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Orlando Magic",
-      "away_team": "Boston Celtics",
-      "time_label": "3:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Indiana Pacers",
-      "away_team": "Brooklyn Nets",
-      "time_label": "5:00 PM ET"
+      "home_team": "Seattle Seahawks",
+      "away_team": "Chicago Bears",
+      "venue": "Lumen Field",
+      "time_label": "8:15 PM ET"
     },
     {
       "league": "NBA",
       "home_team": "Golden State Warriors",
-      "away_team": "Los Angeles Clippers",
-      "time_label": "8:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Los Angeles Lakers",
-      "away_team": "Toronto Raptors",
-      "time_label": "9:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Carolina Hurricanes",
-      "away_team": "Winnipeg Jets",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Washington Capitals",
-      "away_team": "Minnesota Wild",
-      "time_label": "3:30 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Philadelphia Flyers",
-      "away_team": "Utah Mammoth",
-      "time_label": "4:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "New York Rangers",
-      "away_team": "Edmonton Oilers",
-      "time_label": "6:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Anaheim Ducks",
-      "away_team": "Ottawa Senators",
-      "time_label": "8:00 PM ET"
+      "away_team": "Phoenix Suns",
+      "time_label": "10:00 PM ET"
     },
     {
       "league": "EPL",
-      "home_team": "Liverpool",
-      "away_team": "Arsenal",
-      "time_label": "4:30 PM UK"
+      "home_team": "Newcastle United",
+      "away_team": "Everton",
+      "time_label": "8:00 PM UK"
     }
   ]
 }
