@@ -1,4 +1,8 @@
 {
-  "date": "2026-11-01",
-  "results": []
+  "date": "2026-11-02",
+  "results": [
+    {"league": "NFL", "home_team": "Seattle Seahawks", "away_team": "Chicago Bears", "home_score": 17, "away_score": 34},
+    {"league": "NBA", "home_team": "Golden State Warriors", "away_team": "Phoenix Suns", "home_score": 116, "away_score": 113},
+    {"league": "EPL", "home_team": "Newcastle United", "away_team": "Everton", "home_score": 0, "away_score": 1}
+  ]
 }

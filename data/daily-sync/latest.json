@@ -232,7 +232,7 @@
       "league": "NFL",
       "team": "Washington Commanders",
       "stats": {
-        "wins": 1,
+        "wins": 2,
         "ties": 1,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -244,7 +244,7 @@
       "league": "NFL",
       "team": "Chicago Bears",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -328,7 +328,7 @@
       "league": "NFL",
       "team": "Tampa Bay Buccaneers",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -340,7 +340,7 @@
       "league": "NFL",
       "team": "Arizona Cardinals",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -352,7 +352,7 @@
       "league": "NFL",
       "team": "Los Angeles Rams",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -388,7 +388,7 @@
       "league": "NBA",
       "team": "Boston Celtics",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "losses": 1,
         "made_playoffs": false,
         "won_round1": false,
@@ -441,7 +441,7 @@
       "team": "Toronto Raptors",
       "stats": {
         "wins": 3,
-        "losses": 2,
+        "losses": 3,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -454,7 +454,7 @@
       "team": "Chicago Bulls",
       "stats": {
         "wins": 1,
-        "losses": 3,
+        "losses": 5,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1226,8 +1226,8 @@
       "league": "EPL",
       "team": "Arsenal",
       "stats": {
-        "standings_points": 21,
-        "goal_differential": 8
+        "standings_points": 24,
+        "goal_differential": 9
       }
     },
     {
@@ -1290,8 +1290,8 @@
       "league": "EPL",
       "team": "Everton",
       "stats": {
-        "standings_points": 10,
-        "goal_differential": -1
+        "standings_points": 13,
+        "goal_differential": 0
       }
     },
     {
@@ -1355,7 +1355,7 @@
       "team": "Newcastle United",
       "stats": {
         "standings_points": 11,
-        "goal_differential": -2
+        "goal_differential": -3
       }
     },
     {
@@ -2109,7 +2109,7 @@
       "team": "Auburn Tigers",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2122,7 +2122,7 @@
       "team": "Florida Gators",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2134,7 +2134,7 @@
       "league": "NCAAF",
       "team": "Georgia Bulldogs",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2200,7 +2200,7 @@
       "team": "Oklahoma Sooners",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 4,
+        "reg_season_losses": 5,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2212,7 +2212,7 @@
       "league": "NCAAF",
       "team": "Ole Miss Rebels",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2225,7 +2225,7 @@
       "league": "NCAAF",
       "team": "South Carolina Gamecocks",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2290,7 +2290,7 @@
       "league": "NCAAF",
       "team": "Illinois Fighting Illini",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2316,7 +2316,7 @@
       "league": "NCAAF",
       "team": "Iowa Hawkeyes",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2330,7 +2330,7 @@
       "team": "Maryland Terrapins",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 5,
+        "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2342,7 +2342,7 @@
       "league": "NCAAF",
       "team": "Michigan Wolverines",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2395,7 +2395,7 @@
       "team": "Northwestern Wildcats",
       "stats": {
         "wins": 6,
-        "reg_season_losses": 1,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2408,7 +2408,7 @@
       "team": "Ohio State Buckeyes",
       "stats": {
         "wins": 6,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2420,7 +2420,7 @@
       "league": "NCAAF",
       "team": "Oregon Ducks",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2460,7 +2460,7 @@
       "team": "Rutgers Scarlet Knights",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 5,
+        "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2472,7 +2472,7 @@
       "league": "NCAAF",
       "team": "UCLA Bruins",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2485,7 +2485,7 @@
       "league": "NCAAF",
       "team": "USC Trojans",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2512,7 +2512,7 @@
       "team": "Wisconsin Badgers",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2525,7 +2525,7 @@
       "team": "Boston College Eagles",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2563,7 +2563,7 @@
       "league": "NCAAF",
       "team": "Duke Blue Devils",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2615,7 +2615,7 @@
       "league": "NCAAF",
       "team": "Miami (FL) Hurricanes",
       "stats": {
-        "wins": 8,
+        "wins": 9,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2642,7 +2642,7 @@
       "team": "North Carolina Tar Heels",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 4,
+        "reg_season_losses": 5,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2668,7 +2668,7 @@
       "team": "SMU Mustangs",
       "stats": {
         "wins": 6,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2693,7 +2693,7 @@
       "league": "NCAAF",
       "team": "Syracuse Orange",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2707,7 +2707,7 @@
       "team": "Virginia Cavaliers",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 5,
+        "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2732,7 +2732,7 @@
       "league": "NCAAF",
       "team": "Wake Forest Demon Deacons",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2746,7 +2746,7 @@
       "team": "Arizona Wildcats",
       "stats": {
         "wins": 6,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2798,7 +2798,7 @@
       "team": "Cincinnati Bearcats",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2836,7 +2836,7 @@
       "league": "NCAAF",
       "team": "Iowa State Cyclones",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2876,7 +2876,7 @@
       "team": "Oklahoma State Cowboys",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 2,
+        "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2901,7 +2901,7 @@
       "league": "NCAAF",
       "team": "Texas Tech Red Raiders",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2927,7 +2927,7 @@
       "league": "NCAAF",
       "team": "Utah Utes",
       "stats": {
-        "wins": 8,
+        "wins": 9,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3057,7 +3057,7 @@
       "league": "NCAAF",
       "team": "Air Force Falcons",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3084,7 +3084,7 @@
       "team": "Nevada Wolf Pack",
       "stats": {
         "wins": 3,
-        "reg_season_losses": 5,
+        "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3096,7 +3096,7 @@
       "league": "NCAAF",
       "team": "New Mexico Lobos",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3109,7 +3109,7 @@
       "league": "NCAAF",
       "team": "North Dakota State Bison",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3123,7 +3123,7 @@
       "team": "Northern Illinois Huskies",
       "stats": {
         "wins": 0,
-        "reg_season_losses": 7,
+        "reg_season_losses": 8,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3136,7 +3136,7 @@
       "team": "San Jose State Spartans",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 4,
+        "reg_season_losses": 5,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3148,7 +3148,7 @@
       "league": "NCAAF",
       "team": "UNLV Rebels",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3162,7 +3162,7 @@
       "team": "UTEP Miners",
       "stats": {
         "wins": 1,
-        "reg_season_losses": 7,
+        "reg_season_losses": 8,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3253,7 +3253,7 @@
       "team": "Navy Midshipmen",
       "stats": {
         "wins": 2,
-        "reg_season_losses": 6,
+        "reg_season_losses": 7,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3850,7 +3850,7 @@
       "league": "NCAAF",
       "team": "Notre Dame Fighting Irish",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -3864,7 +3864,7 @@
       "team": "UConn Huskies",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
