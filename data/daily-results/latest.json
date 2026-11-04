@@ -1,8 +1,96 @@
 {
-  "date": "2026-11-02",
+  "date": "2026-11-03",
   "results": [
-    {"league": "NFL", "home_team": "Seattle Seahawks", "away_team": "Chicago Bears", "home_score": 17, "away_score": 34},
-    {"league": "NBA", "home_team": "Golden State Warriors", "away_team": "Phoenix Suns", "home_score": 116, "away_score": 113},
-    {"league": "EPL", "home_team": "Newcastle United", "away_team": "Everton", "home_score": 0, "away_score": 1}
+    {
+      "league": "NHL",
+      "home_team": "Toronto Maple Leafs",
+      "away_team": "Utah Mammoth",
+      "home_score": 2,
+      "away_score": 3
+    },
+    {
+      "league": "NHL",
+      "home_team": "Nashville Predators",
+      "away_team": "Carolina Hurricanes",
+      "home_score": 4,
+      "away_score": 1
+    },
+    {
+      "league": "NHL",
+      "home_team": "Vancouver Canucks",
+      "away_team": "Anaheim Ducks",
+      "home_score": 4,
+      "away_score": 5
+    },
+    {
+      "league": "UCL",
+      "home_team": "Shakhtar Donetsk",
+      "away_team": "Sporting CP",
+      "home_score": 0,
+      "away_score": 1
+    },
+    {
+      "league": "UCL",
+      "home_team": "Galatasaray",
+      "away_team": "VfB Stuttgart",
+      "home_score": 2,
+      "away_score": 0
+    },
+    {
+      "league": "UCL",
+      "home_team": "Atlético Madrid",
+      "away_team": "Bayern Munich",
+      "home_score": 0,
+      "away_score": 2
+    },
+    {
+      "league": "UCL",
+      "home_team": "Barcelona",
+      "away_team": "Aston Villa",
+      "home_score": 3,
+      "away_score": 0
+    },
+    {
+      "league": "UCL",
+      "home_team": "Feyenoord",
+      "away_team": "Inter Milan",
+      "home_score": 0,
+      "away_score": 3
+    },
+    {
+      "league": "UCL",
+      "home_team": "Bodø/Glimt",
+      "away_team": "Lille",
+      "home_score": 0,
+      "away_score": 0
+    },
+    {
+      "league": "UCL",
+      "home_team": "LASK",
+      "away_team": "Slovan Bratislava",
+      "home_score": 4,
+      "away_score": 0
+    },
+    {
+      "league": "UCL",
+      "home_team": "Manchester United",
+      "away_team": "Roma",
+      "home_score": 3,
+      "away_score": 2
+    },
+    {
+      "league": "UCL",
+      "home_team": "Villarreal",
+      "away_team": "Paris Saint-Germain",
+      "home_score": 0,
+      "away_score": 6
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Akron Zips",
+      "away_team": "Ohio Bobcats",
+      "home_score": 20,
+      "away_score": 28
+    }
   ]
 }
