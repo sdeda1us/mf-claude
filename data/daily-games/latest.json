@@ -1,42 +1,49 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "games": [
     {
-      "league": "NFL",
-      "home_team": "Baltimore Ravens",
-      "away_team": "Jacksonville Jaguars",
-      "venue": "M&T Bank Stadium",
-      "time_label": "8:15 PM ET"
+      "league": "NBA",
+      "home_team": "Atlanta Hawks",
+      "away_team": "Washington Wizards",
+      "venue": "State Farm Arena",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Milwaukee Bucks",
+      "away_team": "Toronto Raptors",
+      "time_label": "7:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Edmonton Oilers",
+      "home_team": "Calgary Flames",
       "away_team": "Anaheim Ducks",
-      "time_label": "8:00 PM ET"
+      "venue": "Scotiabank Saddledome"
     },
     {
-      "league": "NHL",
-      "home_team": "Winnipeg Jets",
-      "away_team": "Vancouver Canucks",
-      "time_label": "8:00 PM ET"
+      "league": "EPL",
+      "home_team": "Everton",
+      "away_team": "Coventry City",
+      "time_label": "8:00 PM GMT"
     },
     {
-      "league": "NHL",
-      "home_team": "Colorado Avalanche",
-      "away_team": "Nashville Predators",
-      "time_label": "9:00 PM ET"
+      "league": "NCAAF",
+      "home_team": "SMU Mustangs",
+      "away_team": "Virginia Tech Hokies",
+      "venue": "Gerald J. Ford Stadium"
     },
     {
-      "league": "NBA",
-      "home_team": "Phoenix Suns",
-      "away_team": "Orlando Magic",
-      "time_label": "9:00 PM ET"
+      "league": "NCAAF",
+      "home_team": "Illinois Fighting Illini",
+      "away_team": "Nebraska Cornhuskers",
+      "venue": "Memorial Stadium",
+      "time_label": "7:00 PM CT"
     },
     {
-      "league": "NBA",
-      "home_team": "Golden State Warriors",
-      "away_team": "Miami Heat",
-      "time_label": "10:00 PM ET"
+      "league": "NCAAF",
+      "home_team": "Arizona Wildcats",
+      "away_team": "TCU Horned Frogs",
+      "time_label": "9:15 PM CT"
     }
   ]
 }
