@@ -1,49 +1,242 @@
 {
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "games": [
     {
       "league": "NBA",
+      "home_team": "Indiana Pacers",
+      "away_team": "Denver Nuggets",
+      "venue": "Arena CDMX, Mexico City",
+      "time_label": "5:00 PM ET"
+    },
+    {
+      "league": "NBA",
       "home_team": "Atlanta Hawks",
-      "away_team": "Washington Wizards",
-      "venue": "State Farm Arena",
+      "away_team": "Brooklyn Nets",
+      "venue": "State Farm Arena, Atlanta, GA",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Cleveland Cavaliers",
+      "away_team": "New York Knicks",
+      "venue": "Rocket Arena, Cleveland, OH",
       "time_label": "8:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Milwaukee Bucks",
-      "away_team": "Toronto Raptors",
-      "time_label": "7:00 PM ET"
+      "home_team": "Oklahoma City Thunder",
+      "away_team": "Washington Wizards",
+      "venue": "Paycom Center, Oklahoma City, OK",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Golden State Warriors",
+      "away_team": "Orlando Magic",
+      "venue": "Chase Center, San Francisco, CA",
+      "time_label": "8:30 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Phoenix Suns",
+      "away_team": "Houston Rockets",
+      "venue": "PHX Arena, Phoenix, AZ",
+      "time_label": "9:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Portland Trail Blazers",
+      "away_team": "San Antonio Spurs",
+      "venue": "Moda Center, Portland, OR",
+      "time_label": "10:00 PM ET"
     },
     {
       "league": "NHL",
-      "home_team": "Calgary Flames",
-      "away_team": "Anaheim Ducks",
-      "venue": "Scotiabank Saddledome"
+      "home_team": "Washington Capitals",
+      "away_team": "Florida Panthers",
+      "venue": "Capital One Arena, Washington, D.C."
+    },
+    {
+      "league": "NHL",
+      "home_team": "Nashville Predators",
+      "away_team": "St. Louis Blues",
+      "venue": "Bridgestone Arena, Nashville, TN"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Seattle Kraken",
+      "away_team": "New York Rangers",
+      "venue": "Climate Pledge Arena, Seattle, WA"
+    },
+    {
+      "league": "NHL",
+      "home_team": "New York Islanders",
+      "away_team": "New Jersey Devils",
+      "venue": "UBS Arena, Elmont, NY"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Ottawa Senators",
+      "away_team": "Utah Mammoth",
+      "venue": "Canadian Tire Centre, Ottawa, ON"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Toronto Maple Leafs",
+      "away_team": "Montreal Canadiens",
+      "venue": "Scotiabank Arena, Toronto, ON"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Carolina Hurricanes",
+      "away_team": "Chicago Blackhawks",
+      "venue": "Lenovo Center, Raleigh, NC"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Minnesota Wild",
+      "away_team": "Tampa Bay Lightning",
+      "venue": "Grand Casino Arena, Saint Paul, MN"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Dallas Stars",
+      "away_team": "San Jose Sharks",
+      "venue": "American Airlines Center, Dallas, TX"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Colorado Avalanche",
+      "away_team": "Detroit Red Wings",
+      "venue": "Ball Arena, Denver, CO"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Los Angeles Kings",
+      "away_team": "Pittsburgh Penguins",
+      "venue": "Crypto.com Arena, Los Angeles, CA"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Edmonton Oilers",
+      "away_team": "Vancouver Canucks",
+      "venue": "Rogers Place, Edmonton, AB"
     },
     {
       "league": "EPL",
-      "home_team": "Everton",
-      "away_team": "Coventry City",
-      "time_label": "8:00 PM GMT"
+      "home_team": "Leeds United",
+      "away_team": "Tottenham Hotspur",
+      "venue": "Elland Road",
+      "time_label": "12:30 PM GMT"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Arsenal",
+      "away_team": "Hull City",
+      "venue": "Emirates Stadium",
+      "time_label": "3:00 PM GMT"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Fulham",
+      "away_team": "Newcastle United",
+      "venue": "Craven Cottage",
+      "time_label": "3:00 PM GMT"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Ipswich Town",
+      "away_team": "Bournemouth",
+      "venue": "Portman Road",
+      "time_label": "3:00 PM GMT"
+    },
+    {
+      "league": "EPL",
+      "home_team": "Nottingham Forest",
+      "away_team": "Manchester City",
+      "venue": "City Ground",
+      "time_label": "5:30 PM GMT"
     },
     {
       "league": "NCAAF",
-      "home_team": "SMU Mustangs",
-      "away_team": "Virginia Tech Hokies",
-      "venue": "Gerald J. Ford Stadium"
+      "home_team": "Utah Utes",
+      "away_team": "BYU Cougars",
+      "venue": "Rice-Eccles Stadium, Salt Lake City, UT",
+      "time_label": "12:00 PM ET"
     },
     {
       "league": "NCAAF",
-      "home_team": "Illinois Fighting Illini",
-      "away_team": "Nebraska Cornhuskers",
-      "venue": "Memorial Stadium",
-      "time_label": "7:00 PM CT"
+      "home_team": "Houston Cougars",
+      "away_team": "Cincinnati Bearcats",
+      "venue": "TDECU Stadium, Houston, TX",
+      "time_label": "3:30 PM ET"
     },
     {
       "league": "NCAAF",
-      "home_team": "Arizona Wildcats",
-      "away_team": "TCU Horned Frogs",
-      "time_label": "9:15 PM CT"
+      "home_team": "Minnesota Golden Gophers",
+      "away_team": "UCLA Bruins",
+      "venue": "Huntington Bank Stadium, Minneapolis, MN",
+      "time_label": "12:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Wisconsin Badgers",
+      "away_team": "Rutgers Scarlet Knights",
+      "venue": "Camp Randall Stadium, Madison, WI",
+      "time_label": "4:15 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Northwestern Wildcats",
+      "away_team": "Iowa Hawkeyes",
+      "venue": "Ryan Field, Evanston, IL"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Washington Huskies",
+      "away_team": "Penn State Nittany Lions",
+      "venue": "Alaska Airlines Field at Husky Stadium, Seattle, WA",
+      "time_label": "3:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Missouri Tigers",
+      "away_team": "Texas Longhorns",
+      "venue": "Faurot Field at Memorial Stadium, Columbia, MO",
+      "time_label": "12:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "Texas A&M Aggies",
+      "venue": "Williams-Brice Stadium, Columbia, SC",
+      "time_label": "3:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Boston College Eagles",
+      "away_team": "Florida State Seminoles",
+      "venue": "Alumni Stadium, Chestnut Hill, MA",
+      "time_label": "12:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "UConn Huskies",
+      "away_team": "North Carolina Tar Heels",
+      "venue": "Pratt & Whitney Stadium, East Hartford, CT"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Oregon State Beavers",
+      "away_team": "Texas State Bobcats",
+      "venue": "Reser Stadium, Corvallis, OR",
+      "time_label": "9:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Army Black Knights",
+      "away_team": "Air Force Falcons",
+      "time_label": "7:30 PM ET"
     }
   ]
 }
