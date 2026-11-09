@@ -1,216 +1,68 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "games": [
     {
       "league": "NFL",
-      "home_team": "Atlanta Falcons",
-      "away_team": "Cincinnati Bengals",
-      "venue": "Santiago Bernab\u00e9u Stadium, Madrid, Spain",
-      "time_label": "9:30 AM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Carolina Panthers",
-      "away_team": "Denver Broncos",
-      "venue": "Bank of America Stadium, Charlotte, NC",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Indianapolis Colts",
-      "away_team": "Dallas Cowboys",
-      "venue": "Lucas Oil Stadium, Indianapolis, IN",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Kansas City Chiefs",
-      "away_team": "New York Jets",
-      "venue": "GEHA Field at Arrowhead Stadium, Kansas City, MO",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Miami Dolphins",
-      "away_team": "Detroit Lions",
-      "venue": "Hard Rock Stadium, Miami Gardens, FL",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "New Orleans Saints",
-      "away_team": "Cleveland Browns",
-      "venue": "Caesars Superdome, New Orleans, LA",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Philadelphia Eagles",
-      "away_team": "New York Giants",
-      "venue": "Lincoln Financial Field, Philadelphia, PA",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Washington Commanders",
-      "away_team": "Los Angeles Rams",
-      "venue": "Northwest Stadium, Landover, MD",
-      "time_label": "1:00 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Los Angeles Chargers",
-      "away_team": "Houston Texans",
-      "venue": "SoFi Stadium, Inglewood, CA",
-      "time_label": "4:05 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "San Francisco 49ers",
-      "away_team": "Las Vegas Raiders",
-      "venue": "Levi's Stadium, Santa Clara, CA",
-      "time_label": "4:05 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "New England Patriots",
-      "away_team": "Green Bay Packers",
-      "venue": "Gillette Stadium, Foxborough, MA",
-      "time_label": "4:25 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Seattle Seahawks",
-      "away_team": "Arizona Cardinals",
-      "venue": "Lumen Field, Seattle, WA",
-      "time_label": "4:25 PM ET"
-    },
-    {
-      "league": "NFL",
-      "home_team": "Chicago Bears",
-      "away_team": "Tampa Bay Buccaneers",
-      "venue": "Soldier Field, Chicago, IL",
-      "time_label": "8:20 PM ET"
+      "home_team": "Minnesota Vikings",
+      "away_team": "Buffalo Bills",
+      "venue": "U.S. Bank Stadium, Minneapolis, MN",
+      "time_label": "8:15 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Chicago Bulls",
-      "away_team": "Philadelphia 76ers",
-      "venue": "United Center, Chicago, IL",
-      "time_label": "3:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Detroit Pistons",
+      "home_team": "Atlanta Hawks",
       "away_team": "Los Angeles Lakers",
-      "venue": "Little Caesars Arena, Detroit, MI",
-      "time_label": "6:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Minnesota Timberwolves",
-      "away_team": "Utah Jazz",
-      "venue": "Target Center, Minneapolis, MN",
+      "venue": "State Farm Arena, Atlanta, GA",
       "time_label": "7:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Dallas Mavericks",
-      "away_team": "Brooklyn Nets",
-      "venue": "American Airlines Center, Dallas, TX",
+      "home_team": "Charlotte Hornets",
+      "away_team": "Cleveland Cavaliers",
+      "venue": "Spectrum Center, Charlotte, NC",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Detroit Pistons",
+      "away_team": "Washington Wizards",
+      "venue": "Little Caesars Arena, Detroit, MI",
+      "time_label": "6:30 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Toronto Raptors",
+      "away_team": "Memphis Grizzlies",
+      "venue": "Scotiabank Arena, Toronto, ON",
       "time_label": "7:30 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Milwaukee Bucks",
-      "away_team": "Boston Celtics",
-      "venue": "Fiserv Forum, Milwaukee, WI",
+      "home_team": "Dallas Mavericks",
+      "away_team": "Indiana Pacers",
+      "venue": "American Airlines Center, Dallas, TX",
       "time_label": "8:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Los Angeles Clippers",
-      "away_team": "New Orleans Pelicans",
-      "venue": "Intuit Dome, Inglewood, CA",
+      "home_team": "Houston Rockets",
+      "away_team": "Denver Nuggets",
+      "venue": "Toyota Center, Houston, TX",
+      "time_label": "8:30 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Phoenix Suns",
+      "away_team": "San Antonio Spurs",
+      "venue": "Footprint Center, Phoenix, AZ",
       "time_label": "9:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Sacramento Kings",
-      "away_team": "Miami Heat",
-      "venue": "Golden 1 Center, Sacramento, CA",
-      "time_label": "9:00 PM ET"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Boston Bruins",
-      "away_team": "Florida Panthers",
-      "venue": "TD Garden, Boston, MA"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Buffalo Sabres",
-      "away_team": "Vegas Golden Knights",
-      "venue": "KeyBank Center, Buffalo, NY"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Winnipeg Jets",
-      "away_team": "Tampa Bay Lightning",
-      "venue": "Canada Life Centre, Winnipeg, MB"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Toronto Maple Leafs",
-      "away_team": "New Jersey Devils",
-      "venue": "Scotiabank Arena, Toronto, ON"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Calgary Flames",
-      "away_team": "Philadelphia Flyers",
-      "venue": "Scotiabank Saddledome, Calgary, AB"
-    },
-    {
-      "league": "NHL",
-      "home_team": "Anaheim Ducks",
-      "away_team": "Pittsburgh Penguins",
-      "venue": "Honda Center, Anaheim, CA"
-    },
-    {
-      "league": "EPL",
-      "home_team": "Brighton & Hove Albion",
-      "away_team": "Brentford",
-      "venue": "American Express Stadium (Falmer), Brighton",
-      "time_label": "2:00 PM GMT"
-    },
-    {
-      "league": "EPL",
-      "home_team": "Crystal Palace",
-      "away_team": "Liverpool",
-      "venue": "Selhurst Park, London",
-      "time_label": "2:00 PM GMT"
-    },
-    {
-      "league": "EPL",
-      "home_team": "Ipswich Town",
-      "away_team": "Bournemouth",
-      "venue": "Portman Road, Ipswich",
-      "time_label": "2:00 PM GMT"
-    },
-    {
-      "league": "EPL",
-      "home_team": "Sunderland",
-      "away_team": "Chelsea",
-      "venue": "Stadium of Light, Sunderland",
-      "time_label": "2:00 PM GMT"
-    },
-    {
-      "league": "EPL",
-      "home_team": "Manchester United",
-      "away_team": "Aston Villa",
-      "venue": "Old Trafford, Manchester",
-      "time_label": "4:30 PM GMT"
+      "home_team": "Golden State Warriors",
+      "away_team": "New Orleans Pelicans",
+      "venue": "Chase Center, San Francisco, CA",
+      "time_label": "10:00 PM ET"
     }
   ]
 }
