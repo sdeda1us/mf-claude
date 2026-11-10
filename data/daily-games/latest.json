@@ -1,67 +1,16 @@
 {
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "games": [
     {
-      "league": "NFL",
-      "home_team": "Minnesota Vikings",
-      "away_team": "Buffalo Bills",
-      "venue": "U.S. Bank Stadium, Minneapolis, MN",
-      "time_label": "8:15 PM ET"
-    },
-    {
       "league": "NBA",
-      "home_team": "Atlanta Hawks",
-      "away_team": "Los Angeles Lakers",
-      "venue": "State Farm Arena, Atlanta, GA",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Charlotte Hornets",
-      "away_team": "Cleveland Cavaliers",
-      "venue": "Spectrum Center, Charlotte, NC",
-      "time_label": "7:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Detroit Pistons",
-      "away_team": "Washington Wizards",
-      "venue": "Little Caesars Arena, Detroit, MI",
-      "time_label": "6:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Toronto Raptors",
-      "away_team": "Memphis Grizzlies",
-      "venue": "Scotiabank Arena, Toronto, ON",
-      "time_label": "7:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Dallas Mavericks",
-      "away_team": "Indiana Pacers",
-      "venue": "American Airlines Center, Dallas, TX",
-      "time_label": "8:00 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Houston Rockets",
-      "away_team": "Denver Nuggets",
-      "venue": "Toyota Center, Houston, TX",
-      "time_label": "8:30 PM ET"
-    },
-    {
-      "league": "NBA",
-      "home_team": "Phoenix Suns",
-      "away_team": "San Antonio Spurs",
-      "venue": "Footprint Center, Phoenix, AZ",
+      "home_team": "Utah Jazz",
+      "away_team": "Miami Heat",
       "time_label": "9:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Golden State Warriors",
-      "away_team": "New Orleans Pelicans",
-      "venue": "Chase Center, San Francisco, CA",
+      "home_team": "Sacramento Kings",
+      "away_team": "Orlando Magic",
       "time_label": "10:00 PM ET"
     }
   ]

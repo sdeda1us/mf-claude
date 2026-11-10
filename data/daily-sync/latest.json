@@ -4,7 +4,7 @@
       "league": "NFL",
       "team": "Buffalo Bills",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -441,7 +441,7 @@
       "team": "Toronto Raptors",
       "stats": {
         "wins": 5,
-        "losses": 4,
+        "losses": 5,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -467,7 +467,7 @@
       "team": "Cleveland Cavaliers",
       "stats": {
         "wins": 5,
-        "losses": 5,
+        "losses": 6,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -479,7 +479,7 @@
       "league": "NBA",
       "team": "Detroit Pistons",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "losses": 3,
         "made_playoffs": false,
         "won_round1": false,
@@ -493,7 +493,7 @@
       "team": "Indiana Pacers",
       "stats": {
         "wins": 3,
-        "losses": 7,
+        "losses": 8,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -519,7 +519,7 @@
       "team": "Atlanta Hawks",
       "stats": {
         "wins": 7,
-        "losses": 4,
+        "losses": 5,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -531,7 +531,7 @@
       "league": "NBA",
       "team": "Charlotte Hornets",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "losses": 7,
         "made_playoffs": false,
         "won_round1": false,
@@ -571,7 +571,7 @@
       "team": "Washington Wizards",
       "stats": {
         "wins": 4,
-        "losses": 6,
+        "losses": 7,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -584,7 +584,7 @@
       "team": "Denver Nuggets",
       "stats": {
         "wins": 5,
-        "losses": 3,
+        "losses": 4,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -648,7 +648,7 @@
       "league": "NBA",
       "team": "Golden State Warriors",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "losses": 3,
         "made_playoffs": false,
         "won_round1": false,
@@ -674,7 +674,7 @@
       "league": "NBA",
       "team": "Los Angeles Lakers",
       "stats": {
-        "wins": 9,
+        "wins": 10,
         "losses": 2,
         "made_playoffs": false,
         "won_round1": false,
@@ -688,7 +688,7 @@
       "team": "Phoenix Suns",
       "stats": {
         "wins": 3,
-        "losses": 5,
+        "losses": 6,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -713,7 +713,7 @@
       "league": "NBA",
       "team": "Dallas Mavericks",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "losses": 4,
         "made_playoffs": false,
         "won_round1": false,
@@ -726,7 +726,7 @@
       "league": "NBA",
       "team": "Houston Rockets",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "losses": 3,
         "made_playoffs": false,
         "won_round1": false,
@@ -739,7 +739,7 @@
       "league": "NBA",
       "team": "Memphis Grizzlies",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "losses": 3,
         "made_playoffs": false,
         "won_round1": false,
@@ -753,7 +753,7 @@
       "team": "New Orleans Pelicans",
       "stats": {
         "wins": 4,
-        "losses": 6,
+        "losses": 7,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -765,7 +765,7 @@
       "league": "NBA",
       "team": "San Antonio Spurs",
       "stats": {
-        "wins": 8,
+        "wins": 9,
         "losses": 2,
         "made_playoffs": false,
         "won_round1": false,
@@ -1496,7 +1496,7 @@
     },
     {
       "league": "UCL",
-      "team": "Atlético Madrid",
+      "team": "Atl\u00e9tico Madrid",
       "stats": {
         "points": 4,
         "goal_differential": -1,
@@ -1664,7 +1664,7 @@
     },
     {
       "league": "UCL",
-      "team": "Bodø/Glimt",
+      "team": "Bod\u00f8/Glimt",
       "stats": {
         "points": 4,
         "goal_differential": -5,
@@ -1748,7 +1748,7 @@
     },
     {
       "league": "UCL",
-      "team": "Fenerbahçe",
+      "team": "Fenerbah\u00e7e",
       "stats": {
         "points": 5,
         "goal_differential": -5,
