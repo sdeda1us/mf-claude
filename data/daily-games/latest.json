@@ -1,17 +1,114 @@
 {
-  "date": "2026-11-10",
+  "date": "2026-11-11",
   "games": [
     {
       "league": "NBA",
+      "home_team": "New York Knicks",
+      "away_team": "Cleveland Cavaliers",
+      "venue": "Madison Square Garden",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Toronto Raptors",
+      "away_team": "Boston Celtics",
+      "venue": "Scotiabank Arena",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Indiana Pacers",
+      "away_team": "Washington Wizards",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Milwaukee Bucks",
+      "away_team": "Los Angeles Lakers",
+      "venue": "Fiserv Forum",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Memphis Grizzlies",
+      "away_team": "Denver Nuggets",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Chicago Bulls",
+      "away_team": "San Antonio Spurs",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NBA",
+      "home_team": "New Orleans Pelicans",
+      "away_team": "Brooklyn Nets",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NBA",
       "home_team": "Utah Jazz",
-      "away_team": "Miami Heat",
+      "away_team": "Orlando Magic",
       "time_label": "9:00 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Sacramento Kings",
-      "away_team": "Orlando Magic",
-      "time_label": "10:00 PM ET"
+      "home_team": "Houston Rockets",
+      "away_team": "Golden State Warriors"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Portland Trail Blazers",
+      "away_team": "Oklahoma City Thunder"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Buffalo Sabres",
+      "away_team": "Tampa Bay Lightning"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Calgary Flames",
+      "away_team": "New York Rangers"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Edmonton Oilers",
+      "away_team": "Philadelphia Flyers"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Anaheim Ducks",
+      "away_team": "Nashville Predators"
+    },
+    {
+      "league": "NHL",
+      "home_team": "San Jose Sharks",
+      "away_team": "Pittsburgh Penguins"
+    },
+    {
+      "league": "NHL",
+      "home_team": "Vegas Golden Knights",
+      "away_team": "Utah Mammoth"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Ball State Cardinals",
+      "away_team": "Buffalo Bulls",
+      "venue": "Scheumann Stadium"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Toledo Rockets",
+      "away_team": "UMass Minutemen",
+      "venue": "Glass Bowl"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Central Michigan Chippewas",
+      "away_team": "Sacramento State Hornets",
+      "venue": "Kelly/Shorts Stadium"
     }
   ]
 }

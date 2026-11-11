@@ -544,7 +544,7 @@
       "league": "NBA",
       "team": "Miami Heat",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "losses": 6,
         "made_playoffs": false,
         "won_round1": false,
@@ -557,7 +557,7 @@
       "league": "NBA",
       "team": "Orlando Magic",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "losses": 7,
         "made_playoffs": false,
         "won_round1": false,
@@ -636,7 +636,7 @@
       "team": "Utah Jazz",
       "stats": {
         "wins": 1,
-        "losses": 9,
+        "losses": 10,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -701,7 +701,7 @@
       "team": "Sacramento Kings",
       "stats": {
         "wins": 1,
-        "losses": 9,
+        "losses": 10,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,

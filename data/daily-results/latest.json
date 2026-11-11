@@ -1,68 +1,19 @@
 {
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "results": [
     {
-      "league": "NFL",
-      "home_team": "Minnesota Vikings",
-      "away_team": "Buffalo Bills",
-      "home_score": 6,
-      "away_score": 23
+      "league": "NBA",
+      "home_team": "Utah Jazz",
+      "away_team": "Miami Heat",
+      "home_score": 109,
+      "away_score": 115
     },
     {
       "league": "NBA",
-      "home_team": "Atlanta Hawks",
-      "away_team": "Los Angeles Lakers",
-      "home_score": 114,
-      "away_score": 124
-    },
-    {
-      "league": "NBA",
-      "home_team": "Charlotte Hornets",
-      "away_team": "Cleveland Cavaliers",
-      "home_score": 124,
-      "away_score": 112
-    },
-    {
-      "league": "NBA",
-      "home_team": "Detroit Pistons",
-      "away_team": "Washington Wizards",
-      "home_score": 122,
-      "away_score": 111
-    },
-    {
-      "league": "NBA",
-      "home_team": "Toronto Raptors",
-      "away_team": "Memphis Grizzlies",
-      "home_score": 102,
-      "away_score": 118
-    },
-    {
-      "league": "NBA",
-      "home_team": "Dallas Mavericks",
-      "away_team": "Indiana Pacers",
-      "home_score": 125,
-      "away_score": 122
-    },
-    {
-      "league": "NBA",
-      "home_team": "Houston Rockets",
-      "away_team": "Denver Nuggets",
-      "home_score": 110,
-      "away_score": 100
-    },
-    {
-      "league": "NBA",
-      "home_team": "Phoenix Suns",
-      "away_team": "San Antonio Spurs",
-      "home_score": 96,
-      "away_score": 122
-    },
-    {
-      "league": "NBA",
-      "home_team": "Golden State Warriors",
-      "away_team": "New Orleans Pelicans",
-      "home_score": 138,
-      "away_score": 87
+      "home_team": "Sacramento Kings",
+      "away_team": "Orlando Magic",
+      "home_score": 100,
+      "away_score": 107
     }
   ]
 }
