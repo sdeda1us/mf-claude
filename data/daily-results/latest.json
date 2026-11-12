@@ -1,19 +1,4 @@
 {
-  "date": "2026-11-10",
-  "results": [
-    {
-      "league": "NBA",
-      "home_team": "Utah Jazz",
-      "away_team": "Miami Heat",
-      "home_score": 109,
-      "away_score": 115
-    },
-    {
-      "league": "NBA",
-      "home_team": "Sacramento Kings",
-      "away_team": "Orlando Magic",
-      "home_score": 100,
-      "away_score": 107
-    }
-  ]
+  "date": "2026-11-11",
+  "results": []
 }
