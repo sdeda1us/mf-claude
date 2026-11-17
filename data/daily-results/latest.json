@@ -1,28 +1,11 @@
 {
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "results": [
-    {"league": "NCAAF", "home_team": "Oklahoma Sooners", "away_team": "Ole Miss Rebels", "home_score": 24, "away_score": 17},
-    {"league": "NFL", "home_team": "Detroit Lions", "away_team": "New England Patriots", "home_score": 35, "away_score": 10},
-    {"league": "NFL", "home_team": "Atlanta Falcons", "away_team": "Kansas City Chiefs", "home_score": 13, "away_score": 35},
-    {"league": "NFL", "home_team": "Cleveland Browns", "away_team": "Houston Texans", "home_score": 27, "away_score": 24},
-    {"league": "NFL", "home_team": "Green Bay Packers", "away_team": "Minnesota Vikings", "home_score": 10, "away_score": 30},
-    {"league": "NFL", "home_team": "Tennessee Titans", "away_team": "Jacksonville Jaguars", "home_score": 23, "away_score": 40},
-    {"league": "NFL", "home_team": "Indianapolis Colts", "away_team": "Miami Dolphins", "home_score": 24, "away_score": 22},
-    {"league": "NFL", "home_team": "New Orleans Saints", "away_team": "Carolina Panthers", "home_score": 17, "away_score": 20},
-    {"league": "NFL", "home_team": "New York Jets", "away_team": "Buffalo Bills", "home_score": 12, "away_score": 31},
-    {"league": "NFL", "home_team": "Las Vegas Raiders", "away_team": "Seattle Seahawks", "home_score": 13, "away_score": 21},
-    {"league": "NFL", "home_team": "Arizona Cardinals", "away_team": "Los Angeles Rams", "home_score": 6, "away_score": 34},
-    {"league": "NFL", "home_team": "San Francisco 49ers", "away_team": "Dallas Cowboys", "home_score": 46, "away_score": 40},
-    {"league": "NFL", "home_team": "Cincinnati Bengals", "away_team": "Pittsburgh Steelers", "home_score": 38, "away_score": 18},
-    {"league": "NBA", "home_team": "Philadelphia 76ers", "away_team": "Indiana Pacers", "home_score": 131, "away_score": 124},
-    {"league": "NBA", "home_team": "Phoenix Suns", "away_team": "Los Angeles Lakers", "home_score": 123, "away_score": 131},
-    {"league": "NBA", "home_team": "Los Angeles Clippers", "away_team": "Charlotte Hornets", "home_score": 113, "away_score": 105},
-    {"league": "NBA", "home_team": "Utah Jazz", "away_team": "San Antonio Spurs", "home_score": 102, "away_score": 110},
-    {"league": "NBA", "home_team": "Boston Celtics", "away_team": "Dallas Mavericks", "home_score": 131, "away_score": 94},
-    {"league": "NHL", "home_team": "Philadelphia Flyers", "away_team": "Edmonton Oilers", "home_score": 2, "away_score": 5},
-    {"league": "NHL", "home_team": "Dallas Stars", "away_team": "Florida Panthers", "home_score": 2, "away_score": 1},
-    {"league": "NHL", "home_team": "Anaheim Ducks", "away_team": "Calgary Flames", "home_score": 6, "away_score": 1},
-    {"league": "NHL", "home_team": "San Jose Sharks", "away_team": "Nashville Predators", "home_score": 4, "away_score": 2},
-    {"league": "NHL", "home_team": "Vegas Golden Knights", "away_team": "Vancouver Canucks", "home_score": 3, "away_score": 6}
+    {"league": "NFL", "home_team": "Baltimore Ravens", "away_team": "Los Angeles Chargers", "home_score": 20, "away_score": 23},
+    {"league": "NBA", "home_team": "Boston Celtics", "away_team": "Orlando Magic", "home_score": 105, "away_score": 115},
+    {"league": "NBA", "home_team": "Washington Wizards", "away_team": "Memphis Grizzlies", "home_score": 120, "away_score": 136},
+    {"league": "NBA", "home_team": "Cleveland Cavaliers", "away_team": "Chicago Bulls", "home_score": 126, "away_score": 115},
+    {"league": "NHL", "home_team": "New York Rangers", "away_team": "Montreal Canadiens", "home_score": 3, "away_score": 1},
+    {"league": "NHL", "home_team": "Utah Mammoth", "away_team": "Vancouver Canucks", "home_score": 2, "away_score": 3}
   ]
 }
