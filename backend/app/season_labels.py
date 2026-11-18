@@ -28,6 +28,8 @@ CURRENT_SEASON: dict[str, str] = {
     "EPL": "2026-27",
     "UCL": "2026-27",
     "URC": "2026-27",
+    "NCAAMB": "2026-27",
+    "NCAAWB": "2026-27",
 }
 
 # First real-world date each league's CURRENT_SEASON regular season counts
@@ -51,6 +53,8 @@ SEASON_START_DATE: dict[str, date] = {
     "NHL": date(2026, 9, 29),
     "EPL": date(2026, 8, 21),
     "UCL": date(2026, 9, 8),
+    "NCAAMB": date(2026, 11, 1),
+    "NCAAWB": date(2026, 11, 1),
 }
 
 # All-zero stats, shaped exactly as league_rules.compute_score expects for
@@ -137,6 +141,38 @@ ZERO_STATS: dict[str, dict] = {
         "won_quarterfinal": False,
         "won_semifinal": False,
         "won_final": False,
+    },
+    # Shared shape -- NCAAMB and NCAAWB use identical scoring (see
+    # league_rules.CBB_SCORING_RULES / compute_score).
+    "NCAAMB": {
+        "wins": 0,
+        "losses": 0,
+        "reg_season_conf_champ": False,
+        "conf_tourney_champ": False,
+        "ncaa_qualifier": False,
+        "seed_1": False,
+        "seed_2": False,
+        "won_round_of_64": False,
+        "won_round_of_32": False,
+        "won_sweet_16": False,
+        "won_elite_8": False,
+        "won_final_4": False,
+        "won_championship": False,
+    },
+    "NCAAWB": {
+        "wins": 0,
+        "losses": 0,
+        "reg_season_conf_champ": False,
+        "conf_tourney_champ": False,
+        "ncaa_qualifier": False,
+        "seed_1": False,
+        "seed_2": False,
+        "won_round_of_64": False,
+        "won_round_of_32": False,
+        "won_sweet_16": False,
+        "won_elite_8": False,
+        "won_final_4": False,
+        "won_championship": False,
     },
 }
 

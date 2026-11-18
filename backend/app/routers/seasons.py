@@ -46,21 +46,42 @@ from app.season_labels import CURRENT_SEASON, ZERO_STATS
 
 router = APIRouter(prefix="/seasons", tags=["seasons"])
 
-# Every league in the fall auction session (see LEAGUE_SESSION) except
-# NCAAMB/NCAAWB, which are deliberately left out -- their pools are ~360
-# teams each and their 2026-27 season hasn't even started yet, so there's
-# no way to source that scale of data reliably. Unlike EPL/URC (every
-# team in those two IS drafted, so their column is a full standings
-# preview), most of these leagues still have plenty of undrafted teams
-# sitting in the auction pool -- update_live_standings.py only seeds
-# whichever teams actually appear on a roster right now, by design, so a
-# league's column here only ever reflects the teams someone's actually
-# drafted, not the whole league.
-SCORING_SUMMARY_LEAGUES = ["NFL", "NBA", "NHL", "EPL", "UCL", "URC", "NCAAF", "ATP", "WTA"]
+# Every league in the fall auction session (see LEAGUE_SESSION). NCAAMB/
+# NCAAWB's pools are ~360/~362 teams each, but the daily sync only ever
+# needs to cover whichever teams are actually rostered (84 total between
+# the two as of this writing, not the full pool) -- same "only synced
+# teams someone's actually drafted" design every other league here
+# already relies on. They were excluded until their 2026-27 season
+# actually started (Nov 1, 2026); re-added once it had been underway a
+# couple weeks. Unlike EPL/URC (every team in those two IS drafted, so
+# their column is a full standings preview), most of these leagues still
+# have plenty of undrafted teams sitting in the auction pool -- the daily
+# sync only seeds whichever teams actually appear on a roster right now,
+# by design, so a league's column here only ever reflects the teams
+# someone's actually drafted, not the whole league.
+SCORING_SUMMARY_LEAGUES = [
+    "NFL",
+    "NBA",
+    "NHL",
+    "EPL",
+    "UCL",
+    "URC",
+    "NCAAF",
+    "NCAAMB",
+    "NCAAWB",
+    "ATP",
+    "WTA",
+]
 
-# Same 7 leagues as SCORING_SUMMARY_LEAGUES minus ATP/WTA -- those two are
+# Same leagues as SCORING_SUMMARY_LEAGUES minus ATP/WTA -- those two are
 # country/individual-match aggregates with no single "team vs team" game
-# to show in a schedule widget.
+# to show in a schedule widget. NCAAMB/NCAAWB are included here even
+# though there's no games-sync wired up for them yet (no ESPN scoreboard
+# endpoint in espn_client.py's LEAGUE_ENDPOINTS) -- todays_games/
+# yesterdays_results simply show nothing for them until one exists, same
+# as any league with zero ScheduledGame rows; yesterdays_scoring_by_player
+# doesn't depend on ScheduledGame at all, so their point changes surface
+# there regardless.
 TODAYS_GAMES_LEAGUES = [lg for lg in SCORING_SUMMARY_LEAGUES if lg not in ("ATP", "WTA")]
 
 

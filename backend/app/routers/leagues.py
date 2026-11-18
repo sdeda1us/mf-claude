@@ -21,7 +21,8 @@ from app.schemas import ExampleScoreOut, LeagueRulesOut
 router = APIRouter(prefix="/leagues", tags=["leagues"])
 
 # A league counts as "active" (actively being scored right now, as
-# opposed to merely in the daily sync's 9-league scope) if it has a
+# opposed to merely in the daily sync's scope -- see
+# routers/seasons.py's SCORING_SUMMARY_LEAGUES) if it has a
 # TeamDailyScore row dated within this many days -- covers the gap
 # between the routine researching a day's stats and the backend's own
 # pull picking them up (see app/daily_sync_pull.py) without needing any
