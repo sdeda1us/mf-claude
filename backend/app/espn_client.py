@@ -33,6 +33,8 @@ STANDINGS_ENDPOINTS = {
     "UCL": ("soccer/uefa.champions", {}),
     "URC": ("rugby/270557", {}),
     "NCAAF": ("football/college-football", {}),
+    "NCAAMB": ("basketball/mens-college-basketball", {"group": "50"}),
+    "NCAAWB": ("basketball/womens-college-basketball", {"group": "50"}),
 }
 
 # Megafantasy league code -> (ESPN scoreboard URL path, extra query params).

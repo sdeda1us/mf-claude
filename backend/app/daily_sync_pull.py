@@ -54,6 +54,8 @@ from app.espn_epl_standings_sync import sync_epl_standings
 from app.espn_games_sync import sync_espn_games
 from app.espn_nba_standings_sync import sync_nba_standings
 from app.espn_ncaaf_standings_sync import sync_ncaaf_standings
+from app.espn_ncaamb_standings_sync import sync_ncaamb_standings
+from app.espn_ncaawb_standings_sync import sync_ncaawb_standings
 from app.espn_nfl_standings_sync import sync_nfl_standings
 from app.espn_results_sync import sync_espn_results
 from app.espn_ucl_standings_sync import sync_ucl_standings
@@ -167,6 +169,8 @@ async def _run_pull_and_report(context: str) -> None:
     await _run_standings_sync_and_report(context, "EPL standings sync", "⚽", sync_epl_standings)
     await _run_standings_sync_and_report(context, "UCL standings sync", "⚽", sync_ucl_standings)
     await _run_standings_sync_and_report(context, "URC standings sync", "🏉", sync_urc_standings)
+    await _run_standings_sync_and_report(context, "NCAAMB standings sync", "🏀", sync_ncaamb_standings)
+    await _run_standings_sync_and_report(context, "NCAAWB standings sync", "🏀", sync_ncaawb_standings)
     await _run_espn_games_and_report(context)
     await _run_espn_results_and_report(context)
 
