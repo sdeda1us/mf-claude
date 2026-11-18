@@ -9,8 +9,8 @@ espn_test/ experiment where even the WebFetch tool got a 403 against
 this same API).
 
 No API key or auth; no published SLA or rate-limit docs. Scoped to the
-7 leagues in TODAYS_GAMES_LEAGUES (backend/app/routers/seasons.py):
-NFL, NBA, NHL, EPL, UCL, URC, NCAAF.
+leagues in TODAYS_GAMES_LEAGUES (backend/app/routers/seasons.py) -- see
+LEAGUE_ENDPOINTS below for the current list.
 """
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
@@ -42,6 +42,16 @@ STANDINGS_ENDPOINTS = {
 # (270557) rather than a slug -- found by walking
 # sports.core.api.espn.com/v2/sports/rugby/leagues and checking names,
 # since ESPN has no human-readable slug for it the way soccer leagues do.
+# NCAAMB/NCAAWB: groups=50 scopes to Division I (confirmed against ESPN's
+# teams endpoint -- returns 365/363 teams, matching CLAUDE.md's ~364/~362
+# D-I pool; the default scoreboard with no groups param only returns a
+# small "featured games" subset). Needed a bundle of new aliases in
+# team_name_aliases.py -- ESPN spells several schools differently than
+# seed.py (abbreviated like "App State" vs "Appalachian State", or with a
+# "Lady"/gendered nickname on the women's side like "Lady Vols" vs this
+# app's shared "Volunteers" nickname for both -- verified against seed.py's
+# full NCAAMB_TEAMS/NCAAWB_TEAMS lists, not just the subset someone's
+# rostered, so this holds up as rosters change season to season).
 LEAGUE_ENDPOINTS = {
     "NFL": ("football/nfl", {}),
     "NBA": ("basketball/nba", {}),
@@ -50,6 +60,8 @@ LEAGUE_ENDPOINTS = {
     "UCL": ("soccer/uefa.champions", {}),
     "URC": ("rugby/270557", {}),
     "NCAAF": ("football/college-football", {"groups": "80", "limit": "500"}),
+    "NCAAMB": ("basketball/mens-college-basketball", {"groups": "50", "limit": "500"}),
+    "NCAAWB": ("basketball/womens-college-basketball", {"groups": "50", "limit": "500"}),
 }
 
 
