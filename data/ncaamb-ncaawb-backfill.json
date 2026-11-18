@@ -1,0 +1,1413 @@
+{
+  "NCAAMB": [
+    {
+      "team": "Alabama Crimson Tide",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Arizona Wildcats",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Arkansas Razorbacks",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-11",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Auburn Tigers",
+      "games": [
+        {
+          "date": "2026-11-04",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "BYU Cougars",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Creighton Bluejays",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Duke Blue Devils",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Florida Gators",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Furman Paladins",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-04",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-14",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Georgia Bulldogs",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Gonzaga Bulldogs",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-07",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-14",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "High Point Panthers",
+      "games": [
+        {
+          "date": "2026-11-01",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-04",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-07",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Houston Cougars",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Illinois Fighting Illini",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Indiana Hoosiers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Iowa State Cyclones",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Kansas Jayhawks",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Kentucky Wildcats",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Louisville Cardinals",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-07",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Marquette Golden Eagles",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-11",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Miami (FL) Hurricanes",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Michigan State Spartans",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Michigan Wolverines",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-11",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Missouri Tigers",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Nebraska Cornhuskers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-07",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-11",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "North Carolina Tar Heels",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Ohio State Buckeyes",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Providence Friars",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-07",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Purdue Boilermakers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Saint Louis Billikens",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "St. John's Red Storm",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-11",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "TCU Horned Frogs",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Tennessee Volunteers",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Texas A&M Aggies",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Texas Longhorns",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Texas Tech Red Raiders",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-14",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "UCLA Bruins",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-11",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "UConn Huskies",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "USC Trojans",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-11",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Vanderbilt Commodores",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Villanova Wildcats",
+      "games": [
+        {
+          "date": "2026-11-01",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-14",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Virginia Cavaliers",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    }
+  ],
+  "NCAAWB": [
+    {
+      "team": "Alabama Crimson Tide",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-04",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Baylor Bears",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Clemson Tigers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Columbia Lions",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Duke Blue Devils",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Fairfield Stags",
+      "games": [
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Illinois Fighting Illini",
+      "games": [
+        {
+          "date": "2026-11-04",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-07",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Iowa Hawkeyes",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Kansas Jayhawks",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-14",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Kentucky Wildcats",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-11",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "LSU Tigers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-13",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Louisville Cardinals",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Marquette Golden Eagles",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Maryland Terrapins",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Michigan State Spartans",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Michigan Wolverines",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Minnesota Golden Gophers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Mississippi State Bulldogs",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Murray State Racers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-07",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "NC State Wolfpack",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Nebraska Cornhuskers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-07",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "North Carolina Tar Heels",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Notre Dame Fighting Irish",
+      "games": [
+        {
+          "date": "2026-11-01",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Ohio State Buckeyes",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Oklahoma Sooners",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Oklahoma State Cowboys",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-06",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Ole Miss Rebels",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Oregon Ducks",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "South Carolina Gamecocks",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "St. John's Red Storm",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "UCLA Bruins",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "UConn Huskies",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "USC Trojans",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-08",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-15",
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team": "Vanderbilt Commodores",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-04",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-09",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Villanova Wildcats",
+      "games": [
+        {
+          "date": "2026-11-01",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-10",
+          "result": "L"
+        },
+        {
+          "date": "2026-11-12",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Virginia Cavaliers",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-05",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-16",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Virginia Tech Hokies",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        },
+        {
+          "date": "2026-11-04",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Washington Huskies",
+      "games": [
+        {
+          "date": "2026-11-02",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "West Virginia Mountaineers",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "Texas Longhorns",
+      "games": [
+        {
+          "date": "2026-11-04",
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team": "TCU Horned Frogs",
+      "games": [
+        {
+          "date": "2026-11-03",
+          "result": "W"
+        }
+      ]
+    }
+  ]
+}
