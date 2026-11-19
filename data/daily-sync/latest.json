@@ -780,7 +780,7 @@
       "stats": {
         "reg_wins": 9,
         "ot_so_wins": 3,
-        "reg_losses": 4,
+        "reg_losses": 6,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -794,7 +794,7 @@
       "stats": {
         "reg_wins": 6,
         "ot_so_wins": 2,
-        "reg_losses": 5,
+        "reg_losses": 8,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -808,7 +808,7 @@
       "stats": {
         "reg_wins": 5,
         "ot_so_wins": 2,
-        "reg_losses": 8,
+        "reg_losses": 10,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -864,7 +864,7 @@
       "stats": {
         "reg_wins": 10,
         "ot_so_wins": 2,
-        "reg_losses": 3,
+        "reg_losses": 5,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -878,7 +878,7 @@
       "stats": {
         "reg_wins": 7,
         "ot_so_wins": 1,
-        "reg_losses": 9,
+        "reg_losses": 12,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -906,7 +906,7 @@
       "stats": {
         "reg_wins": 2,
         "ot_so_wins": 5,
-        "reg_losses": 9,
+        "reg_losses": 11,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -920,7 +920,7 @@
       "stats": {
         "reg_wins": 8,
         "ot_so_wins": 5,
-        "reg_losses": 5,
+        "reg_losses": 6,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -948,7 +948,7 @@
       "stats": {
         "reg_wins": 10,
         "ot_so_wins": 0,
-        "reg_losses": 7,
+        "reg_losses": 8,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -962,7 +962,7 @@
       "stats": {
         "reg_wins": 5,
         "ot_so_wins": 0,
-        "reg_losses": 10,
+        "reg_losses": 11,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -976,7 +976,7 @@
       "stats": {
         "reg_wins": 3,
         "ot_so_wins": 3,
-        "reg_losses": 9,
+        "reg_losses": 11,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1032,7 +1032,7 @@
       "stats": {
         "reg_wins": 8,
         "ot_so_wins": 3,
-        "reg_losses": 5,
+        "reg_losses": 6,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1074,7 +1074,7 @@
       "stats": {
         "reg_wins": 8,
         "ot_so_wins": 0,
-        "reg_losses": 8,
+        "reg_losses": 9,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1102,7 +1102,7 @@
       "stats": {
         "reg_wins": 5,
         "ot_so_wins": 1,
-        "reg_losses": 8,
+        "reg_losses": 9,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1116,7 +1116,7 @@
       "stats": {
         "reg_wins": 8,
         "ot_so_wins": 1,
-        "reg_losses": 7,
+        "reg_losses": 8,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1130,7 +1130,7 @@
       "stats": {
         "reg_wins": 7,
         "ot_so_wins": 0,
-        "reg_losses": 9,
+        "reg_losses": 10,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1186,7 +1186,7 @@
       "stats": {
         "reg_wins": 6,
         "ot_so_wins": 3,
-        "reg_losses": 6,
+        "reg_losses": 7,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1200,7 +1200,7 @@
       "stats": {
         "reg_wins": 3,
         "ot_so_wins": 2,
-        "reg_losses": 17,
+        "reg_losses": 16,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1214,7 +1214,7 @@
       "stats": {
         "reg_wins": 9,
         "ot_so_wins": 2,
-        "reg_losses": 6,
+        "reg_losses": 5,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -2098,7 +2098,7 @@
       "team": "Boise State Broncos",
       "stats": {
         "wins": 9,
-        "reg_season_losses": 1,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3290,7 +3290,7 @@
     },
     {
       "league": "UCL",
-      "team": "Atl\u00e9tico Madrid",
+      "team": "Atlético Madrid",
       "stats": {
         "points": 4,
         "goal_differential": -1,
@@ -3458,7 +3458,7 @@
     },
     {
       "league": "UCL",
-      "team": "Bod\u00f8/Glimt",
+      "team": "Bodø/Glimt",
       "stats": {
         "points": 4,
         "goal_differential": -5,
@@ -3542,7 +3542,7 @@
     },
     {
       "league": "UCL",
-      "team": "Fenerbah\u00e7e",
+      "team": "Fenerbahçe",
       "stats": {
         "points": 5,
         "goal_differential": -5,
@@ -3870,6 +3870,975 @@
         "won_quarterfinal": false,
         "won_semifinal": false,
         "won_final": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Alabama Crimson Tide",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Arizona Wildcats",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "BYU Cougars",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Creighton Bluejays",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Duke Blue Devils",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Florida Gators",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Georgia Bulldogs",
+      "stats": {
+        "wins": 5,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Houston Cougars",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Illinois Fighting Illini",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Kansas Jayhawks",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Kentucky Wildcats",
+      "stats": {
+        "wins": 4,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Louisville Cardinals",
+      "stats": {
+        "wins": 2,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Marquette Golden Eagles",
+      "stats": {
+        "wins": 2,
+        "losses": 2,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Miami (FL) Hurricanes",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Michigan Wolverines",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "North Carolina Tar Heels",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Ohio State Buckeyes",
+      "stats": {
+        "wins": 3,
+        "losses": 2,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Providence Friars",
+      "stats": {
+        "wins": 4,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Purdue Boilermakers",
+      "stats": {
+        "wins": 1,
+        "losses": 2,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "St. John's Red Storm",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Tennessee Volunteers",
+      "stats": {
+        "wins": 3,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Texas A&M Aggies",
+      "stats": {
+        "wins": 5,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Texas Longhorns",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Texas Tech Red Raiders",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "UConn Huskies",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Vanderbilt Commodores",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAMB",
+      "team": "Villanova Wildcats",
+      "stats": {
+        "wins": 3,
+        "losses": 2,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Alabama Crimson Tide",
+      "stats": {
+        "wins": 5,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Baylor Bears",
+      "stats": {
+        "wins": 5,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Clemson Tigers",
+      "stats": {
+        "wins": 4,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Columbia Lions",
+      "stats": {
+        "wins": 3,
+        "losses": 2,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Duke Blue Devils",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Illinois Fighting Illini",
+      "stats": {
+        "wins": 3,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Iowa Hawkeyes",
+      "stats": {
+        "wins": 4,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Kansas Jayhawks",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Louisville Cardinals",
+      "stats": {
+        "wins": 7,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Marquette Golden Eagles",
+      "stats": {
+        "wins": 3,
+        "losses": 2,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Maryland Terrapins",
+      "stats": {
+        "wins": 2,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Michigan State Spartans",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Michigan Wolverines",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "NC State Wolfpack",
+      "stats": {
+        "wins": 4,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Oklahoma Sooners",
+      "stats": {
+        "wins": 5,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Oklahoma State Cowboys",
+      "stats": {
+        "wins": 4,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Ole Miss Rebels",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "South Carolina Gamecocks",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "St. John's Red Storm",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "TCU Horned Frogs",
+      "stats": {
+        "wins": 6,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Texas Tech Red Raiders",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "UCLA Bruins",
+      "stats": {
+        "wins": 4,
+        "losses": 0,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "USC Trojans",
+      "stats": {
+        "wins": 3,
+        "losses": 1,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
+      }
+    },
+    {
+      "league": "NCAAWB",
+      "team": "Villanova Wildcats",
+      "stats": {
+        "wins": 2,
+        "losses": 2,
+        "reg_season_conf_champ": false,
+        "conf_tourney_champ": false,
+        "ncaa_qualifier": false,
+        "seed_1": false,
+        "seed_2": false,
+        "won_round_of_64": false,
+        "won_round_of_32": false,
+        "won_sweet_16": false,
+        "won_elite_8": false,
+        "won_final_4": false,
+        "won_championship": false
       }
     }
   ]
