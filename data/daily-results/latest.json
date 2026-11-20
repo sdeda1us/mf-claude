@@ -1,4 +1,47 @@
 {
   "date": "2026-11-19",
-  "results": []
+  "results": [
+    {
+      "league": "NFL",
+      "home_team": "Houston Texans",
+      "away_team": "Indianapolis Colts",
+      "home_score": 26,
+      "away_score": 3
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Temple Owls",
+      "away_team": "Rice Owls",
+      "home_score": 27,
+      "away_score": 31
+    },
+    {
+      "league": "NBA",
+      "home_team": "Memphis Grizzlies",
+      "away_team": "Golden State Warriors",
+      "home_score": 126,
+      "away_score": 98
+    },
+    {
+      "league": "NBA",
+      "home_team": "Milwaukee Bucks",
+      "away_team": "Portland Trail Blazers",
+      "home_score": 114,
+      "away_score": 124
+    },
+    {
+      "league": "NBA",
+      "home_team": "Minnesota Timberwolves",
+      "away_team": "New York Knicks",
+      "home_score": 99,
+      "away_score": 102
+    },
+    {
+      "league": "NBA",
+      "home_team": "San Antonio Spurs",
+      "away_team": "Los Angeles Clippers",
+      "home_score": 124,
+      "away_score": 112
+    }
+  ]
 }

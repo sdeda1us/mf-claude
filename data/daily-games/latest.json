@@ -1,47 +1,126 @@
 {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "games": [
     {
-      "league": "NFL",
-      "home_team": "Houston Texans",
-      "away_team": "Indianapolis Colts",
-      "venue": "NRG Stadium",
-      "time_label": "8:15 PM ET"
+      "league": "NCAAF",
+      "home_team": "UCF Knights",
+      "away_team": "Iowa State Cyclones",
+      "time_label": "6:00 PM ET"
     },
     {
       "league": "NCAAF",
-      "home_team": "Temple Owls",
-      "away_team": "Rice Owls",
-      "venue": "Lincoln Financial Field, Philadelphia, PA",
+      "home_team": "Duke Blue Devils",
+      "away_team": "Clemson Tigers",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Toledo Rockets",
+      "away_team": "Bowling Green Falcons",
+      "time_label": "7:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Michigan State Spartans",
+      "away_team": "Oregon Ducks",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Air Force Falcons",
+      "away_team": "UTEP Miners",
+      "time_label": "8:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Wyoming Cowboys",
+      "away_team": "New Mexico Lobos",
+      "time_label": "9:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "West Virginia Mountaineers",
+      "away_team": "Houston Cougars",
+      "time_label": "1:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Liberty Flames",
+      "away_team": "Western Kentucky Hilltoppers",
+      "time_label": "1:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Texas Longhorns",
+      "away_team": "Arkansas Razorbacks",
+      "time_label": "3:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Baylor Bears",
+      "away_team": "Texas Tech Red Raiders",
+      "time_label": "3:30 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Miami (FL) Hurricanes",
+      "away_team": "Virginia Tech Hokies",
+      "time_label": "7:00 PM ET"
+    },
+    {
+      "league": "NCAAF",
+      "home_team": "Notre Dame Fighting Irish",
+      "away_team": "SMU Mustangs",
       "time_label": "7:30 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Memphis Grizzlies",
-      "away_team": "Golden State Warriors",
-      "venue": "FedExForum",
-      "time_label": "8:00 PM ET"
+      "home_team": "Detroit Pistons",
+      "away_team": "Toronto Raptors",
+      "venue": "Little Caesars Arena",
+      "time_label": "7:30 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Milwaukee Bucks",
-      "away_team": "Portland Trail Blazers",
-      "venue": "Fiserv Forum",
-      "time_label": "8:00 PM ET"
+      "home_team": "Utah Jazz",
+      "away_team": "Phoenix Suns",
+      "venue": "Delta Center",
+      "time_label": "9:30 PM ET"
     },
     {
       "league": "NBA",
-      "home_team": "Minnesota Timberwolves",
-      "away_team": "New York Knicks",
-      "venue": "Target Center",
-      "time_label": "8:00 PM ET"
+      "home_team": "Atlanta Hawks",
+      "away_team": "Charlotte Hornets"
     },
     {
       "league": "NBA",
-      "home_team": "San Antonio Spurs",
-      "away_team": "Los Angeles Clippers",
-      "venue": "Frost Bank Center",
-      "time_label": "8:00 PM ET"
+      "home_team": "Brooklyn Nets",
+      "away_team": "Orlando Magic"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Cleveland Cavaliers",
+      "away_team": "Indiana Pacers"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Chicago Bulls",
+      "away_team": "Washington Wizards"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Oklahoma City Thunder",
+      "away_team": "New Orleans Pelicans"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Denver Nuggets",
+      "away_team": "Houston Rockets"
+    },
+    {
+      "league": "NBA",
+      "home_team": "Los Angeles Lakers",
+      "away_team": "Sacramento Kings"
     }
   ]
 }
