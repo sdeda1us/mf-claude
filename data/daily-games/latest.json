@@ -1,33 +1,8 @@
 {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "games": [
-    {"league": "NFL", "home_team": "Buffalo Bills", "away_team": "Miami Dolphins", "time_label": "1:00 PM ET"},
-    {"league": "NFL", "home_team": "Kansas City Chiefs", "away_team": "Arizona Cardinals", "venue": "GEHA Field at Arrowhead Stadium", "time_label": "1:00 PM ET"},
-    {"league": "NFL", "home_team": "Dallas Cowboys", "away_team": "Tennessee Titans", "time_label": "1:00 PM ET"},
-    {"league": "NFL", "home_team": "Detroit Lions", "away_team": "Tampa Bay Buccaneers", "time_label": "1:00 PM ET"},
-    {"league": "NFL", "home_team": "Carolina Panthers", "away_team": "Baltimore Ravens", "venue": "Bank of America Stadium", "time_label": "1:00 PM ET"},
-    {"league": "NFL", "home_team": "Chicago Bears", "away_team": "New Orleans Saints", "venue": "Soldier Field", "time_label": "1:00 PM ET"},
-    {"league": "NFL", "home_team": "Philadelphia Eagles", "away_team": "Pittsburgh Steelers", "time_label": "1:00 PM ET"},
-    {"league": "NFL", "home_team": "Los Angeles Chargers", "away_team": "New York Jets", "time_label": "4:05 PM ET"},
-    {"league": "NFL", "home_team": "New York Giants", "away_team": "Jacksonville Jaguars", "venue": "MetLife Stadium", "time_label": "4:25 PM ET"},
-    {"league": "NFL", "home_team": "Denver Broncos", "away_team": "Las Vegas Raiders", "time_label": "4:25 PM ET"},
-    {"league": "NFL", "home_team": "San Francisco 49ers", "away_team": "Minnesota Vikings", "time_label": "8:20 PM ET (Mexico City)"},
-
-    {"league": "NBA", "home_team": "Atlanta Hawks", "away_team": "Detroit Pistons", "time_label": "3:30 PM ET"},
-    {"league": "NBA", "home_team": "Miami Heat", "away_team": "Oklahoma City Thunder"},
-    {"league": "NBA", "home_team": "Washington Wizards", "away_team": "Orlando Magic"},
-    {"league": "NBA", "home_team": "Chicago Bulls", "away_team": "Denver Nuggets"},
-    {"league": "NBA", "home_team": "Utah Jazz", "away_team": "Dallas Mavericks"},
-    {"league": "NBA", "home_team": "New York Knicks", "away_team": "Indiana Pacers", "time_label": "8:00 PM ET"},
-    {"league": "NBA", "home_team": "Golden State Warriors", "away_team": "Boston Celtics", "time_label": "8:30 PM ET"},
-
-    {"league": "NHL", "home_team": "New York Rangers", "away_team": "Carolina Hurricanes", "time_label": "12:30 PM ET"},
-    {"league": "NHL", "home_team": "Tampa Bay Lightning", "away_team": "Buffalo Sabres", "time_label": "5:00 PM ET"},
-    {"league": "NHL", "home_team": "St. Louis Blues", "away_team": "Edmonton Oilers", "time_label": "7:00 PM ET"},
-    {"league": "NHL", "home_team": "Dallas Stars", "away_team": "Pittsburgh Penguins", "time_label": "7:00 PM ET"},
-    {"league": "NHL", "home_team": "Vancouver Canucks", "away_team": "Chicago Blackhawks", "time_label": "8:00 PM ET"},
-
-    {"league": "EPL", "home_team": "Hull City", "away_team": "Brighton & Hove Albion", "venue": "MKM Stadium", "time_label": "2:00 PM GMT"},
-    {"league": "EPL", "home_team": "Liverpool", "away_team": "Manchester United", "venue": "Anfield", "time_label": "4:30 PM GMT"}
+    {"league": "NFL", "home_team": "Washington Commanders", "away_team": "Cincinnati Bengals", "venue": "Northwest Stadium", "time_label": "8:15 PM ET"},
+    {"league": "NBA", "home_team": "Toronto Raptors", "away_team": "Milwaukee Bucks"},
+    {"league": "EPL", "home_team": "Brentford", "away_team": "Everton", "time_label": "8:00 PM GMT"}
   ]
 }
