@@ -52,7 +52,7 @@
       "league": "NFL",
       "team": "New York Jets",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -1018,7 +1018,7 @@
       "stats": {
         "reg_wins": 13,
         "ot_so_wins": 0,
-        "reg_losses": 6,
+        "reg_losses": 7,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1144,7 +1144,7 @@
       "stats": {
         "reg_wins": 14,
         "ot_so_wins": 2,
-        "reg_losses": 3,
+        "reg_losses": 5,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -3124,8 +3124,8 @@
       "league": "EPL",
       "team": "Liverpool",
       "stats": {
-        "standings_points": 18,
-        "goal_differential": 4
+        "standings_points": 21,
+        "goal_differential": 8
       }
     },
     {

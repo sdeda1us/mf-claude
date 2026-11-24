@@ -1,33 +1,4 @@
 {
-  "date": "2026-11-22",
-  "results": [
-    {"league": "NFL", "home_team": "Buffalo Bills", "away_team": "Miami Dolphins", "home_score": 26, "away_score": 9},
-    {"league": "NFL", "home_team": "Kansas City Chiefs", "away_team": "Arizona Cardinals", "home_score": 34, "away_score": 7},
-    {"league": "NFL", "home_team": "Dallas Cowboys", "away_team": "Tennessee Titans", "home_score": 51, "away_score": 30},
-    {"league": "NFL", "home_team": "Detroit Lions", "away_team": "Tampa Bay Buccaneers", "home_score": 31, "away_score": 21},
-    {"league": "NFL", "home_team": "Carolina Panthers", "away_team": "Baltimore Ravens", "home_score": 35, "away_score": 33},
-    {"league": "NFL", "home_team": "Chicago Bears", "away_team": "New Orleans Saints", "home_score": 21, "away_score": 13},
-    {"league": "NFL", "home_team": "Philadelphia Eagles", "away_team": "Pittsburgh Steelers", "home_score": 19, "away_score": 16},
-    {"league": "NFL", "home_team": "Los Angeles Chargers", "away_team": "New York Jets", "home_score": 24, "away_score": 27},
-    {"league": "NFL", "home_team": "New York Giants", "away_team": "Jacksonville Jaguars", "home_score": 23, "away_score": 18},
-    {"league": "NFL", "home_team": "Denver Broncos", "away_team": "Las Vegas Raiders", "home_score": 38, "away_score": 24},
-    {"league": "NFL", "home_team": "San Francisco 49ers", "away_team": "Minnesota Vikings", "home_score": 35, "away_score": 10},
-
-    {"league": "NBA", "home_team": "Atlanta Hawks", "away_team": "Detroit Pistons", "home_score": 107, "away_score": 97},
-    {"league": "NBA", "home_team": "Miami Heat", "away_team": "Oklahoma City Thunder", "home_score": 123, "away_score": 113},
-    {"league": "NBA", "home_team": "Washington Wizards", "away_team": "Orlando Magic", "home_score": 116, "away_score": 96},
-    {"league": "NBA", "home_team": "Chicago Bulls", "away_team": "Denver Nuggets", "home_score": 145, "away_score": 151},
-    {"league": "NBA", "home_team": "Utah Jazz", "away_team": "Dallas Mavericks", "home_score": 114, "away_score": 116},
-    {"league": "NBA", "home_team": "New York Knicks", "away_team": "Indiana Pacers", "home_score": 113, "away_score": 106},
-    {"league": "NBA", "home_team": "Golden State Warriors", "away_team": "Boston Celtics", "home_score": 88, "away_score": 87},
-
-    {"league": "NHL", "home_team": "New York Rangers", "away_team": "Carolina Hurricanes", "home_score": 2, "away_score": 5},
-    {"league": "NHL", "home_team": "Tampa Bay Lightning", "away_team": "Buffalo Sabres", "home_score": 2, "away_score": 6},
-    {"league": "NHL", "home_team": "St. Louis Blues", "away_team": "Edmonton Oilers", "home_score": 5, "away_score": 4},
-    {"league": "NHL", "home_team": "Dallas Stars", "away_team": "Pittsburgh Penguins", "home_score": 1, "away_score": 0},
-    {"league": "NHL", "home_team": "Vancouver Canucks", "away_team": "Chicago Blackhawks", "home_score": 3, "away_score": 6},
-
-    {"league": "EPL", "home_team": "Hull City", "away_team": "Brighton & Hove Albion", "home_score": 2, "away_score": 0},
-    {"league": "EPL", "home_team": "Liverpool", "away_team": "Manchester United", "home_score": 4, "away_score": 0}
-  ]
+  "date": "2026-11-23",
+  "results": []
 }
