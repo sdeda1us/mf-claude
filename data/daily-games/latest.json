@@ -1,9 +1,20 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "games": [
-    {"league": "NFL", "home_team": "Detroit Lions", "away_team": "Chicago Bears", "venue": "Ford Field, Detroit, MI", "time_label": "1:00 PM ET"},
-    {"league": "NFL", "home_team": "Dallas Cowboys", "away_team": "Philadelphia Eagles", "venue": "AT&T Stadium, Arlington, TX", "time_label": "4:30 PM ET"},
-    {"league": "NFL", "home_team": "Buffalo Bills", "away_team": "Kansas City Chiefs", "venue": "Highmark Stadium, Orchard Park, NY", "time_label": "8:20 PM ET"},
-    {"league": "NCAAF", "home_team": "Texas Tech Red Raiders", "away_team": "TCU Horned Frogs", "venue": "Jones AT&T Stadium, Lubbock, TX", "time_label": "8:00 PM ET"}
+    {"league": "NFL", "home_team": "Pittsburgh Steelers", "away_team": "Denver Broncos", "venue": "Acrisure Stadium, Pittsburgh, PA", "time_label": "3:00 PM ET"},
+    {"league": "NCAAF", "home_team": "Ole Miss Rebels", "away_team": "Mississippi State Bulldogs", "venue": "Vaught-Hemingway Stadium, Oxford, MS", "time_label": "12:00 PM ET"},
+    {"league": "NCAAF", "home_team": "Iowa Hawkeyes", "away_team": "Nebraska Cornhuskers", "venue": "Kinnick Stadium, Iowa City, IA", "time_label": "12:00 PM ET"},
+    {"league": "NCAAF", "home_team": "UTSA Roadrunners", "away_team": "Tulsa Golden Hurricane", "venue": "Alamodome, San Antonio, TX", "time_label": "12:00 PM ET"},
+    {"league": "NCAAF", "home_team": "Florida State Seminoles", "away_team": "Florida Gators", "venue": "Doak Campbell Stadium, Tallahassee, FL", "time_label": "3:30 PM ET"},
+    {"league": "NCAAF", "home_team": "Texas A&M Aggies", "away_team": "Texas Longhorns", "venue": "Kyle Field, College Station, TX", "time_label": "7:30 PM ET"},
+    {"league": "NCAAF", "home_team": "Wisconsin Badgers", "away_team": "Minnesota Golden Gophers", "venue": "Camp Randall Stadium, Madison, WI", "time_label": "7:30 PM ET"},
+    {"league": "NCAAF", "home_team": "California Golden Bears", "away_team": "Pittsburgh Panthers", "venue": "California Memorial Stadium, Berkeley, CA", "time_label": "7:30 PM ET"},
+    {"league": "NCAAF", "home_team": "Utah Utes", "away_team": "West Virginia Mountaineers", "venue": "Rice-Eccles Stadium, Salt Lake City, UT", "time_label": "9:00 PM ET"},
+    {"league": "EPL", "home_team": "Nottingham Forest", "away_team": "Chelsea", "venue": "City Ground, Nottingham", "time_label": "8:00 PM GMT"},
+    {"league": "NBA", "home_team": "Toronto Raptors", "away_team": "Brooklyn Nets", "venue": "Scotiabank Arena, Toronto", "time_label": "7:30 PM ET"},
+    {"league": "NBA", "home_team": "Charlotte Hornets", "away_team": "Chicago Bulls", "venue": "Spectrum Center, Charlotte, NC", "time_label": "7:00 PM ET"},
+    {"league": "NBA", "home_team": "Memphis Grizzlies", "away_team": "Los Angeles Clippers", "venue": "FedExForum, Memphis, TN", "time_label": "8:00 PM ET"},
+    {"league": "NBA", "home_team": "Indiana Pacers", "away_team": "Philadelphia 76ers"},
+    {"league": "NHL", "home_team": "New Jersey Devils", "away_team": "Calgary Flames", "venue": "Prudential Center, Newark, NJ"}
   ]
 }

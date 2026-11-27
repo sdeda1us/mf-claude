@@ -450,9 +450,21 @@
     },
     {
       "league": "NFL",
+      "team": "Baltimore Ravens",
+      "stats": {
+        "wins": 4,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
+      "league": "NFL",
       "team": "Buffalo Bills",
       "stats": {
-        "wins": 9,
+        "wins": 10,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -489,18 +501,6 @@
       "team": "New York Jets",
       "stats": {
         "wins": 3,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
-      "team": "Baltimore Ravens",
-      "stats": {
-        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -630,18 +630,6 @@
     },
     {
       "league": "NFL",
-      "team": "Los Angeles Chargers",
-      "stats": {
-        "wins": 1,
-        "ties": 0,
-        "won_round1_or_bye": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_sb": false
-      }
-    },
-    {
-      "league": "NFL",
       "team": "Dallas Cowboys",
       "stats": {
         "wins": 5,
@@ -668,7 +656,7 @@
       "league": "NFL",
       "team": "Philadelphia Eagles",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -680,7 +668,7 @@
       "league": "NFL",
       "team": "Washington Commanders",
       "stats": {
-        "wins": 3,
+        "wins": 4,
         "ties": 1,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -692,7 +680,7 @@
       "league": "NFL",
       "team": "Chicago Bears",
       "stats": {
-        "wins": 8,
+        "wins": 9,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -800,7 +788,7 @@
       "league": "NFL",
       "team": "Los Angeles Rams",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "ties": 0,
         "won_round1_or_bye": false,
         "won_round2": false,
@@ -833,24 +821,23 @@
       }
     },
     {
+      "league": "NFL",
+      "team": "Los Angeles Chargers",
+      "stats": {
+        "wins": 1,
+        "ties": 0,
+        "won_round1_or_bye": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_sb": false
+      }
+    },
+    {
       "league": "NBA",
       "team": "Boston Celtics",
       "stats": {
         "wins": 12,
         "losses": 6,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_nba_champ": false
-      }
-    },
-    {
-      "league": "NBA",
-      "team": "Brooklyn Nets",
-      "stats": {
-        "wins": 3,
-        "losses": 13,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -875,7 +862,7 @@
       "league": "NBA",
       "team": "Philadelphia 76ers",
       "stats": {
-        "wins": 15,
+        "wins": 16,
         "losses": 4,
         "made_playoffs": false,
         "won_round1": false,
@@ -890,19 +877,6 @@
       "stats": {
         "wins": 6,
         "losses": 11,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_nba_champ": false
-      }
-    },
-    {
-      "league": "NBA",
-      "team": "Chicago Bulls",
-      "stats": {
-        "wins": 5,
-        "losses": 12,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -938,32 +912,6 @@
     },
     {
       "league": "NBA",
-      "team": "Indiana Pacers",
-      "stats": {
-        "wins": 6,
-        "losses": 12,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_nba_champ": false
-      }
-    },
-    {
-      "league": "NBA",
-      "team": "Milwaukee Bucks",
-      "stats": {
-        "wins": 2,
-        "losses": 16,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_nba_champ": false
-      }
-    },
-    {
-      "league": "NBA",
       "team": "Atlanta Hawks",
       "stats": {
         "wins": 11,
@@ -977,23 +925,10 @@
     },
     {
       "league": "NBA",
-      "team": "Charlotte Hornets",
-      "stats": {
-        "wins": 4,
-        "losses": 11,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_nba_champ": false
-      }
-    },
-    {
-      "league": "NBA",
       "team": "Miami Heat",
       "stats": {
         "wins": 10,
-        "losses": 7,
+        "losses": 8,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1055,19 +990,6 @@
     },
     {
       "league": "NBA",
-      "team": "Oklahoma City Thunder",
-      "stats": {
-        "wins": 10,
-        "losses": 9,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_nba_champ": false
-      }
-    },
-    {
-      "league": "NBA",
       "team": "Portland Trail Blazers",
       "stats": {
         "wins": 12,
@@ -1081,36 +1003,10 @@
     },
     {
       "league": "NBA",
-      "team": "Utah Jazz",
-      "stats": {
-        "wins": 3,
-        "losses": 16,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_nba_champ": false
-      }
-    },
-    {
-      "league": "NBA",
       "team": "Golden State Warriors",
       "stats": {
-        "wins": 10,
+        "wins": 11,
         "losses": 8,
-        "made_playoffs": false,
-        "won_round1": false,
-        "won_round2": false,
-        "won_conf_champ": false,
-        "won_nba_champ": false
-      }
-    },
-    {
-      "league": "NBA",
-      "team": "Los Angeles Clippers",
-      "stats": {
-        "wins": 4,
-        "losses": 13,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1136,7 +1032,7 @@
       "team": "Phoenix Suns",
       "stats": {
         "wins": 9,
-        "losses": 8,
+        "losses": 9,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1149,7 +1045,7 @@
       "team": "Sacramento Kings",
       "stats": {
         "wins": 2,
-        "losses": 16,
+        "losses": 17,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1174,7 +1070,7 @@
       "league": "NBA",
       "team": "Houston Rockets",
       "stats": {
-        "wins": 14,
+        "wins": 15,
         "losses": 5,
         "made_playoffs": false,
         "won_round1": false,
@@ -1198,6 +1094,97 @@
     },
     {
       "league": "NBA",
+      "team": "San Antonio Spurs",
+      "stats": {
+        "wins": 15,
+        "losses": 4,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_nba_champ": false
+      }
+    },
+    {
+      "league": "NBA",
+      "team": "Brooklyn Nets",
+      "stats": {
+        "wins": 3,
+        "losses": 13,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_nba_champ": false
+      }
+    },
+    {
+      "league": "NBA",
+      "team": "Chicago Bulls",
+      "stats": {
+        "wins": 5,
+        "losses": 12,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_nba_champ": false
+      }
+    },
+    {
+      "league": "NBA",
+      "team": "Indiana Pacers",
+      "stats": {
+        "wins": 6,
+        "losses": 12,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_nba_champ": false
+      }
+    },
+    {
+      "league": "NBA",
+      "team": "Milwaukee Bucks",
+      "stats": {
+        "wins": 2,
+        "losses": 16,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_nba_champ": false
+      }
+    },
+    {
+      "league": "NBA",
+      "team": "Charlotte Hornets",
+      "stats": {
+        "wins": 4,
+        "losses": 11,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_nba_champ": false
+      }
+    },
+    {
+      "league": "NBA",
+      "team": "Oklahoma City Thunder",
+      "stats": {
+        "wins": 10,
+        "losses": 9,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_nba_champ": false
+      }
+    },
+    {
+      "league": "NBA",
       "team": "New Orleans Pelicans",
       "stats": {
         "wins": 5,
@@ -1211,10 +1198,23 @@
     },
     {
       "league": "NBA",
-      "team": "San Antonio Spurs",
+      "team": "Los Angeles Clippers",
       "stats": {
-        "wins": 15,
-        "losses": 4,
+        "wins": 4,
+        "losses": 13,
+        "made_playoffs": false,
+        "won_round1": false,
+        "won_round2": false,
+        "won_conf_champ": false,
+        "won_nba_champ": false
+      }
+    },
+    {
+      "league": "NBA",
+      "team": "Utah Jazz",
+      "stats": {
+        "wins": 3,
+        "losses": 16,
         "made_playoffs": false,
         "won_round1": false,
         "won_round2": false,
@@ -1226,7 +1226,7 @@
       "league": "NCAAF",
       "team": "Alabama Crimson Tide",
       "stats": {
-        "wins": 8,
+        "wins": 9,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1240,7 +1240,7 @@
       "team": "Arkansas Razorbacks",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 6,
+        "reg_season_losses": 7,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1252,7 +1252,7 @@
       "league": "NCAAF",
       "team": "Auburn Tigers",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1278,7 +1278,7 @@
       "league": "NCAAF",
       "team": "Georgia Bulldogs",
       "stats": {
-        "wins": 8,
+        "wins": 10,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1317,7 +1317,7 @@
       "league": "NCAAF",
       "team": "Mississippi State Bulldogs",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1356,8 +1356,8 @@
       "league": "NCAAF",
       "team": "Ole Miss Rebels",
       "stats": {
-        "wins": 6,
-        "reg_season_losses": 3,
+        "wins": 7,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1448,7 +1448,7 @@
       "team": "Indiana Hoosiers",
       "stats": {
         "wins": 9,
-        "reg_season_losses": 1,
+        "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1460,7 +1460,7 @@
       "league": "NCAAF",
       "team": "Iowa Hawkeyes",
       "stats": {
-        "wins": 8,
+        "wins": 9,
         "reg_season_losses": 2,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1525,7 +1525,7 @@
       "league": "NCAAF",
       "team": "Nebraska Cornhuskers",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1552,7 +1552,7 @@
       "team": "Ohio State Buckeyes",
       "stats": {
         "wins": 7,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1564,7 +1564,7 @@
       "league": "NCAAF",
       "team": "Oregon Ducks",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1617,7 +1617,7 @@
       "team": "UCLA Bruins",
       "stats": {
         "wins": 10,
-        "reg_season_losses": 0,
+        "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1629,7 +1629,7 @@
       "league": "NCAAF",
       "team": "USC Trojans",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1668,7 +1668,7 @@
       "league": "NCAAF",
       "team": "Boston College Eagles",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1694,7 +1694,7 @@
       "league": "NCAAF",
       "team": "Clemson Tigers",
       "stats": {
-        "wins": 6,
+        "wins": 7,
         "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1721,7 +1721,7 @@
       "team": "Florida State Seminoles",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 5,
+        "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1746,7 +1746,7 @@
       "league": "NCAAF",
       "team": "Louisville Cardinals",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1759,7 +1759,7 @@
       "league": "NCAAF",
       "team": "Miami (FL) Hurricanes",
       "stats": {
-        "wins": 9,
+        "wins": 10,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1772,7 +1772,7 @@
       "league": "NCAAF",
       "team": "NC State Wolfpack",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1786,7 +1786,7 @@
       "team": "North Carolina Tar Heels",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 5,
+        "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1812,7 +1812,7 @@
       "team": "SMU Mustangs",
       "stats": {
         "wins": 7,
-        "reg_season_losses": 3,
+        "reg_season_losses": 4,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1850,7 +1850,7 @@
       "league": "NCAAF",
       "team": "Virginia Cavaliers",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "reg_season_losses": 5,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1876,7 +1876,7 @@
       "league": "NCAAF",
       "team": "Wake Forest Demon Deacons",
       "stats": {
-        "wins": 9,
+        "wins": 10,
         "reg_season_losses": 1,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1889,7 +1889,7 @@
       "league": "NCAAF",
       "team": "Arizona Wildcats",
       "stats": {
-        "wins": 7,
+        "wins": 8,
         "reg_season_losses": 3,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -1903,7 +1903,7 @@
       "team": "Arizona State Sun Devils",
       "stats": {
         "wins": 6,
-        "reg_season_losses": 4,
+        "reg_season_losses": 5,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1981,7 +1981,7 @@
       "team": "Iowa State Cyclones",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 5,
+        "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -1994,7 +1994,7 @@
       "team": "Kansas Jayhawks",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 6,
+        "reg_season_losses": 7,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2007,7 +2007,7 @@
       "team": "Kansas State Wildcats",
       "stats": {
         "wins": 4,
-        "reg_season_losses": 6,
+        "reg_season_losses": 7,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -2071,7 +2071,7 @@
       "league": "NCAAF",
       "team": "Utah Utes",
       "stats": {
-        "wins": 10,
+        "wins": 11,
         "reg_season_losses": 0,
         "playoff_bid": false,
         "playoff_wins": 0,
@@ -2085,7 +2085,7 @@
       "team": "West Virginia Mountaineers",
       "stats": {
         "wins": 5,
-        "reg_season_losses": 5,
+        "reg_season_losses": 6,
         "playoff_bid": false,
         "playoff_wins": 0,
         "playoff_bye": false,
@@ -3876,7 +3876,7 @@
       "league": "NCAAMB",
       "team": "Alabama Crimson Tide",
       "stats": {
-        "wins": 4,
+        "wins": 5,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4009,8 +4009,8 @@
       "league": "NCAAMB",
       "team": "Florida Gators",
       "stats": {
-        "wins": 4,
-        "losses": 0,
+        "wins": 6,
+        "losses": 1,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
         "ncaa_qualifier": false,
@@ -4104,7 +4104,7 @@
       "league": "NCAAMB",
       "team": "Houston Cougars",
       "stats": {
-        "wins": 4,
+        "wins": 6,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4123,8 +4123,8 @@
       "league": "NCAAMB",
       "team": "Illinois Fighting Illini",
       "stats": {
-        "wins": 2,
-        "losses": 0,
+        "wins": 5,
+        "losses": 1,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
         "ncaa_qualifier": false,
@@ -4181,7 +4181,7 @@
       "team": "Kansas Jayhawks",
       "stats": {
         "wins": 5,
-        "losses": 0,
+        "losses": 1,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
         "ncaa_qualifier": false,
@@ -4218,7 +4218,7 @@
       "league": "NCAAMB",
       "team": "Louisville Cardinals",
       "stats": {
-        "wins": 2,
+        "wins": 3,
         "losses": 1,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4256,7 +4256,7 @@
       "league": "NCAAMB",
       "team": "Miami (FL) Hurricanes",
       "stats": {
-        "wins": 3,
+        "wins": 5,
         "losses": 1,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4275,8 +4275,8 @@
       "league": "NCAAMB",
       "team": "Michigan State Spartans",
       "stats": {
-        "wins": 3,
-        "losses": 0,
+        "wins": 5,
+        "losses": 1,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
         "ncaa_qualifier": false,
@@ -4484,7 +4484,7 @@
       "league": "NCAAMB",
       "team": "Tennessee Volunteers",
       "stats": {
-        "wins": 3,
+        "wins": 5,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4522,7 +4522,7 @@
       "league": "NCAAMB",
       "team": "Texas Longhorns",
       "stats": {
-        "wins": 3,
+        "wins": 6,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4541,7 +4541,7 @@
       "league": "NCAAMB",
       "team": "Texas Tech Red Raiders",
       "stats": {
-        "wins": 3,
+        "wins": 5,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4560,7 +4560,7 @@
       "league": "NCAAMB",
       "team": "UCLA Bruins",
       "stats": {
-        "wins": 4,
+        "wins": 6,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4580,7 +4580,7 @@
       "team": "UConn Huskies",
       "stats": {
         "wins": 4,
-        "losses": 0,
+        "losses": 1,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
         "ncaa_qualifier": false,
@@ -4617,7 +4617,7 @@
       "league": "NCAAMB",
       "team": "Vanderbilt Commodores",
       "stats": {
-        "wins": 1,
+        "wins": 6,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -4655,7 +4655,7 @@
       "league": "NCAAMB",
       "team": "Virginia Cavaliers",
       "stats": {
-        "wins": 5,
+        "wins": 7,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -5054,7 +5054,7 @@
       "league": "NCAAWB",
       "team": "Nebraska Cornhuskers",
       "stats": {
-        "wins": 5,
+        "wins": 6,
         "losses": 0,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
@@ -5073,7 +5073,7 @@
       "league": "NCAAWB",
       "team": "North Carolina Tar Heels",
       "stats": {
-        "wins": 1,
+        "wins": 4,
         "losses": 2,
         "reg_season_conf_champ": false,
         "conf_tourney_champ": false,
