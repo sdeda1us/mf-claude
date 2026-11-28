@@ -1,9 +1,17 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "results": [
-    {"league": "NFL", "home_team": "Detroit Lions", "away_team": "Chicago Bears", "home_score": 35, "away_score": 39},
-    {"league": "NFL", "home_team": "Dallas Cowboys", "away_team": "Philadelphia Eagles", "home_score": 38, "away_score": 39},
-    {"league": "NFL", "home_team": "Buffalo Bills", "away_team": "Kansas City Chiefs", "home_score": 13, "away_score": 10},
-    {"league": "NCAAF", "home_team": "Texas Tech Red Raiders", "away_team": "TCU Horned Frogs", "home_score": 48, "away_score": 27}
+    {"league": "NFL", "home_team": "Pittsburgh Steelers", "away_team": "Denver Broncos", "home_score": 27, "away_score": 5},
+    {"league": "NCAAF", "home_team": "Ole Miss Rebels", "away_team": "Mississippi State Bulldogs", "home_score": 41, "away_score": 17},
+    {"league": "NCAAF", "home_team": "Iowa Hawkeyes", "away_team": "Nebraska Cornhuskers", "home_score": 31, "away_score": 7},
+    {"league": "NCAAF", "home_team": "UTSA Roadrunners", "away_team": "Tulsa Golden Hurricane", "home_score": 28, "away_score": 22},
+    {"league": "NCAAF", "home_team": "Florida State Seminoles", "away_team": "Florida Gators", "home_score": 10, "away_score": 26},
+    {"league": "NCAAF", "home_team": "Texas A&M Aggies", "away_team": "Texas Longhorns", "home_score": 6, "away_score": 16},
+    {"league": "NCAAF", "home_team": "Wisconsin Badgers", "away_team": "Minnesota Golden Gophers", "home_score": 28, "away_score": 5},
+    {"league": "NCAAF", "home_team": "Utah Utes", "away_team": "West Virginia Mountaineers", "home_score": 52, "away_score": 28},
+    {"league": "EPL", "home_team": "Nottingham Forest", "away_team": "Chelsea", "home_score": 3, "away_score": 2},
+    {"league": "NBA", "home_team": "Toronto Raptors", "away_team": "Brooklyn Nets", "home_score": 124, "away_score": 100},
+    {"league": "NBA", "home_team": "Indiana Pacers", "away_team": "Philadelphia 76ers", "home_score": 87, "away_score": 111},
+    {"league": "NHL", "home_team": "New Jersey Devils", "away_team": "Calgary Flames", "home_score": 5, "away_score": 3}
   ]
 }
